@@ -2,7 +2,7 @@
 export TRIBE="$1";
 export COMMAND="$2";
 timestamp="$(date)";
-for f in sinsay tribes
+for f in bones flesh generator-flesh spider thing 
 do
   cd $f;
   echo "[>><<TRIBES>><<].$TRIBE.$f._$COMMAND ✓";
