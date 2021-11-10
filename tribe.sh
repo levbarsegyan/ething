@@ -1,13 +1,15 @@
 #!/bin/bash
-export TRIBE="$1";
-export COMMAND="$2";
-timestamp="$(date)";
-for f in bones flesh generator-flesh spider thing 
+set +e
+TRIBE="$1";
+COMMAND="$2";
+EXTRA="$3";
+for APP in bones flesh generator-flesh spider thing
 do
-  cd $f;
-  echo "[>><<TRIBES>><<].$TRIBE.$f._$COMMAND ✓";
-  source "../_$COMMAND.sh" "$TRIBE" "$f";
+  cd $APP;
+  source "../../_$COMMAND.sh" "$TRIBE" "$EXTRA";
+  source "../../_say.sh" "$TRIBE" "$COMMAND" "$APP";
   cd ..;
 done
-echo "[>><<TRIBES>><<].$TRIBE.elioBelievers._$COMMAND ✓";
-source "_$COMMAND.sh" "$TRIBE" "elioThings";
+PROJECT=${PWD##*/};
+source "../_$COMMAND.sh" "$TRIBE" "$EXTRA";
+source "../_say.sh" "$TRIBE" "$COMMAND" "$PROJECT";
