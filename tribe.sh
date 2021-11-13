@@ -3,13 +3,12 @@ set +e
 TRIBE="$1";
 COMMAND="$2";
 EXTRA="$3";
-for APP in bones flesh generator-flesh spider thing
-do
-  cd $APP;
+while IFS='' read -r line || [[ -n "$line" ]]; do
+  cd $line;
   source "../../_$COMMAND.sh" "$TRIBE" "$EXTRA";
-  source "../../_say.sh" "$TRIBE" "$COMMAND" "$APP";
+  source "../../_say.sh" "$TRIBE" "$COMMAND" "$line";
   cd ..;
-done
+done < ".tribalinclude"
 PROJECT=${PWD##*/};
 source "../_$COMMAND.sh" "$TRIBE" "$EXTRA";
 source "../_say.sh" "$TRIBE" "$COMMAND" "$PROJECT";
