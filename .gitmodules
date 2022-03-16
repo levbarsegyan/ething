@@ -1,0 +1,15 @@
+[submodule "bones"]
+	path = bones
+	url = git@gitlab.com-elio:elioschemers/bones.git
+[submodule "flesh"]
+	path = flesh
+	url = git@gitlab.com-elio:elioschemers/flesh.git
+[submodule "generator-flesh"]
+	path = generator-flesh
+	url = git@gitlab.com-elio:elioschemers/generator-flesh.git
+[submodule "icarus"]
+	path = icarus
+	url = git@gitlab.com-elio:elioschemers/icarus.git
+[submodule "spider"]
+	path = spider
+	url = git@gitlab.com-elio:elioschemers/spider.git
