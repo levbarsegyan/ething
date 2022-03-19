@@ -1,6 +1,6 @@
-../../bones|slave
-../../flesh|slave
-../../generator-flesh|slave
-../../icarus|slave
-../../spider|slave
-../../../eliodata|slave
+../../bones|master
+../../flesh|master
+../../generator-flesh|master
+../../icarus|master
+../../spider|master
+../../../eliodata|master
