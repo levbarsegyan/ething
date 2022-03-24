@@ -1,0 +1,29 @@
+{
+    "name": "elioData",
+    "title": "elioData",
+    "version": "1",
+    "description": "Notes and resources for the elioData project. ",
+    "scripts": {
+        "format": "prettier --write \"**/*.{js,json,scss,md,html}\" \"!package.json\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.com/elioway/eliodata/"
+    },
+    "keywords": [
+        "sass",
+        "css",
+        "scss",
+        "html",
+        "wireframe"
+    ],
+    "author": "Tim Bushell",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://gitlab.com/elioway/eliodata/issues?status=new&status=open"
+    },
+    "homepage": "https://gitlab.com/elioway/eliodata/blob/master/README.md",
+    "devDependencies": {
+        "prettier": "1.16.4"
+    }
+}

@@ -1,6 +1,6 @@
-bones|master
-../flesh|master
-../generator-flesh|master
-../icarus|master
-../spider|master
-../../eliodata|master
+../eliodata/bones|master
+../eliodata/flesh|master
+../eliodata/generator-flesh|master
+../eliodata/icarus|master
+../eliodata/spider|master
+../eliodata|master
