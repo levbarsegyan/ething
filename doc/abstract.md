@@ -25,7 +25,7 @@ body>footer { // style }
 body>p { // style }
 ```
 ## More
-- [god Abstract](https://gitlab.com/eliobelievers/god/blob/master/doc/abstract.md)
-- [eve Abstract](https://gitlab.com/eliobelievers/eve/blob/master/doc/abstract.md)
-- [adon Abstract](https://gitlab.com/eliobelievers/adon/blob/master/doc/abstract.md)
+- [god Abstract](https://gitlab.com/eliosin/god/blob/master/doc/abstract.md)
+- [eve Abstract](https://gitlab.com/eliosin/eve/blob/master/doc/abstract.md)
+- [adon Abstract](https://gitlab.com/eliosin/adon/blob/master/doc/abstract.md)
 - [elioSin Index](index.md)
