@@ -6,11 +6,11 @@ We're creating stylesheets that only mention tagNames. That's all! Carry on.
 - No rows and columns of nested tags.
 - Just normal tags,
   - added directly under `body`,
-  - the way  **god**  intended.
-**elioSin** - to which this abstract relates - does little more than curate, document, and otherwise "host" its child modules  **generator-sin** ,  **god** ,  **eve**  and  **adon**  - by way of providing the folder name "elioSin" to parent them.
-The modules  **god** ,  **eve**  and  **adon**  could easily be combined. By keeping them as separate modules it clarifies certain facts:
+  - the way **god** intended.
+**elioSin** - to which this abstract relates - does little more than curate, document, and otherwise "host" its child modules **generator-sin** , **god** , **eve** and **adon** - by way of providing the folder name "elioSin" to parent them.
+The modules **god** , **eve** and **adon** could easily be combined. By keeping them as separate modules it clarifies certain facts:
 1. The three modules represent _patterns_ not features. You could just as easily look at the source code and implement your own version. I offer these _patterns_ as an extended "gist" you may harvest as you wish. I stole my genius from other people anyway.
-2. Separated, their individual _patterns_ are clear. Metaphorically, the names  **god** ,  **eve**  and  **adon**  are themselves a well-known pattern which will help you organise their purpose in your mind.
+2. Separated, their individual _patterns_ are clear. Metaphorically, the names **god** , **eve** and **adon** are themselves a well-known pattern which will help you organise their purpose in your mind.
 3. Separate, they are optional, assuming you have the settings file in each.
 **elioSin** is old school, and bemoans the thoughtless use of HTML tagNames, bypassed for the sake of classNames.
 **elioSin** asks: Why do I need to nest my `h1` tag, for instance, so deeply in so many `div` tags? Why do I need to nest my `nav` tag 3 deep inside a collection of `div` tags with classes like `.mainNav` and `.mainNavLeft`. When... oh when... oh when... oh when... do we ever need to use the className `.form` especially for the tagName `form`; or the className `.table` for a `table`?

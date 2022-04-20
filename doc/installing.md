@@ -27,10 +27,10 @@ npm i -g yo qunit mocha gulp-cli prettier
 ## Install
 You could go one or two of two routes:
 - [Install generator-sin](https://gitlab.com/eliosin/generator-sin/blob/master/doc/installing.md)
-  -  **generator-sin**  will install everything you need to play  **god**  in your current project folder. It will generate extra  **eve** s and  **adon** s when you need them.
+  - **generator-sin** will install everything you need to play **god** in your current project folder. It will generate extra **eve** s and **adon** s when you need them.
 - [Install god](https://gitlab.com/eliosin/god/blob/master/doc/installing.md)
-  - Install  **god**  using yarn as a dependency of your current project.
-  - Or install  **god**  with GIT to create a starting project.
+  - Install **god** using yarn as a dependency of your current project.
+  - Or install **god** with GIT to create a starting project.
 ## Development Setup
 ```shell
 mkdir elio

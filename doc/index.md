@@ -14,7 +14,7 @@
   - Javascript _patterns_ for jquery/DOM UX actions per tagName.
 ## Tooling
 - [generator-sin](https://gitlab.com/eliosin/generator-sin)
-  - yeoman generator for strict elioSin _patterns_ for  **god** ,  **eve**  and  **adon** .
+  - yeoman generator for strict elioSin _patterns_ for **god** , **eve** and **adon** .
 ## Related
 - [SassyFibonacciness](https://gitlab.com/elioangels/sassy-fibonacciness)
   - Fibonacci SASS mixin for weighting CSS units, especially heading font sizes.
