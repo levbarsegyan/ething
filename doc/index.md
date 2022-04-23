@@ -1,5 +1,5 @@
 # elioSin
-**elioSin** modules focus on generating CSS stylesheets which are focused on tagNames.
+**elioData** provides .
 ## Abstract
 - [Abstract elioSin](abstract.md)
 ## Hands On
