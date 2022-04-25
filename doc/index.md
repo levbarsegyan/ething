@@ -1,5 +1,5 @@
 # elioSin
-**elioData** provides .
+**elioThing** provides .
 ## Abstract
 - [Abstract elioSin](abstract.md)
 ## Hands On

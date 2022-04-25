@@ -1,14 +1,14 @@
 {
-  "name": "elioData",
-  "title": "elioData",
+  "name": "elioThing",
+  "title": "elioThing",
   "version": "1",
-  "description": "Notes and resources for the elioData project. ",
+  "description": "Notes and resources for the elioThing project. ",
   "scripts": {
     "format": "prettier --write \"**/*.{js,json,scss,md,html}\" \"!package.json\""
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/elioway/eliodata/"
+    "url": "https://gitlab.com/elioway/eliothing/"
   },
   "keywords": [
     "sass",
@@ -20,9 +20,9 @@
   "author": "Tim Bushell",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/elioway/eliodata/issues?status=new&status=open"
+    "url": "https://gitlab.com/elioway/eliothing/issues?status=new&status=open"
   },
-  "homepage": "https://gitlab.com/elioway/eliodata/blob/master/README.md",
+  "homepage": "https://gitlab.com/elioway/eliothing/blob/master/README.md",
   "devDependencies": {
     "prettier": "1.16.4"
   }
