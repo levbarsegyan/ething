@@ -1,0 +1,40 @@
+{
+  "author": "Tim Bushell",
+  "description": "7 snappy, ready made elioSin themes for interactive web apps with a mobile focus.",
+  "name": "@elioway/toothpaste",
+  "title": "toothpaste",
+  "version": "0.0.11",
+  "devDependencies": {
+    "prettier": "1.16.4"
+  },
+  "homepage": "https://elioway.gitlab.io/eliosin/toothpaste",
+  "keywords": [
+    "css",
+    "scss",
+    "html",
+    "wireframe"
+  ],
+  "license": "MIT",
+  "modules": {
+    "host": "eliosin",
+    "core": [
+      "god",
+      "eve",
+      "adon"
+    ],
+    "tool": [
+      "generator-sin",
+      "innocence",
+      "bushido",
+      "toothpaste"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/eliosin/toothpaste/"
+  },
+  "scripts": {
+    "build": "gulp",
+    "format": "prettier --write \"**/*.{js,json,scss,md,html}\" \"!package.json\""
+  }
+}
