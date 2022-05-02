@@ -4,6 +4,9 @@
 [submodule "cells"]
 	path = cells
 	url = git@gitlab.com-elio:eliothing/cells.git
+[submodule "engage"]
+	path = engage
+	url = git@gitlab.com-elio:eliothing/engage.git
 [submodule "flesh"]
 	path = flesh
 	url = git@gitlab.com-elio:eliothing/flesh.git
@@ -13,6 +16,9 @@
 [submodule "icarus"]
 	path = icarus
 	url = git@gitlab.com-elio:eliothing/icarus.git
+[submodule "list"]
+	path = list
+	url = git@gitlab.com-elio:eliothing/list.git
 [submodule "schema"]
 	path = schema
 	url = git@gitlab.com-elio:eliothing/schema.git
