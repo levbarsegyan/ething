@@ -18,12 +18,12 @@ Open your `stylesheets/settings.scss` in **genesis** and add a new setting, for 
 $heaven: (blockquote, h6, summary); // hangs right - gets the best views.
 $hell: (nav, aside, details); // hangs left.
 // Added by you
-$tag_toothpaste:  (aside, blockquote, details, summary);
+$tag_toothpaste: (aside, blockquote, details, summary);
 ```
 - Open `stylesheets/theme.scss`
 - At the top import the `tag_toothpaste` mixin.
 ```scss
-@import './node_modules/@elioway/toothpaste/stylesheets/mixins/tag_toothpaste':
+@import './node_modules/@elioway/toothpaste/stylesheets/mixins/tag_toothpaste': ;
 ```
 Call the mixin at the bottom of the `#{$container}` selector:
 ```scss
