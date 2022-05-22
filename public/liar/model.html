@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      Using Ready-Made Data Definitions and Models - eliothing
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png" />
+        <b>liar</b>
+      </a>
+        <a href="#introduction">
+                Introduction</a>
+        <a href="#how-data-definitions-are-based-on-each-other">
+                How Data Definitions are based on each other</a>
+        <a href="#using-the-data-definitions">
+                Using the Data Definitions</a>
+        <a href="#models">
+                Models</a>
+        <a href="#the-data-defintions-and-models">
+                The Data Defintions and Models</a>
+        <a href="#next">
+                Next</a>
+      <menu>
+          <label>Core</label>
+          <nav>
+                <a href="/eliothing/banjo/index.html">
+                  <img src="/eliothing/banjo/apple-touch-icon.png"/>
+                  <b>banjo</b>
+                </a>
+          </nav>
+      </menu>
+      <menu>
+          <label>Tools</label>
+          <nav>
+                  <a href="/eliothing/django_dna/index.html">
+                    <img src="/eliothing/django_dna/apple-touch-icon.png"/>
+                    <b>django_dna</b>
+                  </a>
+          </nav>
+      </menu>
+    </nav>
+    <h1 id="using-ready-made-data-definitions-and-models">Using Ready-Made Data Definitions and Models</h1>
+<h2 id="introduction">Introduction</h2>
+<p><strong>liar</strong> comes with heaps of ready made data definitions you can use. They can be found in the <code>liar/imakedata/model</code> folder and are listed below.</p>
+<p>The names should be self explanatory. If in doubt, it&quot;s best to check the defintion. However it should be noted that many of the definitions are copies of base definitions where we simply overwrite the relevant properties.</p>
+<h2 id="how-data-definitions-are-based-on-each-other">How Data Definitions are based on each other</h2>
+<p>For instance, the <code>in_24</code> data definition in <code>liar/imakedata/model/int.py</code> looks like this:</p>
+<pre><code class="language-python">in_24 = int_data(&quot;in_24&quot;, 1, 24)</code></pre>
+<p><code>int_data</code> is a simple method which changes the min and max settings of a base <code>zero_or_one</code> data defintion:</p>
+<pre><code class="language-python">zero_or_one = rewrite_dict(int_list, {
+    &quot;name&quot;: &quot;zero_or_one&quot;,
+    &quot;min&quot;: 0,
+    &quot;max&quot;: 1,
+})
+def int_data(name, min, max):
+    return rewrite_dict(zero_or_one, {&quot;name&quot;:name, &quot;min&quot;:min, &quot;max&quot;:max})</code></pre>
+<p><code>rewrite_dict</code> is a commonly used utility method found in the <code>liar/imakedata/ijusthelp.py</code> file used to deep copy and rewrite</p>
+<pre><code class="language-python">def rewrite_dict(source_dict, diffs):
+    &quot;&quot;&quot;Returns a copy of source_dict, updated with the new key-value
+       pairs in diffs.&quot;&quot;&quot;
+    result = copy.deepcopy(source_dict)
+    result.update(diffs)
+    return result</code></pre>
+<p><code>int_list</code> is a base data definition for creating randon integers from 0 to 1000:</p>
+<pre><code class="language-python">iamprimitive = {
+    &quot;name&quot;: &quot;iamprimitive&quot;,
+    &quot;class&quot;: &quot;iamprimitive&quot;,
+    &quot;method&quot;: &quot;int_list&quot;,
+    &quot;min&quot;: 0,
+    &quot;max&quot;: 1,
+}
+int_list = rewrite_dict(iamprimitive, {
+    &quot;name&quot;: &quot;int_list&quot;,
+    &quot;method&quot;: &quot;int_list&quot;,
+    &quot;min&quot;: 0,
+    &quot;max&quot;: 1000,
+})</code></pre>
+<p>So <code>in_24</code> is a data defintion for integers between 1 and 24, with a field name &quot;in_24&quot;.</p>
+<p>It&quot;s a little complicated, but you soon get used to it. Reusing data defintions helps avoid bugs.</p>
+<h2 id="using-the-data-definitions">Using the Data Definitions</h2>
+<p>To use, simply import and list them in a model definition.</p>
+<p>For example, a <strong>contact list</strong>:</p>
+<pre><code class="language-python">from imakedata.imakedata import IMakeData
+number_records = 10
+maker = IMakeData(number_records)
+from imakedata.model.marketing import company_name, job_title
+from imakedata.model.personal import first_name, last_name, personal_email
+data_set = maker.get_data([first_name, last_name, personal_email, personal_phone, company_name, job_title])</code></pre>
+<p>Or <strong>train departure times</strong>:</p>
+<pre><code class="language-python">from imakedata.imakedata import IMakeData
+number_records = 10
+maker = IMakeData(number_records)
+from imakedata.ijusthelp import rewrite_dict
+from imakedata.model.location import geo_location
+europe_destination = rewrite_dict(geo_location, {
+    &quot;name&quot;: &quot;destination&quot;,
+    &quot;property&quot;: &quot;city&quot;,
+    &quot;filters&quot;: [{&quot;iso2&quot;: [&quot;GB&quot;, &quot;FR&quot;, &quot;DE&quot;, &quot;IT&quot;,]}, ],
+})
+from imakedata.model.time import within_hours
+departure = rewrite_dict(within_hours, {
+    &quot;name&quot;: &quot;departure&quot;,
+})
+from imakedata.model.int import in_50
+platform_number = rewrite_dict(in_50, {
+    &quot;name&quot;: &quot;platform_number&quot;,
+})
+data_set = maker.get_data([europe_destination, departure_time, platform_number])</code></pre>
+<h2 id="models">Models</h2>
+<p>Models are ready made groupings of data definitions into what will surely be commonly used database model scenarios, like <code>product_model</code> or <code>standard_address_model</code> or <code>business_model</code> or <code>teen_model</code>. For instance <code>teen_model</code> has data defintions like first_name or last_name but with a date of birth scoped to teenagers. Therefore <code>teen_model</code> would be a perfect base model mocking a database for a youth club.</p>
+<p>The ready made models are also listed below.</p>
+<h2 id="the-data-defintions-and-models">The Data Defintions and Models</h2>
+<h3 id="imakedatamodelraw">imakedata.model.raw</h3>
+<p>See: <a href="raw.md">Raw lies</a></p>
+<h3 id="imakedatamodelint">imakedata.model.int</h3>
+<pre><code class="language-python">from imakedata.model.int import int_model</code></pre>
+<p><strong>Available definitions</strong></p>
+<ul>
+<li><code>zero_or_one</code></li>
+<li><code>one_or_two</code></li>
+<li><code>in_3</code></li>
+<li><code>in_4</code></li>
+<li><code>in_5</code></li>
+<li><code>dice</code></li>
+<li><code>in_7</code></li>
+<li><code>in_8</code></li>
+<li><code>in_9</code></li>
+<li><code>in_10</code></li>
+<li><code>in_11</code></li>
+<li><code>dozen</code></li>
+<li><code>in_20</code></li>
+<li><code>in_24</code></li>
+<li><code>in_50</code></li>
+<li><code>in_100</code></li>
+<li><code>in_1000</code></li>
+<li><code>in_10000</code></li>
+<li><code>town_populations</code></li>
+<li><code>city_populations</code></li>
+<li><code>country_populations</code></li>
+<li><code>stars_in_galaxy</code></li>
+</ul>
+<p><strong>Available models</strong></p>
+<p>None</p>
+<h3 id="imakedatamodelfloat">imakedata.model.float</h3>
+<pre><code class="language-python">from imakedata.model.float import float_model</code></pre>
+<p><strong>Available definitions</strong></p>
+<ul>
+<li><code>quantum</code></li>
+<li><code>fractional</code></li>
+<li><code>grocery_price</code></li>
+<li><code>consumer_price</code></li>
+<li><code>gadget_price</code></li>
+<li><code>car_price</code></li>
+<li><code>house_price</code></li>
+<li><code>national_gdp</code></li>
+</ul>
+<p><strong>Available models</strong></p>
+<p>None</p>
+<h3 id="imakedatamodeltime">imakedata.model.time</h3>
+<pre><code class="language-python">from imakedata.model.time import time_model</code></pre>
+<p><strong>Available definitions</strong></p>
+<ul>
+<li><code>last_minute</code></li>
+<li><code>last_hour</code></li>
+<li><code>within_minutes</code></li>
+<li><code>within_hours</code></li>
+<li><code>opening_hours</code></li>
+<li><code>last_24</code></li>
+</ul>
+<p><strong>Available models</strong></p>
+<p>None</p>
+<h3 id="imakedatamodeldate">imakedata.model.date</h3>
+<pre><code class="language-python">from imakedata.model.date import date_model</code></pre>
+<p><strong>Available definitions</strong></p>
+<ul>
+<li><code>date_of_birth</code></li>
+<li><code>date_of_birth_oap</code></li>
+<li><code>date_of_birth_adult</code></li>
+<li><code>date_of_birth_parent</code></li>
+<li><code>date_of_birth_student</code></li>
+<li><code>date_of_birth_teen</code></li>
+<li><code>date_of_birth_child</code></li>
+<li><code>date_of_birth_toddler</code></li>
+<li><code>date_of_birth_baby</code></li>
+<li><code>department</code></li>
+<li><code>day_of_week</code></li>
+<li><code>day_of_week_abrev</code></li>
+<li><code>month_of_year</code></li>
+<li><code>month_of_year_abrev</code></li>
+<li><code>last_week</code></li>
+<li><code>last_month</code></li>
+<li><code>last_6_months</code></li>
+<li><code>last_year</code></li>
+<li><code>last_2_years</code></li>
+<li><code>last_decade</code></li>
+<li><code>last_century</code></li>
+<li><code>within_days</code></li>
+<li><code>within_weeks</code></li>
+<li><code>within_months</code></li>
+<li><code>within_12_months</code></li>
+<li><code>within_years</code></li>
+<li><code>sci_fi</code></li>
+</ul>
+<p><strong>Available models</strong></p>
+<p>None</p>
+<h3 id="imakedatamodellocation">imakedata.model.location</h3>
+<pre><code class="language-python">from imakedata.model.location import location_model, standard_address_model</code></pre>
+<p><strong>Available definitions</strong></p>
+<ul>
+<li><code>posh_address1</code></li>
+<li><code>address1</code></li>
+<li><code>address2</code></li>
+<li><code>locality</code></li>
+<li><code>geo_location</code></li>
+<li><code>post_code</code></li>
+</ul>
+<p><strong>Available models</strong></p>
+<ul>
+<li><code>standard_address_model</code></li>
+<li><code>posh_address_model</code></li>
+</ul>
+<h3 id="imakedatamodelblurb">imakedata.model.blurb</h3>
+<pre><code class="language-python">from imakedata.model.blurb import blurb_model</code></pre>
+<p><strong>Available definitions</strong></p>
+<ul>
+<li><code>blurb</code></li>
+<li><code>ainu_blurb</code></li>
+<li><code>danish_blurb</code></li>
+<li><code>english_blurb</code></li>
+<li><code>latin_blurb</code></li>
+<li><code>ainu_title</code></li>
+<li><code>danish_title</code></li>
+<li><code>english_title</code></li>
+<li><code>latin_title</code></li>
+<li><code>latin_motto</code></li>
+</ul>
+<p><strong>Available models</strong></p>
+<p>None</p>
+<h3 id="imakedatamodelbusiness">imakedata.model.business</h3>
+<pre><code class="language-python">from imakedata.model.business import business_model</code></pre>
+<p><strong>Available definitions</strong></p>
+<ul>
+<li><code>employee_number</code></li>
+<li><code>company_name</code></li>
+<li><code>company_address1</code></li>
+<li><code>company_address2</code></li>
+<li><code>company_locality</code></li>
+<li><code>company_geo_location</code></li>
+<li><code>company_post_code</code></li>
+<li><code>department</code></li>
+<li><code>job_title</code></li>
+<li><code>company_slug</code></li>
+<li><code>company_domain</code></li>
+<li><code>company_email</code></li>
+<li><code>info_email</code></li>
+<li><code>contact_email</code></li>
+<li><code>sales_email</code></li>
+<li><code>web_email</code></li>
+<li><code>company_web</code></li>
+<li><code>company_phone</code></li>
+<li><code>company_fax</code></li>
+</ul>
+<p><strong>Available models</strong></p>
+<ul>
+<li><code>business_model</code></li>
+</ul>
+<h3 id="imakedatamodelmarketing">imakedata.model.marketing</h3>
+<pre><code class="language-python">from imakedata.model.marketing import marketing_model</code></pre>
+<p><strong>Available definitions</strong></p>
+<ul>
+<li><code>postage_cost</code></li>
+<li><code>product_weight</code></li>
+<li><code>news_title</code></li>
+<li><code>product_title</code></li>
+<li><code>product_name</code></li>
+<li><code>tweet</code></li>
+<li><code>description</code></li>
+<li><code>short_blurb</code></li>
+<li><code>blurb</code></li>
+<li><code>long_blurb</code></li>
+<li><code>essay</code></li>
+<li><code>foreign_chars</code></li>
+</ul>
+<p><strong>Available models</strong></p>
+<ul>
+<li><code>marketing_model</code></li>
+<li><code>product_model</code></li>
+</ul>
+<h3 id="imakedatamodelpersonal">imakedata.model.personal</h3>
+<pre><code class="language-python">from imakedata.model.personal import personal_model</code></pre>
+<p><strong>Available definitions</strong></p>
+<ul>
+<li><code>title</code></li>
+<li><code>first_name</code></li>
+<li><code>last_name</code></li>
+<li><code>gender</code></li>
+<li><code>user_name</code></li>
+<li><code>home_address1</code></li>
+<li><code>home_address2</code></li>
+<li><code>home_locality</code></li>
+<li><code>home_geo_location</code></li>
+<li><code>home_post_code</code></li>
+<li><code>personal_domain</code></li>
+<li><code>personal_email</code></li>
+<li><code>personal_web</code></li>
+<li><code>personal_phone</code></li>
+<li><code>personal_mobile</code></li>
+<li><code>skin_tone</code></li>
+<li><code>hair_color</code></li>
+<li><code>accessory_color</code></li>
+</ul>
+<p><strong>Available models</strong></p>
+<ul>
+<li><code>personal_model</code></li>
+<li><code>oap_model</code> = personal_model + [date_of_birth_oap]</li>
+<li><code>adult_model</code> = personal_model + [date_of_birth_adult]</li>
+<li><code>parent_model</code> = personal_model + [date_of_birth_parent]</li>
+<li><code>student_model</code> = personal_model + [date_of_birth_student]</li>
+<li><code>teen_model</code> = personal_model + [date_of_birth_teen]</li>
+<li><code>child_model</code> = personal_model + [date_of_birth_child]</li>
+<li><code>toddler_model</code> = personal_model + [date_of_birth_toddler]</li>
+<li><code>baby_model</code> = personal_model + [date_of_birth_baby]</li>
+<li><code>employee_model</code> = adult_model + [employee_number, company_name, department, job_title]</li>
+</ul>
+<h3 id="imakedatamodelcommon">imakedata.model.common</h3>
+<pre><code class="language-python">from imakedata.model.common import common_model</code></pre>
+<p><strong>Available definitions</strong></p>
+<ul>
+<li><code>pk</code></li>
+<li><code>space</code></li>
+<li><code>nb_space</code></li>
+<li><code>animal_name</code></li>
+<li><code>compound_word</code></li>
+</ul>
+<p><strong>Available models</strong></p>
+<p>None</p>
+<h2 id="next">Next</h2>
+<ul>
+<li>[Using Ready-Made Raw Data][raw.md]</li>
+</ul>
+    <footer>
+      <a href="https://gitlab.com/elioway/eliothing/liar">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-liar-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/js/adons.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      Quickstart toothpaste - eliothing
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png" />
+        <b>list</b>
+      </a>
+        <a href="#prerequisites">
+                Prerequisites</a>
+        <a href="#tldr-checklist">
+                TLDR Checklist</a>
+        <a href="#exercise-1-adding-toothpaste-to-a-theme">
+                Exercise 1: Adding toothpaste to a theme</a>
+        <a href="#tidy-up">
+                Tidy up</a>
+        <a href="#next">
+                Next</a>
+      <menu>
+          <label>Core</label>
+          <nav>
+                <a href="/eliothing/bones/index.html">
+                  <img src="/eliothing/bones/apple-touch-icon.png"/>
+                  <b>bones</b>
+                </a>
+                <a href="/eliothing/flesh/index.html">
+                  <img src="/eliothing/flesh/apple-touch-icon.png"/>
+                  <b>flesh</b>
+                </a>
+                <a href="/eliothing/icarus/index.html">
+                  <img src="/eliothing/icarus/apple-touch-icon.png"/>
+                  <b>icarus</b>
+                </a>
+          </nav>
+      </menu>
+      <menu>
+          <label>Tools</label>
+          <nav>
+                  <a href="/eliothing/generator-flesh/index.html">
+                    <img src="/eliothing/generator-flesh/apple-touch-icon.png"/>
+                    <b>generator-flesh</b>
+                  </a>
+                  <a href="/eliothing/spider/index.html">
+                    <img src="/eliothing/spider/apple-touch-icon.png"/>
+                    <b>spider</b>
+                  </a>
+                  <a href="/eliothing/art/index.html">
+                    <img src="/eliothing/art/apple-touch-icon.png"/>
+                    <b>art</b>
+                  </a>
+                  <a href="/eliothing/cells/index.html">
+                    <img src="/eliothing/cells/apple-touch-icon.png"/>
+                    <b>cells</b>
+                  </a>
+          </nav>
+      </menu>
+    </nav>
+    <h1 id="quickstart-toothpaste">Quickstart toothpaste</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><strong>toothpaste</strong> understood <a href="https://elioway.gitlab.io/eliosin/toothpaste/index.html">No!</a></li>
+<li><a href="demo.html">Check the Demo</a></li>
+<li><strong>elioSin</strong> prerequisites met? <a href="https://elioway.gitlab.io/eliosin/installing.html">No!</a></li>
+<li>Installed <strong>toothpaste</strong> ? <a href="https://elioway.gitlab.io/eliosin/toothpaste/installing.html">No</a></li>
+<li>You completed <strong>god</strong> Quickstart <a href="https://elioway.gitlab.io/eliosin/god/quickstart.html">No!</a></li>
+<li>You created a new <strong>elioSin</strong> theme called <code>genesis</code>.</li>
+<li>You&#39;re currently running <code>gulp</code> in its root folder and can see the page.</li>
+</ul>
+<h2 id="tldr-checklist">TLDR Checklist</h2>
+<ul>
+<li>add a setting for <code>$tag-toothpaste</code> with a list of tags from heaven and hell.</li>
+<li>import the <code>tag_toothpaste</code> mixin from this app.</li>
+<li>call the tag_toothpaste mixin inside your container.</li>
+</ul>
+<h2 id="exercise-1-adding-toothpaste-to-a-theme">Exercise 1: Adding toothpaste to a theme</h2>
+<p>Open your <code>stylesheets/settings.scss</code> in <strong>genesis</strong> and add a new setting, for instance, in the following example, <code>nav</code> with also be positioned in <em>hell</em>, <code>h6</code> will always be positioned in <em>heaven</em>, while <code>aside</code>, <code>blockquote</code>, <code>figure</code> will alternate.</p>
+<pre><code class="language-scss">// stylesheets/settings.scss
+$heaven: (blockquote, h6, summary); // hangs right - gets the best views.
+$hell: (nav, aside, details); // hangs left.
+// Added by you
+$tag_toothpaste: (aside, blockquote, details, summary);</code></pre>
+<ul>
+<li>Open <code>stylesheets/theme.scss</code></li>
+<li>At the top import the <code>tag_toothpaste</code> mixin.</li>
+</ul>
+<pre><code class="language-scss">@import &#39;./node_modules/@elioway/toothpaste/stylesheets/mixins/tag_toothpaste&#39;: ;</code></pre>
+<p>Call the mixin at the bottom of the <code>#{$container}</code> selector:</p>
+<pre><code class="language-scss">#{$container} {
+  ...
+  @include tag_toothpaste($tag_toothpaste);
+}</code></pre>
+<h3 id="what-we-learnt">What we learnt</h3>
+<ol>
+<li><p>How to install <strong>toothpaste</strong>.</p>
+</li>
+<li><p>Understanding what we don&#39;t add to toothpaste is as important as what we do.</p>
+</li>
+</ol>
+<h2 id="tidy-up">Tidy up</h2>
+<ul>
+<li><p>Press <code>CTRL</code> and <code>C</code> to stop the browser.</p>
+</li>
+<li><p>Type <code>yarn format</code> to make your work <code>prettier</code>.</p>
+</li>
+<li><p>Type <code>yarn test</code>.</p>
+</li>
+</ul>
+<h2 id="next">Next</h2>
+<p>You are ready to use <strong>toothpaste</strong>.</p>
+    <footer>
+      <a href="https://gitlab.com/eliothing/list/">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-list-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/js/adons.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

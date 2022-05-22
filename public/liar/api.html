@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      API - eliothing
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png" />
+        <b>liar</b>
+      </a>
+        <a href="#defining-data-defintions">
+                Defining Data Defintions</a>
+        <a href="#class-of-10">
+                Class of 10:</a>
+        <a href="#optional-properties">
+                Optional Properties</a>
+        <a href="#next">
+                Next</a>
+      <menu>
+          <label>Core</label>
+          <nav>
+                <a href="/eliothing/banjo/index.html">
+                  <img src="/eliothing/banjo/apple-touch-icon.png"/>
+                  <b>banjo</b>
+                </a>
+          </nav>
+      </menu>
+      <menu>
+          <label>Tools</label>
+          <nav>
+                  <a href="/eliothing/django_dna/index.html">
+                    <img src="/eliothing/django_dna/apple-touch-icon.png"/>
+                    <b>django_dna</b>
+                  </a>
+          </nav>
+      </menu>
+    </nav>
+    <h1 id="api">API</h1>
+<h2 id="defining-data-defintions">Defining Data Defintions</h2>
+<p>Build on the defintion library by writing your own fields and models. Each column/field in your dataset is defined by a dictionary in a list.</p>
+<pre><code>model_def = [
+  { define_field1 },
+  { define_field2 },
+  { define_field3 },
+  { define_field4 },
+]</code></pre><p>Each defined field needs a name and a class.</p>
+<p><code>name</code> will be the field name used in the results. It should be unique.</p>
+<pre><code>define_field1 = {
+  &quot;name&quot;: &quot;animal_name&quot;,
+  &quot;class&quot;: &quot;quicklist&quot;,
+  &quot;data&quot;: [&quot;dog&quot;, &quot;cat&quot;, &quot;mouse&quot;, &quot;horse&quot;, &quot;rat&quot;]
+},</code></pre><p>The class is the programming class where the data is taken from.</p>
+<h2 id="class-of-10">Class of 10:</h2>
+<h3 id="igetraw-class"><code>igetraw</code> class</h3>
+<p>A json formatted file containing data (see raw folder). You can add your own. For those raw files whose data is made of dictionary objects in a list, it will assign the whole dictionary to the column:</p>
+<pre><code>study_area = {
+  &quot;name&quot;: &quot;study_area&quot;,
+  &quot;class&quot;: &quot;igetraw&quot;,
+  &quot;data&quot;: &quot;academic&quot;
+}</code></pre><p><strong>Result</strong></p>
+<pre><code>[
+  {study_area: {subject: Philosophy, department: Arts}},
+  {study_area: {subject: Computing, department: Science}},
+  {study_area: {subject: Accounting, department: Business}},
+  {study_area: {subject: Physics, department: Science}},
+]</code></pre><h4 id="options">Options</h4>
+<h5 id="property">property</h5>
+<p>Specify one of properties of the dictionary object to return a single column even if the source contains a dictionary.</p>
+<pre><code>{
+  &quot;property&quot;: &quot;department&quot;,
+}</code></pre><p><strong>Result</strong></p>
+<pre><code>[
+  {study_area: Arts},
+  {study_area: Science},
+  {study_area: Business},
+  {study_area: Science},
+]</code></pre><h5 id="filter">filter</h5>
+<p>Filter the results by any property.</p>
+<pre><code>{
+  &quot;filters&quot;: [{department: [Arts, Science]}, ...more filters... ],
+}</code></pre><p><strong>Result</strong></p>
+<pre><code>[
+  {study_area: Arts},
+  {study_area: Science},
+  {study_area: Arts},
+  {study_area: Science},
+]</code></pre><h3 id="quicklist-class"><code>quicklist</code> class</h3>
+<p>A user supplied list of choices for each field.</p>
+<pre><code>in_the_list = {
+  &quot;name&quot;: &quot;in_the_list&quot;,
+  &quot;class&quot;: &quot;quicklist&quot;,
+  &quot;data&quot;: [1, &quot;of&quot;, &quot;the&quot;, &quot;items&quot;, &quot;in&quot;, &quot;this&quot;, &quot;list&quot;, 4, &quot;each&quot;, &quot;row&quot;]
+}</code></pre><p><strong>Result</strong></p>
+<pre><code>[
+  {in_the_list: of},
+  {in_the_list: in},
+  {in_the_list: 1},
+  {in_the_list: each},
+]</code></pre><h3 id="toothpaste-class"><code>toothpaste</code> class</h3>
+<p>A list we rotate through.</p>
+<pre><code>not_grey = {
+  &quot;name&quot;: &quot;not_grey&quot;,
+  &quot;class&quot;: &quot;toothpaste&quot;,
+  &quot;data&quot;: [&quot;black&quot;, &quot;white&quot;]
+}</code></pre><p><strong>Result</strong></p>
+<pre><code>[
+  {&quot;not_grey&quot;: &quot;black&quot;},
+  {&quot;not_grey&quot;: &quot;white},
+  {&quot;not_grey&quot;: &quot;black&quot;},
+  {&quot;not_grey&quot;: &quot;white},
+  {&quot;not_grey&quot;: &quot;black&quot;},
+  {&quot;not_grey&quot;: &quot;white},
+]</code></pre><h3 id="pk-class"><code>pk</code> class</h3>
+<p>A unique number for each record.</p>
+<pre><code>contact_id = {
+  &quot;name&quot;: &quot;contact_id&quot;,
+  &quot;class&quot;: &quot;pk&quot;,
+}</code></pre><p><strong>Result</strong></p>
+<pre><code>[
+  {contact_id: 1},
+  {contact_id: 2},
+  {contact_id: 3},
+  {contact_id: 4},
+]</code></pre><h3 id="primitive-class"><code>primitive</code> class</h3>
+<p>Make columns of numbers, dates, times, decimals, primary keys. min and max sets a limit and takes any date, integer or decimal, e.g. &quot;1940-01-01&quot;, 1, 0.23; defaults min:1, max:2</p>
+<pre><code>product_weight =  {
+  &quot;name&quot;: &quot;product_weight&quot;,
+  &quot;class&quot;: &quot;primitive&quot;,
+  &quot;method&quot;: &quot;dec_list&quot;,
+  &quot;min&quot;: 1.4,
+  &quot;max&quot;: 2.8,
+}</code></pre><p><strong>Result</strong></p>
+<pre><code>[
+  {product_weight: 2.4},
+  {product_weight: 2.1},
+  {product_weight: 1.4},
+  {product_weight: 2.0},
+]</code></pre><h4 id="options-1">Options</h4>
+<h5 id="method"><code>method</code></h5>
+<p>The data type to select from the <code>IAmPrimitive</code> class. Options are:</p>
+<ul>
+<li><code>dec_list</code></li>
+<li><code>int_list</code></li>
+<li><code>datetimes_list</code></li>
+<li><code>time_list</code></li>
+<li><code>date_list</code></li>
+<li><code>primary_key_list</code></li>
+</ul>
+<h5 id="minmax"><code>min</code>/<code>max</code></h5>
+<p>Where applicable, sets a min and max value for the random primitive.</p>
+<h3 id="field-class"><code>field</code> class</h3>
+<p>The field class clones from data already made in another field. Perfect to use in concat definitions to make email addresses and URLs which match data other fields; or when the relationship helps make the data look more realistic. In the example below we price the postage cost in line with the product_weight field above. <strong>The field name being referenced must come first in the model definition.</strong></p>
+<pre><code># See above for product_weight
+postage_cost = {
+  &quot;name&quot;: &quot;postage_cost&quot;,
+  &quot;class&quot;: &quot;field&quot;,
+  &quot;data&quot;: &quot;product_weight&quot;,
+  &quot;calc&quot;: [{&quot;multiply&quot;: 10}, {&quot;divide&quot;: 2}, {&quot;add&quot;: 0.99}]
+}</code></pre><p><strong>Result</strong></p>
+<pre><code>[
+  {postage_cost: 12.99},
+  {postage_cost: 11.49},
+  {postage_cost: 7.99},
+  {postage_cost: 10.99},
+]</code></pre><h3 id="options-2">Options</h3>
+<h4 id="data"><code>data</code></h4>
+<p>The name of the field you are referencing.</p>
+<h3 id="iblurb-class"><code>iblurb</code> class</h3>
+<p>Make words, titles, sentences, paragraphs, html, etc. method can be any of the methods in the IMakeBlurb class. min and max represents the number words which the blurb will contain. language can be any of json file that contains a word property. Add your own!</p>
+<pre><code>dvd_title = {
+  &quot;name&quot;: &quot;dvd_title&quot;,
+  &quot;class&quot;: &quot;iblurb&quot;,
+  &quot;method&quot;: &quot;plaintext_title&quot;,
+  &quot;min&quot;: 3,
+  &quot;max&quot;: 5,
+  &quot;language&quot;: &quot;ainu&quot;,
+}</code></pre><p><strong>Result</strong></p>
+<pre><code>[
+  {dvd_title: Erum noye upaskuma eani},
+  {dvd_title: Orwa toyko pewrekur},
+  {dvd_title: Nuye reekoh cipo siyeye seta},
+  {dvd_title: Anekuroro yupi keran pirkaike},
+]</code></pre><h3 id="options-3">Options</h3>
+<h4 id="method-1"><code>method</code></h4>
+<p>What kind of blurb you need. Valid methods are:</p>
+<ul>
+<li><code>plaintext_phrase</code> A plaintext phrase with no punctuation.</li>
+<li><code>plaintext_title</code> A plaintext phrase starting with a capital letter.</li>
+<li><code>plaintext_sentence</code> A plaintext sentence starting with a capital letter and ending with full stop.</li>
+<li><code>plaintext_sentences</code> Plaintext sentences starting with a capital letter and ending with full stop.</li>
+<li><code>plaintext_bullets</code> A plaintext bullet list.</li>
+<li><code>plaintext_paragraphs</code> A plaintext paragraphs list.</li>
+<li><code>html_paragraph</code> An HTML rendered paragraph.</li>
+<li><code>html_bullets</code> HTML rendered bullets.</li>
+<li><code>html_paragraphs</code> HTML rendered paragraphs.</li>
+<li><code>html</code> HTML rendered paragraphs and bullets.</li>
+</ul>
+<h5 id="minmax-1"><code>min</code>/<code>max</code></h5>
+<p>Sets the min and max numberof words for the blurb.</p>
+<h3 id="exact-class"><code>exact</code> class</h3>
+<p>A column of static data. This is very useful as a defintion in the concat class, for instance using an &quot;@&quot; symbol to build an email address.</p>
+<pre><code>tax_code = {
+  &quot;name&quot;: &quot;tax_code&quot;,
+  &quot;class&quot;: &quot;exact&quot;,
+  &quot;data&quot;: &quot;A&quot;,
+}</code></pre><p><strong>Result</strong></p>
+<pre><code>[
+  {tax_code: A},
+  {tax_code: A},
+  {tax_code: A},
+  {tax_code: A},
+]</code></pre><h4 id="options-4">Options</h4>
+<h5 id="data-1"><code>data</code></h5>
+<p>The exact string you want included in the data.</p>
+<h3 id="concat-class"><code>concat</code> class</h3>
+<p>Combine a nested list of definitions, and the results from these fields will be concatonated into the single field. They can defined like any other field, and can include another concat class; but they should have no name.</p>
+<pre><code>what_i_like = {
+  &quot;name&quot;: &quot;what_i_like&quot;,
+  &quot;class&quot;: &quot;concat&quot;,
+  &quot;data&quot;: [
+    {
+    &quot;class&quot;: &quot;exact&quot;,
+    &quot;data&quot;: &quot;I like &quot;,
+    },
+    {
+    &quot;class&quot;: &quot;quicklist&quot;,
+    &quot;data&quot;: [&quot;sports&quot;, &quot;music&quot;, &quot;dancing&quot;, &quot;reading&quot;],
+    }
+   ],
+}</code></pre><p><strong>Result</strong></p>
+<pre><code>[
+  {what_i_like: I like music},
+  {what_i_like: I like music},
+  {what_i_like: I like reading},
+  {what_i_like: I like sports},
+]</code></pre><h3 id="choose-class"><code>choose</code> class</h3>
+<p>Use this class to choose from a sub list of definitions; and only select one randomly per record. The sub list can be any of the available definitions nested as deeply as you like.</p>
+<pre><code>color_with_number = {
+  &quot;name&quot;: &quot;color_with_number&quot;,
+  &quot;class&quot;: &quot;choose&quot;,
+  &quot;data&quot;: [
+        {
+          &quot;class&quot;: &quot;concat&quot;,
+          &quot;data&quot;: [
+                    {
+                        &quot;class&quot;: &quot;exact&quot;,
+                        &quot;data&quot;: &quot;Red&quot;,
+                    },
+                    {
+                        &quot;class&quot;: &quot;primitive&quot;,
+                        &quot;method&quot;: &quot;int_list&quot;,
+                        &quot;min&quot;: 2,
+                        &quot;max&quot;: 5,
+                    },
+                  ]
+        },
+        {
+          &quot;class&quot;: &quot;concat&quot;,
+          &quot;data&quot;: [
+                    {
+                        &quot;class&quot;: &quot;exact&quot;,
+                        &quot;data&quot;: &quot;Green&quot;,
+                    },
+                    {
+                        &quot;class&quot;: &quot;primitive&quot;,
+                        &quot;method&quot;: &quot;int_list&quot;,
+                        &quot;min&quot;: 20,
+                        &quot;max&quot;: 50,
+                    },
+                  ]
+        },
+    ],
+}</code></pre><p><strong>Result</strong></p>
+<pre><code>[
+  {color_with_number: Red2},
+  {color_with_number: Green35},
+  {color_with_number: Green42},
+  {color_with_number: Red4},
+]</code></pre><h2 id="optional-properties">Optional Properties</h2>
+<h3 id="itransform">itransform</h3>
+<p>A list of transformation methods from the ITransformData.Field class to format the data. Multiple transforms can be listed which are processed left-&gt;right.</p>
+<pre><code>{
+  &quot;itransform&quot;: [
+            &quot;upper&quot;,
+            &quot;lower&quot;,
+            &quot;chomp&quot;,
+            &quot;capitalize&quot;,
+            &quot;slugify&quot;,
+            &quot;title&quot;,
+            ],
+}</code></pre><h3 id="calc">calc</h3>
+<p>A list of calculations to perform on a field using any methods from the IAmPrimitiveLists.Calc class. calculations on dates are for hours. Multiple calculations can be listed and are performed left-&gt;right.</p>
+<pre><code>{
+  &quot;calc&quot;: [{&quot;add&quot;: 2}, {&quot;subtract&quot;: 5}, {&quot;multiply&quot;: 10}, {&quot;divide&quot;: 3}, ]
+}</code></pre><h3 id="splutter">splutter</h3>
+<p>By default IMakeData fills 100% of fields in a column with data. Use splutter to make a percentage of fields (on average) blank. i.e. 10 = 10%~ of fields blank.</p>
+<pre><code>{
+  &quot;splutter&quot;: 10,
+}</code></pre><h3 id="remove">remove</h3>
+<p>Use this option to remove columns/fields after the data is built - e.g. if they were temporary for making data available to concat class fields - e.g. a domain_name used for building email addresses and urls - but not needed as a column in the results.</p>
+<pre><code>{
+  &quot;remove&quot;: True,
+}</code></pre><h2 id="next">Next</h2>
+<ul>
+<li>[Using Ready-Made Data Definitions and Models][model.md]</li>
+</ul>
+    <footer>
+      <a href="https://gitlab.com/elioway/eliothing/liar">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-liar-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/js/adons.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

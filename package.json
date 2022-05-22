@@ -1,29 +1,35 @@
 {
-  "name": "elioThing",
-  "title": "elioThing",
-  "version": "1",
-  "description": "Notes and resources for the elioThing project. ",
-  "scripts": {
-    "format": "prettier --write \"**/*.{js,json,scss,md,html}\" \"!package.json\""
+  "author": "Tim Bushell",
+  "description": "Notes and resources for the elioThing project.",
+  "title": "thing",
+  "version": "0.0.0",
+  "devDependencies": {
+    "@elioway/chisel": "^0.0.6",
+    "prettier": "^1.16.4"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://gitlab.com/elioway/eliothing/"
-  },
+  "homepage": "https://elioway.gitlab.io/eliothing",
   "keywords": [
-    "sass",
     "css",
     "scss",
     "html",
     "wireframe"
   ],
-  "author": "Tim Bushell",
   "license": "MIT",
-  "bugs": {
-    "url": "https://gitlab.com/elioway/eliothing/issues?status=new&status=open"
+  "modules": {
+    "host": "eliothing",
+    "core": [
+      "banjo"
+    ],
+    "tool": [
+      "django_dna",
+      "liar"
+    ]
   },
-  "homepage": "https://gitlab.com/elioway/eliothing/blob/master/README.md",
-  "devDependencies": {
-    "prettier": "1.16.4"
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/eliothing"
+  },
+  "scripts": {
+    "prettier": "prettier --write \"**/*.{js,json,scss,md,html}\" \"!package.json\""
   }
 }

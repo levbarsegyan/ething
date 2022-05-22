@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      Nest the routes vs not nested routes: - eliothing
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png" />
+        <b>icarus</b>
+      </a>
+        <a href="#all-templates">
+                All templates</a>
+        <a href="#all-tests-which-call-those-routes-including-route-controller-and-acceptance-tests">
+                All tests which call those routes, including route, controller and acceptance tests:</a>
+        <a href="#folders">
+                Folders:</a>
+      <menu>
+          <label>Core</label>
+          <nav>
+                <a href="/eliothing/bones/index.html">
+                  <img src="/eliothing/bones/apple-touch-icon.png"/>
+                  <b>bones</b>
+                </a>
+                <a href="/eliothing/flesh/index.html">
+                  <img src="/eliothing/flesh/apple-touch-icon.png"/>
+                  <b>flesh</b>
+                </a>
+          </nav>
+      </menu>
+      <menu>
+          <label>Tools</label>
+          <nav>
+                  <a href="/eliothing/generator-flesh/index.html">
+                    <img src="/eliothing/generator-flesh/apple-touch-icon.png"/>
+                    <b>generator-flesh</b>
+                  </a>
+                  <a href="/eliothing/spider/index.html">
+                    <img src="/eliothing/spider/apple-touch-icon.png"/>
+                    <b>spider</b>
+                  </a>
+                  <a href="/eliothing/art/index.html">
+                    <img src="/eliothing/art/apple-touch-icon.png"/>
+                    <b>art</b>
+                  </a>
+                  <a href="/eliothing/cells/index.html">
+                    <img src="/eliothing/cells/apple-touch-icon.png"/>
+                    <b>cells</b>
+                  </a>
+          </nav>
+      </menu>
+    </nav>
+    <h1 id="nest-the-routes-vs-not-nested-routes">Nest the routes vs not nested routes:</h1>
+<pre><code>// router.js
+// Flattened:
+Router.map(function() {
+  this.route(&quot;things&quot;);
+  this.route(&quot;new&quot;);
+  this.route(&quot;edit&quot;, { path: &quot;edit/:thing_id&quot; });
+  this.route(&quot;view&quot;, { path: &quot;view/:thing_id&quot; });
+  );
+});
+// router.js
+// Not nested:
+Router.map(function() {
+  this.route(&quot;things&quot;);
+  this.route(&quot;new&quot;);
+  this.route(&quot;thing&quot;, { path: &quot;thing/:thing_id&quot; }, function() {
+        this.route(&quot;edit&quot;);
+        this.route(&quot;view&quot;);
+      }
+  );
+});
+// Nested:
+Router.map(function() {
+  this.route(&quot;things&quot;, function() {
+    this.route(&quot;new&quot;);
+    this.route(&quot;thing&quot;, { path: &quot;thing/:thing_id&quot; }, function() {
+        this.route(&quot;edit&quot;);
+        this.route(&quot;view&quot;);
+      }
+    );
+  });
+});</code></pre><h2 id="all-templates">All templates</h2>
+<pre><code>// Flattened:
+{{#link-to &#39;edit&#39;
+// Not nested:
+{{#link-to &#39;thing.edit&#39;
+// Nested:
+{{#link-to &#39;things.thing.edit&#39;</code></pre><h2 id="all-tests-which-call-those-routes-including-route-controller-and-acceptance-tests">All tests which call those routes, including route, controller and acceptance tests:</h2>
+<pre><code>// Flattened:
+lookup(&#39;route:edit....&#39;)
+// Not nested:
+lookup(&#39;route:thing/edit....&#39;)
+// Nested:
+lookup(&#39;route:things/thing/edit....&#39;)</code></pre><h2 id="folders">Folders:</h2>
+<p>Flattened:</p>
+<ul>
+<li><code>new.js</code> + <code>thing.js</code> + <code>edit.js</code> + <code>view.js</code> files alongside <code>things.js</code></li>
+<li>no <code>things</code> or <code>thing</code> folder in [test/]app/routes or [test/]app/controllers.</li>
+</ul>
+<p>Not nested in app and tests:</p>
+<ul>
+<li>Reverse settings in &quot;Nested in app and tests&quot;.</li>
+</ul>
+<p>Nested in app and tests:</p>
+<ul>
+<li><p>[test/]app/routes and also [test/]app/controllers</p>
+<ul>
+<li><p>insert a &quot;things&quot; folder and move the following files into it:</p>
+<ul>
+<li><code>new.js</code> + <code>thing.js</code> files</li>
+<li><code>thing</code> folder with <code>edit.js</code> + <code>view.js</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+    <footer>
+      <a href="">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-icarus-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/js/adons.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

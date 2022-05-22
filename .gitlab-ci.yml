@@ -1,0 +1,9 @@
+pages:
+  stage: deploy
+  script:
+  - cp img/* public/
+  artifacts:
+    paths:
+    - public
+  only:
+  - master

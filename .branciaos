@@ -1,12 +1,15 @@
+eliothing/banjo|master
 eliothing/bones|master
 eliothing/cells|master
-eliothing/django-dna|master
+eliothing/django_dna|master
 eliothing/dna|master
 eliothing/engage|master
 eliothing/flesh|master
+eliothing/generator-flesh|master
 eliothing/icarus|master
+eliothing/liar|master
 eliothing/list|master
 eliothing/mongoose-dna|master
 eliothing/schema|master
-eliothing/harvest|master
+eliothing/spider|master
 eliothing|master

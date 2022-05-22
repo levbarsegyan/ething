@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      Quickstart adon - eliothing
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png" />
+        <b>bones</b>
+      </a>
+        <a href="#prerequisites">
+                Prerequisites</a>
+        <a href="#curling-is-seeing">
+                Curling is seeing</a>
+      <menu>
+          <label>Core</label>
+          <nav>
+                <a href="/eliothing/flesh/index.html">
+                  <img src="/eliothing/flesh/apple-touch-icon.png"/>
+                  <b>flesh</b>
+                </a>
+                <a href="/eliothing/icarus/index.html">
+                  <img src="/eliothing/icarus/apple-touch-icon.png"/>
+                  <b>icarus</b>
+                </a>
+          </nav>
+      </menu>
+      <menu>
+          <label>Tools</label>
+          <nav>
+                  <a href="/eliothing/generator-flesh/index.html">
+                    <img src="/eliothing/generator-flesh/apple-touch-icon.png"/>
+                    <b>generator-flesh</b>
+                  </a>
+                  <a href="/eliothing/spider/index.html">
+                    <img src="/eliothing/spider/apple-touch-icon.png"/>
+                    <b>spider</b>
+                  </a>
+                  <a href="/eliothing/art/index.html">
+                    <img src="/eliothing/art/apple-touch-icon.png"/>
+                    <b>art</b>
+                  </a>
+                  <a href="/eliothing/cells/index.html">
+                    <img src="/eliothing/cells/apple-touch-icon.png"/>
+                    <b>cells</b>
+                  </a>
+          </nav>
+      </menu>
+    </nav>
+    <h1 id="quickstart-adon">Quickstart adon</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>mongodb installed?<a href="https://elioway.gitlab.io/eliothing/bones/mongo-db.html">No!</a></li>
+<li><strong>bones</strong> installed?<a href="https://elioway.gitlab.io/eliothing/bones/installing.html">No!</a></li>
+</ul>
+<h3 id="config">Config</h3>
+<p>Create a <code>.env</code> file in the root directory. It should have the following settings:</p>
+<pre><code>ENDOSKELETON=&#39;ThingOnAShoeString&#39;
+EXOSKELETON=&#39;boney&#39;
+DATABASENAME=&#39;elioWay&#39;
+MONGODB=&#39;mongodb://localhost:27017/&#39;
+ALLOWED_HOST=&#39;http://localhost:4200&#39;
+PORT=3030</code></pre><h2 id="curling-is-seeing">Curling is seeing</h2>
+<pre><code>cd bones
+yarn devstart</code></pre><p>Get all Things</p>
+<pre><code class="language-bash">curl -X GET http://localhost:3030/engage/Thing</code></pre>
+<p>Add a Thing</p>
+<pre><code class="language-bash">curl -X POST http://localhost:3030/engage/Thing \
+    -d name=&#39;Thing Red&#39; \
+    -d disambiguatingDescription=&#39;Thing is red&#39;</code></pre>
+<p>Get a Thing</p>
+<pre><code class="language-bash">curl -X GET http://localhost:3030/engage/Thing/5b55beed33fa1d4ed364c85f</code></pre>
+<p>Update a Thing</p>
+<pre><code class="language-bash">curl -X PUT http://localhost:3030/engage/Thing/5b55beed33fa1d4ed364c85f \
+    -d alternateName=&#39;Thing 1 is the King of Things&#39; \
+    -d description=&#39;There is a thing, then there is Thing 1\. No two things are the same. Thing 1 is best.&#39;</code></pre>
+<p>Remove Thing by ID</p>
+<pre><code class="language-bash">curl -X DELETE http://localhost:3030/engage/Thing/5b617b518598fe12ae92d634</code></pre>
+    <footer>
+      <a href="https://gitlab.com/eliothing/bones.git">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-bones-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/js/adons.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

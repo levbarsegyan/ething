@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      Nested route issues - eliothing
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png" />
+        <b>icarus</b>
+      </a>
+      <menu>
+          <label>Core</label>
+          <nav>
+                <a href="/eliothing/bones/index.html">
+                  <img src="/eliothing/bones/apple-touch-icon.png"/>
+                  <b>bones</b>
+                </a>
+                <a href="/eliothing/flesh/index.html">
+                  <img src="/eliothing/flesh/apple-touch-icon.png"/>
+                  <b>flesh</b>
+                </a>
+          </nav>
+      </menu>
+      <menu>
+          <label>Tools</label>
+          <nav>
+                  <a href="/eliothing/generator-flesh/index.html">
+                    <img src="/eliothing/generator-flesh/apple-touch-icon.png"/>
+                    <b>generator-flesh</b>
+                  </a>
+                  <a href="/eliothing/spider/index.html">
+                    <img src="/eliothing/spider/apple-touch-icon.png"/>
+                    <b>spider</b>
+                  </a>
+                  <a href="/eliothing/art/index.html">
+                    <img src="/eliothing/art/apple-touch-icon.png"/>
+                    <b>art</b>
+                  </a>
+                  <a href="/eliothing/cells/index.html">
+                    <img src="/eliothing/cells/apple-touch-icon.png"/>
+                    <b>cells</b>
+                  </a>
+          </nav>
+      </menu>
+    </nav>
+    <h1 id="nested-route-issues">Nested route issues</h1>
+<pre><code>ember test --filter=&quot;Acceptance | crud&quot;</code></pre><p>2 fails:</p>
+<pre><code>actual: &gt;
+    /things/new
+expected: &gt;
+    /things
+stack: &gt;
+        at Object.&lt;anonymous&gt; (http://localhost:7357/assets/tests.js:46:14)
+message: &gt;
+     then redirect to the list
+negative: &gt;
+    false
+Log: |
+not ok 4 Chrome 68.0 - [191 ms] - Acceptance | crud: should Update a thing
+actual: &gt;
+    /things/thing/abcDEF1910728687/edit
+expected: &gt;
+    /things
+stack: &gt;
+        at Object.&lt;anonymous&gt; (http://localhost:7357/assets/tests.js:64:14)
+message: &gt;
+    then redirect to the list
+negative: &gt;
+    false
+Log: |
+ok 5 Chrome 68.0 - [207 ms] - Acceptance | crud: should Delete a thing
+1..5
+# tests 5
+# pass  3
+# skip  0
+# fail  2</code></pre><p>The reason these tests fail is that, within the context of the whole app, two of our tests simulate a button click. The ember helper <code>click</code> is what I call lazy and <code>click(&#39;button&#39;)</code> will click the first &#39;button&#39; in the DOM. The tests at component level work fine because - within the context of the test - the first button happens to be the <em>only</em> button.</p>
+<p>The solution is to firm up the way we select the button in our Acceptance test.</p>
+<p>Edit: elioThing/icarus/tests/acceptance/crud-test.js</p>
+<ul>
+<li><p>Change in &quot;Acceptance | crud: should Delete a thing&quot;:</p>
+<ul>
+<li><code>await click(&quot;button&quot;)</code> to <code>await click(&quot;form button&quot;)</code>;</li>
+</ul>
+</li>
+<li><p>Change in &quot;Acceptance | crud: should Update a thing&quot;:</p>
+<ul>
+<li><code>await click(&quot;button&quot;)</code> to <code>await click(&quot;form button&quot;)</code>;</li>
+</ul>
+</li>
+</ul>
+<p>::</p>
+<p>ember test --filter=&quot;Acceptance | crud&quot;</p>
+<p>Tah dah! No errors. Changes to these tests will also survive changing the nesting of routes.</p>
+<h1 id="alternative-solution-useful-to-know">Alternative solution useful to know.</h1>
+<p>Another way would be to click the result of a call to the <code>querySelectorAll</code> method on the element in context. The <code>querySelector</code> method is lazy just like <code>click</code>.</p>
+<p>In fact <code>click(&#39;button&#39;)</code> is like saying</p>
+<pre><code>click(
+    this.element.querySelector(&#39;button&#39;)
+    )</code></pre><p><code>querySelectorAll</code> is not lazy, but neither can you be because you have to choose the element you want to click from the selector list - you cannot lazily allow <code>querySelector</code> to select the first.</p>
+<pre><code>click(
+    // the last button
+    this.element.querySelectorAll(&#39;form button&#39;)[0]
+)</code></pre><h1 id="alternative-view-this-is-not-a-problem-with-our-tests">Alternative view. This is not a problem with our tests</h1>
+<p>Future proofing your Acceptance tests against rigorous changes like nesting the apps routes differently, guides you to more modular components. At the same time some changes can&#39;t be protected against, and it&#39;s your test&#39;s responsibility to highlight potential issues.</p>
+<p>Whether you are using <code>querySelectorAll</code> or <code>querySelector</code> to click a button in an acceptance test this is making an assumptions about the DOM state on that route.</p>
+<p>By making the change we did we&#39;re telling our tests that we don&#39;t care if the other &quot;things&quot; are listed on the page or not (they also have buttons which could be selected to click).</p>
+<p><code>click(&#39;form button&#39;)</code> assumes that the first button inside a form in the active DOM is the action button we want our user to click. It doesn&#39;t matter how many other buttons there are on the page. So if it doesn&#39;t matter to you how many other buttons there are on the page, then this selector is fine. It only matters to you how many <em>forms</em> there are.</p>
+<p><code>click(&#39;button&#39;)</code> may be failing because the nested route you have created means a confusing number of buttons are on display to the user (just as a confusing number of buttons are available to the lazy <code>click</code> function). Sometimes lazy is like Occam&#39;s Razor.</p>
+<p>Perhaps we should fix this test by changing the list view so that it doesn&#39;t show a del button, but something less buttony and confusing, when the form is showing. Test can lead to better solutions.</p>
+    <footer>
+      <a href="">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-icarus-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/js/adons.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

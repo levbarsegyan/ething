@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      liar Quickstart - eliothing
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png" />
+        <b>liar</b>
+      </a>
+        <a href="#prerequisites">
+                Prerequisites</a>
+        <a href="#tldr-checklist">
+                TLDR Checklist</a>
+        <a href="#exercise-1-dicey">
+                Exercise 1: Dicey</a>
+        <a href="#exercise-2-people-are-tricky">
+                Exercise 2: People are tricky</a>
+      <menu>
+          <label>Core</label>
+          <nav>
+                <a href="/eliothing/banjo/index.html">
+                  <img src="/eliothing/banjo/apple-touch-icon.png"/>
+                  <b>banjo</b>
+                </a>
+          </nav>
+      </menu>
+      <menu>
+          <label>Tools</label>
+          <nav>
+                  <a href="/eliothing/django_dna/index.html">
+                    <img src="/eliothing/django_dna/apple-touch-icon.png"/>
+                    <b>django_dna</b>
+                  </a>
+          </nav>
+      </menu>
+    </nav>
+    <h1 id="liar-quickstart">liar Quickstart</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>liar Installed <a href="installing.md">No!</a></li>
+</ul>
+<h2 id="tldr-checklist">TLDR Checklist</h2>
+<p>To create some new liar data:</p>
+<ol>
+<li><p>Create py file.</p>
+</li>
+<li><p>Import <code>IMakeData</code> and instantiate.</p>
+<pre><code>from imakedata.imakedata import IMakeData
+number_records = 10
+maker = IMakeData(number_records)</code></pre></li>
+<li><p>Create a definition...</p>
+<pre><code>datadef = [{
+&quot;name&quot;: &quot;tldr&quot;,
+&quot;class&quot;: &quot;quicklist&quot;,
+&quot;data&quot;: [&quot;T&quot;, &quot;L&quot;, &quot;D&quot;, &quot;R&quot;]
+}]</code></pre><p>... or use a ready-made definition.</p>
+<pre><code>from imakedata.model.marketing import product_title, postage_cost
+from imakedata.model.date import within_days
+datadef = [product_title, postage_cost, within_days]</code></pre></li>
+<li><p>Build the data.</p>
+<pre><code>my_data_set = maker.get_data(datadef)
+print(my_data_set)</code></pre></li>
+</ol>
+<h2 id="exercise-1-dicey">Exercise 1: Dicey</h2>
+<p>Create a new python file in the app where <strong>liar</strong> is installed. In this example we&quot;re assuming you are putting a file in the <code>eliothing/liar/examples</code> folder called <code>exercise1.py</code>.</p>
+<p>Open <code>example1.py</code>.</p>
+<ol>
+<li><p>Import the IMakeData module.</p>
+<pre><code>from imakedata.imakedata import IMakeData</code></pre></li>
+<li><p>Instantiate the class and set the required number of records.</p>
+<pre><code>maker = IMakeData(100)</code></pre></li>
+<li><p>A dice is easy. We can use a simple primitive type:</p>
+<pre><code>dice = {
+&quot;name&quot;: &quot;dice&quot;,
+&quot;class&quot;: &quot;iamprimitive&quot;,
+&quot;method&quot;: &quot;int_list&quot;,
+&quot;min&quot;: 1,
+&quot;max&quot;: 6,
+}</code></pre><p>Or a quicklist:</p>
+</li>
+</ol>
+<pre><code>  dice = {
+    &quot;name&quot;: &quot;dice&quot;,
+    &quot;class&quot;: &quot;quicklist&quot;,
+    &quot;data&quot;: [1, 2, 3, 4, 5, 6]
+  }</code></pre><p>A dice is too easy, let&#39;s enable a game of backgammon and use two dice. The important thing is not to use the same field name. The utility method is great for reusing definitions and avoiding <a href="https://8thlight.com/blog/shibani-mookerjee/2019/05/07/some-common-gotchas-in-python.html">Passing By Reference</a> gotchas.</p>
+<ol>
+<li><p>Import the rewrite_dict utility at the top. If you&#39;re a big boy, you don&#39;t have to use it.</p>
+<pre><code>from imakedata.ijusthelp import rewrite_dict</code></pre></li>
+<li><p>Base your two dice on the first definition, rewriting and copying it as the same time:</p>
+<pre><code>dice1 = rewrite_dict(dice, {&quot;name&quot;: &quot;dice1&quot;})
+dice2 = rewrite_dict(dice, {&quot;name&quot;: &quot;dice2&quot;})</code></pre></li>
+<li><p>Now generate the data and print the data to the console:</p>
+<pre><code>print(maker.get_data([dice1, dice2]))</code></pre></li>
+</ol>
+<p>We don&#39;t know who is playing, so let&#39;s add the player of each dice cycle between &quot;white&quot; and &quot;black&quot;.</p>
+<ol>
+<li><p>Add a toothpaste definition.</p>
+<pre><code>player = { &quot;name&quot;: &quot;player&quot;,
+&quot;class&quot;: &quot;toothpaste&quot;,
+&quot;data&quot;: [&quot;white&quot;, &quot;black&quot;],
+}</code></pre></li>
+<li><p>Now generate the data and print the data to the console:</p>
+<pre><code>print(maker.get_data([player, dice1, dice2]))</code></pre></li>
+</ol>
+<p>You should now see a printout like this:</p>
+<pre><code>[
+  {&quot;player&quot;: &quot;white&quot;, &quot;dice1&quot;: 4, &quot;dice2&quot;: 1},
+  {&quot;player&quot;: &quot;black&quot;, &quot;dice1&quot;: 6, &quot;dice2&quot;: 5},
+  {&quot;player&quot;: &quot;white&quot;, &quot;dice1&quot;: 6, &quot;dice2&quot;: 6},
+  {&quot;player&quot;: &quot;black&quot;, &quot;dice1&quot;: 1, &quot;dice2&quot;: 5},
+  ...
+]</code></pre><h2 id="exercise-2-people-are-tricky">Exercise 2: People are tricky</h2>
+<p>Let&#39;s try some a bit useful and put out some data we can use for a contact app.</p>
+<p>Create and open <code>example2.py</code> and instantiate <code>IMakeData</code> at the top.</p>
+<pre><code>from imakedata.imakedata import IMakeData
+from imakedata.ijusthelp import rewrite_dict
+number_records = 100
+maker = IMakeData(100)</code></pre><p>We need some names, and for that we&#39;ll use the raw data provided. The raw date comes with first names, genders and titles in one data set, and last names in another.</p>
+<pre><code>person = { &quot;name&quot;: &quot;person&quot;, &quot;class&quot;: &quot;igetraw&quot;, &quot;data&quot;: &quot;person&quot;, }
+surname = { &quot;name&quot;: &quot;surname&quot;, &quot;class&quot;: &quot;igetraw&quot;, &quot;data&quot;: &quot;surname&quot;, }
+print(maker.get_data([person, surname]))</code></pre><p>You should see something like this:</p>
+<pre><code>[
+    {
+        &quot;person&quot;: {&quot;title&quot;: &quot;Mr&quot;, &quot;first_name&quot;: &quot;Felipe&quot;, &quot;sex&quot;: &quot;male&quot;},
+        &quot;surname&quot;: &quot;Miriam&quot;,
+    },
+    {
+        &quot;person&quot;: {&quot;title&quot;: &quot;Miss&quot;, &quot;first_name&quot;: &quot;Ashlee&quot;, &quot;sex&quot;: &quot;female&quot;},
+        &quot;surname&quot;: &quot;Fitzhenry&quot;,
+    },
+]</code></pre><p>Notice that the &quot;person&quot; field is a JSON object? If you&#39;d prefer a flatter result, add the <code>flat</code> transformer.</p>
+<pre><code>person = { &quot;name&quot;: &quot;person&quot;, &quot;class&quot;: &quot;igetraw&quot;, &quot;data&quot;: &quot;person&quot;, &quot;transform&quot;: &quot;flat&quot; }
+surname = { &quot;name&quot;: &quot;surname&quot;, &quot;class&quot;: &quot;igetraw&quot;, &quot;data&quot;: &quot;surname&quot; }
+print(maker.get_data([person, surname]))</code></pre>
+    <footer>
+      <a href="https://gitlab.com/elioway/eliothing/liar">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-liar-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/js/adons.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

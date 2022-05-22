@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      Installing liar - eliothing
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png" />
+        <b>liar</b>
+      </a>
+        <a href="#prerequisites">
+                Prerequisites</a>
+        <a href="#installing-with-pip">
+                Installing with pip</a>
+        <a href="#development-setup">
+                Development Setup</a>
+      <menu>
+          <label>Core</label>
+          <nav>
+                <a href="/eliothing/banjo/index.html">
+                  <img src="/eliothing/banjo/apple-touch-icon.png"/>
+                  <b>banjo</b>
+                </a>
+          </nav>
+      </menu>
+      <menu>
+          <label>Tools</label>
+          <nav>
+                  <a href="/eliothing/django_dna/index.html">
+                    <img src="/eliothing/django_dna/apple-touch-icon.png"/>
+                    <b>django_dna</b>
+                  </a>
+          </nav>
+      </menu>
+    </nav>
+    <h1 id="installing-liar">Installing liar</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><a href="https://elioway.gitlab.io/eliothing/installing.html">elioThing Prerequisites</a></li>
+</ul>
+<h2 id="installing-with-pip">Installing with pip</h2>
+<p>In an existing python project, pip install.</p>
+<pre><code>pip install elio_liar</code></pre><p>If you want to create data for an existing non-python project, install <strong>liar</strong> using the instructions below and export your random data as JSON files your can import as required in your projects.</p>
+<h2 id="development-setup">Development Setup</h2>
+<p>.. is also a fine way to install <strong>liar</strong> using GIT as a starting project.</p>
+<pre><code class="language-bash">mkdir elioway
+cd elioway
+mkdir eliothing
+cd eliothing
+git clone https://www.gitlab.com/eliothing/liar.git
+cd liar
+virtualenv --python=python3 venv-liar
+source venv-liar/bin/activate
+pip install -r requirements/local.txt</code></pre>
+<p><strong>Run the tests:</strong></p>
+<pre><code class="language-bash">py.test -x</code></pre>
+<p><strong>Run the basic script:</strong></p>
+<pre><code class="language-bash">python liar/quickstart.py</code></pre>
+    <footer>
+      <a href="https://gitlab.com/elioway/eliothing/liar">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-liar-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/js/adons.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>flesh</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800|Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="dist/css/flesh.min.css?cb=o" />
+  </head>
+  <body>
+    <menu>
+      <label><img src="img/engage.svg" title="flesh" /></label>
+      <nav>
+        <a href="#/"><img src="img/home.svg" title="home"/></a>
+        <a href="#/get/Thing"><img src="img/thing.svg" title="things"/></a>
+        <a href="#/home/about"><img src="img/about.svg" title="about"/></a>
+        <a href="#/home/contact"><img src="img/contact.svg" title="contact"/></a>
+      </nav>
+    </menu>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="node_modules/jquery/src/jquery.js"><\/script>',
+        )
+    </script>
+    <script src="node_modules/mustache/mustache.js"></script>
+    <script src="node_modules/sammy/lib/sammy.js"></script>
+    <script src="node_modules/sammy/lib/plugins/sammy.mustache.js"></script>
+    <main itemscope itemtype="http://schema.org/Thing" id="Flesh"></main>
+    <footer>
+      <a href="https://gitlab.com/eliothing/flesh/">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-flesh-logo.png" />
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script>
+      var APP
+      var fleshConfig = {
+        bones: 'http://localhost:3030/',
+        templates: '/templates/',
+        metaFields: ['_id', 'slug', 'seoKeywords', '__v', 'engaged'],
+      }
+    </script>
+    <script src="flesh/FleshyPlugins.js"></script>
+    <script src="flesh/boney/Skeleton.js"></script>
+    <script src="flesh/flesh.js"></script>
+    <script src="flesh/home.js"></script>
+    <script src="flesh/boney/Thing.delete.js"></script>
+    <script src="flesh/boney/Thing.get.js"></script>
+    <script src="flesh/boney/Thing.post.js"></script>
+    <script src="dist/js/adons.js?cb=0"></script>
+    <script src="dist/js/main.js?cb=0"></script>
+  </body>
+</html>

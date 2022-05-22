@@ -1,13 +1,12 @@
 {
   "author": "Tim Bushell",
-  "description": "7 snappy, ready made elioSin themes for interactive web apps with a mobile focus.",
-  "name": "@elioway/toothpaste",
-  "title": "toothpaste",
-  "version": "0.0.11",
+  "description": "Middleware to control the parent list relationship when creating lists.",
+  "title": "list",
+  "version": "0.0.1",
   "devDependencies": {
     "prettier": "1.16.4"
   },
-  "homepage": "https://elioway.gitlab.io/eliosin/toothpaste",
+  "homepage": "https://elioway.gitlab.io/eliothing",
   "keywords": [
     "css",
     "scss",
@@ -16,22 +15,22 @@
   ],
   "license": "MIT",
   "modules": {
-    "host": "eliosin",
+    "host": "eliothing",
     "core": [
-      "god",
-      "eve",
-      "adon"
+      "bones",
+      "flesh",
+      "icarus"
     ],
     "tool": [
-      "generator-sin",
-      "innocence",
-      "bushido",
-      "toothpaste"
+      "generator-flesh",
+      "spider",
+      "art",
+      "cells"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/eliosin/toothpaste/"
+    "url": "https://gitlab.com/eliothing/list/"
   },
   "scripts": {
     "build": "gulp",
