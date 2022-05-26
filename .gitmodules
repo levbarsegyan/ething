@@ -31,6 +31,9 @@
 [submodule "list"]
 	path = list
 	url = git@gitlab.com-elio:eliothing/list.git
+[submodule "mongoose-dna"]
+	path = mongoose-dna
+	url = git@gitlab.com-elio:eliothing/mongoose-dna.git
 [submodule "schema"]
 	path = schema
 	url = git@gitlab.com-elio:eliothing/schema.git
