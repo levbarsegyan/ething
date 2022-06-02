@@ -36,8 +36,26 @@
       </a>
         <a href="#defining-data-defintions">
                 Defining Data Defintions</a>
-        <a href="#class-of-10">
-                Class of 10:</a>
+        <a href="#igetraw-class">
+                `igetraw` class</a>
+        <a href="#quicklist-class">
+                `quicklist` class</a>
+        <a href="#toothpaste-class">
+                `toothpaste` class</a>
+        <a href="#pk-class">
+                `pk` class</a>
+        <a href="#primitive-class">
+                `primitive` class</a>
+        <a href="#field-class">
+                `field` class</a>
+        <a href="#iblurb-class">
+                `iblurb` class</a>
+        <a href="#exact-class">
+                `exact` class</a>
+        <a href="#concat-class">
+                `concat` class</a>
+        <a href="#choose-class">
+                `choose` class</a>
         <a href="#optional-properties">
                 Optional Properties</a>
         <a href="#next">
@@ -75,60 +93,59 @@
   &quot;name&quot;: &quot;animal_name&quot;,
   &quot;class&quot;: &quot;quicklist&quot;,
   &quot;data&quot;: [&quot;dog&quot;, &quot;cat&quot;, &quot;mouse&quot;, &quot;horse&quot;, &quot;rat&quot;]
-},</code></pre><p>The class is the programming class where the data is taken from.</p>
-<h2 id="class-of-10">Class of 10:</h2>
-<h3 id="igetraw-class"><code>igetraw</code> class</h3>
+},</code></pre><p>The class is the programming class where the data is taken from. There are ten types:</p>
+<h2 id="igetraw-class"><code>igetraw</code> class</h2>
 <p>A json formatted file containing data (see raw folder). You can add your own. For those raw files whose data is made of dictionary objects in a list, it will assign the whole dictionary to the column:</p>
 <pre><code>study_area = {
   &quot;name&quot;: &quot;study_area&quot;,
   &quot;class&quot;: &quot;igetraw&quot;,
   &quot;data&quot;: &quot;academic&quot;
-}</code></pre><p><strong>Result</strong></p>
+}</code></pre><h3 id="result">Result</h3>
 <pre><code>[
   {study_area: {subject: Philosophy, department: Arts}},
   {study_area: {subject: Computing, department: Science}},
   {study_area: {subject: Accounting, department: Business}},
   {study_area: {subject: Physics, department: Science}},
-]</code></pre><h4 id="options">Options</h4>
-<h5 id="property">property</h5>
+]</code></pre><h3 id="options">Options</h3>
+<h4 id="property">property</h4>
 <p>Specify one of properties of the dictionary object to return a single column even if the source contains a dictionary.</p>
 <pre><code>{
   &quot;property&quot;: &quot;department&quot;,
-}</code></pre><p><strong>Result</strong></p>
+}</code></pre><h3 id="result-1">Result</h3>
 <pre><code>[
   {study_area: Arts},
   {study_area: Science},
   {study_area: Business},
   {study_area: Science},
-]</code></pre><h5 id="filter">filter</h5>
+]</code></pre><h4 id="filter">filter</h4>
 <p>Filter the results by any property.</p>
 <pre><code>{
   &quot;filters&quot;: [{department: [Arts, Science]}, ...more filters... ],
-}</code></pre><p><strong>Result</strong></p>
+}</code></pre><h3 id="result-2">Result</h3>
 <pre><code>[
   {study_area: Arts},
   {study_area: Science},
   {study_area: Arts},
   {study_area: Science},
-]</code></pre><h3 id="quicklist-class"><code>quicklist</code> class</h3>
+]</code></pre><h2 id="quicklist-class"><code>quicklist</code> class</h2>
 <p>A user supplied list of choices for each field.</p>
 <pre><code>in_the_list = {
   &quot;name&quot;: &quot;in_the_list&quot;,
   &quot;class&quot;: &quot;quicklist&quot;,
   &quot;data&quot;: [1, &quot;of&quot;, &quot;the&quot;, &quot;items&quot;, &quot;in&quot;, &quot;this&quot;, &quot;list&quot;, 4, &quot;each&quot;, &quot;row&quot;]
-}</code></pre><p><strong>Result</strong></p>
+}</code></pre><h3 id="result-3">Result</h3>
 <pre><code>[
   {in_the_list: of},
   {in_the_list: in},
   {in_the_list: 1},
   {in_the_list: each},
-]</code></pre><h3 id="toothpaste-class"><code>toothpaste</code> class</h3>
+]</code></pre><h2 id="toothpaste-class"><code>toothpaste</code> class</h2>
 <p>A list we rotate through.</p>
 <pre><code>not_grey = {
   &quot;name&quot;: &quot;not_grey&quot;,
   &quot;class&quot;: &quot;toothpaste&quot;,
   &quot;data&quot;: [&quot;black&quot;, &quot;white&quot;]
-}</code></pre><p><strong>Result</strong></p>
+}</code></pre><h3 id="result-4">Result</h3>
 <pre><code>[
   {&quot;not_grey&quot;: &quot;black&quot;},
   {&quot;not_grey&quot;: &quot;white},
@@ -136,18 +153,18 @@
   {&quot;not_grey&quot;: &quot;white},
   {&quot;not_grey&quot;: &quot;black&quot;},
   {&quot;not_grey&quot;: &quot;white},
-]</code></pre><h3 id="pk-class"><code>pk</code> class</h3>
+]</code></pre><h2 id="pk-class"><code>pk</code> class</h2>
 <p>A unique number for each record.</p>
 <pre><code>contact_id = {
   &quot;name&quot;: &quot;contact_id&quot;,
   &quot;class&quot;: &quot;pk&quot;,
-}</code></pre><p><strong>Result</strong></p>
+}</code></pre><h3 id="result-5">Result</h3>
 <pre><code>[
   {contact_id: 1},
   {contact_id: 2},
   {contact_id: 3},
   {contact_id: 4},
-]</code></pre><h3 id="primitive-class"><code>primitive</code> class</h3>
+]</code></pre><h2 id="primitive-class"><code>primitive</code> class</h2>
 <p>Make columns of numbers, dates, times, decimals, primary keys. min and max sets a limit and takes any date, integer or decimal, e.g. &quot;1940-01-01&quot;, 1, 0.23; defaults min:1, max:2</p>
 <pre><code>product_weight =  {
   &quot;name&quot;: &quot;product_weight&quot;,
@@ -155,14 +172,14 @@
   &quot;method&quot;: &quot;dec_list&quot;,
   &quot;min&quot;: 1.4,
   &quot;max&quot;: 2.8,
-}</code></pre><p><strong>Result</strong></p>
+}</code></pre><h3 id="result-6">Result</h3>
 <pre><code>[
   {product_weight: 2.4},
   {product_weight: 2.1},
   {product_weight: 1.4},
   {product_weight: 2.0},
-]</code></pre><h4 id="options-1">Options</h4>
-<h5 id="method"><code>method</code></h5>
+]</code></pre><h3 id="options-1">Options</h3>
+<h4 id="method"><code>method</code></h4>
 <p>The data type to select from the <code>IAmPrimitive</code> class. Options are:</p>
 <ul>
 <li><code>dec_list</code></li>
@@ -172,9 +189,9 @@
 <li><code>date_list</code></li>
 <li><code>primary_key_list</code></li>
 </ul>
-<h5 id="minmax"><code>min</code>/<code>max</code></h5>
+<h4 id="minmax"><code>min</code>/<code>max</code></h4>
 <p>Where applicable, sets a min and max value for the random primitive.</p>
-<h3 id="field-class"><code>field</code> class</h3>
+<h2 id="field-class"><code>field</code> class</h2>
 <p>The field class clones from data already made in another field. Perfect to use in concat definitions to make email addresses and URLs which match data other fields; or when the relationship helps make the data look more realistic. In the example below we price the postage cost in line with the product_weight field above. <strong>The field name being referenced must come first in the model definition.</strong></p>
 <pre><code># See above for product_weight
 postage_cost = {
@@ -182,7 +199,7 @@ postage_cost = {
   &quot;class&quot;: &quot;field&quot;,
   &quot;data&quot;: &quot;product_weight&quot;,
   &quot;calc&quot;: [{&quot;multiply&quot;: 10}, {&quot;divide&quot;: 2}, {&quot;add&quot;: 0.99}]
-}</code></pre><p><strong>Result</strong></p>
+}</code></pre><h3 id="result-7">Result</h3>
 <pre><code>[
   {postage_cost: 12.99},
   {postage_cost: 11.49},
@@ -191,7 +208,7 @@ postage_cost = {
 ]</code></pre><h3 id="options-2">Options</h3>
 <h4 id="data"><code>data</code></h4>
 <p>The name of the field you are referencing.</p>
-<h3 id="iblurb-class"><code>iblurb</code> class</h3>
+<h2 id="iblurb-class"><code>iblurb</code> class</h2>
 <p>Make words, titles, sentences, paragraphs, html, etc. method can be any of the methods in the IMakeBlurb class. min and max represents the number words which the blurb will contain. language can be any of json file that contains a word property. Add your own!</p>
 <pre><code>dvd_title = {
   &quot;name&quot;: &quot;dvd_title&quot;,
@@ -200,7 +217,7 @@ postage_cost = {
   &quot;min&quot;: 3,
   &quot;max&quot;: 5,
   &quot;language&quot;: &quot;ainu&quot;,
-}</code></pre><p><strong>Result</strong></p>
+}</code></pre><h3 id="result-8">Result</h3>
 <pre><code>[
   {dvd_title: Erum noye upaskuma eani},
   {dvd_title: Orwa toyko pewrekur},
@@ -221,24 +238,24 @@ postage_cost = {
 <li><code>html_paragraphs</code> HTML rendered paragraphs.</li>
 <li><code>html</code> HTML rendered paragraphs and bullets.</li>
 </ul>
-<h5 id="minmax-1"><code>min</code>/<code>max</code></h5>
+<h4 id="minmax-1"><code>min</code>/<code>max</code></h4>
 <p>Sets the min and max numberof words for the blurb.</p>
-<h3 id="exact-class"><code>exact</code> class</h3>
+<h2 id="exact-class"><code>exact</code> class</h2>
 <p>A column of static data. This is very useful as a defintion in the concat class, for instance using an &quot;@&quot; symbol to build an email address.</p>
 <pre><code>tax_code = {
   &quot;name&quot;: &quot;tax_code&quot;,
   &quot;class&quot;: &quot;exact&quot;,
   &quot;data&quot;: &quot;A&quot;,
-}</code></pre><p><strong>Result</strong></p>
+}</code></pre><h3 id="result-9">Result</h3>
 <pre><code>[
   {tax_code: A},
   {tax_code: A},
   {tax_code: A},
   {tax_code: A},
-]</code></pre><h4 id="options-4">Options</h4>
-<h5 id="data-1"><code>data</code></h5>
+]</code></pre><h3 id="options-4">Options</h3>
+<h4 id="data-1"><code>data</code></h4>
 <p>The exact string you want included in the data.</p>
-<h3 id="concat-class"><code>concat</code> class</h3>
+<h2 id="concat-class"><code>concat</code> class</h2>
 <p>Combine a nested list of definitions, and the results from these fields will be concatonated into the single field. They can defined like any other field, and can include another concat class; but they should have no name.</p>
 <pre><code>what_i_like = {
   &quot;name&quot;: &quot;what_i_like&quot;,
@@ -253,13 +270,13 @@ postage_cost = {
     &quot;data&quot;: [&quot;sports&quot;, &quot;music&quot;, &quot;dancing&quot;, &quot;reading&quot;],
     }
    ],
-}</code></pre><p><strong>Result</strong></p>
+}</code></pre><h3 id="result-10">Result</h3>
 <pre><code>[
   {what_i_like: I like music},
   {what_i_like: I like music},
   {what_i_like: I like reading},
   {what_i_like: I like sports},
-]</code></pre><h3 id="choose-class"><code>choose</code> class</h3>
+]</code></pre><h2 id="choose-class"><code>choose</code> class</h2>
 <p>Use this class to choose from a sub list of definitions; and only select one randomly per record. The sub list can be any of the available definitions nested as deeply as you like.</p>
 <pre><code>color_with_number = {
   &quot;name&quot;: &quot;color_with_number&quot;,
@@ -296,7 +313,7 @@ postage_cost = {
                   ]
         },
     ],
-}</code></pre><p><strong>Result</strong></p>
+}</code></pre><h3 id="result-11">Result</h3>
 <pre><code>[
   {color_with_number: Red2},
   {color_with_number: Green35},
