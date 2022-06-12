@@ -42,8 +42,28 @@
                 Using the Data Definitions</a>
         <a href="#models">
                 Models</a>
-        <a href="#the-data-defintions-and-models">
-                The Data Defintions and Models</a>
+        <a href="#imakedatamodelraw">
+                imakedata.model.raw</a>
+        <a href="#imakedatamodelint">
+                imakedata.model.int</a>
+        <a href="#imakedatamodelfloat">
+                imakedata.model.float</a>
+        <a href="#imakedatamodeltime">
+                imakedata.model.time</a>
+        <a href="#imakedatamodeldate">
+                imakedata.model.date</a>
+        <a href="#imakedatamodellocation">
+                imakedata.model.location</a>
+        <a href="#imakedatamodelblurb">
+                imakedata.model.blurb</a>
+        <a href="#imakedatamodelbusiness">
+                imakedata.model.business</a>
+        <a href="#imakedatamodelmarketing">
+                imakedata.model.marketing</a>
+        <a href="#imakedatamodelpersonal">
+                imakedata.model.personal</a>
+        <a href="#imakedatamodelcommon">
+                imakedata.model.common</a>
         <a href="#next">
                 Next</a>
       <menu>
@@ -135,10 +155,9 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 <h2 id="models">Models</h2>
 <p>Models are ready made groupings of data definitions into what will surely be commonly used database model scenarios, like <code>product_model</code> or <code>standard_address_model</code> or <code>business_model</code> or <code>teen_model</code>. For instance <code>teen_model</code> has data defintions like first_name or last_name but with a date of birth scoped to teenagers. Therefore <code>teen_model</code> would be a perfect base model mocking a database for a youth club.</p>
 <p>The ready made models are also listed below.</p>
-<h2 id="the-data-defintions-and-models">The Data Defintions and Models</h2>
-<h3 id="imakedatamodelraw">imakedata.model.raw</h3>
+<h2 id="imakedatamodelraw">imakedata.model.raw</h2>
 <p>See: <a href="raw.md">Raw lies</a></p>
-<h3 id="imakedatamodelint">imakedata.model.int</h3>
+<h2 id="imakedatamodelint">imakedata.model.int</h2>
 <pre><code class="language-python">from imakedata.model.int import int_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
@@ -167,7 +186,7 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 </ul>
 <p><strong>Available models</strong></p>
 <p>None</p>
-<h3 id="imakedatamodelfloat">imakedata.model.float</h3>
+<h2 id="imakedatamodelfloat">imakedata.model.float</h2>
 <pre><code class="language-python">from imakedata.model.float import float_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
@@ -182,7 +201,7 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 </ul>
 <p><strong>Available models</strong></p>
 <p>None</p>
-<h3 id="imakedatamodeltime">imakedata.model.time</h3>
+<h2 id="imakedatamodeltime">imakedata.model.time</h2>
 <pre><code class="language-python">from imakedata.model.time import time_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
@@ -195,7 +214,7 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 </ul>
 <p><strong>Available models</strong></p>
 <p>None</p>
-<h3 id="imakedatamodeldate">imakedata.model.date</h3>
+<h2 id="imakedatamodeldate">imakedata.model.date</h2>
 <pre><code class="language-python">from imakedata.model.date import date_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
@@ -229,7 +248,7 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 </ul>
 <p><strong>Available models</strong></p>
 <p>None</p>
-<h3 id="imakedatamodellocation">imakedata.model.location</h3>
+<h2 id="imakedatamodellocation">imakedata.model.location</h2>
 <pre><code class="language-python">from imakedata.model.location import location_model, standard_address_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
@@ -245,7 +264,7 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 <li><code>standard_address_model</code></li>
 <li><code>posh_address_model</code></li>
 </ul>
-<h3 id="imakedatamodelblurb">imakedata.model.blurb</h3>
+<h2 id="imakedatamodelblurb">imakedata.model.blurb</h2>
 <pre><code class="language-python">from imakedata.model.blurb import blurb_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
@@ -262,7 +281,7 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 </ul>
 <p><strong>Available models</strong></p>
 <p>None</p>
-<h3 id="imakedatamodelbusiness">imakedata.model.business</h3>
+<h2 id="imakedatamodelbusiness">imakedata.model.business</h2>
 <pre><code class="language-python">from imakedata.model.business import business_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
@@ -290,7 +309,7 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 <ul>
 <li><code>business_model</code></li>
 </ul>
-<h3 id="imakedatamodelmarketing">imakedata.model.marketing</h3>
+<h2 id="imakedatamodelmarketing">imakedata.model.marketing</h2>
 <pre><code class="language-python">from imakedata.model.marketing import marketing_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
@@ -312,7 +331,7 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 <li><code>marketing_model</code></li>
 <li><code>product_model</code></li>
 </ul>
-<h3 id="imakedatamodelpersonal">imakedata.model.personal</h3>
+<h2 id="imakedatamodelpersonal">imakedata.model.personal</h2>
 <pre><code class="language-python">from imakedata.model.personal import personal_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
@@ -348,7 +367,7 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 <li><code>baby_model</code> = personal_model + [date_of_birth_baby]</li>
 <li><code>employee_model</code> = adult_model + [employee_number, company_name, department, job_title]</li>
 </ul>
-<h3 id="imakedatamodelcommon">imakedata.model.common</h3>
+<h2 id="imakedatamodelcommon">imakedata.model.common</h2>
 <pre><code class="language-python">from imakedata.model.common import common_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
@@ -362,7 +381,7 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 <p>None</p>
 <h2 id="next">Next</h2>
 <ul>
-<li>[Using Ready-Made Raw Data][raw.md]</li>
+<li><a href="raw.md">Using Ready-Made Raw Data</a></li>
 </ul>
     <footer>
       <a href="https://gitlab.com/elioway/eliothing/liar">GitLab</a> |
