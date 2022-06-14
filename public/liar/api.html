@@ -100,52 +100,69 @@
   &quot;name&quot;: &quot;study_area&quot;,
   &quot;class&quot;: &quot;igetraw&quot;,
   &quot;data&quot;: &quot;academic&quot;
-}</code></pre><h3 id="result">Result</h3>
+}</code></pre><p>Result</p>
 <pre><code>[
-  {study_area: {subject: Philosophy, department: Arts}},
-  {study_area: {subject: Computing, department: Science}},
-  {study_area: {subject: Accounting, department: Business}},
-  {study_area: {subject: Physics, department: Science}},
+  {&quot;study_area&quot;: {&quot;subject&quot;: &quot;Philosophy&quot;, &quot;department&quot;: &quot;Arts&quot;}},
+  {&quot;study_area&quot;: {&quot;subject&quot;: &quot;Computing&quot;, &quot;department&quot;: &quot;Science&quot;}},
+  {&quot;study_area&quot;: {&quot;subject&quot;: &quot;Accounting&quot;, &quot;department&quot;: &quot;Business&quot;}},
+  {&quot;study_area&quot;: {&quot;subject&quot;: &quot;Physics&quot;, &quot;department&quot;: &quot;Science&quot;}},
 ]</code></pre><h3 id="options">Options</h3>
-<h4 id="property">property</h4>
+<h4 id="property"><code>property</code></h4>
 <p>Specify one of properties of the dictionary object to return a single column even if the source contains a dictionary.</p>
 <pre><code>{
   &quot;property&quot;: &quot;department&quot;,
-}</code></pre><h3 id="result-1">Result</h3>
+}</code></pre><p>Result</p>
 <pre><code>[
-  {study_area: Arts},
-  {study_area: Science},
-  {study_area: Business},
-  {study_area: Science},
-]</code></pre><h4 id="filter">filter</h4>
+  {&quot;study_area&quot;: &quot;Arts&quot;},
+  {&quot;study_area&quot;: &quot;Science&quot;},
+  {&quot;study_area&quot;: &quot;Business&quot;},
+  {&quot;study_area&quot;: &quot;Science&quot;},
+]</code></pre><h4 id="filters"><code>filters</code></h4>
 <p>Filter the results by any property.</p>
 <pre><code>{
-  &quot;filters&quot;: [{department: [Arts, Science]}, ...more filters... ],
-}</code></pre><h3 id="result-2">Result</h3>
+  &quot;filters&quot;: {&quot;department&quot;: [&quot;Arts&quot;], &quot;subject&quot;: [&quot;Art&quot;, &quot;Art History&quot;, &quot;Drama&quot;], ...more filters...},
+}</code></pre><p>Result</p>
 <pre><code>[
-  {study_area: Arts},
-  {study_area: Science},
-  {study_area: Arts},
-  {study_area: Science},
-]</code></pre><h2 id="quicklist-class"><code>quicklist</code> class</h2>
+  {&quot;study_area&quot;: &quot;Arts&quot;},
+  {&quot;study_area&quot;: &quot;Science&quot;},
+  {&quot;study_area&quot;: &quot;Science&quot;},
+  {&quot;study_area&quot;: &quot;Arts&quot;},
+]</code></pre><h4 id="flatten"><code>flatten</code></h4>
+<p>Flatten into separate columns, any results for raw data which returns the field as a dictionary.</p>
+<pre><code>study_area = {
+  &quot;name&quot;: &quot;study_area&quot;,
+  &quot;class&quot;: &quot;igetraw&quot;,
+  &quot;data&quot;: &quot;academic&quot;
+}</code></pre><p>Result</p>
+<pre><code># Instead of:
+[
+  {&quot;study_area&quot;: {&quot;subject&quot;: &quot;Philosophy&quot;, &quot;department&quot;: &quot;Arts&quot;}},
+  # etc ...
+# Returns:
+[
+  {&quot;study_area_subject&quot;: &quot;Philosophy&quot;, &quot;study_area_department&quot;: &quot;Arts&quot;},
+  {&quot;study_area_subject&quot;: &quot;Computing&quot;, &quot;study_area_department&quot;: &quot;Science&quot;},
+  {&quot;study_area_subject&quot;: &quot;Accounting&quot;, &quot;study_area_department&quot;: &quot;Business&quot;},
+  {&quot;study_area_subject&quot;: &quot;Physics&quot;, &quot;study_area_department&quot;: &quot;Science&quot;},
+  # etc ...</code></pre><h2 id="quicklist-class"><code>quicklist</code> class</h2>
 <p>A user supplied list of choices for each field.</p>
 <pre><code>in_the_list = {
   &quot;name&quot;: &quot;in_the_list&quot;,
   &quot;class&quot;: &quot;quicklist&quot;,
   &quot;data&quot;: [1, &quot;of&quot;, &quot;the&quot;, &quot;items&quot;, &quot;in&quot;, &quot;this&quot;, &quot;list&quot;, 4, &quot;each&quot;, &quot;row&quot;]
-}</code></pre><h3 id="result-3">Result</h3>
+}</code></pre><p>Result</p>
 <pre><code>[
-  {in_the_list: of},
-  {in_the_list: in},
-  {in_the_list: 1},
-  {in_the_list: each},
+  {&quot;in_the_list&quot;: &quot;of&quot;},
+  {&quot;in_the_list&quot;: &quot;in&quot;},
+  {&quot;in_the_list&quot;: 1},
+  {&quot;in_the_list&quot;: &quot;each&quot;},
 ]</code></pre><h2 id="toothpaste-class"><code>toothpaste</code> class</h2>
 <p>A list we rotate through.</p>
 <pre><code>not_grey = {
   &quot;name&quot;: &quot;not_grey&quot;,
   &quot;class&quot;: &quot;toothpaste&quot;,
   &quot;data&quot;: [&quot;black&quot;, &quot;white&quot;]
-}</code></pre><h3 id="result-4">Result</h3>
+}</code></pre><p>Result</p>
 <pre><code>[
   {&quot;not_grey&quot;: &quot;black&quot;},
   {&quot;not_grey&quot;: &quot;white},
@@ -158,12 +175,12 @@
 <pre><code>contact_id = {
   &quot;name&quot;: &quot;contact_id&quot;,
   &quot;class&quot;: &quot;pk&quot;,
-}</code></pre><h3 id="result-5">Result</h3>
+}</code></pre><p>Result</p>
 <pre><code>[
-  {contact_id: 1},
-  {contact_id: 2},
-  {contact_id: 3},
-  {contact_id: 4},
+  {&quot;contact_id&quot;: 1},
+  {&quot;contact_id&quot;: 2},
+  {&quot;contact_id&quot;: 3},
+  {&quot;contact_id&quot;: 4},
 ]</code></pre><h2 id="primitive-class"><code>primitive</code> class</h2>
 <p>Make columns of numbers, dates, times, decimals, primary keys. min and max sets a limit and takes any date, integer or decimal, e.g. &quot;1940-01-01&quot;, 1, 0.23; defaults min:1, max:2</p>
 <pre><code>product_weight =  {
@@ -172,12 +189,12 @@
   &quot;method&quot;: &quot;dec_list&quot;,
   &quot;min&quot;: 1.4,
   &quot;max&quot;: 2.8,
-}</code></pre><h3 id="result-6">Result</h3>
+}</code></pre><p>Result</p>
 <pre><code>[
-  {product_weight: 2.4},
-  {product_weight: 2.1},
-  {product_weight: 1.4},
-  {product_weight: 2.0},
+  {&quot;product_weight&quot;: 2.4},
+  {&quot;product_weight&quot;: 2.1},
+  {&quot;product_weight&quot;: 1.4},
+  {&quot;product_weight&quot;: 2.0},
 ]</code></pre><h3 id="options-1">Options</h3>
 <h4 id="method"><code>method</code></h4>
 <p>The data type to select from the <code>IAmPrimitive</code> class. Options are:</p>
@@ -199,12 +216,12 @@ postage_cost = {
   &quot;class&quot;: &quot;field&quot;,
   &quot;data&quot;: &quot;product_weight&quot;,
   &quot;calc&quot;: [{&quot;multiply&quot;: 10}, {&quot;divide&quot;: 2}, {&quot;add&quot;: 0.99}]
-}</code></pre><h3 id="result-7">Result</h3>
+}</code></pre><p>Result</p>
 <pre><code>[
-  {postage_cost: 12.99},
-  {postage_cost: 11.49},
-  {postage_cost: 7.99},
-  {postage_cost: 10.99},
+  {&quot;postage_cost&quot;: 12.99},
+  {&quot;postage_cost&quot;: 11.49},
+  {&quot;postage_cost&quot;: 7.99},
+  {&quot;postage_cost&quot;: 10.99},
 ]</code></pre><h3 id="options-2">Options</h3>
 <h4 id="data"><code>data</code></h4>
 <p>The name of the field you are referencing.</p>
@@ -217,12 +234,12 @@ postage_cost = {
   &quot;min&quot;: 3,
   &quot;max&quot;: 5,
   &quot;language&quot;: &quot;ainu&quot;,
-}</code></pre><h3 id="result-8">Result</h3>
+}</code></pre><p>Result</p>
 <pre><code>[
-  {dvd_title: Erum noye upaskuma eani},
-  {dvd_title: Orwa toyko pewrekur},
-  {dvd_title: Nuye reekoh cipo siyeye seta},
-  {dvd_title: Anekuroro yupi keran pirkaike},
+  {&quot;dvd_title&quot;: &quot;Erum noye upaskuma eani&quot;},
+  {&quot;dvd_title&quot;: &quot;Orwa toyko pewrekur&quot;},
+  {&quot;dvd_title&quot;: &quot;Nuye reekoh cipo siyeye seta&quot;},
+  {&quot;dvd_title&quot;: &quot;Anekuroro yupi keran pirkaike&quot;},
 ]</code></pre><h3 id="options-3">Options</h3>
 <h4 id="method-1"><code>method</code></h4>
 <p>What kind of blurb you need. Valid methods are:</p>
@@ -246,12 +263,12 @@ postage_cost = {
   &quot;name&quot;: &quot;tax_code&quot;,
   &quot;class&quot;: &quot;exact&quot;,
   &quot;data&quot;: &quot;A&quot;,
-}</code></pre><h3 id="result-9">Result</h3>
+}</code></pre><p>Result</p>
 <pre><code>[
-  {tax_code: A},
-  {tax_code: A},
-  {tax_code: A},
-  {tax_code: A},
+  {&quot;tax_code&quot;: &quot;A&quot;},
+  {&quot;tax_code&quot;: &quot;A&quot;},
+  {&quot;tax_code&quot;: &quot;A&quot;},
+  {&quot;tax_code&quot;: &quot;A&quot;},
 ]</code></pre><h3 id="options-4">Options</h3>
 <h4 id="data-1"><code>data</code></h4>
 <p>The exact string you want included in the data.</p>
@@ -270,12 +287,12 @@ postage_cost = {
     &quot;data&quot;: [&quot;sports&quot;, &quot;music&quot;, &quot;dancing&quot;, &quot;reading&quot;],
     }
    ],
-}</code></pre><h3 id="result-10">Result</h3>
+}</code></pre><p>Result</p>
 <pre><code>[
-  {what_i_like: I like music},
-  {what_i_like: I like music},
-  {what_i_like: I like reading},
-  {what_i_like: I like sports},
+  {&quot;what_i_like&quot;: &quot;I like music&quot;},
+  {&quot;what_i_like&quot;: &quot;I like music&quot;},
+  {&quot;what_i_like&quot;: &quot;I like reading&quot;},
+  {&quot;what_i_like&quot;: &quot;I like sports&quot;},
 ]</code></pre><h2 id="choose-class"><code>choose</code> class</h2>
 <p>Use this class to choose from a sub list of definitions; and only select one randomly per record. The sub list can be any of the available definitions nested as deeply as you like.</p>
 <pre><code>color_with_number = {
@@ -313,12 +330,12 @@ postage_cost = {
                   ]
         },
     ],
-}</code></pre><h3 id="result-11">Result</h3>
+}</code></pre><p>Result</p>
 <pre><code>[
-  {color_with_number: Red2},
-  {color_with_number: Green35},
-  {color_with_number: Green42},
-  {color_with_number: Red4},
+  {&quot;color_with_number&quot;: &quot;Red2&quot;},
+  {&quot;color_with_number&quot;: &quot;Green35&quot;},
+  {&quot;color_with_number&quot;: &quot;Green42&quot;},
+  {&quot;color_with_number&quot;: &quot;Red4&quot;},
 ]</code></pre><h2 id="optional-properties">Optional Properties</h2>
 <h3 id="itransform">itransform</h3>
 <p>A list of transformation methods from the ITransformData.Field class to format the data. Multiple transforms can be listed which are processed left-&gt;right.</p>
