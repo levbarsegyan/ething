@@ -141,7 +141,7 @@ from imakedata.model.location import geo_location
 europe_destination = rewrite_dict(geo_location, {
     &quot;name&quot;: &quot;destination&quot;,
     &quot;property&quot;: &quot;city&quot;,
-    &quot;filters&quot;: [{&quot;iso2&quot;: [&quot;GB&quot;, &quot;FR&quot;, &quot;DE&quot;, &quot;IT&quot;,]}, ],
+    &quot;filters&quot;: {&quot;iso2&quot;: [&quot;GB&quot;, &quot;FR&quot;, &quot;DE&quot;, &quot;IT&quot;,]},
 })
 from imakedata.model.time import within_hours
 departure = rewrite_dict(within_hours, {

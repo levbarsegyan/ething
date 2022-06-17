@@ -36,22 +36,22 @@
       </a>
         <a href="#defining-data-defintions">
                 Defining Data Defintions</a>
-        <a href="#igetraw-class">
-                `igetraw` class</a>
+        <a href="#pk-class">
+                `pk` class</a>
         <a href="#quicklist-class">
                 `quicklist` class</a>
         <a href="#toothpaste-class">
                 `toothpaste` class</a>
-        <a href="#pk-class">
-                `pk` class</a>
-        <a href="#primitive-class">
-                `primitive` class</a>
+        <a href="#exact-class">
+                `exact` class</a>
+        <a href="#igetraw-class">
+                `igetraw` class</a>
+        <a href="#iamprimitive-class">
+                `iamprimitive` class</a>
         <a href="#field-class">
                 `field` class</a>
         <a href="#iblurb-class">
                 `iblurb` class</a>
-        <a href="#exact-class">
-                `exact` class</a>
         <a href="#concat-class">
                 `concat` class</a>
         <a href="#choose-class">
@@ -94,6 +94,58 @@
   &quot;class&quot;: &quot;quicklist&quot;,
   &quot;data&quot;: [&quot;dog&quot;, &quot;cat&quot;, &quot;mouse&quot;, &quot;horse&quot;, &quot;rat&quot;]
 },</code></pre><p>The class is the programming class where the data is taken from. There are ten types:</p>
+<h2 id="pk-class"><code>pk</code> class</h2>
+<p>A unique number for each record.</p>
+<pre><code>contact_id = {
+  &quot;name&quot;: &quot;contact_id&quot;,
+  &quot;class&quot;: &quot;pk&quot;,
+}</code></pre><p>Result</p>
+<pre><code>[
+  {&quot;contact_id&quot;: 1},
+  {&quot;contact_id&quot;: 2},
+  {&quot;contact_id&quot;: 3},
+  {&quot;contact_id&quot;: 4},
+]</code></pre><h2 id="quicklist-class"><code>quicklist</code> class</h2>
+<p>A user supplied list of choices for each field.</p>
+<pre><code>in_the_list = {
+  &quot;name&quot;: &quot;in_the_list&quot;,
+  &quot;class&quot;: &quot;quicklist&quot;,
+  &quot;data&quot;: [1, &quot;of&quot;, &quot;the&quot;, &quot;items&quot;, &quot;in&quot;, &quot;this&quot;, &quot;list&quot;, 4, &quot;each&quot;, &quot;row&quot;]
+}</code></pre><p>Result</p>
+<pre><code>[
+  {&quot;in_the_list&quot;: &quot;of&quot;},
+  {&quot;in_the_list&quot;: &quot;in&quot;},
+  {&quot;in_the_list&quot;: 1},
+  {&quot;in_the_list&quot;: &quot;each&quot;},
+]</code></pre><h2 id="toothpaste-class"><code>toothpaste</code> class</h2>
+<p>A list we rotate/cycle through.</p>
+<pre><code>not_grey = {
+  &quot;name&quot;: &quot;not_grey&quot;,
+  &quot;class&quot;: &quot;toothpaste&quot;,
+  &quot;data&quot;: [&quot;black&quot;, &quot;white&quot;]
+}</code></pre><p>Result</p>
+<pre><code>[
+  {&quot;not_grey&quot;: &quot;black&quot;},
+  {&quot;not_grey&quot;: &quot;white},
+  {&quot;not_grey&quot;: &quot;black&quot;},
+  {&quot;not_grey&quot;: &quot;white},
+  {&quot;not_grey&quot;: &quot;black&quot;},
+  {&quot;not_grey&quot;: &quot;white},
+]</code></pre><h2 id="exact-class"><code>exact</code> class</h2>
+<p>A column of static data. This is very useful as a defintion in the concat class, for instance using an &quot;@&quot; symbol to build an email address.</p>
+<pre><code>tax_code = {
+  &quot;name&quot;: &quot;tax_code&quot;,
+  &quot;class&quot;: &quot;exact&quot;,
+  &quot;data&quot;: &quot;A&quot;,
+}</code></pre><p>Result</p>
+<pre><code>[
+  {&quot;tax_code&quot;: &quot;A&quot;},
+  {&quot;tax_code&quot;: &quot;A&quot;},
+  {&quot;tax_code&quot;: &quot;A&quot;},
+  {&quot;tax_code&quot;: &quot;A&quot;},
+]</code></pre><h3 id="options">Options</h3>
+<h4 id="data"><code>data</code></h4>
+<p>The exact string you want included in the data.</p>
 <h2 id="igetraw-class"><code>igetraw</code> class</h2>
 <p>A json formatted file containing data (see raw folder). You can add your own. For those raw files whose data is made of dictionary objects in a list, it will assign the whole dictionary to the column:</p>
 <pre><code>study_area = {
@@ -106,7 +158,7 @@
   {&quot;study_area&quot;: {&quot;subject&quot;: &quot;Computing&quot;, &quot;department&quot;: &quot;Science&quot;}},
   {&quot;study_area&quot;: {&quot;subject&quot;: &quot;Accounting&quot;, &quot;department&quot;: &quot;Business&quot;}},
   {&quot;study_area&quot;: {&quot;subject&quot;: &quot;Physics&quot;, &quot;department&quot;: &quot;Science&quot;}},
-]</code></pre><h3 id="options">Options</h3>
+]</code></pre><h3 id="options-1">Options</h3>
 <h4 id="property"><code>property</code></h4>
 <p>Specify one of properties of the dictionary object to return a single column even if the source contains a dictionary.</p>
 <pre><code>{
@@ -120,7 +172,11 @@
 ]</code></pre><h4 id="filters"><code>filters</code></h4>
 <p>Filter the results by any property.</p>
 <pre><code>{
-  &quot;filters&quot;: {&quot;department&quot;: [&quot;Arts&quot;], &quot;subject&quot;: [&quot;Art&quot;, &quot;Art History&quot;, &quot;Drama&quot;], ...more filters...},
+  &quot;filters&quot;: {
+      &quot;department&quot;: [&quot;Arts&quot;],
+      &quot;subject&quot;: [&quot;Art&quot;, &quot;Art History&quot;, &quot;Drama&quot;],
+      ...more filters...
+    }
 }</code></pre><p>Result</p>
 <pre><code>[
   {&quot;study_area&quot;: &quot;Arts&quot;},
@@ -144,48 +200,11 @@
   {&quot;study_area_subject&quot;: &quot;Computing&quot;, &quot;study_area_department&quot;: &quot;Science&quot;},
   {&quot;study_area_subject&quot;: &quot;Accounting&quot;, &quot;study_area_department&quot;: &quot;Business&quot;},
   {&quot;study_area_subject&quot;: &quot;Physics&quot;, &quot;study_area_department&quot;: &quot;Science&quot;},
-  # etc ...</code></pre><h2 id="quicklist-class"><code>quicklist</code> class</h2>
-<p>A user supplied list of choices for each field.</p>
-<pre><code>in_the_list = {
-  &quot;name&quot;: &quot;in_the_list&quot;,
-  &quot;class&quot;: &quot;quicklist&quot;,
-  &quot;data&quot;: [1, &quot;of&quot;, &quot;the&quot;, &quot;items&quot;, &quot;in&quot;, &quot;this&quot;, &quot;list&quot;, 4, &quot;each&quot;, &quot;row&quot;]
-}</code></pre><p>Result</p>
-<pre><code>[
-  {&quot;in_the_list&quot;: &quot;of&quot;},
-  {&quot;in_the_list&quot;: &quot;in&quot;},
-  {&quot;in_the_list&quot;: 1},
-  {&quot;in_the_list&quot;: &quot;each&quot;},
-]</code></pre><h2 id="toothpaste-class"><code>toothpaste</code> class</h2>
-<p>A list we rotate through.</p>
-<pre><code>not_grey = {
-  &quot;name&quot;: &quot;not_grey&quot;,
-  &quot;class&quot;: &quot;toothpaste&quot;,
-  &quot;data&quot;: [&quot;black&quot;, &quot;white&quot;]
-}</code></pre><p>Result</p>
-<pre><code>[
-  {&quot;not_grey&quot;: &quot;black&quot;},
-  {&quot;not_grey&quot;: &quot;white},
-  {&quot;not_grey&quot;: &quot;black&quot;},
-  {&quot;not_grey&quot;: &quot;white},
-  {&quot;not_grey&quot;: &quot;black&quot;},
-  {&quot;not_grey&quot;: &quot;white},
-]</code></pre><h2 id="pk-class"><code>pk</code> class</h2>
-<p>A unique number for each record.</p>
-<pre><code>contact_id = {
-  &quot;name&quot;: &quot;contact_id&quot;,
-  &quot;class&quot;: &quot;pk&quot;,
-}</code></pre><p>Result</p>
-<pre><code>[
-  {&quot;contact_id&quot;: 1},
-  {&quot;contact_id&quot;: 2},
-  {&quot;contact_id&quot;: 3},
-  {&quot;contact_id&quot;: 4},
-]</code></pre><h2 id="primitive-class"><code>primitive</code> class</h2>
+  # etc ...</code></pre><h2 id="iamprimitive-class"><code>iamprimitive</code> class</h2>
 <p>Make columns of numbers, dates, times, decimals, primary keys. min and max sets a limit and takes any date, integer or decimal, e.g. &quot;1940-01-01&quot;, 1, 0.23; defaults min:1, max:2</p>
 <pre><code>product_weight =  {
   &quot;name&quot;: &quot;product_weight&quot;,
-  &quot;class&quot;: &quot;primitive&quot;,
+  &quot;class&quot;: &quot;iamprimitive&quot;,
   &quot;method&quot;: &quot;dec_list&quot;,
   &quot;min&quot;: 1.4,
   &quot;max&quot;: 2.8,
@@ -195,7 +214,7 @@
   {&quot;product_weight&quot;: 2.1},
   {&quot;product_weight&quot;: 1.4},
   {&quot;product_weight&quot;: 2.0},
-]</code></pre><h3 id="options-1">Options</h3>
+]</code></pre><h3 id="options-2">Options</h3>
 <h4 id="method"><code>method</code></h4>
 <p>The data type to select from the <code>IAmPrimitive</code> class. Options are:</p>
 <ul>
@@ -222,8 +241,8 @@ postage_cost = {
   {&quot;postage_cost&quot;: 11.49},
   {&quot;postage_cost&quot;: 7.99},
   {&quot;postage_cost&quot;: 10.99},
-]</code></pre><h3 id="options-2">Options</h3>
-<h4 id="data"><code>data</code></h4>
+]</code></pre><h3 id="options-3">Options</h3>
+<h4 id="data-1"><code>data</code></h4>
 <p>The name of the field you are referencing.</p>
 <h2 id="iblurb-class"><code>iblurb</code> class</h2>
 <p>Make words, titles, sentences, paragraphs, html, etc. method can be any of the methods in the IMakeBlurb class. min and max represents the number words which the blurb will contain. language can be any of json file that contains a word property. Add your own!</p>
@@ -240,7 +259,7 @@ postage_cost = {
   {&quot;dvd_title&quot;: &quot;Orwa toyko pewrekur&quot;},
   {&quot;dvd_title&quot;: &quot;Nuye reekoh cipo siyeye seta&quot;},
   {&quot;dvd_title&quot;: &quot;Anekuroro yupi keran pirkaike&quot;},
-]</code></pre><h3 id="options-3">Options</h3>
+]</code></pre><h3 id="options-4">Options</h3>
 <h4 id="method-1"><code>method</code></h4>
 <p>What kind of blurb you need. Valid methods are:</p>
 <ul>
@@ -257,21 +276,6 @@ postage_cost = {
 </ul>
 <h4 id="minmax-1"><code>min</code>/<code>max</code></h4>
 <p>Sets the min and max numberof words for the blurb.</p>
-<h2 id="exact-class"><code>exact</code> class</h2>
-<p>A column of static data. This is very useful as a defintion in the concat class, for instance using an &quot;@&quot; symbol to build an email address.</p>
-<pre><code>tax_code = {
-  &quot;name&quot;: &quot;tax_code&quot;,
-  &quot;class&quot;: &quot;exact&quot;,
-  &quot;data&quot;: &quot;A&quot;,
-}</code></pre><p>Result</p>
-<pre><code>[
-  {&quot;tax_code&quot;: &quot;A&quot;},
-  {&quot;tax_code&quot;: &quot;A&quot;},
-  {&quot;tax_code&quot;: &quot;A&quot;},
-  {&quot;tax_code&quot;: &quot;A&quot;},
-]</code></pre><h3 id="options-4">Options</h3>
-<h4 id="data-1"><code>data</code></h4>
-<p>The exact string you want included in the data.</p>
 <h2 id="concat-class"><code>concat</code> class</h2>
 <p>Combine a nested list of definitions, and the results from these fields will be concatonated into the single field. They can defined like any other field, and can include another concat class; but they should have no name.</p>
 <pre><code>what_i_like = {
@@ -307,7 +311,7 @@ postage_cost = {
                         &quot;data&quot;: &quot;Red&quot;,
                     },
                     {
-                        &quot;class&quot;: &quot;primitive&quot;,
+                        &quot;class&quot;: &quot;iamprimitive&quot;,
                         &quot;method&quot;: &quot;int_list&quot;,
                         &quot;min&quot;: 2,
                         &quot;max&quot;: 5,
@@ -322,7 +326,7 @@ postage_cost = {
                         &quot;data&quot;: &quot;Green&quot;,
                     },
                     {
-                        &quot;class&quot;: &quot;primitive&quot;,
+                        &quot;class&quot;: &quot;iamprimitive&quot;,
                         &quot;method&quot;: &quot;int_list&quot;,
                         &quot;min&quot;: 20,
                         &quot;max&quot;: 50,
@@ -349,9 +353,9 @@ postage_cost = {
             &quot;title&quot;,
             ],
 }</code></pre><h3 id="calc">calc</h3>
-<p>A list of calculations to perform on a field using any methods from the IAmPrimitiveLists.Calc class. calculations on dates are for hours. Multiple calculations can be listed and are performed left-&gt;right.</p>
+<p>A list of calculations to perform on a field using any methods from the IAmPrimitiveLists.Calc class. calculations on dates are for hours. Multiple calculations can be listed and are performed left-&gt;right. Format takes a standard python formatting string as a value.</p>
 <pre><code>{
-  &quot;calc&quot;: [{&quot;add&quot;: 2}, {&quot;subtract&quot;: 5}, {&quot;multiply&quot;: 10}, {&quot;divide&quot;: 3}, ]
+  &quot;calc&quot;: [{&quot;add&quot;: 2}, {&quot;subtract&quot;: 5}, {&quot;multiply&quot;: 10}, {&quot;divide&quot;: 3}, {&quot;format&quot;: &quot;{:2d}&quot;}, ]
 }</code></pre><h3 id="splutter">splutter</h3>
 <p>By default IMakeData fills 100% of fields in a column with data. Use splutter to make a percentage of fields (on average) blank. i.e. 10 = 10%~ of fields blank.</p>
 <pre><code>{

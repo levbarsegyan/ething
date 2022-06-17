@@ -112,7 +112,8 @@ maker = IMakeData(number_records)</code></pre><p>All the examples below assume a
     data = Model()
     data.FIELD1 = row[&quot;raw_data&quot;][&quot;field1&quot;]
     data.FIELD2 = row[&quot;raw_data&quot;][&quot;field2&quot;]
-    data.save()</code></pre><p>Your usage case may vary from this.</p>
+    data.save()</code></pre><p><em>Your usage case may vary from this.</em></p>
+<p>Here is a description of all the raw data which is available.</p>
 <h2 id="imakedatarawacademic"><code>imakedata.raw.academic</code></h2>
 <p>Contains a list of Academic study areas.</p>
 <pre><code># Use:
@@ -199,7 +200,7 @@ data_set = maker.get_data([animal_suffix_raw])</code></pre><p>Result</p>
     data.animal = row[&quot;animal_raw&quot;][&quot;animal&quot;]
     data.classification = row[&quot;animal_raw&quot;][&quot;classification&quot;]
     data.img = row[&quot;animal_raw&quot;][&quot;img&quot;]
-    data.save()</code></pre><p>Animal images are stored in &quot;liar/imakedata/rawimages/animals/<img src="" alt="">.gif&quot;</p>
+    data.save()</code></pre><p>Animal images are stored in &quot;liar/imakedata/rawimages/animals/{img}.gif&quot;</p>
 <p>If you only need the animal name, use the property option:</p>
 <pre><code># Use:
 from imakedata.model.raw import animal_name_raw
