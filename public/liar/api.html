@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>
-      API - eliothing
+      API Documentation - eliothing
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -34,8 +34,8 @@
         <img src="apple-touch-icon.png" />
         <b>liar</b>
       </a>
-        <a href="#defining-data-defintions">
-                Defining Data Defintions</a>
+        <a href="#defining-models-and-data-definitions">
+                Defining Models and Data Definitions</a>
         <a href="#pk-class">
                 `pk` class</a>
         <a href="#quicklist-class">
@@ -79,8 +79,8 @@
           </nav>
       </menu>
     </nav>
-    <h1 id="api">API</h1>
-<h2 id="defining-data-defintions">Defining Data Defintions</h2>
+    <h1 id="api-documentation">API Documentation</h1>
+<h2 id="defining-models-and-data-definitions">Defining Models and Data Definitions</h2>
 <p>Build on the defintion library by writing your own fields and models. Each column/field in your dataset is defined by a dictionary in a list.</p>
 <pre><code>model_def = [
   { define_field1 },
@@ -93,7 +93,7 @@
   &quot;name&quot;: &quot;animal_name&quot;,
   &quot;class&quot;: &quot;quicklist&quot;,
   &quot;data&quot;: [&quot;dog&quot;, &quot;cat&quot;, &quot;mouse&quot;, &quot;horse&quot;, &quot;rat&quot;]
-},</code></pre><p>The class is the programming class where the data is taken from. There are ten types:</p>
+},</code></pre><p>The class is the programming class where the data is taken from. There are <strong>ten types of class</strong>:</p>
 <h2 id="pk-class"><code>pk</code> class</h2>
 <p>A unique number for each record.</p>
 <pre><code>contact_id = {
@@ -110,13 +110,13 @@
 <pre><code>in_the_list = {
   &quot;name&quot;: &quot;in_the_list&quot;,
   &quot;class&quot;: &quot;quicklist&quot;,
-  &quot;data&quot;: [1, &quot;of&quot;, &quot;the&quot;, &quot;items&quot;, &quot;in&quot;, &quot;this&quot;, &quot;list&quot;, 4, &quot;each&quot;, &quot;row&quot;]
+  &quot;data&quot;: [1, &quot;of&quot;, &quot;the&quot;, &quot;items&quot;, &quot;in&quot;, &quot;this&quot;, &quot;list&quot;]
 }</code></pre><p>Result</p>
 <pre><code>[
   {&quot;in_the_list&quot;: &quot;of&quot;},
   {&quot;in_the_list&quot;: &quot;in&quot;},
   {&quot;in_the_list&quot;: 1},
-  {&quot;in_the_list&quot;: &quot;each&quot;},
+  {&quot;in_the_list&quot;: &quot;items&quot;},
 ]</code></pre><h2 id="toothpaste-class"><code>toothpaste</code> class</h2>
 <p>A list we rotate/cycle through.</p>
 <pre><code>not_grey = {
@@ -132,7 +132,7 @@
   {&quot;not_grey&quot;: &quot;black&quot;},
   {&quot;not_grey&quot;: &quot;white},
 ]</code></pre><h2 id="exact-class"><code>exact</code> class</h2>
-<p>A column of static data. This is very useful as a defintion in the concat class, for instance using an &quot;@&quot; symbol to build an email address.</p>
+<p>A column of static data. This is very useful as a defintion in the <code>concat</code> class, for instance using an &quot;@&quot; symbol to build an email address.</p>
 <pre><code>tax_code = {
   &quot;name&quot;: &quot;tax_code&quot;,
   &quot;class&quot;: &quot;exact&quot;,
@@ -147,7 +147,7 @@
 <h4 id="data"><code>data</code></h4>
 <p>The exact string you want included in the data.</p>
 <h2 id="igetraw-class"><code>igetraw</code> class</h2>
-<p>A json formatted file containing data (see raw folder). You can add your own. For those raw files whose data is made of dictionary objects in a list, it will assign the whole dictionary to the column:</p>
+<p><strong>liar</strong> comes with json formatted files containing realistic looking data (see raw folder). You can add your own. For those raw files whose data is made of dictionary objects in a list, it will assign the whole dictionary to the column:</p>
 <pre><code>study_area = {
   &quot;name&quot;: &quot;study_area&quot;,
   &quot;class&quot;: &quot;igetraw&quot;,
@@ -226,9 +226,9 @@
 <li><code>primary_key_list</code></li>
 </ul>
 <h4 id="minmax"><code>min</code>/<code>max</code></h4>
-<p>Where applicable, sets a min and max value for the random primitive.</p>
+<p>Where applicable, sets a <code>min</code> and <code>max</code> value for the random primitive.</p>
 <h2 id="field-class"><code>field</code> class</h2>
-<p>The field class clones from data already made in another field. Perfect to use in concat definitions to make email addresses and URLs which match data other fields; or when the relationship helps make the data look more realistic. In the example below we price the postage cost in line with the product_weight field above. <strong>The field name being referenced must come first in the model definition.</strong></p>
+<p>The field class clones from data already made in another field. Perfect to use in <code>concat</code> definitions to make email addresses and URLs which match data other fields; or when the relationship helps make the data look more realistic. In the example below we price the postage cost in line with the &quot;product_weight&quot; field above. <strong>The field name being referenced must come first in the model definition.</strong></p>
 <pre><code># See above for product_weight
 postage_cost = {
   &quot;name&quot;: &quot;postage_cost&quot;,
@@ -245,7 +245,7 @@ postage_cost = {
 <h4 id="data-1"><code>data</code></h4>
 <p>The name of the field you are referencing.</p>
 <h2 id="iblurb-class"><code>iblurb</code> class</h2>
-<p>Make words, titles, sentences, paragraphs, html, etc. method can be any of the methods in the IMakeBlurb class. min and max represents the number words which the blurb will contain. language can be any of json file that contains a word property. Add your own!</p>
+<p>Make words, titles, sentences, paragraphs, html, etc. method can be any of the methods in the IMakeBlurb class. <code>min</code> and <code>max</code> represents the number words which the blurb will contain.</p>
 <pre><code>dvd_title = {
   &quot;name&quot;: &quot;dvd_title&quot;,
   &quot;class&quot;: &quot;iblurb&quot;,
@@ -276,8 +276,17 @@ postage_cost = {
 </ul>
 <h4 id="minmax-1"><code>min</code>/<code>max</code></h4>
 <p>Sets the min and max numberof words for the blurb.</p>
+<h4 id="language"><code>language</code></h4>
+<p>Language can be any of raw json files which contain a word property. They are:</p>
+<ul>
+<li>english</li>
+<li>latin</li>
+<li>ainu</li>
+<li>danish</li>
+</ul>
+<p>Add your own!</p>
 <h2 id="concat-class"><code>concat</code> class</h2>
-<p>Combine a nested list of definitions, and the results from these fields will be concatonated into the single field. They can defined like any other field, and can include another concat class; but they should have no name.</p>
+<p>Combine a nested list of definitions, and the results from these fields will be concatonated into the single field. They can be defined like any other field, and can include another <code>concat</code> class. They need no name. <strong>Results are concatonated with no spaces; make your own spaces.</strong></p>
 <pre><code>what_i_like = {
   &quot;name&quot;: &quot;what_i_like&quot;,
   &quot;class&quot;: &quot;concat&quot;,
@@ -341,8 +350,8 @@ postage_cost = {
   {&quot;color_with_number&quot;: &quot;Green42&quot;},
   {&quot;color_with_number&quot;: &quot;Red4&quot;},
 ]</code></pre><h2 id="optional-properties">Optional Properties</h2>
-<h3 id="itransform">itransform</h3>
-<p>A list of transformation methods from the ITransformData.Field class to format the data. Multiple transforms can be listed which are processed left-&gt;right.</p>
+<h3 id="itransform"><code>itransform</code></h3>
+<p>A list of transformation methods from the ITransformData.Field class to post-process the data. Multiple transforms can be listed which are processed left to right.</p>
 <pre><code>{
   &quot;itransform&quot;: [
             &quot;upper&quot;,
@@ -352,15 +361,15 @@ postage_cost = {
             &quot;slugify&quot;,
             &quot;title&quot;,
             ],
-}</code></pre><h3 id="calc">calc</h3>
-<p>A list of calculations to perform on a field using any methods from the IAmPrimitiveLists.Calc class. calculations on dates are for hours. Multiple calculations can be listed and are performed left-&gt;right. Format takes a standard python formatting string as a value.</p>
+}</code></pre><h3 id="calc"><code>calc</code></h3>
+<p>A list of calculations to perform on a field using any methods from the IAmPrimitiveLists.Calc class. calculations on dates are for hours. Multiple calculations can be listed and are performed left to right. <code>format</code> takes a standard python formatting string as a value.</p>
 <pre><code>{
   &quot;calc&quot;: [{&quot;add&quot;: 2}, {&quot;subtract&quot;: 5}, {&quot;multiply&quot;: 10}, {&quot;divide&quot;: 3}, {&quot;format&quot;: &quot;{:2d}&quot;}, ]
-}</code></pre><h3 id="splutter">splutter</h3>
-<p>By default IMakeData fills 100% of fields in a column with data. Use splutter to make a percentage of fields (on average) blank. i.e. 10 = 10%~ of fields blank.</p>
+}</code></pre><h3 id="splutter"><code>splutter</code></h3>
+<p>By default <code>IAmALiar</code> fills 100% of fields in a column with data. Use <code>splutter</code> to make a percentage of fields (on average) blank. i.e. 10 = 10%~ of fields blank.</p>
 <pre><code>{
   &quot;splutter&quot;: 10,
-}</code></pre><h3 id="remove">remove</h3>
+}</code></pre><h3 id="remove"><code>remove</code></h3>
 <p>Use this option to remove columns/fields after the data is built - e.g. if they were temporary for making data available to concat class fields - e.g. a domain_name used for building email addresses and urls - but not needed as a column in the results.</p>
 <pre><code>{
   &quot;remove&quot;: True,
@@ -369,7 +378,7 @@ postage_cost = {
 <li><a href="model.md">Using Ready-Made Data Definitions and Models</a></li>
 </ul>
     <footer>
-      <a href="https://gitlab.com/elioway/eliothing/liar">GitLab</a> |
+      <a href="https://gitlab.com/eliothing/liar">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>
       <img src="elio-liar-logo.png">
       <label>&copy; 2019 Made the elioWay</label>

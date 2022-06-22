@@ -75,12 +75,12 @@
 <ul>
 <li><p>Create py file.</p>
 </li>
-<li><p>Import <code>IMakeData</code> and instantiate.</p>
+<li><p>Import <code>IAmALiar</code> and instantiate.</p>
 </li>
 </ul>
-<pre><code class="language-python">from imakedata.imakedata import IMakeData
+<pre><code class="language-python">from liar.iamaliar import IAmALiar
 number_records = 10
-maker = IMakeData(number_records)</code></pre>
+maker = IAmALiar(number_records)</code></pre>
 <ul>
 <li>Create a definition...</li>
 </ul>
@@ -90,8 +90,8 @@ maker = IMakeData(number_records)</code></pre>
   &quot;data&quot;: [&quot;T&quot;, &quot;L&quot;, &quot;D&quot;, &quot;R&quot;]
 }]</code></pre>
 <p>... or use a ready-made definition.</p>
-<pre><code class="language-python">from imakedata.model.marketing import product_title, postage_cost
-from imakedata.model.date import within_days
+<pre><code class="language-python">from liar.model.marketing import product_title, postage_cost
+from liar.model.date import within_days
 datadef = [product_title, postage_cost, within_days]</code></pre>
 <ul>
 <li>Build the data.</li>
@@ -102,13 +102,13 @@ print(my_data_set)</code></pre>
 <p>Create a new python file in the app where <strong>liar</strong> is installed. In this example we assume you are putting a file in the <code>eliothing/liar/examples</code> folder called <code>exercise1.py</code>.</p>
 <p>Open <code>exercise1.py</code>.</p>
 <ul>
-<li>Import the IMakeData module.</li>
+<li>Import the IAmALiar module.</li>
 </ul>
-<pre><code class="language-python">from imakedata.imakedata import IMakeData</code></pre>
+<pre><code class="language-python">from liar.iamaliar import IAmALiar</code></pre>
 <ul>
 <li>Instantiate the class and set the required number of records.</li>
 </ul>
-<pre><code class="language-python">maker = IMakeData(100)</code></pre>
+<pre><code class="language-python">maker = IAmALiar(100)</code></pre>
 <ul>
 <li>A dice is easy. We can use a simple primitive type:</li>
 </ul>
@@ -127,14 +127,14 @@ print(my_data_set)</code></pre>
 }</code></pre>
 <p>A dice is too easy, let&#39;s enable a game of backgammon and use two dice. The important thing is not to use the same field name. The utility method is great for reusing definitions and avoiding <a href="https://8thlight.com/blog/shibani-mookerjee/2019/05/07/some-common-gotchas-in-python.html">Passing By Reference</a> gotchas.</p>
 <ul>
-<li>Import the rewrite_dict utility at the top. If you&#39;re a big boy, you don&#39;t have to use it.</li>
+<li>Import the <code>rename_def</code> utility at the top. If you&#39;re a big boy, you don&#39;t have to use it.</li>
 </ul>
-<pre><code class="language-python">from imakedata.ijusthelp import rewrite_dict</code></pre>
+<pre><code class="language-python">from liar.ijusthelp import rename_def</code></pre>
 <ul>
 <li>Base your two dice on the first definition, rewriting and copying it as the same time:</li>
 </ul>
-<pre><code class="language-python">dice1 = rewrite_dict(dice, {&quot;name&quot;: &quot;dice1&quot;})
-dice2 = rewrite_dict(dice, {&quot;name&quot;: &quot;dice2&quot;})</code></pre>
+<pre><code class="language-python">dice1 = rename_def(dice, &quot;dice1&quot;)
+dice2 = rename_def(dice, &quot;dice1&quot;)</code></pre>
 <ul>
 <li>Now generate the data and print the data to the console:</li>
 </ul>
@@ -172,12 +172,12 @@ dice2 = rewrite_dict(dice, {&quot;name&quot;: &quot;dice2&quot;})</code></pre>
 <h2 id="exercise-2-people-are-tricky">Exercise 2: People are tricky</h2>
 <p>Let&#39;s try something a bit more useful and put out some data we can use for a contact app.</p>
 <ul>
-<li>Create and open <code>exercise2.py</code> and instantiate <code>IMakeData</code> at the top.</li>
+<li>Create and open <code>exercise2.py</code> and instantiate <code>IAmALiar</code> at the top.</li>
 </ul>
-<pre><code class="language-python">from imakedata.imakedata import IMakeData
-from imakedata.ijusthelp import rewrite_dict
+<pre><code class="language-python">from liar.iamaliar import IAmALiar
+from liar.ijusthelp import rewrite_dict
 number_records = 100
-maker = IMakeData(100)</code></pre>
+maker = IAmALiar(100)</code></pre>
 <p>Databases can usually provide a primary key by default, but often we&#39;ll want to create relatable data - and for that a primary key we can predict in our random data is useful.</p>
 <ul>
 <li>The pk class is the simplest type of data you can create. Add this to your code file:</li>
@@ -279,12 +279,12 @@ print(maker.get_data([pk, husband, wife, surname]))</code></pre>
 <h2 id="exercise-3-down-to-business">Exercise 3: Down to business</h2>
 <p>This exercise demostrates more complex data definitions.</p>
 <ul>
-<li>Create and open <code>exercise3.py</code> and instantiate <code>IMakeData</code> at the top.</li>
+<li>Create and open <code>exercise3.py</code> and instantiate <code>IAmALiar</code> at the top.</li>
 </ul>
-<pre><code class="language-python">from imakedata.imakedata import IMakeData
-from imakedata.ijusthelp import rewrite_dict
+<pre><code class="language-python">from liar.iamaliar import IAmALiar
+from liar.ijusthelp import rewrite_dict
 number_records = 10
-maker = IMakeData(10)</code></pre>
+maker = IAmALiar(10)</code></pre>
 <ul>
 <li>First add a business name. For this we will use the latin library and combine it with some company suffixes using the <code>concat</code> class:</li>
 </ul>
@@ -307,7 +307,7 @@ maker = IMakeData(10)</code></pre>
     ],
 }</code></pre>
 <p>Notice how the <code>concat</code> class contains two sub defintions. NB: Sub definitions need no name.</p>
-<p>In <code>IMakeData</code> you can combine lots of definitions into 1 field this way - even nesting more <code>concat</code> classes.</p>
+<p>In <code>IAmALiar</code> you can combine lots of definitions into 1 field this way - even nesting more <code>concat</code> classes.</p>
 <p>As well as a simple <code>quicklist</code> we have also used the <code>iblurb</code> to build a company name from one or two Latin names - which should sound pompous enough. Adding the <code>itransform</code> option to title case.</p>
 <ul>
 <li>Add a <code>pk</code> and show the records.</li>
@@ -383,7 +383,7 @@ pp.pprint(maker.get_data([pk, company_name, company_size, company_worth]))</code
 <li><a href="api.md">API documentation</a></li>
 </ul>
     <footer>
-      <a href="https://gitlab.com/elioway/eliothing/liar">GitLab</a> |
+      <a href="https://gitlab.com/eliothing/liar">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>
       <img src="elio-liar-logo.png">
       <label>&copy; 2019 Made the elioWay</label>

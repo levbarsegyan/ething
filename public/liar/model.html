@@ -42,28 +42,28 @@
                 Using the Data Definitions</a>
         <a href="#models">
                 Models</a>
-        <a href="#imakedatamodelraw">
-                imakedata.model.raw</a>
-        <a href="#imakedatamodelint">
-                imakedata.model.int</a>
-        <a href="#imakedatamodelfloat">
-                imakedata.model.float</a>
-        <a href="#imakedatamodeltime">
-                imakedata.model.time</a>
-        <a href="#imakedatamodeldate">
-                imakedata.model.date</a>
-        <a href="#imakedatamodellocation">
-                imakedata.model.location</a>
-        <a href="#imakedatamodelblurb">
-                imakedata.model.blurb</a>
-        <a href="#imakedatamodelbusiness">
-                imakedata.model.business</a>
-        <a href="#imakedatamodelmarketing">
-                imakedata.model.marketing</a>
-        <a href="#imakedatamodelpersonal">
-                imakedata.model.personal</a>
-        <a href="#imakedatamodelcommon">
-                imakedata.model.common</a>
+        <a href="#liarmodelraw">
+                liar.model.raw</a>
+        <a href="#liarmodelint">
+                liar.model.int</a>
+        <a href="#liarmodelfloat">
+                liar.model.float</a>
+        <a href="#liarmodeltime">
+                liar.model.time</a>
+        <a href="#liarmodeldate">
+                liar.model.date</a>
+        <a href="#liarmodellocation">
+                liar.model.location</a>
+        <a href="#liarmodelblurb">
+                liar.model.blurb</a>
+        <a href="#liarmodelbusiness">
+                liar.model.business</a>
+        <a href="#liarmodelmarketing">
+                liar.model.marketing</a>
+        <a href="#liarmodelpersonal">
+                liar.model.personal</a>
+        <a href="#liarmodelcommon">
+                liar.model.common</a>
         <a href="#next">
                 Next</a>
       <menu>
@@ -87,12 +87,12 @@
     </nav>
     <h1 id="using-ready-made-data-definitions-and-models">Using Ready-Made Data Definitions and Models</h1>
 <h2 id="introduction">Introduction</h2>
-<p><strong>liar</strong> comes with heaps of ready made data definitions you can use. They can be found in the <code>liar/imakedata/model</code> folder and are listed below.</p>
-<p>The names should be self explanatory. If in doubt, it&quot;s best to check the defintion. However it should be noted that many of the definitions are copies of base definitions where we simply overwrite the relevant properties.</p>
+<p><strong>liar</strong> comes with heaps of ready made data definitions you can use. They can be found in the <code>liar/liar/model</code> folder and are listed below.</p>
+<p>The names should be self explanatory. If in doubt, it&#39;s best to check the definition. It should be noted that many of the definitions are copies of base definitions where we simply overwrite the relevant properties.</p>
 <h2 id="how-data-definitions-are-based-on-each-other">How Data Definitions are based on each other</h2>
-<p>For instance, the <code>in_24</code> data definition in <code>liar/imakedata/model/int.py</code> looks like this:</p>
+<p>For instance, the <code>in_24</code> data definition in <code>liar/liar/model/int.py</code> looks like this:</p>
 <pre><code class="language-python">in_24 = int_data(&quot;in_24&quot;, 1, 24)</code></pre>
-<p><code>int_data</code> is a simple method which changes the min and max settings of a base <code>zero_or_one</code> data defintion:</p>
+<p><code>int_data</code> is a simple method which changes the <code>min</code> and <code>max</code> settings of a base <code>zero_or_one</code> data defintion:</p>
 <pre><code class="language-python">zero_or_one = rewrite_dict(int_list, {
     &quot;name&quot;: &quot;zero_or_one&quot;,
     &quot;min&quot;: 0,
@@ -100,7 +100,7 @@
 })
 def int_data(name, min, max):
     return rewrite_dict(zero_or_one, {&quot;name&quot;:name, &quot;min&quot;:min, &quot;max&quot;:max})</code></pre>
-<p><code>rewrite_dict</code> is a commonly used utility method found in the <code>liar/imakedata/ijusthelp.py</code> file used to deep copy and rewrite</p>
+<p><code>rewrite_dict</code> is a commonly used utility method found in the <code>liar/liar/ijusthelp.py</code> file for deeply copying and rewriting data definitions.</p>
 <pre><code class="language-python">def rewrite_dict(source_dict, diffs):
     &quot;&quot;&quot;Returns a copy of source_dict, updated with the new key-value
        pairs in diffs.&quot;&quot;&quot;
@@ -122,43 +122,52 @@ int_list = rewrite_dict(iamprimitive, {
     &quot;max&quot;: 1000,
 })</code></pre>
 <p>So <code>in_24</code> is a data defintion for integers between 1 and 24, with a field name &quot;in_24&quot;.</p>
-<p>It&quot;s a little complicated, but you soon get used to it. Reusing data defintions helps avoid bugs.</p>
+<p>It&#39;s a little complicated, but you soon get used to it. Reusing data defintions helps avoid bugs!</p>
 <h2 id="using-the-data-definitions">Using the Data Definitions</h2>
 <p>To use, simply import and list them in a model definition.</p>
 <p>For example, a <strong>contact list</strong>:</p>
-<pre><code class="language-python">from imakedata.imakedata import IMakeData
+<pre><code class="language-python">from liar.iamaliar import IAmALiar
 number_records = 10
-maker = IMakeData(number_records)
-from imakedata.model.marketing import company_name, job_title
-from imakedata.model.personal import first_name, last_name, personal_email
-data_set = maker.get_data([first_name, last_name, personal_email, personal_phone, company_name, job_title])</code></pre>
+maker = IAmALiar(number_records)
+from liar.model.marketing import company_name, job_title
+from liar.model.personal import first_name, last_name, personal_email
+model_def = [
+  first_name,
+  last_name,
+  personal_email,
+  personal_phone,
+  company_name,
+  job_title
+]
+data_set = maker.get_data(model_def)</code></pre>
 <p>Or <strong>train departure times</strong>:</p>
-<pre><code class="language-python">from imakedata.imakedata import IMakeData
+<pre><code class="language-python">from liar.iamaliar import IAmALiar
 number_records = 10
-maker = IMakeData(number_records)
-from imakedata.ijusthelp import rewrite_dict
-from imakedata.model.location import geo_location
+maker = IAmALiar(number_records)
+from liar.ijusthelp import rename_def, rewrite_dict
+from liar.model.location import geo_location
 europe_destination = rewrite_dict(geo_location, {
     &quot;name&quot;: &quot;destination&quot;,
     &quot;property&quot;: &quot;city&quot;,
     &quot;filters&quot;: {&quot;iso2&quot;: [&quot;GB&quot;, &quot;FR&quot;, &quot;DE&quot;, &quot;IT&quot;,]},
 })
-from imakedata.model.time import within_hours
-departure = rewrite_dict(within_hours, {
-    &quot;name&quot;: &quot;departure&quot;,
-})
-from imakedata.model.int import in_50
-platform_number = rewrite_dict(in_50, {
-    &quot;name&quot;: &quot;platform_number&quot;,
-})
-data_set = maker.get_data([europe_destination, departure_time, platform_number])</code></pre>
+from liar.model.time import within_hours
+departure = rename_def(within_hours, &quot;departure&quot;)
+from liar.model.int import in_50
+platform_number = rename_def(in_50, &quot;platform_number&quot;)
+model_def = [
+  europe_destination,
+  departure_time,
+  platform_number
+]
+data_set = maker.get_data(model_def)</code></pre>
 <h2 id="models">Models</h2>
 <p>Models are ready made groupings of data definitions into what will surely be commonly used database model scenarios, like <code>product_model</code> or <code>standard_address_model</code> or <code>business_model</code> or <code>teen_model</code>. For instance <code>teen_model</code> has data defintions like first_name or last_name but with a date of birth scoped to teenagers. Therefore <code>teen_model</code> would be a perfect base model mocking a database for a youth club.</p>
 <p>The ready made models are also listed below.</p>
-<h2 id="imakedatamodelraw">imakedata.model.raw</h2>
+<h2 id="liarmodelraw">liar.model.raw</h2>
 <p>See: <a href="raw.md">Raw lies</a></p>
-<h2 id="imakedatamodelint">imakedata.model.int</h2>
-<pre><code class="language-python">from imakedata.model.int import int_model</code></pre>
+<h2 id="liarmodelint">liar.model.int</h2>
+<pre><code class="language-python">from liar.model.int import int_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
 <li><code>zero_or_one</code></li>
@@ -186,8 +195,8 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 </ul>
 <p><strong>Available models</strong></p>
 <p>None</p>
-<h2 id="imakedatamodelfloat">imakedata.model.float</h2>
-<pre><code class="language-python">from imakedata.model.float import float_model</code></pre>
+<h2 id="liarmodelfloat">liar.model.float</h2>
+<pre><code class="language-python">from liar.model.float import float_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
 <li><code>quantum</code></li>
@@ -201,8 +210,8 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 </ul>
 <p><strong>Available models</strong></p>
 <p>None</p>
-<h2 id="imakedatamodeltime">imakedata.model.time</h2>
-<pre><code class="language-python">from imakedata.model.time import time_model</code></pre>
+<h2 id="liarmodeltime">liar.model.time</h2>
+<pre><code class="language-python">from liar.model.time import time_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
 <li><code>last_minute</code></li>
@@ -214,8 +223,8 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 </ul>
 <p><strong>Available models</strong></p>
 <p>None</p>
-<h2 id="imakedatamodeldate">imakedata.model.date</h2>
-<pre><code class="language-python">from imakedata.model.date import date_model</code></pre>
+<h2 id="liarmodeldate">liar.model.date</h2>
+<pre><code class="language-python">from liar.model.date import date_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
 <li><code>date_of_birth</code></li>
@@ -248,8 +257,8 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 </ul>
 <p><strong>Available models</strong></p>
 <p>None</p>
-<h2 id="imakedatamodellocation">imakedata.model.location</h2>
-<pre><code class="language-python">from imakedata.model.location import location_model, standard_address_model</code></pre>
+<h2 id="liarmodellocation">liar.model.location</h2>
+<pre><code class="language-python">from liar.model.location import location_model, standard_address_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
 <li><code>posh_address1</code></li>
@@ -264,8 +273,8 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 <li><code>standard_address_model</code></li>
 <li><code>posh_address_model</code></li>
 </ul>
-<h2 id="imakedatamodelblurb">imakedata.model.blurb</h2>
-<pre><code class="language-python">from imakedata.model.blurb import blurb_model</code></pre>
+<h2 id="liarmodelblurb">liar.model.blurb</h2>
+<pre><code class="language-python">from liar.model.blurb import blurb_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
 <li><code>blurb</code></li>
@@ -281,8 +290,8 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 </ul>
 <p><strong>Available models</strong></p>
 <p>None</p>
-<h2 id="imakedatamodelbusiness">imakedata.model.business</h2>
-<pre><code class="language-python">from imakedata.model.business import business_model</code></pre>
+<h2 id="liarmodelbusiness">liar.model.business</h2>
+<pre><code class="language-python">from liar.model.business import business_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
 <li><code>employee_number</code></li>
@@ -309,8 +318,8 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 <ul>
 <li><code>business_model</code></li>
 </ul>
-<h2 id="imakedatamodelmarketing">imakedata.model.marketing</h2>
-<pre><code class="language-python">from imakedata.model.marketing import marketing_model</code></pre>
+<h2 id="liarmodelmarketing">liar.model.marketing</h2>
+<pre><code class="language-python">from liar.model.marketing import marketing_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
 <li><code>postage_cost</code></li>
@@ -331,8 +340,8 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 <li><code>marketing_model</code></li>
 <li><code>product_model</code></li>
 </ul>
-<h2 id="imakedatamodelpersonal">imakedata.model.personal</h2>
-<pre><code class="language-python">from imakedata.model.personal import personal_model</code></pre>
+<h2 id="liarmodelpersonal">liar.model.personal</h2>
+<pre><code class="language-python">from liar.model.personal import personal_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
 <li><code>title</code></li>
@@ -367,8 +376,8 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 <li><code>baby_model</code> = personal_model + [date_of_birth_baby]</li>
 <li><code>employee_model</code> = adult_model + [employee_number, company_name, department, job_title]</li>
 </ul>
-<h2 id="imakedatamodelcommon">imakedata.model.common</h2>
-<pre><code class="language-python">from imakedata.model.common import common_model</code></pre>
+<h2 id="liarmodelcommon">liar.model.common</h2>
+<pre><code class="language-python">from liar.model.common import common_model</code></pre>
 <p><strong>Available definitions</strong></p>
 <ul>
 <li><code>pk</code></li>
@@ -384,7 +393,7 @@ data_set = maker.get_data([europe_destination, departure_time, platform_number])
 <li><a href="raw.md">Using Ready-Made Raw Data</a></li>
 </ul>
     <footer>
-      <a href="https://gitlab.com/elioway/eliothing/liar">GitLab</a> |
+      <a href="https://gitlab.com/eliothing/liar">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>
       <img src="elio-liar-logo.png">
       <label>&copy; 2019 Made the elioWay</label>

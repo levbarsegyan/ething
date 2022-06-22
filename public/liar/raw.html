@@ -36,50 +36,50 @@
       </a>
         <a href="#introduction">
                 Introduction</a>
-        <a href="#imakedatarawacademic">
-                `imakedata.raw.academic`</a>
-        <a href="#imakedatarawainu">
-                `imakedata.raw.ainu`</a>
-        <a href="#imakedatarawanimal_prefix">
-                `imakedata.raw.animal_prefix`</a>
-        <a href="#imakedatarawanimal_suffix">
-                `imakedata.raw.animal_suffix`</a>
-        <a href="#imakedatarawanimal">
-                `imakedata.raw.animal`</a>
-        <a href="#imakedatarawbusiness_type">
-                `imakedata.raw.business_type`</a>
-        <a href="#imakedatarawcar">
-                `imakedata.raw.car`</a>
-        <a href="#imakedatarawchar">
-                `imakedata.raw.char`</a>
-        <a href="#imakedatarawdanish">
-                `imakedata.raw.danish`</a>
-        <a href="#imakedatarawdistrict_suffix">
-                `imakedata.raw.district_suffix`</a>
-        <a href="#imakedatarawenglish">
-                `imakedata.raw.english`</a>
-        <a href="#imakedatarawgeo_location">
-                `imakedata.raw.geo_location`</a>
-        <a href="#imakedatarawjob_title">
-                `imakedata.raw.job_title`</a>
-        <a href="#imakedatarawlatin">
-                `imakedata.raw.latin`</a>
-        <a href="#imakedatarawperson">
-                `imakedata.raw.person`</a>
-        <a href="#imakedatarawproduct">
-                `imakedata.raw.product`</a>
-        <a href="#imakedatarawstreet_type">
-                `imakedata.raw.street_type`</a>
-        <a href="#imakedatarawsurname">
-                `imakedata.raw.surname`</a>
-        <a href="#imakedatarawtraining_course">
-                `imakedata.raw.training_course`</a>
-        <a href="#imakedatarawtransport">
-                `imakedata.raw.transport`</a>
-        <a href="#imakedatarawword_prefix">
-                `imakedata.raw.word_prefix`</a>
-        <a href="#imakedatarawword_suffix">
-                `imakedata.raw.word_suffix`</a>
+        <a href="#liarrawacademic">
+                `liar.raw.academic`</a>
+        <a href="#liarrawainu">
+                `liar.raw.ainu`</a>
+        <a href="#liarrawanimal_prefix">
+                `liar.raw.animal_prefix`</a>
+        <a href="#liarrawanimal_suffix">
+                `liar.raw.animal_suffix`</a>
+        <a href="#liarrawanimal">
+                `liar.raw.animal`</a>
+        <a href="#liarrawbusiness_type">
+                `liar.raw.business_type`</a>
+        <a href="#liarrawcar">
+                `liar.raw.car`</a>
+        <a href="#liarrawchar">
+                `liar.raw.char`</a>
+        <a href="#liarrawdanish">
+                `liar.raw.danish`</a>
+        <a href="#liarrawdistrict_suffix">
+                `liar.raw.district_suffix`</a>
+        <a href="#liarrawenglish">
+                `liar.raw.english`</a>
+        <a href="#liarrawgeo_location">
+                `liar.raw.geo_location`</a>
+        <a href="#liarrawjob_title">
+                `liar.raw.job_title`</a>
+        <a href="#liarrawlatin">
+                `liar.raw.latin`</a>
+        <a href="#liarrawperson">
+                `liar.raw.person`</a>
+        <a href="#liarrawproduct">
+                `liar.raw.product`</a>
+        <a href="#liarrawstreet_type">
+                `liar.raw.street_type`</a>
+        <a href="#liarrawsurname">
+                `liar.raw.surname`</a>
+        <a href="#liarrawtraining_course">
+                `liar.raw.training_course`</a>
+        <a href="#liarrawtransport">
+                `liar.raw.transport`</a>
+        <a href="#liarrawword_prefix">
+                `liar.raw.word_prefix`</a>
+        <a href="#liarrawword_suffix">
+                `liar.raw.word_suffix`</a>
       <menu>
           <label>Core</label>
           <nav>
@@ -102,22 +102,22 @@
     <h1 id="raw-lies">Raw lies</h1>
 <h2 id="introduction">Introduction</h2>
 <p><strong>liar</strong> comes with some pre-prepared data in a raw form. These can be used directly, or as the building blocks for creating new data; or as a boilerplate for add your own raw data.</p>
-<p>The data can be access easily using the <code>IMakeData</code> module by creating a data definition with <code>&quot;class&quot;: &quot;igetraw&quot;</code> and naming the data source relating to the file containing the raw data in the <code>liar/imakedata/raw</code> folder, e.g. <code>&quot;data&quot;: &quot;surname&quot;</code> You can add your own!</p>
-<p>Below we describe how to use the raw data, and what properties you can expect. Although they are very easy to write, the data definitions for raw data have already been conveniently created for you in the <code>imakedata/model/raw.py</code> file. Each example shows how to write what is already written in this file.</p>
-<p>All the examples below assume you have imported and instantiated the <code>IMakeData</code> model as follows:</p>
-<pre><code>from imakedata.imakedata import IMakeData
+<p>The data can be access easily using the <code>IAmALiar</code> module by creating a data definition with <code>&quot;class&quot;: &quot;igetraw&quot;</code> and naming the data source relating to the file containing the raw data in the <code>liar/liar/raw</code> folder, e.g. <code>&quot;data&quot;: &quot;surname&quot;</code> You can add your own!</p>
+<p>Below we describe how to use the raw data, and what properties you can expect. Although they are very easy to write, the data definitions for raw data have already been conveniently created for you in the <code>liar/model/raw.py</code> file. Each example shows how to write what is already written in this file.</p>
+<p>All the examples below assume you have imported and instantiated the <code>IAmALiar</code> model as follows:</p>
+<pre><code>from liar.iamaliar import IAmALiar
 number_records = 10
-maker = IMakeData(number_records)</code></pre><p>All the examples below assume a usage where you access a simple data model and save the random data in a loop.</p>
+maker = IAmALiar(number_records)</code></pre><p>All the examples below assume a usage where you access a simple data model and save the random data in a loop.</p>
 <pre><code>for row in data_set:
     data = Model()
     data.FIELD1 = row[&quot;raw_data&quot;][&quot;field1&quot;]
     data.FIELD2 = row[&quot;raw_data&quot;][&quot;field2&quot;]
     data.save()</code></pre><p><em>Your usage case may vary from this.</em></p>
 <p>Here is a description of all the raw data which is available.</p>
-<h2 id="imakedatarawacademic"><code>imakedata.raw.academic</code></h2>
+<h2 id="liarrawacademic"><code>liar.raw.academic</code></h2>
 <p>Contains a list of Academic study areas.</p>
 <pre><code># Use:
-from imakedata.model.raw import academic_raw
+from liar.model.raw import academic_raw
 # Or from scratch:
 academic_raw = {
     &quot;name&quot;: &quot;academic_raw&quot;,
@@ -129,10 +129,10 @@ data_set = maker.get_data([academic_raw])</code></pre><p>Result</p>
     data = Model()
     data.subject = row[&quot;academic_raw&quot;][&quot;subject&quot;]
     data.department = row[&quot;academic_raw&quot;][&quot;department&quot;]
-    data.save()</code></pre><h2 id="imakedatarawainu"><code>imakedata.raw.ainu</code></h2>
+    data.save()</code></pre><h2 id="liarrawainu"><code>liar.raw.ainu</code></h2>
 <p>Ainu is an old japanese language. The characterset seems familiar to speakers of romantic languages, while making little sense to the non-speaker.</p>
 <pre><code># Use:
-from imakedata.model.raw import ainu_raw
+from liar.model.raw import ainu_raw
 # Or from scratch:
 ainu_raw = {
     &quot;name&quot;: &quot;ainu_words&quot;,
@@ -156,10 +156,10 @@ data_set = maker.get_data([ainu_title])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     data.title = row[&quot;ainu_title&quot;]
-    data.save()</code></pre><h2 id="imakedatarawanimal_prefix"><code>imakedata.raw.animal_prefix</code></h2>
+    data.save()</code></pre><h2 id="liarrawanimal_prefix"><code>liar.raw.animal_prefix</code></h2>
 <p>A list of words commonly used to prefix animal names. This class is used in the living thing class to create random, but realistic, common animal names.</p>
 <pre><code># Use:
-from imakedata.model.raw import animal_prefix_raw
+from liar.model.raw import animal_prefix_raw
 # Or from scratch:
 animal_prefix_raw = {
     &quot;name&quot;: &quot;animal_prefix_raw&quot;,
@@ -170,10 +170,10 @@ data_set = maker.get_data([animal_prefix_raw])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     data.animal_prefix = row[&quot;animal_prefix_raw&quot;]
-    data.save()</code></pre><h2 id="imakedatarawanimal_suffix"><code>imakedata.raw.animal_suffix</code></h2>
+    data.save()</code></pre><h2 id="liarrawanimal_suffix"><code>liar.raw.animal_suffix</code></h2>
 <p>A list of words commonly used to suffix animal names. This class is used in the living thing class to create random, but realistic, common animal names.</p>
 <pre><code># Use:
-from imakedata.model.raw import animal_suffix_raw
+from liar.model.raw import animal_suffix_raw
 # Or from scratch:
 animal_suffix_raw = {
     &quot;name&quot;: &quot;animal_suffix_raw&quot;,
@@ -184,10 +184,10 @@ data_set = maker.get_data([animal_suffix_raw])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     data.animal_suffix = row[&quot;animal_suffix_raw&quot;]
-    data.save()</code></pre><h2 id="imakedatarawanimal"><code>imakedata.raw.animal</code></h2>
+    data.save()</code></pre><h2 id="liarrawanimal"><code>liar.raw.animal</code></h2>
 <p>The data is a compiled list of well known animal, insect and plant names, each classified (Mammal, Reptile, Plant, Bug, etc) and a 200x240px or 240x200px image from the public domain.</p>
 <pre><code># Use:
-from imakedata.model.raw import animal_raw
+from liar.model.raw import animal_raw
 # Or from scratch:
 animal_raw = {
     &quot;name&quot;: &quot;animal_raw&quot;,
@@ -200,10 +200,10 @@ data_set = maker.get_data([animal_suffix_raw])</code></pre><p>Result</p>
     data.animal = row[&quot;animal_raw&quot;][&quot;animal&quot;]
     data.classification = row[&quot;animal_raw&quot;][&quot;classification&quot;]
     data.img = row[&quot;animal_raw&quot;][&quot;img&quot;]
-    data.save()</code></pre><p>Animal images are stored in &quot;liar/imakedata/rawimages/animals/{img}.gif&quot;</p>
+    data.save()</code></pre><p>Animal images are stored in &quot;liar/liar/rawimages/animals/{img}.gif&quot;</p>
 <p>If you only need the animal name, use the property option:</p>
 <pre><code># Use:
-from imakedata.model.raw import animal_name_raw
+from liar.model.raw import animal_name_raw
 # Or from scratch:
 animal_name_raw = {
     &quot;name&quot;: &quot;animal_name_raw&quot;,
@@ -215,10 +215,10 @@ data_set = maker.get_data([animal_name_raw])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     data.animal_name = row[&quot;animal_name_raw&quot;]
-    data.save()</code></pre><h2 id="imakedatarawbusiness_type"><code>imakedata.raw.business_type</code></h2>
+    data.save()</code></pre><h2 id="liarrawbusiness_type"><code>liar.raw.business_type</code></h2>
 <p>Business Name suffixes.</p>
 <pre><code># Use:
-from imakedata.model.raw import business_type_raw
+from liar.model.raw import business_type_raw
 # Or from scratch:
 business_type_raw = {
     &quot;name&quot;: &quot;business_type_raw&quot;,
@@ -229,10 +229,10 @@ data_set = maker.get_data([business_type_raw])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     data.business_type = row[&quot;business_type_raw&quot;]
-    data.save()</code></pre><h2 id="imakedatarawcar"><code>imakedata.raw.car</code></h2>
+    data.save()</code></pre><h2 id="liarrawcar"><code>liar.raw.car</code></h2>
 <p>This large list of real cars (uk models) might be useful to teachers for projects and classes, or perhaps scientists to test data modelling software. Each car in the collection has a model name, a make class - which includes the manufacturer&#39;s name and a badge - and are grouped into types (e.g. hatchback, saloon).</p>
 <pre><code># Use:
-from imakedata.model.raw import car_raw
+from liar.model.raw import car_raw
 # Or from scratch:
 car_raw = {
     &quot;name&quot;: &quot;car_raw&quot;,
@@ -245,10 +245,10 @@ data_set = maker.get_data([car_raw])</code></pre><p>Result</p>
     data.make = row[&quot;car_raw&quot;][&quot;make&quot;]
     data.model = row[&quot;car_raw&quot;][&quot;model&quot;]
     data.shape = row[&quot;car_raw&quot;][&quot;shape&quot;]
-    data.save()</code></pre><h2 id="imakedatarawchar"><code>imakedata.raw.char</code></h2>
+    data.save()</code></pre><h2 id="liarrawchar"><code>liar.raw.char</code></h2>
 <p>A single character.</p>
 <pre><code># Use:
-from imakedata.model.raw import char_raw
+from liar.model.raw import char_raw
 # Or from scratch:
 char_raw = {
     &quot;name&quot;: &quot;char_raw&quot;,
@@ -276,10 +276,10 @@ hexdigit_raw = {&quot;name&quot;: &quot;hexdigit_raw&quot;, &quot;data&quot;: &q
 octdigit_raw = {&quot;name&quot;: &quot;octdigit_raw&quot;, &quot;data&quot;: &quot;octdigit&quot;}
 printable_raw = {&quot;name&quot;: &quot;printable_raw&quot;, &quot;data&quot;: &quot;printable&quot;}
 punctuation_raw = {&quot;name&quot;: &quot;punctuation_raw&quot;, &quot;data&quot;: &quot;punctuation&quot;}
-whitespace_raw = {&quot;name&quot;: &quot;whitespace_raw&quot;, &quot;data&quot;: &quot;whitespace&quot;}</code></pre><h2 id="imakedatarawdanish"><code>imakedata.raw.danish</code></h2>
+whitespace_raw = {&quot;name&quot;: &quot;whitespace_raw&quot;, &quot;data&quot;: &quot;whitespace&quot;}</code></pre><h2 id="liarrawdanish"><code>liar.raw.danish</code></h2>
 <p>Simply a list of Danish words, without meanings. Because of the common use of accented characters, this makes the data useful to developers looking to rigidly test their applications. The data can also be used to create the names of far-out products, or even fictional character names.</p>
 <pre><code># Use:
-from imakedata.model.raw import danish_raw
+from liar.model.raw import danish_raw
 # Or from scratch:
 danish_raw = {
     &quot;name&quot;: &quot;danish_raw&quot;,
@@ -303,10 +303,10 @@ data_set = maker.get_data([danish_title])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     data.danish_title = row[&quot;danish_title&quot;]
-    data.save()</code></pre><h2 id="imakedatarawdistrict_suffix"><code>imakedata.raw.district_suffix</code></h2>
+    data.save()</code></pre><h2 id="liarrawdistrict_suffix"><code>liar.raw.district_suffix</code></h2>
 <p>A list of words commonly used to suffix urban and country locations.</p>
 <pre><code># Use:
-from imakedata.model.raw import district_suffix_raw
+from liar.model.raw import district_suffix_raw
 # Or from scratch:
 district_suffix_raw = {
     &quot;name&quot;: &quot;district_suffix_raw&quot;,
@@ -319,7 +319,7 @@ data_set = maker.get_data([district_suffix_raw])</code></pre><p>Result</p>
     data.district_suffix = row[&quot;district_suffix_raw&quot;]
     data.save()</code></pre><p>Create a definition which concatonates a latin word to a district_suffix</p>
 <pre><code># Use:
-from imakedata.model.raw import latin_raw
+from liar.model.raw import latin_raw
 # Or from scratch:
 latin_raw = {
     &quot;name&quot;: &quot;latin_raw&quot;,
@@ -336,10 +336,10 @@ data_set = maker.get_data([locality])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     data.locality = row[&quot;locality&quot;]
-    data.save()</code></pre><h2 id="imakedatarawenglish"><code>imakedata.raw.english</code></h2>
+    data.save()</code></pre><h2 id="liarrawenglish"><code>liar.raw.english</code></h2>
 <p>Simply a list of about 6000 common English words. They are each catagorized by word type (Noun, Verb, Pronoun, etc) which helps to anticipate how the word might work in the sample data being created, for instance as something&#39;s name, or within a media title.</p>
 <pre><code># Use:
-from imakedata.model.raw import english_raw
+from liar.model.raw import english_raw
 # Or from scratch:
 english_raw = {
     &quot;name&quot;: &quot;english_raw&quot;,
@@ -366,7 +366,7 @@ data_set = maker.get_data([english_title])</code></pre><p>Result</p>
     data.english_title = row[&quot;english_title&quot;]
     data.save()</code></pre><p>If you only need the english word, use the property option:</p>
 <pre><code># Use:
-from imakedata.model.raw import english_word_raw
+from liar.model.raw import english_word_raw
 # Or from scratch:
 english_word_raw = {
     &quot;name&quot;: &quot;english_word_raw&quot;,
@@ -375,13 +375,13 @@ english_word_raw = {
     &quot;property&quot;: &quot;word&quot;
 }
 number_records = 10
-maker = IMakeData(number_records)
+maker = IAmALiar(number_records)
 data_set = maker.get_data([english_word_raw])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
-    data.english_word = row[&quot;english_word_raw&quot;]</code></pre><h2 id="imakedatarawgeo_location"><code>imakedata.raw.geo_location</code></h2>
+    data.english_word = row[&quot;english_word_raw&quot;]</code></pre><h2 id="liarrawgeo_location"><code>liar.raw.geo_location</code></h2>
 <p>A list of real cities, regions and countries and other data.</p>
 <pre><code># Use:
-from imakedata.model.raw import geo_location_raw
+from liar.model.raw import geo_location_raw
 # Or from scratch:
 geo_location_raw = {
     &quot;name&quot;: &quot;geo_location_raw&quot;,
@@ -399,10 +399,10 @@ data_set = maker.get_data([geo_location_raw])</code></pre><p>Result</p>
     data.iso3 = row[&quot;geo_location_raw&quot;][&quot;iso3&quot;]
     data.lat = row[&quot;geo_location_raw&quot;][&quot;lat&quot;]
     data.long = row[&quot;geo_location_raw&quot;][&quot;long&quot;]
-    data.save()</code></pre><h2 id="imakedatarawjob_title"><code>imakedata.raw.job_title</code></h2>
+    data.save()</code></pre><h2 id="liarrawjob_title"><code>liar.raw.job_title</code></h2>
 <p>About 300 occupations which can be used when constructing information about people.</p>
 <pre><code># Use:
-from imakedata.model.raw import job_title_raw
+from liar.model.raw import job_title_raw
 # Or from scratch:
 job_title_raw = {
     &quot;name&quot;: &quot;job_title_raw&quot;,
@@ -413,10 +413,10 @@ data_set = maker.get_data([job_title_raw])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     data.job_title = row[&quot;job_title_raw&quot;]
-    data.save()</code></pre><h2 id="imakedatarawlatin"><code>imakedata.raw.latin</code></h2>
+    data.save()</code></pre><h2 id="liarrawlatin"><code>liar.raw.latin</code></h2>
 <p>Latin seems familiar to speakers of romantic langauges and they all seem similar to eachother. This makes the words great for misc. blurb and fake names of all types things. Traditionally Latin is used for this purpose. (Also see the Ainu class for a slightly different version.</p>
 <pre><code># Use:
-from imakedata.model.raw import latin_raw
+from liar.model.raw import latin_raw
 # Or from scratch:
 latin_raw = {
     &quot;name&quot;: &quot;latin_raw&quot;,
@@ -448,10 +448,10 @@ data_set = maker.get_data([latin_title, latin_motto])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     latin_blurb = row[&quot;latin_title&quot;]
-    latin_motto = row[&quot;latin_motto&quot;]</code></pre><h2 id="imakedatarawperson"><code>imakedata.raw.person</code></h2>
+    latin_motto = row[&quot;latin_motto&quot;]</code></pre><h2 id="liarrawperson"><code>liar.raw.person</code></h2>
 <p>About 5000 names, each with an indication of gender and therefore an appropriate Title (Mr, Mrs, Ms, etc).</p>
 <pre><code># Use:
-from imakedata.model.raw import person_raw
+from liar.model.raw import person_raw
 # Or from scratch:
 person_raw = {
     &quot;name&quot;: &quot;person_raw&quot;,
@@ -466,7 +466,7 @@ data_set = maker.get_data([person_raw])</code></pre><p>Result</p>
     data.sex = row[&quot;person_raw&quot;][&quot;sex&quot;]
     data.save()</code></pre><p>If you only need the first_name, use the property option:</p>
 <pre><code># Use:
-from imakedata.model.raw import first_name_raw
+from liar.model.raw import first_name_raw
 # Or from scratch:
 first_name_raw = {
     &quot;name&quot;: &quot;first_name_raw&quot;,
@@ -478,10 +478,10 @@ data_set = maker.get_data([first_name_raw])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     data.first_name = row[&quot;first_name_raw&quot;]
-    data.save()</code></pre><h2 id="imakedatarawproduct"><code>imakedata.raw.product</code></h2>
+    data.save()</code></pre><h2 id="liarrawproduct"><code>liar.raw.product</code></h2>
 <p>Using data typical of supermarkets, superstores and online aunctions this collection is perfect for creating test data for ecommerce applications. It might also be useful for teachers in class room activities. Products are classified as Grocery, Superstore or Auction, and also contain a sub category (bathroom, computing, dry goods, etc). NB: I have also kept the orginal price in place to help with the realistic feel to the fake data, but it would be just as easy to use the Primitive data class to do this.</p>
 <pre><code># Use:
-from imakedata.model.raw import product_raw
+from liar.model.raw import product_raw
 # Or from scratch:
 product_raw = {
     &quot;name&quot;: &quot;product_raw&quot;,
@@ -497,7 +497,7 @@ data_set = maker.get_data([product_raw])</code></pre><p>Result</p>
     product.price = row[&quot;product_raw&quot;][&quot;price&quot;]
     data.save()</code></pre><p>Create a definition which only gets the product_name, using the property option:</p>
 <pre><code># Use:
-from imakedata.model.raw import product_name_raw
+from liar.model.raw import product_name_raw
 # Or from scratch:
 product_name_raw = {
     &quot;name&quot;: &quot;product_name_raw&quot;,
@@ -509,10 +509,10 @@ data_set = maker.get_data([product_name_raw])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     data.product_name = row[&quot;product_name_raw&quot;]
-    data.save()</code></pre><h2 id="imakedatarawstreet_type"><code>imakedata.raw.street_type</code></h2>
+    data.save()</code></pre><h2 id="liarrawstreet_type"><code>liar.raw.street_type</code></h2>
 <p>Words like Street, Road, Lane, etc, which can be neatly appended to words and phrases to create realistic address data.</p>
 <pre><code># Use:
-from imakedata.model.raw import street_type_raw
+from liar.model.raw import street_type_raw
 # Or from scratch:
 street_type_raw = {
     &quot;name&quot;: &quot;street_type_raw&quot;,
@@ -526,9 +526,9 @@ data_set = maker.get_data([street_type_raw])</code></pre><p>Result</p>
     data.department = row[&quot;street_type_raw&quot;][&quot;department&quot;]
     data.save()</code></pre><p>Create a definition which concatonates a latin word to a street_type to make a road name</p>
 <pre><code># Use:
-from imakedata.model.common import nb_space
-from imakedata.model.int import in_100
-from imakedata.model.raw import animal_name_raw, street_type_raw
+from liar.model.common import nb_space
+from liar.model.int import in_100
+from liar.model.raw import animal_name_raw, street_type_raw
 address1 =   {
     &quot;name&quot;: &quot;address1&quot;,
     &quot;class&quot;: &quot;concat&quot;,
@@ -544,10 +544,10 @@ data_set = maker.get_data([address1])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     data.locality = row[&quot;address1&quot;]
-    data.save()</code></pre><h2 id="imakedatarawsurname"><code>imakedata.raw.surname</code></h2>
+    data.save()</code></pre><h2 id="liarrawsurname"><code>liar.raw.surname</code></h2>
 <p>A large list of surname, or family names, from around the world.</p>
 <pre><code># Use:
-from imakedata.model.raw import surname_raw
+from liar.model.raw import surname_raw
 # Or from scratch:
 surname_raw = {
     &quot;name&quot;: &quot;surname_raw&quot;,
@@ -558,10 +558,10 @@ data_set = maker.get_data([surname_raw])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     data.subject = row[&quot;surname_raw&quot;]
-    data.save()</code></pre><h2 id="imakedatarawtraining_course"><code>imakedata.raw.training_course</code></h2>
+    data.save()</code></pre><h2 id="liarrawtraining_course"><code>liar.raw.training_course</code></h2>
 <p>A list real vehicle manufacturers.</p>
 <pre><code># Use:
-from imakedata.model.raw import transport_raw
+from liar.model.raw import transport_raw
 # Or from scratch:
 transport_raw = {
     &quot;name&quot;: &quot;academic_raw&quot;,
@@ -574,10 +574,10 @@ data_set = maker.get_data([transport_raw])</code></pre><p>Result</p>
     data.make = row[&quot;transport_raw&quot;][&quot;make&quot;]
     data.class = row[&quot;transport_raw&quot;][&quot;class&quot;]
     data.img = row[&quot;transport_raw&quot;][&quot;img&quot;]
-    data.save()</code></pre><h2 id="imakedatarawtransport"><code>imakedata.raw.transport</code></h2>
+    data.save()</code></pre><h2 id="liarrawtransport"><code>liar.raw.transport</code></h2>
 <p>A list real vehicle manufacturers.</p>
 <pre><code># Use:
-from imakedata.model.raw import transport_raw
+from liar.model.raw import transport_raw
 # Or from scratch:
 transport_raw = {
     &quot;name&quot;: &quot;academic_raw&quot;,
@@ -590,10 +590,10 @@ data_set = maker.get_data([transport_raw])</code></pre><p>Result</p>
     data.make = row[&quot;transport_raw&quot;][&quot;make&quot;]
     data.class = row[&quot;transport_raw&quot;][&quot;class&quot;]
     data.img = row[&quot;transport_raw&quot;][&quot;img&quot;]
-    data.save()</code></pre><h2 id="imakedatarawword_prefix"><code>imakedata.raw.word_prefix</code></h2>
+    data.save()</code></pre><h2 id="liarrawword_prefix"><code>liar.raw.word_prefix</code></h2>
 <p>A list of 150 or so words that you&#39;ll typically find at the front of English words, like pre, en, in, sub, etc. You can use them to add a greater degree of randomness and flexibility when creating data with any of the dictionaries in this program.</p>
 <pre><code># Use:
-from imakedata.model.raw import word_prefix_raw
+from liar.model.raw import word_prefix_raw
 # Or from scratch:
 word_prefix_raw = {
     &quot;name&quot;: &quot;word_prefix_raw&quot;,
@@ -607,7 +607,7 @@ data_set = maker.get_data([word_prefix_raw])</code></pre><p>Result</p>
     data.department = row[&quot;word_prefix_raw&quot;][&quot;department&quot;]
     data.save()</code></pre><p>Make a compound word.</p>
 <pre><code># Use:
-from imakedata.model.raw import word_prefix_raw, english_word_raw, word_suffix_raw
+from liar.model.raw import word_prefix_raw, english_word_raw, word_suffix_raw
 compound_word =  {
     &quot;name&quot;: &quot;compound_word&quot;,
     &quot;class&quot;: &quot;concat&quot;,
@@ -617,10 +617,10 @@ data_set = maker.get_data([compound_word])</code></pre><p>Result</p>
 <pre><code>for row in data_set:
     data = Model()
     data.compound_word = row[&quot;compound_word&quot;]
-    data.save()</code></pre><h2 id="imakedatarawword_suffix"><code>imakedata.raw.word_suffix</code></h2>
+    data.save()</code></pre><h2 id="liarrawword_suffix"><code>liar.raw.word_suffix</code></h2>
 <p>A list of 150 or so words that you&#39;ll typically find at the end of English words, like ous, able, ster, ize, etc. You can use them to add a greater degree of randomness and flexibility when creating data with any of the dictionaries in this program.</p>
 <pre><code># Use:
-from imakedata.model.raw import word_suffix_raw
+from liar.model.raw import word_suffix_raw
 # Or from scratch:
 word_suffix_raw = {
     &quot;name&quot;: &quot;word_suffix_raw&quot;,
@@ -633,7 +633,7 @@ data_set = maker.get_data([word_suffix_raw])</code></pre><p>Result</p>
     data.word_suffix = row[&quot;word_suffix_raw&quot;]
     data.save()</code></pre>
     <footer>
-      <a href="https://gitlab.com/elioway/eliothing/liar">GitLab</a> |
+      <a href="https://gitlab.com/eliothing/liar">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>
       <img src="elio-liar-logo.png">
       <label>&copy; 2019 Made the elioWay</label>
