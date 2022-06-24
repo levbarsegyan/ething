@@ -73,16 +73,16 @@
 <h2 id="tldr-checklist">TLDR Checklist</h2>
 <p>To create some new liar data:</p>
 <ul>
-<li><p>Create py file.</p>
+<li><p>Create a python file.</p>
 </li>
-<li><p>Import <code>IAmALiar</code> and instantiate.</p>
+<li><p>Import <code>IAmALiar</code> and instantiate:</p>
 </li>
 </ul>
 <pre><code class="language-python">from liar.iamaliar import IAmALiar
 number_records = 10
 maker = IAmALiar(number_records)</code></pre>
 <ul>
-<li>Create a definition...</li>
+<li>Create a definition:</li>
 </ul>
 <pre><code class="language-python">datadef = [{
   &quot;name&quot;: &quot;tldr&quot;,
@@ -94,7 +94,7 @@ maker = IAmALiar(number_records)</code></pre>
 from liar.model.date import within_days
 datadef = [product_title, postage_cost, within_days]</code></pre>
 <ul>
-<li>Build the data.</li>
+<li>Build and output the data.</li>
 </ul>
 <pre><code class="language-python">my_data_set = maker.get_data(datadef)
 print(my_data_set)</code></pre>
@@ -134,7 +134,7 @@ print(my_data_set)</code></pre>
 <li>Base your two dice on the first definition, rewriting and copying it as the same time:</li>
 </ul>
 <pre><code class="language-python">dice1 = rename_def(dice, &quot;dice1&quot;)
-dice2 = rename_def(dice, &quot;dice1&quot;)</code></pre>
+dice2 = rename_def(dice, &quot;dice2&quot;)</code></pre>
 <ul>
 <li>Now generate the data and print the data to the console:</li>
 </ul>
@@ -160,7 +160,8 @@ dice2 = rename_def(dice, &quot;dice1&quot;)</code></pre>
 <ul>
 <li>Now generate the data and print the data to the console:</li>
 </ul>
-<pre><code class="language-python">print(maker.get_data([player, dice1, dice2]))</code></pre>
+<pre><code class="language-python">backgammon_model = [player, dice1, dice2]
+print(maker.get_data(backgammon_model))</code></pre>
 <p>You should now see a printout like this:</p>
 <pre><code class="language-bash">[
   {&quot;player&quot;: &quot;white&quot;, &quot;dice1&quot;: 4, &quot;dice2&quot;: 1},
@@ -175,8 +176,6 @@ dice2 = rename_def(dice, &quot;dice1&quot;)</code></pre>
 <li>Create and open <code>exercise2.py</code> and instantiate <code>IAmALiar</code> at the top.</li>
 </ul>
 <pre><code class="language-python">from liar.iamaliar import IAmALiar
-from liar.ijusthelp import rewrite_dict
-number_records = 100
 maker = IAmALiar(100)</code></pre>
 <p>Databases can usually provide a primary key by default, but often we&#39;ll want to create relatable data - and for that a primary key we can predict in our random data is useful.</p>
 <ul>
@@ -276,17 +275,109 @@ print(maker.get_data([pk, husband, wife, surname]))</code></pre>
         &quot;wife_title&quot;: &quot;Dr&quot;,
     },
 ]</code></pre>
-<h2 id="exercise-3-down-to-business">Exercise 3: Down to business</h2>
-<p>This exercise demostrates more complex data definitions.</p>
+<p>Finally we will add an email address each.</p>
 <ul>
-<li>Create and open <code>exercise3.py</code> and instantiate <code>IAmALiar</code> at the top.</li>
+<li>Import the <code>rewrite_dict</code> helper and a prepared defintion of an email address called <code>personal_email_domains</code>.</li>
+</ul>
+<pre><code class="language-python">from liar.ijusthelp import rewrite_dict
+from liar.model.personal import personal_email_domains</code></pre>
+<ul>
+<li>Add a <code>field</code> class to access the husband&#39;s first name in lower case.</li>
+</ul>
+<pre><code class="language-python">husband_user_name = {
+    &quot;name&quot;: &quot;husband_user_name&quot;,
+    &quot;class&quot;: &quot;field&quot;,
+    &quot;data&quot;: &quot;husband_first_name&quot;,
+    &quot;remove&quot;: True,
+}</code></pre>
+<p>Because we don&#39;t want this field in our results, we flag to have it removed from results using the <code>remove</code> flag.</p>
+<ul>
+<li>Use this as a base to create a username for the wife:</li>
+</ul>
+<pre><code class="language-python">wife_user_name = rewrite_dict(
+    husband_user_name, {&quot;name&quot;: &quot;wife_user_name&quot;, &quot;data&quot;: &quot;wife_first_name&quot;}
+)</code></pre>
+<ul>
+<li>Define an email address for the husband and wife, using the <code>concat</code> class to build compound data.</li>
+</ul>
+<p>NB: using the <code>slugify</code> transformation to ensure we remove spaces, etc</p>
+<pre><code class="language-python">husband_email = {
+    &quot;name&quot;: &quot;husband_email&quot;,
+    &quot;class&quot;: &quot;concat&quot;,
+    &quot;data&quot;: [
+        husband_user_name,
+        {&quot;class&quot;: &quot;quicklist&quot;, &quot;data&quot;: [&quot;_&quot;, &quot;.&quot;, &quot;-&quot;, &quot;&quot;]},
+        {&quot;class&quot;: &quot;field&quot;, &quot;data&quot;: &quot;surname&quot;},
+        {&quot;class&quot;: &quot;exact&quot;, &quot;data&quot;: &quot;@&quot;},
+        personal_email_domains,
+    ],
+    &quot;itransform&quot;: [&quot;slugify&quot;],
+}
+wife_email = {
+    &quot;name&quot;: &quot;wife_email&quot;,
+    &quot;class&quot;: &quot;concat&quot;,
+    &quot;data&quot;: [
+        wife_user_name,
+        {&quot;class&quot;: &quot;quicklist&quot;, &quot;data&quot;: [&quot;_&quot;, &quot;.&quot;, &quot;-&quot;, &quot;&quot;]},
+        {&quot;class&quot;: &quot;field&quot;, &quot;data&quot;: &quot;surname&quot;},
+        {&quot;class&quot;: &quot;exact&quot;, &quot;data&quot;: &quot;@&quot;},
+        personal_email_domains,
+    ],
+    &quot;itransform&quot;: [&quot;slugify&quot;],
+}</code></pre>
+<p>Notice we are using the imported <code>personal_email_domains</code> definition provide some random email domain names.</p>
+<ul>
+<li>Put the definitions together, making use that you put the fields in the order they are called by the <code>field</code> class:</li>
+</ul>
+<pre><code class="language-python">married_couple_model = [
+  pk,
+  husband,
+  wife,
+  surname,
+  husband_user_name,
+  wife_user_name,
+  husband_email,
+  wife_email
+]
+print(maker.get_data(married_couple_model))</code></pre>
+<p>And you should see something like this. Notice that the <code>husband_user_name</code> and <code>wife_user_name</code> fields are not included.</p>
+<pre><code>[
+    {
+        &quot;husband_email&quot;: &quot;branden-perfect@gmail.co.uk&quot;,
+        &quot;husband_first_name&quot;: &quot;Branden&quot;,
+        &quot;husband_sex&quot;: &quot;male&quot;,
+        &quot;husband_title&quot;: &quot;Mr&quot;,
+        &quot;pk&quot;: 1,
+        &quot;surname&quot;: &quot;Perfect&quot;,
+        &quot;wife_email&quot;: &quot;athena_perfect@yahoo.net&quot;,
+        &quot;wife_first_name&quot;: &quot;Athena&quot;,
+        &quot;wife_sex&quot;: &quot;female&quot;,
+        &quot;wife_title&quot;: &quot;Mrs&quot;,
+    },
+    {
+        &quot;husband_email&quot;: &quot;cornelius.neelaenbraun@yahoo.com&quot;,
+        &quot;husband_first_name&quot;: &quot;Cornelius&quot;,
+        &quot;husband_sex&quot;: &quot;male&quot;,
+        &quot;husband_title&quot;: &quot;Mr&quot;,
+        &quot;pk&quot;: 2,
+        &quot;surname&quot;: &quot;Neelaenbraun&quot;,
+        &quot;wife_email&quot;: &quot;elda-neelaenbraun@live.co.uk&quot;,
+        &quot;wife_first_name&quot;: &quot;Elda&quot;,
+        &quot;wife_sex&quot;: &quot;female&quot;,
+        &quot;wife_title&quot;: &quot;Mrs&quot;,
+    },
+]</code></pre><h2 id="exercise-3-down-to-business">Exercise 3: Down to business</h2>
+<p>This exercise demonstrates more complex data definitions.</p>
+<ul>
+<li><p>Create and open <code>exercise3.py</code></p>
+</li>
+<li><p>Instantiate <code>IAmALiar</code> at the top.</p>
+</li>
 </ul>
 <pre><code class="language-python">from liar.iamaliar import IAmALiar
-from liar.ijusthelp import rewrite_dict
-number_records = 10
 maker = IAmALiar(10)</code></pre>
 <ul>
-<li>First add a business name. For this we will use the latin library and combine it with some company suffixes using the <code>concat</code> class:</li>
+<li>First add a business name. For this we will use the &quot;danish&quot; library and combine it with some company suffixes using the <code>concat</code> class:</li>
 </ul>
 <pre><code class="language-bash">company_name = {
     &quot;name&quot;: &quot;company_name&quot;,
@@ -308,24 +399,18 @@ maker = IAmALiar(10)</code></pre>
 }</code></pre>
 <p>Notice how the <code>concat</code> class contains two sub defintions. NB: Sub definitions need no name.</p>
 <p>In <code>IAmALiar</code> you can combine lots of definitions into 1 field this way - even nesting more <code>concat</code> classes.</p>
-<p>As well as a simple <code>quicklist</code> we have also used the <code>iblurb</code> to build a company name from one or two Latin names - which should sound pompous enough. Adding the <code>itransform</code> option to title case.</p>
+<p>As well as a simple <code>quicklist</code> we have also used the <code>iblurb</code> to build a company name from one or two Danish words - which should sound pompous enough. Adding the <code>itransform</code> option to &quot;title&quot; case.</p>
 <ul>
 <li>Add a <code>pk</code> and show the records.</li>
 </ul>
-<pre><code class="language-python">pk = { &quot;name&quot;: &quot;pk&quot;, &quot;class&quot;: &quot;pk&quot; }
+<pre><code class="language-python">from liar.model.common import pk
 pp.pprint(maker.get_data([pk, company_name]))</code></pre>
 <p>Your output will look something like this:</p>
 <pre><code class="language-bash">[   
-  {&#39;company_name&#39;: &#39;Nequiquam Cautor Pty&#39;, &#39;pk&#39;: 1},
-  {&#39;company_name&#39;: &#39;Alea Plc&#39;, &#39;pk&#39;: 2},
-  {&#39;company_name&#39;: &#39;Bracteola Pardus Limited&#39;, &#39;pk&#39;: 3},
-  {&#39;company_name&#39;: &#39;Persevero Interfectio Plc&#39;, &#39;pk&#39;: 4},
-  {&#39;company_name&#39;: &#39;Occatio Suffusus Pty&#39;, &#39;pk&#39;: 5},
-  {&#39;company_name&#39;: &#39;Tibi Inhumatus Corporation&#39;, &#39;pk&#39;: 6},
-  {&#39;company_name&#39;: &#39;Fundus Temero Limited&#39;, &#39;pk&#39;: 7},
-  {&#39;company_name&#39;: &#39;Harum Ltd&#39;, &#39;pk&#39;: 8},
-  {&#39;company_name&#39;: &#39;Pecunia &amp; Sons&#39;, &#39;pk&#39;: 9},
-  {&#39;company_name&#39;: &#39;Salutifer &amp; Sons&#39;, &#39;pk&#39;: 10}
+  {&#39;company_name&#39;: &#39;Andres &amp; Sons&#39;, &#39;pk&#39;: 1},
+  {&#39;company_name&#39;: &#39;Opdager Pty&#39;, &#39;pk&#39;: 2},
+  {&#39;company_name&#39;: &#39;Præsident Plc&#39;, &#39;pk&#39;: 3},
+  {&#39;company_name&#39;: &#39;Spøgelser Gãr Corporation&#39;, &#39;pk&#39;: 4},
 ]</code></pre>
 <p>Now we will add a couple of fields suitable for a CMS: company size and company worth.</p>
 <ul>
@@ -346,7 +431,7 @@ pp.pprint(maker.get_data([pk, company_name]))</code></pre>
     &quot;name&quot;: &quot;company_worth&quot;,
     &quot;class&quot;: &quot;concat&quot;,
     &quot;data&quot;: [
-        {&quot;class&quot;: &quot;exact&quot;, &quot;data&quot;: &quot;$&quot;},
+        {&quot;class&quot;: &quot;exact&quot;, &quot;data&quot;: &quot;$ &quot;},
         {
             &quot;class&quot;: &quot;field&quot;,
             &quot;data&quot;: &quot;company_size&quot;,
@@ -354,26 +439,27 @@ pp.pprint(maker.get_data([pk, company_name]))</code></pre>
         },
     ],
 }
-pp.pprint(maker.get_data([pk, company_name, company_size, company_worth]))</code></pre>
+company_prospect_model = [pk, company_name, company_size, company_worth]
+print(maker.get_data(company_prospect_model))</code></pre>
 <p>NB: It is important the company_size field comes before the company_worth field when you call the <code>get_data</code> method.</p>
 <p>You should see something like this:</p>
 <pre><code class="language-bash">[
     {
-        &quot;company_name&quot;: &quot;Educator Fiducialiter Pty&quot;,
+        &quot;company_name&quot;: &quot;Røven Limited&quot;,
         &quot;company_size&quot;: 14,
-        &quot;company_worth&quot;: &quot;$127,272.73&quot;,
+        &quot;company_worth&quot;: &quot;$ 127,272.73&quot;,
         &quot;pk&quot;: 1,
     },
     {
-        &quot;company_name&quot;: &quot;Crudus Corporation&quot;,
+        &quot;company_name&quot;: &quot;Smutter Corporation&quot;,
         &quot;company_size&quot;: 146,
-        &quot;company_worth&quot;: &quot;$1,327,272.73&quot;,
+        &quot;company_worth&quot;: &quot;$ 1,327,272.73&quot;,
         &quot;pk&quot;: 2,
     },
     {
-        &quot;company_name&quot;: &quot;Accuso Turbatio Limited&quot;,
+        &quot;company_name&quot;: &quot;Bekræftet Plc&quot;,
         &quot;company_size&quot;: 491,
-        &quot;company_worth&quot;: &quot;$4,463,636.36&quot;,
+        &quot;company_worth&quot;: &quot;$ 4,463,636.36&quot;,
         &quot;pk&quot;: 3,
     },
 ]</code></pre>
