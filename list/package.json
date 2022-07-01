@@ -14,20 +14,6 @@
     "wireframe"
   ],
   "license": "MIT",
-  "modules": {
-    "host": "eliothing",
-    "core": [
-      "bones",
-      "flesh",
-      "icarus"
-    ],
-    "tool": [
-      "generator-flesh",
-      "spider",
-      "art",
-      "cells"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "https://gitlab.com/eliothing/list/"

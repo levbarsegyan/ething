@@ -1,8 +1,14 @@
 {
   "author": "Tim Bushell",
   "description": "Notes and resources for the elioThing project.",
-  "title": "thing",
-  "version": "0.0.0",
+  "title": "elioThing",
+  "chisel": {
+    "host": "eliothing",
+    "Python": [
+      "banjo",
+      "django_dna"
+    ]
+  },
   "devDependencies": {
     "@elioway/chisel": "^0.0.6",
     "prettier": "^1.16.4"
@@ -15,16 +21,6 @@
     "wireframe"
   ],
   "license": "MIT",
-  "modules": {
-    "host": "eliothing",
-    "core": [
-      "banjo"
-    ],
-    "tool": [
-      "django_dna",
-      "liar"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "https://gitlab.com/eliothing"
