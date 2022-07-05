@@ -10,7 +10,7 @@
     ]
   },
   "devDependencies": {
-    "@elioway/chisel": "^0.0.6",
+    "@elioway/chisel": "^0.1.0",
     "prettier": "^1.16.4"
   },
   "homepage": "https://elioway.gitlab.io/eliothing",
