@@ -1,23 +1,16 @@
-# Installing toothpaste
+# Installing list
 ## Prerequisites
-- [elioSin Prerequisites](https://elioway.gitlab.io/eliosin/installing.html)
+- [elioThing Prerequisites](https://elioway.gitlab.io/eliothing/installing.html)
 - **god** installed
 ## Installing
 ```shell
-yarn add @elioway/god @elioway/toothpaste --dev
-```
-or
-```shell
-npm install @elioway/god @elioway/toothpaste --save-dev
+npm install @elioway/god @elioway/list --save-dev
+yarn add @elioway/god @elioway/list --dev
 ```
 ## Development Setup
 ```shell
-mkdir elio
-cd elio
-mkdir eliosin
-cd eliosin
-git clone https://gitlab.com/eliosin/toothpaste.git
-cd toothpaste
-yarn
-gulp
+cd elioway
+git clone https://gitlab.com/FUCKway/eliothing.git
+cd eliothing
+git clone https://gitlab.com/FUCKthing/list.git
 ```
