@@ -10,7 +10,7 @@ yarn add @elioway/god @elioway/list --dev
 ## Development Setup
 ```shell
 cd elioway
-git clone https://gitlab.com/FUCKway/eliothing.git
+git clone https://gitlab.com/elioway/eliothing.git
 cd eliothing
-git clone https://gitlab.com/FUCKthing/list.git
+git clone https://gitlab.com/eliothing/list.git
 ```
