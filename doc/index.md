@@ -15,12 +15,12 @@ Out of the box, Django - as a python library, meets both of the objectives of th
   <img src="static/django_dna.png">
   <h3>Make it</h3>
   <p>Turns schema.org objects into Django models.</p>
-  <p><a href="django_dna/index.html"><button><img src="django_dna/apple-touch-icon.png">django_dna</button></a></p>
+  <p><a href="django_dna"><button><img src="django_dna/apple-touch-icon.png">django_dna</button></a></p>
 </figure>
   <figure>
   <img src="static/banjo.png">
   <h3>Play it</h3>
   <p>A Django app of apps. Configure it to collect and disseminate information about Things.</p>
-  <p><a href="banjo/index.html"><button><img src="banjo/apple-touch-icon.png">banjo</button></a></p>
+  <p><a href="banjo"><button><img src="banjo/apple-touch-icon.png">banjo</button></a></p>
 </figure>
 </section>

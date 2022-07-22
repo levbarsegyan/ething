@@ -1,6 +1,6 @@
 # Quickstart toothpaste
 ## Prerequisites
-- **toothpaste** understood [No!](https://elioway.gitlab.io/eliosin/toothpaste/index.html)
+- **toothpaste** understood [No!](https://elioway.gitlab.io/eliosin/toothpaste)
 - [Check the Demo](demo.html)
 - **elioSin** prerequisites met? [No!](https://elioway.gitlab.io/eliosin/installing.html)
 - Installed **toothpaste** ? [No](https://elioway.gitlab.io/eliosin/toothpaste/installing.html)
