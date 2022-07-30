@@ -5,8 +5,7 @@
   "chisel": {
     "host": "eliothing",
     "Python": [
-      "banjo",
-      "django_dna"
+      "dna"
     ]
   },
   "devDependencies": {
