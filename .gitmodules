@@ -1,6 +1,9 @@
 [submodule "bones"]
 	path = bones
 	url = git@gitlab.com-elio:eliothing/bones.git
+[submodule "dna"]
+	path = dna
+	url = git@gitlab.com-elio:eliothing/dna.git
 [submodule "flesh"]
 	path = flesh
 	url = git@gitlab.com-elio:eliothing/flesh.git
