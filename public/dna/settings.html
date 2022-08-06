@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      settings
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/dist/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png"/>
+        <b>dna</b>
+      </a>
+        <a href="#dna-presets">
+                DNA presets</a>
+        <a href="#schema-version">
+                Schema version</a>
+        <a href="#dna-app">
+                `dna` app</a>
+        <a href="#urls">
+                urls</a>
+        <a href="#app_name">
+                `APP_NAME`</a>
+        <a href="#dna_depth">
+                `DNA_DEPTH`</a>
+        <a href="#what-we-learnt">
+                What we learnt</a>
+      <br/>
+      <br/>
+      <menu>
+              <a href="/eliothing">
+                <img src="/eliothing/apple-touch-icon.png"/>
+                <b>eliothing</b>
+              </a>
+            <label>Python</label>
+            <nav>
+            </nav>
+            <label>Tools</label>
+            <nav>
+                  <a href="/eliothing/generator-thing">
+                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
+                    <b>generator-thing</b>
+                  </a>
+            </nav>
+      </menu>
+    </nav>
+    <h1 id="settings">settings</h1>
+<p>There are some ready-made settings you will need to add from the <code>dna</code> app. Just add this at the top of your settings file</p>
+<pre><code>from dna.settings import *</code></pre><p><em>Or copy and paste them across from the <a href="https://gitlab.com/eliothing/dna/blob/master/dna/settings.py">settings.py</a> file.</em></p>
+<p>As well as some useful settings for <strong>easy_thumbnails</strong>, there are these 4 important settings.</p>
+<h2 id="dna-presets">DNA presets</h2>
+<p><code>DNA_SHORT_TEXT_FIELDS</code> and <code>DNA_LONG_TEXT_FIELDS</code> are two lists of Schema property names which are hardcoded for Django model.Field settings.</p>
+<p><code>DNA_SHORT_TEXT_FIELDS</code> are all set to Django <code>models.CharField</code> with the given lengths, e.g.:</p>
+<pre><code>DNA_SHORT_TEXT_FIELDS = (
+  &quot;name&quot;: 512,
+  &quot;disambiguatingDescription&quot;: 512,
+  ...
+)</code></pre><p><code>DNA_LONG_TEXT_FIELDS</code> is simply a list of Schema properties which we want to be <code>models.TextField</code> types. IN <strong>dna</strong> these are rendered as HTMLEditors. You can of course override both these settings adding or removing property names. Remember they must be the names of properties from Schema.org Types.</p>
+<h2 id="schema-version">Schema version</h2>
+<p><strong>dna</strong> comes with a version of schemaorg taken from the <a href="https://github.com/schemaorg/schemaorg">repo</a>. You can change the following settings to different versions, or even from other Schema&#39;s which support <code>jsonld</code> format.</p>
+<pre><code>SCHEMA_VERSION = &quot;3.9&quot;
+SCHEMA_PATH = f&quot;schemaorg/data/releases/{SCHEMA_VERSION}/all-layers.jsonld&quot;</code></pre><h2 id="dna-app"><code>dna</code> app</h2>
+<p>Add <code>dna</code> to your <code>INSTALLED_APPS</code> list. I&#39;ve also added <code>easy_thumbnails</code> and <code>livereload</code> to mine - the latter just for development (see Exercise 6). Don&#39;t forget to add your own app!</p>
+<pre><code>INSTALLED_APPS = [
+    &quot;livereload&quot;,
+    &quot;django.contrib.admin&quot;,
+    &quot;django.contrib.auth&quot;,
+    &quot;django.contrib.contentTypes&quot;,
+    &quot;django.contrib.sessions&quot;,
+    &quot;django.contrib.messages&quot;,
+    &quot;django.contrib.staticfiles&quot;,
+    &quot;easy_thumbnails&quot;,
+    &quot;dna&quot;,
+    &quot;my_app&quot;,
+]</code></pre><h2 id="urls">urls</h2>
+<p><strong>dna</strong> doesn&#39;t provide any urls, so you&#39;ll have to create your own. We cover this in <strong>Exercise 3</strong>, but for now add the urls to your settings file.</p>
+<pre><code>ROOT_URLCONF = &quot;my_app.urls&quot;</code></pre><h2 id="app_name"><code>APP_NAME</code></h2>
+<p>Add an APP_NAME setting. We need this for dynamically creatings Django models.</p>
+<pre><code>APP_NAME = &quot;my_app&quot;</code></pre><h2 id="dna_depth"><code>DNA_DEPTH</code></h2>
+<p>Add the <code>DNA_DEPTH</code> settings. This is best set to <code>0</code> unless you need a highly complex database.</p>
+<p>The way it works is this.</p>
+<p>In your <code>SITE_DNA</code> you selected a small number of Schema Types. As well as these Types, <strong>dna</strong> also adds any Schema Types which your selected models require for dependencies. For instance, in <strong>example 1</strong> the &quot;LocalBusiness&quot; Type inherits from the &quot;Organization&quot; type. We can call these your &quot;Core Types&quot;.</p>
+<p>Here&#39;s where it gets complicated.</p>
+<ul>
+<li>All those Types have properties and some of those properties are also Types.</li>
+<li>And those Types have properties which might also be Types.</li>
+<li>And those Types have properties which might also be Types.</li>
+<li>And those Types have properties which might also be Types.</li>
+</ul>
+<p>Before you know it, <strong>dna</strong> is creating 100s of Models and ForeignKeys, all interweaving and deeply nested.</p>
+<p>By limiting the <code>DNA_DEPTH</code>, we force <strong>dna</strong> to select primitive Types (i.e. standard Django model.Fields) instead of going too deep.</p>
+<p>NB: <strong>dna</strong> will still use a Type for any property but only if it&#39;s already been collected.</p>
+<pre><code>DNA_DEPTH = 0</code></pre><h2 id="what-we-learnt">What we learnt</h2>
+<p>The following settings:</p>
+<ul>
+<li><code>DNA_SHORT_TEXT_FIELDS</code> and <code>DNA_LONG_TEXT_FIELDS</code></li>
+<li><code>SCHEMA_VERSION</code> and <code>SCHEMA_PATH</code></li>
+<li><code>INSTALLED_APPS</code></li>
+<li><code>ROOT_URLCONF</code></li>
+<li><code>APP_NAME</code></li>
+<li><code>DNA_DEPTH</code></li>
+</ul>
+    <footer>
+      <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-dna-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/dist/js/adons.js"></script>
+    <script src="/dist/js/main.js"></script>
+  </body>
+</html>

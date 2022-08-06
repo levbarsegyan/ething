@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>
-      dna Gotcha 1
+      views
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -53,15 +53,34 @@
             </nav>
       </menu>
     </nav>
-    <h1 id="dna-gotcha-1">dna Gotcha 1</h1>
-<p>In an earlier version, the DJANGO_FIELDS dictionary in <code>dna.py</code> was global to the module. Problem was... when a model field type was accessed more than once this creates a issue during migrate and migration.</p>
-<p>For instance:</p>
-<pre><code class="language-bash">chromosomes.Thing.sameAs: (models.E006) The field &#39;sameAs&#39; clashes with the field &#39;sameAs&#39; from model &#39;chromosomes.thing&#39;.
-chromosomes.Thing.sameAs: (models.E006) The field &#39;sameAs&#39; clashes with the field &#39;sameAs&#39; from model &#39;chromosomes.thing&#39;.
-chromosomes.Thing.sameAs: (models.E006) The field &#39;sameAs&#39; clashes with the field &#39;sameAs&#39; from model &#39;chromosomes.thing&#39;.
-chromosomes.Thing.sameAs: (models.E006) The field &#39;sameAs&#39; clashes with the field &#39;sameAs&#39; from model &#39;chromosomes.thing&#39;.</code></pre>
-<p>The explanation for these errors is that 4 fields were using the same <em>instance</em> of <code>models.URLField</code> type.</p>
-<p>Moving the DJANGO_FIELDS inside the <code>django_type_of</code> method fixed this problem so that each field type is a different <em>instance</em> ... and the whole thing only took about 8 hours to work out.</p>
+    <h1 id="views">views</h1>
+<p>Create a <code>my_app/views.py</code> file and import <strong>dna</strong>&#39;s Mixins.</p>
+<pre><code># -*- encoding: utf-8 -*-
+from dna.views import (
+    EveryCreateViewMixin,
+    EveryUpdateViewMixin,
+    EveryDeleteViewMixin,
+    EveryEngageViewMixin,
+    EveryListViewMixin,
+    EveryIterateView,
+    EveryOptimizeView,
+    EveryPageViewMixin,
+    EveryHomeViewMixin,
+)
+class MyAppCreateView(EveryCreateViewMixin):
+    template_name = &quot;my_app/thing_form.html&quot;
+class MyAppUpdateViewiew(EveryUpdateViewMixin):
+    template_name = &quot;my_app/thing_form.html&quot;
+class MyAppDeleteViewiew(EveryDeleteViewMixin):
+    template_name = &quot;my_app/thing_delete.html&quot;
+class MyAppEngageViewiew(EveryEngageViewMixin):
+    template_name = &quot;my_app/thing_engaged.html&quot;
+class MyAppListViewiew(EveryListViewMixin):
+    template_name = &quot;my_app/thing_listed.html&quot;
+class MyAppPageViewiew(EveryPageViewMixin):
+    template_name = &quot;my_app/thing_page.html&quot;
+class MyAppHomeViewiew(EveryHomeViewMixin):
+    template_name = &quot;my_app/home_page.html&quot;</code></pre>
     <footer>
       <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>

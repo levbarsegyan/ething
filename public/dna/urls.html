@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>
-      dna Gotcha 1
+      urls
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -53,15 +53,63 @@
             </nav>
       </menu>
     </nav>
-    <h1 id="dna-gotcha-1">dna Gotcha 1</h1>
-<p>In an earlier version, the DJANGO_FIELDS dictionary in <code>dna.py</code> was global to the module. Problem was... when a model field type was accessed more than once this creates a issue during migrate and migration.</p>
-<p>For instance:</p>
-<pre><code class="language-bash">chromosomes.Thing.sameAs: (models.E006) The field &#39;sameAs&#39; clashes with the field &#39;sameAs&#39; from model &#39;chromosomes.thing&#39;.
-chromosomes.Thing.sameAs: (models.E006) The field &#39;sameAs&#39; clashes with the field &#39;sameAs&#39; from model &#39;chromosomes.thing&#39;.
-chromosomes.Thing.sameAs: (models.E006) The field &#39;sameAs&#39; clashes with the field &#39;sameAs&#39; from model &#39;chromosomes.thing&#39;.
-chromosomes.Thing.sameAs: (models.E006) The field &#39;sameAs&#39; clashes with the field &#39;sameAs&#39; from model &#39;chromosomes.thing&#39;.</code></pre>
-<p>The explanation for these errors is that 4 fields were using the same <em>instance</em> of <code>models.URLField</code> type.</p>
-<p>Moving the DJANGO_FIELDS inside the <code>django_type_of</code> method fixed this problem so that each field type is a different <em>instance</em> ... and the whole thing only took about 8 hours to work out.</p>
+    <h1 id="urls">urls</h1>
+<p>Create a <code>my_app/urls.py</code> file in your app with the following patterns.</p>
+<pre><code>from django.conf import settings
+from django.conf.urls.static import static
+from django.urls import path
+from myapp.views import (
+    MyAppCreateView,
+    MyAppUpdateView,
+    MyAppDeleteView,
+    MyAppEngageView,
+    MyAppListView,
+    MyAppIterateView,
+    MyAppOptimizeView,
+    MyAppPageView,
+    MyAppHomeView,
+)
+urlpatterns = [
+    path(
+        &quot;cr/&lt;str:page_key&gt;/&lt;str:thing&gt;&quot;,
+        MyAppCreateView.as_view(),
+        name=&quot;create.thing&quot;,
+    ),
+    path(
+        &quot;u/&lt;str:page_key&gt;/&lt;str:thing&gt;/&lt;int:pk&gt;&quot;,
+        MyAppUpdateView.as_view(),
+        name=&quot;update.thing&quot;,
+    ),
+    path(
+        &quot;d/&lt;str:page_key&gt;/&lt;str:thing&gt;/&lt;int:pk&gt;&quot;,
+        MyAppDeleteView.as_view(),
+        name=&quot;delete.thing&quot;,
+    ),
+    path(
+        &quot;e/&lt;str:page_key&gt;/&lt;str:thing&gt;/&lt;int:pk&gt;&quot;,
+        MyAppEngageView.as_view(),
+        name=&quot;engage.thing&quot;,
+    ),
+    path(
+        &quot;l/&lt;str:page_key&gt;/&lt;str:thing&gt;&quot;,
+        MyAppListView.as_view(),
+        name=&quot;list.things&quot;,
+    ),
+    path(
+        &quot;i/&lt;str:page_key&gt;/&lt;str:thing&gt;/&lt;str:field&gt;&quot;,
+        MyAppIterateView.as_view(),
+        name=&quot;iterate.things&quot;,
+    ),
+    path(
+        &quot;o/&lt;str:page_key&gt;/&lt;str:thing&gt;&quot;,
+        MyAppOptimizeView.as_view(),
+        name=&quot;optimize.things&quot;,
+    ),
+    path(&quot;p/&lt;str:page_key&gt;&quot;, MyAppPageView.as_view(), name=&quot;engage.page&quot;),
+    path(&quot;&quot;, MyAppHomeView.as_view(), name=&quot;home&quot;),
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)</code></pre>
     <footer>
       <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      dna Templates
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/dist/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png"/>
+        <b>dna</b>
+      </a>
+        <a href="#basehtml">
+                `base.html`</a>
+        <a href="#home_pagehtml">
+                `home_page.html`</a>
+        <a href="#thing_deletehtml">
+                `thing_delete.html`</a>
+        <a href="#thing_engagedhtml">
+                `thing_engaged.html`</a>
+        <a href="#thing_formhtml">
+                `thing_form.html`</a>
+        <a href="#thing_iteratehtml">
+                `thing_iterate.html`</a>
+        <a href="#thing_listedhtml">
+                `thing_listed.html`</a>
+        <a href="#thing_optimizehtml">
+                `thing_optimize.html`</a>
+        <a href="#thing_pagehtml">
+                `thing_page.html`</a>
+      <br/>
+      <br/>
+      <menu>
+              <a href="/eliothing">
+                <img src="/eliothing/apple-touch-icon.png"/>
+                <b>eliothing</b>
+              </a>
+            <label>Python</label>
+            <nav>
+            </nav>
+            <label>Tools</label>
+            <nav>
+                  <a href="/eliothing/generator-thing">
+                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
+                    <b>generator-thing</b>
+                  </a>
+            </nav>
+      </menu>
+    </nav>
+    <h1 id="dna-templates">dna Templates</h1>
+<h2 id="basehtml"><code>base.html</code></h2>
+<pre><code>{% load static %}
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;/&gt;
+    &lt;meta http-equiv=&quot;x-ua-compatible&quot; content=&quot;ie=edge&quot;/&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/&gt;
+    &lt;title&gt;
+      {% block title %}{% endblock title %} {{ app_name }}
+    &lt;/title&gt;
+    &lt;link
+      href=&quot;https://fonts.googleapis.com/css?family=Montserrat:400,800&amp;display=swap&quot;
+      rel=&quot;stylesheet&quot;/&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;menu&gt;
+      {% include &#39;dna/_menu.html&#39; with menu_level=page_menu %}
+      {% block nav %}{% endblock nav %}
+    &lt;/menu&gt;
+    &lt;h1&gt;{% block h1 %}{% endblock h1 %}&lt;/h1&gt;
+    {% block content %}{% endblock content %}
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="home_pagehtml"><code>home_page.html</code></h2>
+<pre><code>{% extends &#39;molecule/base.html&#39; %}
+{% load static %}
+{% block title %}
+  My App Name
+{% endblock title %}
+{% block nav %}{% endblock nav %}
+{% block h1 %}{% endblock h1 %}
+{% block content %}
+  &lt;!-- login in --&gt;
+  &lt;p&gt;
+    &lt;a href=&quot;{% url &#39;engage.page&#39; app_name %}&quot;&gt;
+      &lt;button&gt;[engage]&lt;/button&gt;
+    &lt;/a&gt;
+  &lt;/p&gt;
+{% endblock content %}</code></pre><h2 id="thing_deletehtml"><code>thing_delete.html</code></h2>
+<pre><code>{% extends &#39;molecule/base.html&#39; %}
+{% load static %}
+{% block title %}Delete {{ thing_name }}{% endblock title %}
+{% block h1 %}Delete {{ thing_name }}?{% endblock h1 %}
+{% block content %}
+  {% include &#39;dna/_thing_confirm_delete.html&#39; %}
+{% endblock content %}</code></pre><h2 id="thing_engagedhtml"><code>thing_engaged.html</code></h2>
+<pre><code>{% extends &#39;molecule/base.html&#39; %}
+{% load static %}
+{% block title %}{{ thing_name }}{% endblock title %}
+{% block h1 %}{{ thing_name }}{% endblock h1 %}
+{% block content %}
+  {% include &#39;dna/_thing_engaged.html&#39; %}
+  &lt;p&gt;
+    &lt;a href=&quot;{% url &#39;update.thing&#39; thing_name object.pk %}&quot;&gt;[update]&lt;/a&gt;
+    &lt;a href=&quot;{% url &#39;delete.thing&#39; thing_name object.pk %}&quot;&gt;[delete]&lt;/a&gt;
+  &lt;/p&gt;
+{% endblock content %}</code></pre><h2 id="thing_formhtml"><code>thing_form.html</code></h2>
+<pre><code>{% extends &#39;chromosomes/base.html&#39; %}
+{% load static %}
+{% block title %}{{ thing_name }}{% endblock title %}
+{% block h1 %}{{ thing_name }}{% endblock h1 %}
+{% block content %}
+  &lt;form enctype=&quot;multipart/form-data&quot; method=&quot;post&quot;&gt;
+    {% include &#39;dna/_thing_form.html&#39; %}
+    &lt;p&gt;
+      &lt;button type=&quot;submit&quot;&gt;Update&lt;/button&gt;
+    &lt;/p&gt;
+    {% if object.pk %}
+      &lt;a href=&quot;{{ object.get_absolute_url }}&quot;&gt;
+        &lt;button type=&quot;button&quot;&gt;Cancel&lt;/button&gt;
+      &lt;/a&gt;
+    {% endif %}
+  &lt;/form&gt;
+{% endblock content %}</code></pre><h2 id="thing_iteratehtml"><code>thing_iterate.html</code></h2>
+<pre><code>{% extends &#39;chromosomes/base.html&#39; %}
+{% load static %}
+{% block title %}Iterate{% endblock title %}
+{% block h1 %}Iterate{% endblock h1 %}
+{% block content %}
+  &lt;p&gt;
+    A place to handle iteratable fields.
+  &lt;/p&gt;
+{% endblock content %}</code></pre><h2 id="thing_listedhtml"><code>thing_listed.html</code></h2>
+<pre><code>{% extends &#39;chromosomes/base.html&#39; %}
+{% load static %}
+{% block title %}{{ thing_name }}{% endblock title %}
+{% block h1 %}{{ thing_name }}{% endblock h1 %}
+{% block content %}
+  {% include &#39;dna/_thing_listed.html&#39; %}
+  &lt;p&gt;
+    &lt;a href=&quot;{% url &#39;create.thing&#39; page_name thing_name %}&quot;&gt;
+      &lt;button type=&quot;button&quot;&gt;Add
+        {{ page_name }}&lt;/button&gt;
+    &lt;/a&gt;
+  &lt;/p&gt;
+{% endblock content %}</code></pre><h2 id="thing_optimizehtml"><code>thing_optimize.html</code></h2>
+<pre><code>{% extends &#39;chromosomes/base.html&#39; %}
+{% load static %}
+{% block title %}Optimize{% endblock title %}
+{% block h1 %}Optimize{% endblock h1 %}
+{% block content %}
+  &lt;p&gt;
+    Stats coming
+  &lt;/p&gt;
+{% endblock content %}</code></pre><h2 id="thing_pagehtml"><code>thing_page.html</code></h2>
+<pre><code>{% extends &#39;chromosomes/base.html&#39; %}
+{% load static %}
+{% block title %}{{ page_name }}{% endblock title %}
+{% block h1 %}{{ page_name }}{% endblock h1 %}
+{% block content %}
+  {% include &#39;dna/_page_engaged.html&#39; %}
+  {% include &#39;dna/_page_listed.html&#39; %}
+{% endblock content %}</code></pre>
+    <footer>
+      <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-dna-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/dist/js/adons.js"></script>
+    <script src="/dist/js/main.js"></script>
+  </body>
+</html>

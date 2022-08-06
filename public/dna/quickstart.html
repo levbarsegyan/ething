@@ -34,6 +34,16 @@
         <img src="apple-touch-icon.png"/>
         <b>dna</b>
       </a>
+        <a href="#prerequisites">
+                Prerequisites</a>
+        <a href="#page">
+                `page`</a>
+        <a href="#engage">
+                `engage`</a>
+        <a href="#list">
+                `list`</a>
+        <a href="#what-we-learnt">
+                What we learnt</a>
       <br/>
       <br/>
       <menu>
@@ -44,56 +54,138 @@
             <label>Python</label>
             <nav>
             </nav>
+            <label>Tools</label>
+            <nav>
+                  <a href="/eliothing/generator-thing">
+                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
+                    <b>generator-thing</b>
+                  </a>
+            </nav>
       </menu>
     </nav>
     <h1 id="dna-quickstart">dna Quickstart</h1>
-<h1 id="exercise-x-using-eliosin-in-your-django-build">Exercise X: Using elioSin in your Django build</h1>
-<p>We&#39;re using <a href="https://github.com/tjwalch/django-livereload-server">django-livereload-server</a> to make working with an <strong>elioSin</strong> theme and Django project as easy as possible.</p>
-<p>You should already understand the <strong>elioSin</strong> work-and-build process as described:</p>
+<h2 id="prerequisites">Prerequisites</h2>
 <ul>
+<li><strong>dna</strong> understood <a href="https://elioway.gitlab.io/eliothing/dna">No!</a></li>
+<li><a href="demo.html">Check the Demo</a></li>
 <li><strong>elioSin</strong> prerequisites met? <a href="https://elioway.gitlab.io/eliosin/installing.html">No!</a></li>
-<li><strong>god</strong> quickstart understood? <a href="https://elioway.gitlab.io/eliosin/god/quickstart.html">No!</a></li>
+<li>Installed <strong>dna</strong> ? <a href="https://elioway.gitlab.io/eliothing/dna/installing.html">No!</a></li>
 </ul>
-<p>To run a <strong>elioSin</strong> theme inside a Django app, follow these steps.</p>
+<h1 id="nutshell">Nutshell</h1>
+<ol>
+<li>Start your Django Project and install DNA</li>
+<li>Define your <code>SITE_DNA</code></li>
+<li>Define some other settings.</li>
+<li>Call the DnaReplicator on your models pages.</li>
+<li>Define your views.</li>
+<li>Define your urls.</li>
+<li>Add templates.</li>
+<li>Optional: Implement an elioSin style.</li>
+</ol>
+<p>With this library you can prototype a new website quickly, as long as you do things the <strong>elioWay</strong>.</p>
+<h1 id="glossary">Glossary</h1>
 <ul>
-<li><p>Create a folder inside your Django app called <code>theme</code> <em>(name is optional)</em>. Put it alongside your templates folder, directly inside the app folder whose Django templates you are theming. <code>theme</code> is good because it sits alphabetically below to <code>template</code>.</p>
+<li><p><em>models</em> and <em>Types</em> and <em>things</em> and classes are the same thing. On schema.org they are called &quot;classes&quot; or &quot;Types&quot; (when they are a property data type). All <em>Types</em> on <strong>schema_org</strong> are based on the highest class called &quot;Thing&quot;. In Django they are represented as Models.</p>
 </li>
-<li><p>Use the <strong>elioSin</strong> yeoman generator <strong>generator-sin</strong> to create the boilerplate of a sinful theme in this folder:</p>
+<li><p><em>fields</em> and <em>properties</em> are the same thing. On <strong>schema_org</strong> they are called properties; and these are mapped to Django fields of the same name.</p>
 </li>
 </ul>
-<pre><code>mkdir &lt;theme_name&gt;
-cd &lt;theme_name&gt;
-yo sin</code></pre><ul>
-<li>In your django settings file add the following:</li>
-</ul>
-<pre><code class="language-python">STATICFILES_DIRS = [os.path.join(&quot;&lt;app_name&gt;&quot;, &quot;&lt;theme_name&gt;/dist&quot;)]
-STATIC_ROOT = &quot;&lt;app_name&gt;_static&quot;
-STATIC_URL = &quot;/static/&quot;</code></pre>
-<p><strong>elioSin</strong> gulp files build resources into the <code>dist</code> folder of the theme, including any image resources like <code>favicon.ico</code> and <code>apple-touch-icon.png</code>.</p>
+<h1 id="exercise-1-clone_dna">Exercise 1 <code>clone_dna</code></h1>
+<pre><code>mkdir movie
+cd movie
+virtualenv --python=python3 venv-movie
+pip install elio-dna</code></pre><p>Now we will scaffold the project:</p>
+<pre><code>python -m clone_dna movie</code></pre><h1 id="exercise-2-site_dna">Exercise 2 <code>SITE_DNA</code></h1>
+<p>The <code>SITE_DNA</code> setting describes the pages you want, which Schema models and fields you intend to use on each page. If you open your settings file you will find <code>clone_dna</code> has already added the following simple example to get you started.</p>
+<p><strong>example 1</strong></p>
+<pre><code>SITE_DNA = {
+  &quot;page&quot;: {
+    &quot;Home&quot;: {
+      &quot;engage&quot;: {&quot;WebPage&quot;: [&quot;name&quot;, &quot;description&quot;]},
+      &quot;list&quot;: {&quot;Photograph&quot;: [&quot;name&quot;, &quot;image&quot;]},
+    },
+    &quot;About&quot;: {
+      &quot;engage&quot;: {
+        &quot;AboutPage&quot;: [&quot;name&quot;, &quot;description&quot;],
+        &quot;LocalBusiness&quot;: [&quot;name&quot;, &quot;telephone&quot;, &quot;email&quot;, &quot;openingHours&quot;],
+      }
+    },
+  }
+}</code></pre><p>Here is a quick breakdown of the core sections:</p>
+<h2 id="page"><code>page</code></h2>
+<p>All the dictionary keys inside a <code>page</code> section will become pages on the website. So in this example there are two pages, &quot;Home&quot; and &quot;About&quot;. <strong>dna</strong> automatically builds a menu and adds it to the context of any page.</p>
+<h2 id="engage"><code>engage</code></h2>
+<p>There are two &quot;roles&quot; for Schema models per page. The <code>engage</code> role is like a singleton: 1 record of each specified model in this section will be rendered, in order, at the top of the page. For instance in <strong>example 1</strong>, on the &quot;Home&quot; page, there will be a &quot;WebPage&quot; model whose fields you edit, and are rendered to a template. By default in <strong>dna</strong> templates, only fields with data are rendered.</p>
+<h2 id="list"><code>list</code></h2>
+<p>The second kind of role is for querysets of the Types listed. These are rendered on the page below the <code>engage</code> section. You can list 1 or more Types and they will be listed in order mention in <code>SITE_DNA</code>.</p>
+<p>By combining the <code>engage</code> and <code>list</code> sections, you can easily create diverse pages of content.</p>
+<p>For <strong>example 1</strong> we can expect to see the properties &quot;name&quot; and &quot;description&quot; fields at the top of the webpage, and a list of &quot;images&quot; below. On the &quot;About&quot; page we will see a &quot;name&quot; and &quot;description&quot; the &quot;name&quot;, &quot;telephone&quot; and &quot;email&quot; of the site&#39;s LocalBusiness below that.</p>
+<p>Schema.org Types have lots of properties, so it&#39;s a good idea to list the specific fields you want to edit on forms. All fields are available though - and you can use the Browse section of the website.</p>
+<p>Let&#39;s look at another more complex example:</p>
+<p><strong>example 2</strong></p>
+<pre><code>SITE_DNA = {
+  &quot;page&quot;: {
+    &quot;Home&quot;: {
+      &quot;engage&quot;: {&quot;WebPage&quot;: [&quot;name&quot;, &quot;description&quot;]},
+      &quot;list&quot;: {&quot;Photograph&quot;: [&quot;name&quot;, &quot;image&quot;]},
+    },
+    &quot;sep1&quot;: {&quot;status&quot;: &quot;spacer&quot;},
+    &quot;Movies&quot;: {
+      &quot;engage&quot;: {&quot;WebPage&quot;: [&quot;name&quot;, &quot;description&quot;]},
+      &quot;page&quot;: {
+        &quot;Reviews&quot;: {
+          &quot;list&quot;: {
+            &quot;Review&quot;: {
+              &quot;paginate&quot;: 5,
+              &quot;template&quot;: &quot;movies/reviews.html&quot;,
+              &quot;field&quot;: [&quot;image&quot;, &quot;name&quot;, &quot;text&quot;, &quot;reviewRating&quot;],
+            }
+          }
+        },
+        &quot;News&quot;: {
+          &quot;list&quot;: {
+            &quot;CreativeWork&quot;: {
+              &quot;paginate&quot;: 10,
+              &quot;field&quot;: [&quot;image&quot;, &quot;name&quot;, &quot;text&quot;, &quot;creator&quot;]
+            }
+          }
+        }
+      }
+    }
+  }
+}</code></pre><p>In this example, we&#39;ve introduced some sub pages, breaking the &quot;Movies&quot; section of the website into two pages.</p>
+<p>We&#39;re specified a &quot;template&quot; for the &quot;Review&quot; type. We&#39;ve also indicated that we want to paginate the &quot;Review&quot; and &quot;News&quot; lists.</p>
+<p>There is also a separator in the menu.</p>
+<h2 id="what-we-learnt">What we learnt</h2>
+<p>The <code>SITE_DNA</code> setting is extremely important. The entire website hangs off it. The site&#39;s menu is automatically generated against it. The Django models are dynamically migrated and built from it. If you use all the default <strong>dna</strong> templates, you don&#39;t need to do much more. New pages and features can easily be added to the site by simply adding a new section to this dictionary.</p>
 <ul>
-<li>We&#39;re using <strong>django-livereload-server</strong> to watch+reload the Django Development server - including auto-collecting-static files - when you change any of your <strong>elioSin</strong> theme files. You should follow the livereload setup described in the link above, but in the spirit of a Quickstart:</li>
+<li>Creating pages.</li>
+<li>Choosing Schema.org Types to drive the data for your website.</li>
+<li>Some of <code>SITE_DNA</code>&#39;s settings.</li>
+<li>Adding separator.</li>
 </ul>
-<p>Add these settings to your settings file:</p>
-<pre><code class="language-python">INSTALLED_APPS = [
-  &quot;livereload&quot;,
-  ...
-  &quot;django.contrib.staticfiles&quot;,
-  &quot;dna.apps.DnaConfig&quot;,
-  &quot;&lt;app_name&gt;&quot;,
-]
-MIDDLEWARE = [
-  ...
-  &quot;livereload.middleware.LiveReloadScript&quot;,
-]</code></pre>
+<h1 id="exercise-3-seeing-is-believing">Exercise 3 Seeing is believing</h1>
 <ul>
-<li><p><code>cd</code> into your theme folder and type <code>gulp</code> (which is the standard way you work on an <strong>elioSin</strong> theme). Now gulp will watch for any changes to your theme&#39;s SCSS files and rebuild the CSS files to the dist folder.</p>
+<li>Load the app</li>
+</ul>
+<pre><code>export DJANGO_SETTINGS_MODULE=&quot;app_name.settings&quot;
+touch temp.db &amp;&amp; rm temp.db
+django-admin makemigrations movie
+django-admin migrate --noinput --database=default
+django-admin collectstatic --noinput
+django-admin runserver 0.0.0.0:8000</code></pre><p>Now you can start customising your app.</p>
+<h1 id="next-steps">Next Steps</h1>
+<ul>
+<li><p>Customise the main templates.</p>
 </li>
-<li><p>In another terminal, <code>cd</code> into your Django project (containing your app) and run: <code>django-admin livereload</code>. This will &quot;watch&quot; for any changes in the STATICFILES_DIRS and collectstatic + reload the Django Development server.</p>
-</li>
-<li><p>Finally, in yet another terminal, <code>cd</code> into your Django project (containing your app) and run: <code>django-admin runserver</code> (or whatever it is you usually do to start the Django Development server).</p>
+<li><p>Create special templates for the layout</p>
+<ul>
+<li>Templates for engage roles with different Schema Types.</li>
+<li>Templates for list roles with different Schema Types.</li>
+<li>Templates for forms.</li>
+</ul>
 </li>
 </ul>
-<p>NB: You can obviously use this process alongside any CSS framework you are using... but the above steps are 100% the <strong>elioWay</strong>.</p>
     <footer>
       <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>

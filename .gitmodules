@@ -13,3 +13,6 @@
 [submodule "icarus"]
 	path = icarus
 	url = git@gitlab.com-elio:eliothing/icarus.git
+[submodule "generator-thing"]
+	path = generator-thing
+	url = git@gitlab.com-elio:eliothing/generator-thing.git
