@@ -6,6 +6,9 @@
     "host": "eliothing",
     "Python": [
       "dna"
+    ],
+    "Tools": [
+      "generator-thing"
     ]
   },
   "devDependencies": {
