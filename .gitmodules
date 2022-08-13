@@ -7,12 +7,12 @@
 [submodule "flesh"]
 	path = flesh
 	url = git@gitlab.com-elio:eliothing/flesh.git
+[submodule "generator-thing"]
+	path = generator-thing
+	url = git@gitlab.com-elio:eliothing/generator-thing.git
 [submodule "genes"]
 	path = genes
 	url = git@gitlab.com-elio:eliothing/genes.git
 [submodule "icarus"]
 	path = icarus
 	url = git@gitlab.com-elio:eliothing/icarus.git
-[submodule "generator-thing"]
-	path = generator-thing
-	url = git@gitlab.com-elio:eliothing/generator-thing.git
