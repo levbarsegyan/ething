@@ -5,7 +5,8 @@
   "chisel": {
     "host": "eliothing",
     "Python": [
-      "dna"
+      "dna",
+      "genes"
     ],
     "Tools": [
       "generator-thing"
