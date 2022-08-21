@@ -34,6 +34,36 @@
         <img src="apple-touch-icon.png"/>
         <b>dna</b>
       </a>
+        <a href="#everythingmixin">
+                `EveryThingMixin`</a>
+        <a href="#everyquerysetmixin">
+                `EveryQuerySetMixin`</a>
+        <a href="#everygetobjectmixin">
+                `EveryGetObjectMixin`</a>
+        <a href="#everyeditmixin">
+                `EveryEditMixin`</a>
+        <a href="#everydeletemixin">
+                `EveryDeleteMixin`</a>
+        <a href="#everypagemixin">
+                `EveryPageMixin`</a>
+        <a href="#everycreateviewmixin">
+                `EveryCreateViewMixin`</a>
+        <a href="#everyupdateviewmixin">
+                `EveryUpdateViewMixin`</a>
+        <a href="#everydeleteviewmixin">
+                `EveryDeleteViewMixin`</a>
+        <a href="#everyengageviewmixin">
+                `EveryEngageViewMixin`</a>
+        <a href="#everyiterateviewmixin">
+                `EveryIterateViewMixin`</a>
+        <a href="#everyoptimizeviewmixin">
+                `EveryOptimizeViewMixin`</a>
+        <a href="#everylistviewmixin">
+                `EveryListViewMixin`</a>
+        <a href="#everypageviewmixin">
+                `EveryPageViewMixin`</a>
+        <a href="#everyhomeviewmixin">
+                `EveryHomeViewMixin`</a>
       <br/>
       <br/>
       <menu>
@@ -43,6 +73,10 @@
               </a>
             <label>Python</label>
             <nav>
+                  <a href="/eliothing/genes">
+                    <img src="/eliothing/genes/apple-touch-icon.png"/>
+                    <b>genes</b>
+                  </a>
             </nav>
             <label>Tools</label>
             <nav>
@@ -54,7 +88,110 @@
       </menu>
     </nav>
     <h1 id="views">views</h1>
-<p>Create a <code>my_app/views.py</code> file and import <strong>dna</strong>&#39;s Mixins.</p>
+<p><strong>dna</strong> provides important Mixins for your views. These are listed here describing what attributes the view provides.</p>
+<h1 id="dna-mixins">dna Mixins</h1>
+<p>See: <code>dna.view_mixins</code></p>
+<h2 id="everythingmixin"><code>EveryThingMixin</code></h2>
+<h3 id="site_dna-property"><code>site_dna</code> property</h3>
+<p>This property deepcopies the <code>SITE_DNA</code> setting described in the <a href="quickstart.html">quickstart</a>.</p>
+<h3 id="dna-property"><code>dna</code> property</h3>
+<p>This property returns an instance of the <code>DnaOfDjangoModel</code> class, which the other methods access to build a picture of your website.</p>
+<h3 id="page_name-property"><code>page_name</code> property</h3>
+<p>This conveniently property returns the name of the page from the URL args which will correspond to a <code>page</code> key in the <code>SITE_DNA</code>. e.g. <code>FilmReviews</code>, <code>Suppliers</code>, <code>Bookings</code>, <code>AboutSite</code>.</p>
+<h3 id="thing_name-property"><code>thing_name</code> property</h3>
+<p>This convenient property returns the name of the current Schema Type from the URL args. e.g. <code>Thing</code>, <code>Place</code>, <code>WebPage</code>, <code>Hospital</code></p>
+<h3 id="page_link-property"><code>page_link</code> property</h3>
+<p>This convenient property returns a URL to the current page. There are two types of contexts: a URL which is a <code>page</code> in <code>SITE_DNA</code>; and a <code>list</code> page for one of the Schema Types in your site backbone.</p>
+<h3 id="page_menu-property"><code>page_menu</code> property</h3>
+<p>This property builds a menu object we pass to the <code>_menu.html</code> template, which in turn renders an HMTL menu of the site which is responsive to the current page context. For instance it will display sub pages section of the menu when the URL is for the parent page or any of the other subpages. It will also return which menu item is currently active. The <code>page_menu</code> is also used to build the <code>breadcrumbs</code>.</p>
+<h3 id="model-property"><code>Model</code> property.</h3>
+<p>This property returns the Model class of the current context. You can treat this property like any Django model, calling the <code>objects</code> property to query the table in the database. It determines the Model class from the <code>thing_name</code> property.</p>
+<h3 id="get_context_data-method"><code>get_context_data</code> method</h3>
+<p>This sets the universe context for all pages in a <strong>dna</strong> website, sending the following values to any template:</p>
+<ul>
+<li><code>app_name</code> your <strong>dna</strong> app name in <code>title()</code> format.</li>
+<li><code>thing_name</code> property as described above.</li>
+<li><code>page_name</code> property as described above.</li>
+<li><code>home_page</code> conveniently returns the name/key of the sites first <code>page</code> in the <code>SITE_DNA</code>.</li>
+<li><code>page_menu</code> a dict representing the entire menu of the site which changes depending on the current URL.</li>
+</ul>
+<h2 id="everyquerysetmixin"><code>EveryQuerySetMixin</code></h2>
+<h3 id="paginate_by-field"><code>paginate_by</code> field</h3>
+<p>Defaults to 20. You can change the pagination number for every Thing listed in your <code>SITE_DNA</code>.</p>
+<h3 id="get_queryset-method"><code>get_queryset</code> method</h3>
+<p>Returns the Django queryset for the Model of the <code>thing_name</code> in the URL, ordered by the <code>name</code> property.</p>
+<h2 id="everygetobjectmixin"><code>EveryGetObjectMixin</code></h2>
+<h3 id="get_object-method"><code>get_object</code> method</h3>
+<p>Returns the Django instance for the Model of the <code>thing_name</code> and <code>pk</code> in the URL.</p>
+<h2 id="everyeditmixin"><code>EveryEditMixin</code></h2>
+<h3 id="get_form_class-method"><code>get_form_class</code> method</h3>
+<p>Returns the Django standard form prepared for the Model of the <code>thing_name</code> in the URL. This is used in <code>CreateView</code> and <code>UpdateView</code>. The fields rendered by the template are controlled by the <code>SITE_DNA</code> if accessing the Model from a <code>page</code>. Otherwise the form will display all the fields of the Model as specified in the Schema. For more information see the <code>every_form</code> method in the [forms][forms.html] section of the documentation.</p>
+<h2 id="everydeletemixin"><code>EveryDeleteMixin</code></h2>
+<h3 id="get_success_url-field"><code>get_success_url</code> field</h3>
+<p>Return the <code>.page_link</code> property which will redirect to the <code>page</code> which previously hosted the deleted object.</p>
+<h2 id="everypagemixin"><code>EveryPageMixin</code></h2>
+<h3 id="get_page_content-method"><code>get_page_content</code> method</h3>
+<p>When the URL relates to a <code>page</code> key in the <code>SITE_DNA</code>, this builds the content of the page from the <code>engage</code> and <code>list</code> sections of the dictionary. This is called by the <code>get_context_data</code> method of this class.</p>
+<h3 id="get_context_data-method-1"><code>get_context_data</code> method</h3>
+<p>Adds <code>page_engages</code> and <code>page_lists</code> to the context. These are dictionary objects which are rendered by <strong>dna</strong>&#39;s and contain all the objects and querysets required to build the content for the given page. As well as the object instances and querysets, the two data sets also provide contextual information relevant to the content, like the paginator, the thing name, as well as any custom template which should be used to render the object or queryset (overriding <strong>dna</strong>&#39;s default templates).</p>
+<h1 id="dna-views">dna views</h1>
+<p>All the Mixins described above are combined with standard Django class based views on the <code>dna.views</code> file, which you can import into your own views file.</p>
+<h2 id="everycreateviewmixin"><code>EveryCreateViewMixin</code></h2>
+<p>Create any Schema Type mentioned in your <code>SITE_DNA</code>.</p>
+<ul>
+<li>Mixins: <code>EveryThingMixin</code>, <code>EveryGetObjectMixin</code>, <code>EveryEditMixin</code>, <code>CreateView</code></li>
+<li>URL: <code>/cr/page_name/thing_name</code></li>
+</ul>
+<h2 id="everyupdateviewmixin"><code>EveryUpdateViewMixin</code></h2>
+<p>Update any Schema Type mentioned in your <code>SITE_DNA</code>.</p>
+<ul>
+<li>Mixins: <code>EveryThingMixin</code>, <code>EveryGetObjectMixin</code>, <code>EveryEditMixin</code>, <code>UpdateView</code></li>
+<li>URL: <code>/u/page_name/thing_name/pk</code></li>
+</ul>
+<h2 id="everydeleteviewmixin"><code>EveryDeleteViewMixin</code></h2>
+<p>Delete any Schema Type mentioned in your <code>SITE_DNA</code>.</p>
+<ul>
+<li>Mixins: <code>EveryThingMixin</code>, <code>EveryGetObjectMixin</code>, <code>EveryQuerySetMixin</code>, <code>EveryDeleteMixin</code>, <code>DeleteView</code></li>
+<li>URL: <code>/d/page_name/thing_name/pk</code></li>
+</ul>
+<h2 id="everyengageviewmixin"><code>EveryEngageViewMixin</code></h2>
+<p>View on a single page any Schema Type mentioned in your <code>SITE_DNA</code>.</p>
+<ul>
+<li>Mixins: <code>EveryThingMixin</code>, <code>EveryQuerySetMixin</code>, <code>EveryGetObjectMixin</code>, <code>DetailView</code></li>
+<li>URL: <code>/e/page_name/thing_name/pk</code></li>
+</ul>
+<h2 id="everyiterateviewmixin"><code>EveryIterateViewMixin</code></h2>
+<p>Handles properties of any Schema Type which have been given an <code>iterable</code> role <code>SITE_DNA</code>. <em>NB: Feature in development</em></p>
+<ul>
+<li>Mixins: <code>EveryThingMixin</code>, <code>TemplateView</code></li>
+<li>URL: <code>/i/page_name/thing_name/pk/field_name</code></li>
+</ul>
+<h2 id="everyoptimizeviewmixin"><code>EveryOptimizeViewMixin</code></h2>
+<p>A special kind of view from which you can create reports, graphs, or provide settings and features to administrate any Schema Type. <em>NB: Feature in development</em></p>
+<ul>
+<li>Mixins: <code>EveryThingMixin</code>, <code>TemplateView</code></li>
+<li>URL: <code>/o/page_name/thing_name</code></li>
+</ul>
+<h2 id="everylistviewmixin"><code>EveryListViewMixin</code></h2>
+<p>View on a single page a queryset matching a Schema Type mentioned in your <code>SITE_DNA</code>.</p>
+<ul>
+<li>Mixins: <code>EveryThingMixin</code>, <code>EveryQuerySetMixin</code>, <code>ListView</code></li>
+<li>URL: <code>/l/page_name/thing_name</code></li>
+</ul>
+<h2 id="everypageviewmixin"><code>EveryPageViewMixin</code></h2>
+<p>View all the content of Schema Types mentioned in a <code>page</code> in your <code>SITE_DNA</code>.</p>
+<ul>
+<li>Mixins: <code>EveryThingMixin</code>, <code>EveryPageMixin</code>, <code>TemplateView</code></li>
+<li>URL: <code>/p/page_name</code></li>
+</ul>
+<h2 id="everyhomeviewmixin"><code>EveryHomeViewMixin</code></h2>
+<p>The entry point of the site which you can use as Splash Screen, a Login Page or other static content for your webapp.</p>
+<ul>
+<li>Mixins: <code>EveryThingMixin, TemplateView</code></li>
+<li>URL: <code>/</code></li>
+</ul>
+<h1 id="your-views-file">Your views file</h1>
+<p>Your <code>app_name.views.py</code> file should look something like this, using <strong>dna</strong> Mixins. You can then build on the available context variables and view properties described above. Out of the box, the only thing which needs setting is a template name each <strong>dna</strong> page type for your site. These are described in the <a href="templates.html">templates</a> section of this documentation.</p>
 <pre><code># -*- encoding: utf-8 -*-
 from dna.views import (
     EveryCreateViewMixin,

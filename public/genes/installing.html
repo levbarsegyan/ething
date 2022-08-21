@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      Installing genes
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/dist/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png"/>
+        <b>genes</b>
+      </a>
+        <a href="#installing-with-pip">
+                Installing with pip</a>
+        <a href="#development">
+                Development</a>
+      <br/>
+      <br/>
+      <menu>
+              <a href="/eliothing">
+                <img src="/eliothing/apple-touch-icon.png"/>
+                <b>eliothing</b>
+              </a>
+            <label>Python</label>
+            <nav>
+                  <a href="/eliothing/dna">
+                    <img src="/eliothing/dna/apple-touch-icon.png"/>
+                    <b>dna</b>
+                  </a>
+            </nav>
+      </menu>
+    </nav>
+    <h1 id="installing-genes">Installing genes</h1>
+<h2 id="installing-with-pip">Installing with pip</h2>
+<p>In an existing python project, pip install <strong>genes</strong>.</p>
+<pre><code>pip install elio-genes</code></pre><h2 id="development">Development</h2>
+<h3 id="setup">Setup</h3>
+<p>.. is also a fine way to install <strong>genes</strong>, using GIT as a starting project.</p>
+<pre><code class="language-bash">cd elioway
+git clone https://gitlab.com/elioway/elioangels.git
+cd elioangels
+git clone https://gitlab.com/elioangels/genes.git
+cd genes
+virtualenv --python=python3 venv-genes
+source venv-genes/bin/activate
+pip install -r requirements/local.txt</code></pre>
+<p><strong>Run the tests:</strong></p>
+<pre><code class="language-bash">find . -name &#39;*.pyc&#39; -delete
+find . -name &#39;__pycache__&#39; -delete
+py.test -x</code></pre>
+<h3 id="publish">Publish</h3>
+<p>Activate the virtualenv.</p>
+<pre><code>python3 setup.py sdist bdist_wheel
+twine upload dist/*
+# Enter YOUR-USERNAME and YOUR-PASSWORD</code></pre><p>Testing it:</p>
+<pre><code>pip install elio-genes</code></pre><p><strong>Test Publish</strong></p>
+<pre><code>python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+# Enter YOUR-USERNAME and YOUR-PASSWORD
+cd some/test/folder
+virtualenv --python=python3 venv-genes
+source venv-genes/bin/activate
+# or
+source venv-genes/bin/activate.fish
+python3 -m pip install --index-url https://test.pypi.org/simple/ genes</code></pre>
+    <footer>
+      <a href="https://gitlab.com/elioway/eliothing/genes">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-genes-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/dist/js/adons.js"></script>
+    <script src="/dist/js/main.js"></script>
+  </body>
+</html>
