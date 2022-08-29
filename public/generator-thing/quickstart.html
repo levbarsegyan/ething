@@ -38,13 +38,20 @@
                 Prerequisites</a>
         <a href="#nutshell">
                 Nutshell</a>
-      <br/>
-      <br/>
+        <a href="#yo-thing">
+                `yo thing`</a>
+        <a href="#what-yo-thing-makes">
+                What `yo thing` makes</a>
+        <a href="#seeing-is-believing">
+                Seeing is believing</a>
+        <a href="#next">
+                Next</a>
+      <hr>
+      <a href="/eliothing">
+        <img src="/eliothing/apple-touch-icon.png"/>
+        <b>eliothing</b>
+      </a>
       <menu>
-              <a href="/eliothing">
-                <img src="/eliothing/apple-touch-icon.png"/>
-                <b>eliothing</b>
-              </a>
             <label>Python</label>
             <nav>
                   <a href="/eliothing/dna">
@@ -64,14 +71,15 @@
     <h1 id="quickstart-generator-thing">Quickstart generator-thing</h1>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li><a href="installing.html">Installing generator-thing</a></li>
+<li>Some previous experience with Django helpful <a href="https://www.djangoproject.com/start/">Get Started</a></li>
+<li>Installed generator-thing <a href="installing.html">No!</a></li>
 </ul>
 <h2 id="nutshell">Nutshell</h2>
 <ul>
 <li>Create folder for your app.</li>
 <li>Enter the command <code>yo thing</code> in the folder.</li>
 </ul>
-<h3 id="yo-thing"><code>yo thing</code></h3>
+<h2 id="yo-thing"><code>yo thing</code></h2>
 <pre><code class="language-shell">mkdir genesis
 cd genesis
 yo thing</code></pre>
@@ -83,10 +91,50 @@ yo thing</code></pre>
 <li><p>The finished message appears.</p>
 </li>
 </ul>
+<h2 id="what-yo-thing-makes">What <code>yo thing</code> makes</h2>
+<p>Assuming you ran <strong>generator-thing</strong> in a folder call <code>app_name</code>:</p>
+<pre><code class="language-asciiart">|- init_app_name.sh
+|- LICENSE.sh
+|- manage.py
+|- README.md
+|- setup.py
+|- app_name
+    |- __init__.py
+    |- models.py
+    |- settings.py
+    |- urls.py
+    |- views.py
+    |- wsgi.py
+    |- static
+        |- css
+            |- innocent.min.css
+            |- innocent.min.css.map
+    |- templates
+        |- app_name
+            |- base.html
+            |- home_page.html
+            |- thing_delete.html
+            |- thing_engaged.html
+            |- thing_form.html
+            |- thing_iterate.html
+            |- thing_listed.html
+            |- thing_optimize.html
+            |- thing_page.html
+|- schemaorg
+    |- data
+        |- releases
+            |- 3.9
+                |- all-layers.jsonld</code></pre>
+<h2 id="seeing-is-believing">Seeing is believing</h2>
 <p>Type:</p>
 <pre><code class="language-shell">pip install -e .  
 ./init_genesis.sh</code></pre>
 <p>Navigate to <a href="http://localhost:8000">http://localhost:8000</a></p>
+<h2 id="next">Next</h2>
+<p>See the <strong>dna</strong> app for more details about how your app works; and how you can customise it.</p>
+<ul>
+<li><a href="https://elioway.gitlab.io/eliothing/dna">dna Documentation</a></li>
+</ul>
     <footer>
       <a href="https://gitlab.com/eliothing/generator-thing/">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>
