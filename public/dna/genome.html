@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      dna genome
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/dist/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png"/>
+        <b>dna</b>
+      </a>
+        <a href="#type-genome">
+                Type `genome`</a>
+        <a href="#property-genome">
+                Property `genome`</a>
+      <hr>
+      <a href="/eliothing">
+        <img src="/eliothing/apple-touch-icon.png"/>
+        <b>eliothing</b>
+      </a>
+      <menu>
+            <label>Python</label>
+            <nav>
+                  <a href="/eliothing/genes">
+                    <img src="/eliothing/genes/apple-touch-icon.png"/>
+                    <b>genes</b>
+                  </a>
+            </nav>
+            <label>Tools</label>
+            <nav>
+                  <a href="/eliothing/generator-thing">
+                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
+                    <b>generator-thing</b>
+                  </a>
+            </nav>
+      </menu>
+    </nav>
+    <h1 id="dna-genome">dna genome</h1>
+<p><strong>dna</strong> comes with a very useful Schema explorer called <code>genome</code>. This management command guides finding Schema Types to drive your site&#39;s data, and help you select the best fields for your Page&#39;s Schema Roles.</p>
+<p>You can use it to list information about Types or Properties in the Schema. You could also visit the <a href="https://schema.org">schema.org</a> for the same purpose.</p>
+<h2 id="type-genome">Type <code>genome</code></h2>
+<p>This lists:</p>
+<ol>
+<li>The description from Schema.org</li>
+<li>Which classes it subclasses. This is important because <strong>dna</strong> uses Class Inhertitance to build Django models.</li>
+<li>The properties of this class - not including the ones it will inherit.</li>
+</ol>
+<p>Examples</p>
+<pre><code>django-admin genome Thing
+django-admin genome Place
+django-admin genome LocalBusiness</code></pre><p>You can also add the optional parameter <code>-d</code>. This will display a list of any Types which are dependant on it. This can be really useful because Microdata is all about semantics. For instance if you are creating an app to gather content about the government services offered in your town, don&#39;t just use the &quot;Organization&quot; type... instead type:</p>
+<pre><code>django-admin genome Organization -d</code></pre><p>You will see that GovernmentOrganization, LibrarySystem, EducationalOrganization, TouristInformationCenter, GovernmentOffice, Library, EmploymentAgency, EmergencyService, RecyclingCenter are all Types which are inherited from Organization. If I were creating such an app, I would choose all these Types and either have them on the same page (using a filter on that page), or split the site into pages for each category of service.</p>
+<h2 id="property-genome">Property <code>genome</code></h2>
+<p><code>genome</code> can tell if you are querying a Type or property by default, so the command is the same. The only difference is that the <code>-d</code> is not relevant.</p>
+<p>The <code>genome</code> of a property lists:</p>
+<ol>
+<li>The description from Schema.org</li>
+<li>All the Types which have this property as a field.</li>
+<li>All the Classes of the property - where Classes is just another way of saying Type.</li>
+</ol>
+<p>While we are in the subject of Property types/classes, it is helpful to understand how <strong>dna</strong> treats these.</p>
+<p><strong>dna</strong> tames Schema in many ways, but Property types is an area most in need of taming!</p>
+<p>In building Django models, <strong>dna</strong> takes the following Types as Primitive. They will be automatically resolved to a standard Django <code>models.Field</code>.</p>
+<ul>
+<li><a href="http://schema.org/Boolean">http://schema.org/Boolean</a></li>
+<li><a href="http://schema.org/DateTime">http://schema.org/DateTime</a></li>
+<li><a href="http://schema.org/Date">http://schema.org/Date</a></li>
+<li><a href="http://schema.org/Number">http://schema.org/Number</a></li>
+<li><a href="http://schema.org/Text">http://schema.org/Text</a></li>
+<li><a href="http://schema.org/Time">http://schema.org/Time</a></li>
+<li><a href="http://schema.org/Duration">http://schema.org/Duration</a></li>
+<li><a href="http://schema.org/Float">http://schema.org/Float</a></li>
+<li><a href="http://schema.org/Integer">http://schema.org/Integer</a></li>
+<li><a href="http://schema.org/Quantity">http://schema.org/Quantity</a></li>
+<li><a href="http://schema.org/URL">http://schema.org/URL</a></li>
+</ul>
+<p>All other Property Types are Schema Types and can be resolved to Django <code>models.ForeignKey</code>. <strong>dna</strong> will decide automatically whether to use a Primitive or Schema Type depending on the <code>DNA_DEPTH</code> setting explained in <a href="settings.html">settings</a>.</p>
+    <footer>
+      <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-dna-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/dist/js/adons.js"></script>
+    <script src="/dist/js/main.js"></script>
+  </body>
+</html>

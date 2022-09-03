@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      dna Template Tags
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/dist/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png"/>
+        <b>dna</b>
+      </a>
+        <a href="#thumbnail">
+                `thumbnail`</a>
+        <a href="#is_none_null_or_zero">
+                `is_none_null_or_zero`</a>
+        <a href="#is_in">
+                `is_in`</a>
+        <a href="#dirt">
+                `dirt`</a>
+        <a href="#url_replace">
+                `url_replace`</a>
+      <hr>
+      <a href="/eliothing">
+        <img src="/eliothing/apple-touch-icon.png"/>
+        <b>eliothing</b>
+      </a>
+      <menu>
+            <label>Python</label>
+            <nav>
+                  <a href="/eliothing/genes">
+                    <img src="/eliothing/genes/apple-touch-icon.png"/>
+                    <b>genes</b>
+                  </a>
+            </nav>
+            <label>Tools</label>
+            <nav>
+                  <a href="/eliothing/generator-thing">
+                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
+                    <b>generator-thing</b>
+                  </a>
+            </nav>
+      </menu>
+    </nav>
+    <h1 id="dna-template-tags">dna Template Tags</h1>
+<h2 id="thumbnail"><code>thumbnail</code></h2>
+<p>Create a thumbnail from an image using <strong>easy_thumbnails</strong> and providing a thumbnail size preset in <strong>dna</strong> <a href="settings.html">settings</a></p>
+<pre><code>@register.simple_tag(name=&quot;thumbnail&quot;)
+def thumbnail(image_path, dimensions):
+    thumb = watermark(image_path, dimensions)
+    return thumb</code></pre><h3 id="usage">Usage</h3>
+<pre><code>{% load dna_tags %}
+&lt;img
+  src=&quot;{% thumbnail object.image &#39;100x100&#39; %}&quot;
+  alt=&quot;{{ object.name }}&quot; /&gt;</code></pre><p>Available sizes:</p>
+<ul>
+<li>100x100</li>
+<li>300x300</li>
+<li>640x480</li>
+<li>960x720</li>
+</ul>
+<h2 id="is_none_null_or_zero"><code>is_none_null_or_zero</code></h2>
+<p>Evaluate a field value and determine whether it is worth rendering to the page. We use this to prevent <strong>dna</strong> from printing every field of an object - even if empty - but only fields with information that is useful.</p>
+<pre><code>@register.filter(&quot;is_none_null_or_zero&quot;)
+def is_none_null_or_zero(value):
+    return (
+        not value
+        or value == &quot;False&quot;
+        or value is None
+        or value == &quot;None&quot;
+        or str(value) == &quot;0&quot;
+        or str(value) == &quot;0.0&quot;
+        or boolean(value.strip())
+    )</code></pre><h3 id="usage-1">Usage</h3>
+<pre><code>{% for field_name, field_type, field in object.get_fields %}
+  {% if not field|is_none_null_or_zero %}
+    {{ field }}
+  {% else %}
+    {# nothing to see here #}
+  {% endif %}
+{% endfor %}</code></pre><h2 id="is_in"><code>is_in</code></h2>
+<p>A useful utility to determine whether a value exists in a comma separated list. We use it to exclude rendering certain fields of a model if they match a preset list (i.e. system fields).</p>
+<pre><code>@register.filter(&quot;is_in&quot;)
+def is_in(value, comma_list):
+    return value in comma_list.split(&quot;,&quot;)</code></pre><h3 id="usage-2">Usage</h3>
+<pre><code>{% if value|is_in:&quot;dog,cat,mouse,parrot,rat&quot; %}
+  You&#39;re a pet!
+{% endif %}</code></pre><ul>
+<li>See <a href="templates.html#%60%60">templates</a></li>
+</ul>
+<h2 id="dirt"><code>dirt</code></h2>
+<p>Utility template_tag used in development to render to a website the <code>dir</code> of any template variable, i.e. dish the dirt on what kind of object it is.</p>
+<pre><code>@register.filter(&quot;dirt&quot;)
+def dirt(value):
+    return dir(value)</code></pre><h3 id="usage-3">Usage</h3>
+<pre><code>{{ value|dirt }}</code></pre><h2 id="url_replace"><code>url_replace</code></h2>
+<p>Utility to handle multiple querystrings (in concert). We use it so that we can run multiple paginators on a page. The template tag takes a querystring key and value and updates it; then returns the whole queryset back.</p>
+<pre><code># need to add &#39;django.core.context_processors.request&#39; to settings.TEMPLATES
+@register.simple_tag(takes_context=True)
+def url_replace(context, name, value):
+    request = context[&quot;request&quot;]
+    qs = request.GET.copy()
+    qs[name] = value
+    return qs.urlencode()</code></pre><h3 id="usage-4">Usage</h3>
+<p>In the following example, <code>url_replace</code> will maintain all three querystrings for filtering the &quot;currentpage&quot;.</p>
+<pre><code>&lt;b&gt;Filters&lt;/b&gt;
+{% for col in col_list %}
+&lt;a href=&quot;{% url &#39;page&#39; currentpage %}?{% url_replace &#39;color&#39; col %}&quot;&gt;Filter color {{ col }}&lt;/a&gt;
+{% endfor %}
+{% for cat in cat_list %}
+&lt;a href=&quot;{% url &#39;page&#39; currentpage %}?{% url_replace &#39;category&#39; cat %}&quot;&gt;Filter category {{ cat }}&lt;/a&gt;
+{% endfor %}
+{% for size in size_list %}
+  &lt;a href=&quot;{% url &#39;page&#39; currentpage %}?{% url_replace &#39;size&#39; size %}&quot;&gt;Filter size {{ size }}&lt;/a&gt;
+{% endfor %}</code></pre>
+    <footer>
+      <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-dna-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/dist/js/adons.js"></script>
+    <script src="/dist/js/main.js"></script>
+  </body>
+</html>

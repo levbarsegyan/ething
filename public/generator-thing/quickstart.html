@@ -38,12 +38,8 @@
                 Prerequisites</a>
         <a href="#nutshell">
                 Nutshell</a>
-        <a href="#yo-thing">
-                `yo thing`</a>
-        <a href="#what-yo-thing-makes">
-                What `yo thing` makes</a>
-        <a href="#seeing-is-believing">
-                Seeing is believing</a>
+        <a href="#exercise-1-calling-yo-thing">
+                Exercise 1: Calling `yo thing`</a>
         <a href="#next">
                 Next</a>
       <hr>
@@ -79,10 +75,12 @@
 <li>Create folder for your app.</li>
 <li>Enter the command <code>yo thing</code> in the folder.</li>
 </ul>
-<h2 id="yo-thing"><code>yo thing</code></h2>
-<pre><code class="language-shell">mkdir genesis
-cd genesis
+<h2 id="exercise-1-calling-yo-thing">Exercise 1: Calling <code>yo thing</code></h2>
+<p>Start by creating a folder for your app, and typing <code>yo thing</code>. We will use &quot;Frankenstein&quot; for this Quick Start.</p>
+<pre><code class="language-shell">mkdir frankenstein
+cd frankenstein
 yo thing</code></pre>
+<p>You will only be asked to provide a name of your website. It should be short but expressive: e.g. &quot;The Kitchen&quot;, &quot;Brazil Travels&quot;. Use &quot;Frankenstein&quot; to follow this Quick Start exactly, but it&#39;s not compulsory.</p>
 <ul>
 <li><p>Now wait...</p>
 </li>
@@ -91,11 +89,13 @@ yo thing</code></pre>
 <li><p>The finished message appears.</p>
 </li>
 </ul>
-<h2 id="what-yo-thing-makes">What <code>yo thing</code> makes</h2>
+<h3 id="what-yo-thing-makes">What <code>yo thing</code> makes</h3>
 <p>Assuming you ran <strong>generator-thing</strong> in a folder call <code>app_name</code>:</p>
-<pre><code class="language-asciiart">|- init_app_name.sh
+<pre><code class="language-asciiart">|- .gitignore
+|- init_app_name.sh
 |- LICENSE.sh
 |- manage.py
+|- pyproject.toml
 |- README.md
 |- setup.py
 |- app_name
@@ -125,11 +125,16 @@ yo thing</code></pre>
         |- releases
             |- 3.9
                 |- all-layers.jsonld</code></pre>
-<h2 id="seeing-is-believing">Seeing is believing</h2>
-<p>Type:</p>
-<pre><code class="language-shell">pip install -e .  
-./init_genesis.sh</code></pre>
-<p>Navigate to <a href="http://localhost:8000">http://localhost:8000</a></p>
+<h3 id="seeing-is-believing">Seeing is believing</h3>
+<p>Now you can follow the onscreen instructions to setup a <code>virtualenv</code>; install <strong>dna</strong>; and run the website. Assuming you followed the Quick Start exactly (which will assume for the rest of this guide), you&#39;ll type the following.</p>
+<pre><code>source venv-frankenstein/bin/activate[.fish]
+pip install -e .
+./init_frankenstein.sh</code></pre><p>Navigate to <a href="http://localhost:8000">http://localhost:8000</a></p>
+<p>You will now see a working app!</p>
+<h3 id="what-we-learnt">What we learnt</h3>
+<ul>
+<li>How to use <code>yo thing</code> to install a <strong>dna</strong> app.</li>
+</ul>
 <h2 id="next">Next</h2>
 <p>See the <strong>dna</strong> app for more details about how your app works; and how you can customise it.</p>
 <ul>

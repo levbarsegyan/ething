@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>
-      genes Quickstart
+      elioSin in Django Projects
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -49,11 +49,7 @@
             </nav>
       </menu>
     </nav>
-    <h1 id="genes-quickstart">genes Quickstart</h1>
-<ul>
-<li><strong>elioSin</strong> prerequisites met? <a href="https://elioway.gitlab.io/eliosin/installing.html">No!</a></li>
-</ul>
-<h1 id="exercise-x-using-eliosin-in-your-django-build">Exercise X: Using elioSin in your Django build</h1>
+    <h1 id="eliosin-in-django-projects">elioSin in Django Projects</h1>
 <p>We&#39;re using <a href="https://github.com/tjwalch/django-livereload-server">django-livereload-server</a> to make working with an <strong>elioSin</strong> theme and Django project as easy as possible.</p>
 <p>You should already understand the <strong>elioSin</strong> work-and-build process as described:</p>
 <ul>
@@ -64,18 +60,17 @@
 <ul>
 <li><p>Create a folder inside your Django app called <code>theme</code> <em>(name is optional)</em>. Put it alongside your templates folder, directly inside the app folder whose Django templates you are theming. <code>theme</code> is good because it sits alphabetically below to <code>template</code>.</p>
 </li>
-<li><p>Use the <strong>elioSin</strong> yeoman generator <strong>generator-sin</strong> to create the boilerplate of a sinful theme in this folder:</p>
+<li><p>Use the <strong>elioSin</strong> yeoman generator <strong>generator-sin</strong> to create the boilerplate of a sinful theme in this folder: ```</p>
 </li>
 </ul>
-<pre><code>mkdir &lt;theme_name&gt;
-cd &lt;theme_name&gt;
-yo sin</code></pre><ul>
-<li>In your django settings file add the following:</li>
-</ul>
-<pre><code class="language-python">STATICFILES_DIRS = [os.path.join(&quot;&lt;app_name&gt;&quot;, &quot;&lt;theme_name&gt;/dist&quot;)]
+<p>mkdir</p>
+<p>app_name cd app_name yo sin app_name</p>
+<pre><code>
+- In your django settings file add the following:
+```python
+STATICFILES_DIRS = [os.path.join(&quot;&lt;app_name&gt;&quot;, &quot;&lt;theme_name&gt;/dist&quot;)]
 STATIC_ROOT = &quot;&lt;app_name&gt;_static&quot;
-STATIC_URL = &quot;/static/&quot;</code></pre>
-<p><strong>elioSin</strong> gulp files build resources into the <code>dist</code> folder of the theme, including any image resources like <code>favicon.ico</code> and <code>apple-touch-icon.png</code>.</p>
+STATIC_URL = &quot;/static/&quot;</code></pre><p><strong>elioSin</strong> gulp files build resources into the <code>dist</code> folder of the theme, including any image resources like <code>favicon.ico</code> and <code>apple-touch-icon.png</code>.</p>
 <ul>
 <li>We&#39;re using <strong>django-livereload-server</strong> to watch+reload the Django Development server - including auto-collecting-static files - when you change any of your <strong>elioSin</strong> theme files. You should follow the livereload setup described in the link above, but in the spirit of a Quickstart:</li>
 </ul>
@@ -84,7 +79,7 @@ STATIC_URL = &quot;/static/&quot;</code></pre>
   &quot;livereload&quot;,
   ...
   &quot;django.contrib.staticfiles&quot;,
-  &quot;genes.apps.DnaConfig&quot;,
+  &quot;dna.apps.DnaConfig&quot;,
   &quot;&lt;app_name&gt;&quot;,
 ]
 MIDDLEWARE = [

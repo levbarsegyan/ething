@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      SITE_DNA
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/dist/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png"/>
+        <b>dna</b>
+      </a>
+        <a href="#overview">
+                Overview</a>
+        <a href="#page">
+                `page`</a>
+        <a href="#pages">
+                Pages</a>
+        <a href="#schema-types">
+                Schema Types</a>
+      <hr>
+      <a href="/eliothing">
+        <img src="/eliothing/apple-touch-icon.png"/>
+        <b>eliothing</b>
+      </a>
+      <menu>
+            <label>Python</label>
+            <nav>
+                  <a href="/eliothing/genes">
+                    <img src="/eliothing/genes/apple-touch-icon.png"/>
+                    <b>genes</b>
+                  </a>
+            </nav>
+            <label>Tools</label>
+            <nav>
+                  <a href="/eliothing/generator-thing">
+                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
+                    <b>generator-thing</b>
+                  </a>
+            </nav>
+      </menu>
+    </nav>
+    <h1 id="site_dna">SITE_DNA</h1>
+<p>This page describes the current and proposed specification for the &#39;SITE_DNA&#39; settings.</p>
+<h2 id="overview">Overview</h2>
+<p>The structure should look like this:</p>
+<pre><code>SITE_DNA = {
+  &#39;page&#39;: {
+    &#39;Page1&#39;: {
+      &#39;engage&#39;: {
+        &#39;SchemaType1&#39;: { ... settings for SchemaType1 ... },
+        &#39;SchemaType2&#39;: { ... }
+      },
+      &#39;list&#39;: {
+        &#39;SchemaType1&#39;: { ... },
+        &#39;SchemaType4&#39;: { ... },
+        &#39;SchemaType3&#39;: { ... }
+      },
+      &#39;page&#39;: {
+        .. repeat pattern for sub pages ...
+      }
+    },
+    &#39;Page2&#39;:  { ... etc ... },
+  }
+}</code></pre><h2 id="page"><code>page</code></h2>
+<p>The website&#39;s main pages are created by first defining a <code>page</code> key as the first and only direct key of <code>SITE_DNA</code>.</p>
+<p>Inside <code>page</code> add a dictionary for each Page you want where the key is name of the Page as it will appear in the menu and URL. (See below).</p>
+<ul>
+<li>The nesting goes <code>page</code> &gt; &quot;PageName(s)&quot; &gt; &quot;role(s)&quot; &gt; &quot;SchemaType(s)&quot;</li>
+<li>Sub pages are structured: <code>page</code> &gt; &quot;PageName(s)&quot; &gt; <code>page</code> &gt; &quot;PageName(s)&quot; &gt; <code>page</code> &gt; &quot;PageName(s)&quot;</li>
+</ul>
+<h2 id="pages">Pages</h2>
+<p>Pages are defined as dictionaries and can the following keys:</p>
+<h3 id="template"><code>template</code></h3>
+<p>By default <strong>dna</strong> will use the template created by <strong>generator-thing</strong> and described in the <a href="templates.html">templates specification</a> of this documentation. Optionally you can create a special template for each page.</p>
+<p>In the following example we are defining a website which uses no Schema Type. Effectively this would work perfectly well to create a static site.</p>
+<pre><code>&#39;page&#39;: {
+  &#39;Intro&#39;: { &#39;template&#39;: &#39;frankenstein/intro_page.html&#39; },
+  &#39;Hobbies&#39;: { &#39;template&#39;: &#39;frankenstein/hobbies_page.html&#39; },
+  &#39;Family&#39;: { &#39;template&#39;: &#39;frankenstein/family_page.html&#39; },
+  &#39;Pets&#39;: { &#39;template&#39;: &#39;frankenstein/pets_page.html&#39; },
+  &#39;Garden&#39;: { &#39;template&#39;: &#39;frankenstein/garden_page.html&#39; },
+  &#39;Monster&#39;: { &#39;template&#39;: &#39;frankenstein/monster_page.html&#39; },
+  &#39;Igor&#39;: { &#39;template&#39;: &#39;frankenstein/igor_page.html&#39; }
+}</code></pre><h3 id="engage-and-list"><code>engage</code> and <code>list</code></h3>
+<p>These two keys are (what we call) the page Roles. Both are optional. See below.</p>
+<h3 id="page-1"><code>page</code></h3>
+<p>Create sub pages which appear as a sub menu for the Page. These links will also be available in the Page context so that your user can link to the Sub Pages from the Host Page.</p>
+<p><code>page</code> is iterative, so the pattern for the <code>SITE_DNA</code> main <code>page</code> can be repeated as deeply as you dare.</p>
+<h2 id="schema-types">Schema Types</h2>
+<p>As mentioned above, Schema Types can appear as content on a page in 1 of 2 &quot;Roles&quot;.</p>
+<h3 id="engage"><code>engage</code></h3>
+<p><code>engage</code> renders (to the page template) <strong>1 instance</strong> each of the Schema Types defined in the given order.</p>
+<ul>
+<li><code>field</code> is optional but recommended. Limits the fields rendered in the edit form for this SchemaType on this Page in this Role. All the fields for the Type are in the database, but limiting the fields on the form helps focus the User on the important ones.</li>
+<li><code>template</code> is optional but recommended. Default is <code>dna/_thing_engaged.html</code></li>
+</ul>
+<pre><code>&#39;engage&#39;: {
+  &#39;Thing&#39;: {
+    &#39;template&#39;: &#39;frankenstein/_page_intro.html&#39;,
+    &#39;field&#39;: [&#39;name&#39;, &#39;description&#39;]
+  },
+  &#39;GeoCoordinates&#39;: {
+    &#39;template&#39;: &#39;frankenstein/_google_map.html&#39;,
+    &#39;field&#39;: [&#39;address&#39;, &#39;longitude&#39;, &#39;longitude&#39;]
+  }
+},</code></pre><h3 id="list"><code>list</code></h3>
+<p><code>list</code> renders (to the page template) <strong>1 queryset</strong> each of the Schema Types defined in the given order.</p>
+<p>Listed SchemaTypes have the following optional properties</p>
+<ul>
+<li><code>field</code> The same rules apply as with <code>engage</code></li>
+<li><code>template</code> Default is <code>dna/_thing_listed.html</code></li>
+<li><code>paginate</code> will place a paginator for that Schema under the list. Multiple paginators will work in concert.</li>
+</ul>
+<pre><code>&#39;list&#39;: {
+  &#39;TouristDestination&#39;: {
+    &#39;template&#39;: &#39;frankenstein/_places_to_visit.html&#39;,
+    &#39;paginate&#39;: 12,
+    &#39;field&#39;: [&#39;name&#39;, &#39;description&#39;, &#39;touristType&#39;, &#39;address&#39;, &#39;longitude&#39;, &#39;longitude&#39;]
+  },  
+  &#39;FoodEstablishment&#39;: {
+    &#39;template&#39;: &#39;frankenstein/_restaurents.html&#39;,
+    &#39;paginate&#39;: 6,
+    &#39;field&#39;: [&#39;name&#39;, &#39;description&#39;, &#39;menu&#39;, &#39;address&#39;, &#39;longitude&#39;, &#39;longitude&#39;]
+  }
+}</code></pre>
+    <footer>
+      <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-dna-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/dist/js/adons.js"></script>
+    <script src="/dist/js/main.js"></script>
+  </body>
+</html>

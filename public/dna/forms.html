@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      dna ModelForms
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/dist/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png"/>
+        <b>dna</b>
+      </a>
+        <a href="#every_form">
+                `every_form`</a>
+      <hr>
+      <a href="/eliothing">
+        <img src="/eliothing/apple-touch-icon.png"/>
+        <b>eliothing</b>
+      </a>
+      <menu>
+            <label>Python</label>
+            <nav>
+                  <a href="/eliothing/genes">
+                    <img src="/eliothing/genes/apple-touch-icon.png"/>
+                    <b>genes</b>
+                  </a>
+            </nav>
+            <label>Tools</label>
+            <nav>
+                  <a href="/eliothing/generator-thing">
+                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
+                    <b>generator-thing</b>
+                  </a>
+            </nav>
+      </menu>
+    </nav>
+    <h1 id="dna-modelforms">dna ModelForms</h1>
+<p>You won&#39;t need a forms.py file in your app. <strong>dna</strong> comes with a method called <code>every_form</code> which will dynamically build a Django <code>ModelForm</code> for every Model you selected from Schema Class Types. <strong>dna</strong>&#39;s View Mixins call <code>every_form</code> as required, but if you create custom Views in your app to do things slightly differently, while still using Schema, it will help to understand the optional parameters for <code>every_form</code>.</p>
+<p>You could even customise your own method.</p>
+<h2 id="every_form"><code>every_form</code></h2>
+<p>... looks like this:</p>
+<pre><code>def every_form(any_model, elio_key, page_link, field_dna=[]):
+    class EveryForm(ModelForm):
+        def __init__(self, *args, **kw):
+            super().__init__(*args, **kw)
+            for f, v in self.fields.items():
+                if v.__class__.__name__ == &quot;DateField&quot;:
+                    self.fields[f].widget = AnyDateInput()
+                elif v.__class__.__name__ == &quot;TimeField&quot;:
+                    self.fields[f].widget = AnyTimeInput()
+                elif v.__class__.__name__ == &quot;DateTimeField&quot;:
+                    self.fields[f].widget = AnyDateTimeInput()
+                elif v.__class__.__name__ == &quot;EmailField&quot;:
+                    self.fields[f].widget = AnyEmailInput()
+                elif v.__class__.__name__ == &quot;ModelChoiceField&quot;:
+                    # self.fields[f].widget = AnyForeignKeyInput()
+                    # print(
+                    #     getattr(self.instance.__class__, f).field.related_model
+                    # )
+                    pass
+                elif v.__class__.__name__ in [
+                    &quot;DurationField&quot;,
+                    &quot;FloatField&quot;,
+                    &quot;IntegerField&quot;,
+                ]:
+                    self.fields[f].widget = AnyNumberInput()
+                elif v.__class__.__name__ in [
+                    &quot;CharField&quot;,
+                    &quot;URLField&quot;,
+                    &quot;BooleanField&quot;,
+                    &quot;ImageField&quot;,
+                    &quot;TypedChoiceField&quot;,
+                ]:
+                    pass
+                else:
+                    print(&quot;Needs widget?&quot;, v.__class__.__name__)
+            self.fields[&quot;elio_key&quot;].widget = HiddenInput()
+            self.fields[&quot;elio_key&quot;].initial = elio_key
+            self.fields[&quot;elio_page&quot;].widget = HiddenInput()
+            self.fields[&quot;elio_page&quot;].initial = page_link
+        field_order = [
+            &quot;name&quot;,
+            &quot;alternateName&quot;,
+            &quot;disambiguatingDescription&quot;,
+            &quot;image&quot;,
+            &quot;description&quot;,
+            &quot;sameAs&quot;,
+        ]
+        class Meta:
+            model = any_model
+            exclude = [&quot;pk&quot;, &quot;polymorphic_ctype&quot;, &quot;elio_role&quot;]
+            if field_dna:
+                fields = field_dna + [&quot;elio_key&quot;, &quot;elio_page&quot;]
+    return EveryForm</code></pre><h3 id="parameters">Parameters</h3>
+<h4 id="any_model"><code>any_model</code></h4>
+<p>A Django model type. All <strong>dna</strong> Views have a self.Model property representing the Django model in URL context. If you want to hard code a model from schema you can use the <code>apps</code> module from Django to do this yourself:</p>
+<pre><code>from django.apps import apps
+DjangoModelForEveryForm = apps.get_model(
+          model_name=&#39;Organization&#39;, app_label=my_app_name
+      )
+form = every_form(DjangoModelForEveryForm)</code></pre><h4 id="elio_key"><code>elio_key</code></h4>
+<p>All <strong>dna</strong> models have some special &quot;system&quot; fields. Because you might have the same Schema Types on different pages, <strong>dna</strong> uses the <code>elio_key</code> field to ensure that the correct instance/queryset is shown on the right pages. <code>elio_key</code> should therefore be unique to the context you want the model&#39;s data to render. See <a href="models.html">models</a> for more information.</p>
+<h3 id="page_link"><code>page_link</code></h3>
+<p>The Url of the page calling <code>every_form</code>. This contains the important Url args <code>page_name</code> and <code>thing_name</code>.</p>
+<h3 id="field_dna"><code>field_dna</code></h3>
+<p>A list of fields (and probably a sub list of all the fields mention in Schema). The form will only render for these fields, unless this list is empty: Then it will render the full set of fields.</p>
+    <footer>
+      <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-dna-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/dist/js/adons.js"></script>
+    <script src="/dist/js/main.js"></script>
+  </body>
+</html>
