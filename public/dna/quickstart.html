@@ -42,22 +42,12 @@
                 Glossary</a>
         <a href="#exercise-1-calling-yo-thing">
                 Exercise 1: Calling `yo thing`</a>
-        <a href="#page">
-                `page`</a>
-        <a href="#engage">
-                `engage`</a>
-        <a href="#list">
-                `list`</a>
-        <a href="#field">
-                `field`</a>
-        <a href="#what-we-learnt">
-                What we learnt</a>
-        <a href="#page-templates">
-                Page Templates</a>
-        <a href="#detail-template">
-                Detail Template</a>
-        <a href="#what-we-learnt">
-                What we learnt</a>
+        <a href="#exercise-2-site_dna">
+                Exercise 2 `SITE_DNA`</a>
+        <a href="#exercise-3-custom-templates">
+                Exercise 3 Custom Templates</a>
+        <a href="#next-steps">
+                Next Steps</a>
       <hr>
       <a href="/eliothing">
         <img src="/eliothing/apple-touch-icon.png"/>
@@ -160,7 +150,7 @@ pip install -e .
 <ul>
 <li>How to use <code>yo thing</code> to install a <strong>dna</strong> app.</li>
 </ul>
-<h1 id="exercise-2-site_dna">Exercise 2 <code>SITE_DNA</code></h1>
+<h2 id="exercise-2-site_dna">Exercise 2 <code>SITE_DNA</code></h2>
 <p>There are a handful of settings in <strong>dna</strong>, which are described in the <a href="settings.html">settings</a> documentation. For now you can use the defaults for all but <code>SITE_DNA</code>.</p>
 <p>Your entire website is define by the <code>SITE_DNA</code> setting and it&#39;s the first thing you&#39;ll need to check. For a very basic application it could also be the last!</p>
 <p>The <code>SITE_DNA</code> setting describes the pages you want, which Schema models and fields you intend to use on each page. If you open your settings file you will find <code>yo thing</code> has already added the following simple example to get you started.</p>
@@ -179,14 +169,14 @@ pip install -e .
     }
   }
 }</code></pre><p>Here is a quick breakdown of the core sections. The keywords should be read as verbs.</p>
-<h2 id="page"><code>page</code></h2>
+<h3 id="page"><code>page</code></h3>
 <p>All the dictionary keys inside a <code>page</code> section will become Pages on the website. In this example there are two pages, &quot;Home&quot; and &quot;About&quot;. <strong>dna</strong> automatically builds a menu and adds it to the context of any page.</p>
-<h2 id="engage"><code>engage</code></h2>
+<h3 id="engage"><code>engage</code></h3>
 <p>There are two &quot;roles&quot; for Schema Types for every Page. The <code>engage</code> Role is like a singleton: 1 record of each specified model in this section will be rendered, in order, at the top of the page. For instance, in <strong>example 1</strong>, on the &quot;Home&quot; page, there will be a &quot;WebPage&quot; model whose fields you edit, and are rendered to a template. By default in <strong>dna</strong> templates, only fields with data are rendered.</p>
-<h2 id="list"><code>list</code></h2>
+<h3 id="list"><code>list</code></h3>
 <p>The second kind of Role is for querysets of the Schema Types listed. These are rendered on the page below the <code>engage</code> section. You can have 1 or more Types and they will be listed in the order mention in <code>SITE_DNA</code>.</p>
 <p>By combining the <code>engage</code> and <code>list</code> sections, you can easily create diverse pages of content.</p>
-<h2 id="field"><code>field</code></h2>
+<h3 id="field"><code>field</code></h3>
 <p>Represents the names of Schema properties the Page should field. If this is not provided <strong>dna</strong> will display all the fields in the editing form. By default though <strong>dna</strong> displays any field which has data, regardless of what is being fielded.</p>
 <p>For <strong>example 1</strong>, we can expect to see the properties for the &quot;name&quot; and &quot;description&quot; fields at the top of the webpage, and a list of &quot;images&quot; below. On the &quot;About&quot; page we will see a &quot;name&quot; and &quot;description&quot;; plus the &quot;name&quot;, &quot;telephone&quot; and &quot;email&quot; of the site&#39;s LocalBusiness below that.</p>
 <p>Schema.org Types have lots of properties, so it&#39;s a good idea to list the specific fields you want to edit on forms. All fields are available though - and you can use the Browse section of the website to see Forms which show all of them.</p>
@@ -255,7 +245,7 @@ pip install -e .
     }
   }
 }</code></pre><header><strong>NB</strong>: There are two templates defined now which we will create in the next Exercise. Until you do, the page will respond with a Django error message.</header>
-<h2 id="what-we-learnt-1">What we learnt</h2>
+<h3 id="what-we-learnt-1">What we learnt</h3>
 <p>The <code>SITE_DNA</code> setting is ... everything. The entire website hangs off it. The site&#39;s menu is automatically generated against it. The Django models are dynamically migrated and built from it. If you use all the default <strong>dna</strong> templates, you don&#39;t need to do much more than edit <code>SITE_DNA</code>. New pages and features can easily be added to the site by simply adding a new section to this dictionary.</p>
 <p>In this section we learnt how <code>SITE_DNA</code> works to:</p>
 <ul>
@@ -269,8 +259,8 @@ pip install -e .
 <li>Adjusting the properties of a Schema Type in the <code>SITE_DNA</code></li>
 </ul>
 <p>Hopefully you&#39;ve got a sense of how and why the <code>SITE_DNA</code> is so important. There is more information in the specification page in this documentation. See <a href="site_dna.html">SITE_DNA</a></p>
-<h1 id="exercise-3-custom-templates">Exercise 3 Custom Templates</h1>
-<h2 id="page-templates">Page Templates</h2>
+<h2 id="exercise-3-custom-templates">Exercise 3 Custom Templates</h2>
+<h3 id="page-templates">Page Templates</h3>
 <p>In the previous Exercise we specified a custom template for the &quot;About&quot; page called <code>frankenstein/about_page.html</code>.</p>
 <ul>
 <li>Create a new template called <code>frankenstein/templates/frankenstein/about_page.html</code>:</li>
@@ -292,7 +282,7 @@ pip install -e .
 <ul>
 <li>Refresh the &quot;About&quot; page to see your custom content.</li>
 </ul>
-<h2 id="detail-template">Detail Template</h2>
+<h3 id="detail-template">Detail Template</h3>
 <p>In <strong>Exercise 2</strong> you also defined a different template for the &quot;Photograph&quot; Schema Type in its <code>list</code> Role. It&#39;s time to create that file. This is not a Page template, but will be used to render the PhotoGraph queryset on the &quot;Home&quot; page.</p>
 <p>The default template for rendering an instance of a Schema Type in a list is <code>dna/_thing_listed.html</code>, which is described on the <a href="templates.html">templates</a> specification in this documentation. We will use it as a starting point for our new <code>frankenstein/_thumbs.html</code> template. I like to use an underscore to indicate it is not a page level template. This is not compulsory.</p>
 <ul>
@@ -378,12 +368,12 @@ pip install -e .
 </ul>
 <p>If there is no image uploaded, we provide a link direct to the edit form for the Photograph.</p>
 <p>Otherwise, the template is similar to the default. We have the same &quot;for loop&quot; iterating the <code>object_list</code> - which will be a queryset of the Photograph model. We maintain the same URL which the user can use to engage with the photo on its own page and see the image in full (also edit or delete it there). We left the paginator as it was.</p>
-<h2 id="what-we-learnt-2">What we learnt</h2>
+<h3 id="what-we-learnt-2">What we learnt</h3>
 <ul>
 <li>How to create a special template for a specific Schema Type in a specific Role on a specific Page.</li>
 <li>That DNA comes with <strong>easy_thumbnails</strong> and some ready made template_tags.</li>
 </ul>
-<h1 id="next-steps">Next Steps</h1>
+<h2 id="next-steps">Next Steps</h2>
 <p>That completes this quick start. Now all that is left is to start building your website from <strong>dna</strong>.</p>
 <ul>
 <li><p>Customise the main templates.</p>
