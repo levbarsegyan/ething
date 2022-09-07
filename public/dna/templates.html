@@ -34,46 +34,12 @@
         <img src="apple-touch-icon.png"/>
         <b>dna</b>
       </a>
-        <a href="#_menuhtml">
-                `_menu.html`</a>
-        <a href="#_page_engagedhtml">
-                `_page_engaged.html`</a>
-        <a href="#_page_listedhtml">
-                `_page_listed.html`</a>
-        <a href="#_thing_confirm_deletehtml">
-                `_thing_confirm_delete.html`</a>
-        <a href="#_thing_engagedhtml">
-                `_thing_engaged.html`</a>
-        <a href="#_thing_fieldhtml">
-                `_thing_field.html`</a>
-        <a href="#_thing_formhtml">
-                `_thing_form.html`</a>
-        <a href="#_thing_listedhtml">
-                `_thing_listed.html`</a>
-        <a href="#_thing_paginatorhtml">
-                `_thing_paginator.html`</a>
+        <a href="#default-templates-for-content-detail">
+                Default Templates for Content Detail</a>
         <a href="#genes">
                 genes</a>
         <a href="#templates-for-your-app">
                 Templates for your App.</a>
-        <a href="#basehtml">
-                `base.html`</a>
-        <a href="#home_pagehtml">
-                `home_page.html`</a>
-        <a href="#thing_deletehtml">
-                `thing_delete.html`</a>
-        <a href="#thing_engagedhtml">
-                `thing_engaged.html`</a>
-        <a href="#thing_formhtml">
-                `thing_form.html`</a>
-        <a href="#thing_iteratehtml">
-                `thing_iterate.html`</a>
-        <a href="#thing_listedhtml">
-                `thing_listed.html`</a>
-        <a href="#thing_optimizehtml">
-                `thing_optimize.html`</a>
-        <a href="#thing_pagehtml">
-                `thing_page.html`</a>
       <hr>
       <a href="/eliothing">
         <img src="/eliothing/apple-touch-icon.png"/>
@@ -98,7 +64,8 @@
     </nav>
     <h1 id="dna-templates">dna Templates</h1>
 <p><strong>dna</strong> doesn&#39;t come with any page level templates. It only has a small number of templates designed to render Schema based Django model instances and querysets; or <strong>dna</strong> View context variables. They fully work, but you&#39;ll probably want to replace them with your own to meet the design requirements for you site. However they are worth referencing as the starting point.</p>
-<h2 id="_menuhtml"><code>_menu.html</code></h2>
+<h2 id="default-templates-for-content-detail">Default Templates for Content Detail</h2>
+<h3 id="_menuhtml"><code>_menu.html</code></h3>
 <pre><code>{% for page_key, page_vals in page_menu.page.items %}
   {% if page_vals.status == &quot;label&quot; %}
     &lt;{{menu|yesno:&quot;menu,nav&quot;}}&gt;
@@ -115,7 +82,7 @@
     &lt;a href=&quot;{{ page_vals.url }}&quot; class=&quot;{{ page_vals.status }}&quot;&gt;[{{ page_key|default:app_name }}]&lt;/a&gt;
   {% endif %}
 {% endfor %}</code></pre><p>You&#39;ll notice that <code>_menu.html</code> calls itself recursively and so is able to render a nested array of sub menus. In this vein we follow the pattern in <strong>elioSin</strong>&#39;s <a href="https://elioway.gitlab.io/eliosin/innocent">innocent</a> stylesheet of nesting menu/nav alternatively to build deep menus. <em>elioSin doesn&#39;t like lots of nested div or ul tags with class names</em></p>
-<h3 id="usage">Usage</h3>
+<h4 id="usage">Usage</h4>
 <pre><code>{% with menu=True %}
 &lt;{{menu|yesno:&quot;menu,nav&quot;}}&gt;
   {% if page_name %}
@@ -133,7 +100,7 @@
 <li><p><code>page_menu</code> comes out of the template context for <code>EveryView</code>, and is the top level of the menu.</p>
 </li>
 </ul>
-<h2 id="_page_engagedhtml"><code>_page_engaged.html</code></h2>
+<h3 id="_page_engagedhtml"><code>_page_engaged.html</code></h3>
 <pre><code>{% for engaged in page_engages %}
   {% if engaged.title %}
     &lt;h2&gt;{{ engaged.title }}&lt;/h2&gt;
@@ -148,8 +115,8 @@
     &lt;/a&gt;
   &lt;/p&gt;
 {% endfor %}</code></pre><p>This will render the <code>page_engages</code> variable which is in template context for <code>EveryPageView</code> (i.e. Django&#39;s <code>TemplateView</code>).</p>
-<h3 id="usage-1">Usage</h3>
-<pre><code>{% include &#39;dna/_page_engaged.html&#39; %}</code></pre><h2 id="_page_listedhtml"><code>_page_listed.html</code></h2>
+<h4 id="usage-1">Usage</h4>
+<pre><code>{% include &#39;dna/_page_engaged.html&#39; %}</code></pre><h3 id="_page_listedhtml"><code>_page_listed.html</code></h3>
 <pre><code>{% for listed in page_lists %}
   {% if listed.title %}
     &lt;h2&gt;{{ listed.title }}&lt;/h2&gt;
@@ -170,8 +137,8 @@
     &lt;/a&gt;
   &lt;/p&gt;
 {% endfor %}</code></pre><p>This will render the <code>page_lists</code> variable which is in template context for <code>EveryPageView</code> (i.e. Django&#39;s <code>TemplateView</code>).</p>
-<h3 id="usage-2">Usage</h3>
-<pre><code>{% include &#39;dna/_page_listed.html&#39; %}</code></pre><h2 id="_thing_confirm_deletehtml"><code>_thing_confirm_delete.html</code></h2>
+<h4 id="usage-2">Usage</h4>
+<pre><code>{% include &#39;dna/_page_listed.html&#39; %}</code></pre><h3 id="_thing_confirm_deletehtml"><code>_thing_confirm_delete.html</code></h3>
 <pre><code>&lt;form method=&quot;post&quot;&gt;
   {% csrf_token %}
   &lt;p&gt;Are you sure you want to delete &quot;{{ object }}&quot;?&lt;/p&gt;
@@ -180,8 +147,8 @@
     &lt;button type=&quot;button&quot;&gt;Cancel&lt;/button&gt;
   &lt;/a&gt;
 &lt;/form&gt;</code></pre><p>This is pretty standard Django and will delete the Schema <code>object</code> variable which is in template context for <code>EveryDeleteView</code> (i.e. Django&#39;s <code>DeleteView</code>).</p>
-<h3 id="usage-3">Usage</h3>
-<pre><code>{% include &#39;dna/_thing_confirm_delete.html&#39; %}</code></pre><h2 id="_thing_engagedhtml"><code>_thing_engaged.html</code></h2>
+<h4 id="usage-3">Usage</h4>
+<pre><code>{% include &#39;dna/_thing_confirm_delete.html&#39; %}</code></pre><h3 id="_thing_engagedhtml"><code>_thing_engaged.html</code></h3>
 <pre><code>{% load dna_tags %}
 {% for field_name, url, height, width in object.get_images %}
   {% if url == &quot;None&quot; %}
@@ -222,7 +189,7 @@
     {% endif %}
   {% endfor %}
 &lt;/dl&gt;</code></pre><p>This will render the <code>object</code> variable which is in template context for <code>EveryEngageView</code> (i.e. Django&#39;s <code>DetailView</code>) or from the <code>dna/_page_engaged</code> for a collection of object instances in <code>page_engages</code> of <code>EveryPageView</code> (i.e. Django&#39;s <code>TemplateView</code>). .</p>
-<h3 id="usage-4">Usage</h3>
+<h4 id="usage-4">Usage</h4>
 <pre><code>{% include &#39;dna/_thing_engaged.html&#39; %}
 &lt;p&gt;
   &lt;a href=&quot;{% url &#39;update.thing&#39; page_name thing_name object.pk %}&quot;&gt;
@@ -234,7 +201,7 @@
   &lt;a href=&quot;{{ object.get_absolute_url }}&quot;&gt;
     &lt;button type=&quot;button&quot;&gt;Back&lt;/button&gt;
   &lt;/a&gt;
-&lt;/p&gt;</code></pre><h2 id="_thing_fieldhtml"><code>_thing_field.html</code></h2>
+&lt;/p&gt;</code></pre><h3 id="_thing_fieldhtml"><code>_thing_field.html</code></h3>
 <pre><code>{% if field.field.widget.input_type == &#39;checkbox&#39; %}
   {{ field }}
 {% endif %}
@@ -252,9 +219,9 @@
   &lt;span class=&quot;errorlist&quot;&gt;
     &lt;mark&gt;{{ error }}&lt;/mark&gt;
   &lt;/span&gt;
-{% endfor %}</code></pre><h3 id="usage-5">Usage</h3>
+{% endfor %}</code></pre><h4 id="usage-5">Usage</h4>
 <p>See <code>_thing_form.html</code> below.</p>
-<h2 id="_thing_formhtml"><code>_thing_form.html</code></h2>
+<h3 id="_thing_formhtml"><code>_thing_form.html</code></h3>
 <pre><code>{% if not no_token %}
   {% csrf_token %}
 {% endif %}
@@ -288,7 +255,7 @@
 {% for hidden in form.hidden_fields %}
   {{ hidden }}
 {% endfor %}</code></pre><p>This will render the <code>object</code> variable which is in template context for <code>EveryUpdateView</code> (i.e. Django&#39;s <code>UpdateView</code>) or <code>EveryCreateView</code> (i.e. Django&#39;s <code>CreateView</code>).</p>
-<h3 id="usage-6">Usage</h3>
+<h4 id="usage-6">Usage</h4>
 <pre><code>&lt;form enctype=&quot;multipart/form-data&quot; method=&quot;post&quot;&gt;
   {% include &#39;dna/_thing_form.html&#39; %}
   &lt;p&gt;
@@ -299,7 +266,7 @@
       &lt;button type=&quot;button&quot;&gt;Cancel&lt;/button&gt;
     &lt;/a&gt;
   {% endif %}
-&lt;/form&gt;</code></pre><h2 id="_thing_listedhtml"><code>_thing_listed.html</code></h2>
+&lt;/form&gt;</code></pre><h3 id="_thing_listedhtml"><code>_thing_listed.html</code></h3>
 <pre><code>&lt;ul&gt;
   {% for thing in object_list %}
     &lt;li&gt;
@@ -321,14 +288,14 @@
     {% endwith %}
   &lt;/p&gt;
 {% endif %}</code></pre><p>This will render the <code>object_list</code> variable which is in template context for <code>EveryListView</code> (i.e. Django&#39;s <code>ListView</code>) or from the <code>dna/_thing_listed</code> for a collection of querysets in <code>page_lists</code> of <code>EveryPageView</code> (i.e. Django&#39;s <code>TemplateView</code>).</p>
-<h3 id="usage-7">Usage</h3>
+<h4 id="usage-7">Usage</h4>
 <pre><code>{% include &#39;dna/_thing_listed.html&#39; %}
 &lt;p&gt;
   &lt;a href=&quot;{% url &#39;create.thing&#39; page_name thing_name %}&quot;&gt;
     &lt;button type=&quot;button&quot;&gt;Add
       {{ page_name }}&lt;/button&gt;
   &lt;/a&gt;
-&lt;/p&gt;</code></pre><h2 id="_thing_paginatorhtml"><code>_thing_paginator.html</code></h2>
+&lt;/p&gt;</code></pre><h3 id="_thing_paginatorhtml"><code>_thing_paginator.html</code></h3>
 <pre><code>{% load dna_tags %}
 {% if is_paginated %}
   {% if page_obj.has_previous %}
@@ -352,13 +319,13 @@
   {% else %}
     &lt;button disabled=&quot;disabled&quot;&gt;»&lt;/button&gt;
   {% endif %}
-{% endif %}</code></pre><h3 id="usage-8">Usage</h3>
+{% endif %}</code></pre><h4 id="usage-8">Usage</h4>
 <p>See <code>_thing_listed.html</code> and <code>_page_listed.html</code> for examples of how to call this template.</p>
 <h2 id="genes">genes</h2>
 <p>The <strong>elioThing</strong> <a href="https://elioway.gitlab.io/eliothing/genes">genes</a> app has many more examples you can use named after Schema Things. We recommend you add and use these to get you started more rapidly.</p>
 <h2 id="templates-for-your-app">Templates for your App.</h2>
 <p>Here is a list of page level templates you will need in your app with the bare minimum of tags. <strong>generator-thing</strong> creates these for you if you call <code>yo thing</code> in your project folder.</p>
-<h2 id="basehtml"><code>base.html</code></h2>
+<h3 id="basehtml"><code>base.html</code></h3>
 <pre><code>{% load static %}
 &lt;!DOCTYPE html&gt;
 &lt;html class=&quot;no-js&quot; lang=&quot;&quot;&gt;
@@ -379,7 +346,7 @@
     {% block h1 %}{% endblock h1 %}
     {% block content %}{% endblock content %}
   &lt;/body&gt;
-&lt;/html&gt;</code></pre><h2 id="home_pagehtml"><code>home_page.html</code></h2>
+&lt;/html&gt;</code></pre><h3 id="home_pagehtml"><code>home_page.html</code></h3>
 <pre><code>{% extends &#39;app_name/base.html&#39; %}
 {% load static %}
 {% block title %}
@@ -394,7 +361,7 @@
       &lt;button&gt;&lt;big&gt;engage&lt;/big&gt;&lt;/button&gt;
     &lt;/a&gt;
   &lt;/p&gt;
-{% endblock content %}</code></pre><h2 id="thing_deletehtml"><code>thing_delete.html</code></h2>
+{% endblock content %}</code></pre><h3 id="thing_deletehtml"><code>thing_delete.html</code></h3>
 <pre><code>{% extends &#39;app_name/base.html&#39; %}
 {% load static %}
 {% block title %}
@@ -407,7 +374,7 @@
 {% endblock h1 %}
 {% block content %}
   {% include &#39;dna/_thing_confirm_delete.html&#39; %}
-{% endblock content %}</code></pre><h2 id="thing_engagedhtml"><code>thing_engaged.html</code></h2>
+{% endblock content %}</code></pre><h3 id="thing_engagedhtml"><code>thing_engaged.html</code></h3>
 <pre><code>{% extends &#39;app_name/base.html&#39; %}
 {% load static %}
 {% block title %}
@@ -427,7 +394,7 @@
       &lt;button&gt;Delete&lt;/button&gt;
     &lt;/a&gt;
   &lt;/p&gt;
-{% endblock content %}</code></pre><h2 id="thing_formhtml"><code>thing_form.html</code></h2>
+{% endblock content %}</code></pre><h3 id="thing_formhtml"><code>thing_form.html</code></h3>
 <pre><code>{% extends &#39;app_name/base.html&#39; %}
 {% load static %}
 {% block title %}
@@ -448,7 +415,7 @@
       &lt;/a&gt;
     {% endif %}
   &lt;/form&gt;
-{% endblock content %}</code></pre><h2 id="thing_iteratehtml"><code>thing_iterate.html</code></h2>
+{% endblock content %}</code></pre><h3 id="thing_iteratehtml"><code>thing_iterate.html</code></h3>
 <pre><code>{% extends &#39;app_name/base.html&#39; %}
 {% load static %}
 {% block title %}
@@ -461,7 +428,7 @@
   &lt;p&gt;
     A place to handle iteratable fields.
   &lt;/p&gt;
-{% endblock content %}</code></pre><h2 id="thing_listedhtml"><code>thing_listed.html</code></h2>
+{% endblock content %}</code></pre><h3 id="thing_listedhtml"><code>thing_listed.html</code></h3>
 <pre><code>{% extends &#39;app_name/base.html&#39; %}
 {% load static %}
 {% block title %}
@@ -478,7 +445,7 @@
         {{ thing_name }}&lt;/button&gt;
     &lt;/a&gt;
   &lt;/p&gt;
-{% endblock content %}</code></pre><h2 id="thing_optimizehtml"><code>thing_optimize.html</code></h2>
+{% endblock content %}</code></pre><h3 id="thing_optimizehtml"><code>thing_optimize.html</code></h3>
 <pre><code>{% extends &#39;app_name/base.html&#39; %}
 {% load static %}
 {% block title %}
@@ -491,7 +458,7 @@
   &lt;p&gt;
     Stats coming
   &lt;/p&gt;
-{% endblock content %}</code></pre><h2 id="thing_pagehtml"><code>thing_page.html</code></h2>
+{% endblock content %}</code></pre><h3 id="thing_pagehtml"><code>thing_page.html</code></h3>
 <pre><code>{% extends &#39;app_name/base.html&#39; %}
 {% load static %}
 {% block title %}
