@@ -95,7 +95,23 @@
 </ul>
 <h2 id="page-specification">Page Specification</h2>
 <p>Pages are defined as dictionaries and can have the following keys:</p>
-<h3 id="template"><code>template</code></h3>
+<h3 id="url"><code>url</code></h3>
+<p>If you need custom links in the menu, add a <code>url</code> property. In the following <code>SITE_DNA</code>, <strong>dna</strong> will create a link for &quot;Page1&quot;, but &quot;More Nuts&quot; and &quot;Logout&quot;</p>
+<pre><code>&#39;page&#39;: {
+  &#39;Page1&#39;: {
+    &#39;engage&#39;: {
+      &#39;SchemaType1&#39;: { ... settings for SchemaType1 ... },
+    }
+  },
+  &#39;More Nuts&#39;: { &#39;url&#39;: &#39;http://www.peanuts.com/&#39; },
+  &#39;More Blogs&#39;: {
+      &quot;status&quot;: &quot;label&quot;,
+      &quot;page&quot;: {
+          &quot;Blog1&quot;: {&quot;url&quot;: &quot;http://one.com&quot;},
+          &quot;Blog2&quot;: {&quot;url&quot;: &quot;http://two.com&quot;},
+  },
+  &#39;Logout&#39;: { &#39;url&#39;: &#39;/&#39; },
+}</code></pre><h3 id="template"><code>template</code></h3>
 <p>By default <strong>dna</strong> will use the template created by <strong>generator-thing</strong> and described in the <a href="templates.html">templates specification</a> of this documentation. Optionally you can create a special template for each page.</p>
 <p>In the following example we are defining a website which uses no Schema Type. Effectively this would work perfectly well to create a static site.</p>
 <pre><code>&#39;page&#39;: {

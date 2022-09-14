@@ -75,41 +75,41 @@ from myapp.views import (
 )
 urlpatterns = [
     path(
-        &quot;cr/&lt;str:page_key&gt;/&lt;str:thing&gt;&quot;,
+        &quot;cr/&lt;str:page_slug&gt;/&lt;str:role&gt;/&lt;str:thing&gt;&quot;,
         MyAppCreateView.as_view(),
         name=&quot;create.thing&quot;,
     ),
     path(
-        &quot;u/&lt;str:page_key&gt;/&lt;str:thing&gt;/&lt;int:pk&gt;&quot;,
+        &quot;u/&lt;str:page_slug&gt;/&lt;str:role&gt;/&lt;str:thing&gt;/&lt;int:pk&gt;&quot;,
         MyAppUpdateView.as_view(),
         name=&quot;update.thing&quot;,
     ),
     path(
-        &quot;d/&lt;str:page_key&gt;/&lt;str:thing&gt;/&lt;int:pk&gt;&quot;,
+        &quot;d/&lt;str:page_slug&gt;/&lt;str:thing&gt;/&lt;int:pk&gt;&quot;,
         MyAppDeleteView.as_view(),
         name=&quot;delete.thing&quot;,
     ),
     path(
-        &quot;e/&lt;str:page_key&gt;/&lt;str:thing&gt;/&lt;int:pk&gt;&quot;,
+        &quot;e/&lt;str:page_slug&gt;/&lt;str:thing&gt;/&lt;int:pk&gt;&quot;,
         MyAppEngageView.as_view(),
         name=&quot;engage.thing&quot;,
     ),
     path(
-        &quot;l/&lt;str:page_key&gt;/&lt;str:thing&gt;&quot;,
+        &quot;l/&lt;str:page_slug&gt;/&lt;str:thing&gt;&quot;,
         MyAppListView.as_view(),
         name=&quot;list.things&quot;,
     ),
     path(
-        &quot;i/&lt;str:page_key&gt;/&lt;str:thing&gt;/&lt;str:field&gt;&quot;,
+        &quot;i/&lt;str:page_slug&gt;/&lt;str:thing&gt;/&lt;str:field&gt;&quot;,
         MyAppIterateView.as_view(),
         name=&quot;iterate.things&quot;,
     ),
     path(
-        &quot;o/&lt;str:page_key&gt;/&lt;str:thing&gt;&quot;,
+        &quot;o/&lt;str:page_slug&gt;/&lt;str:thing&gt;&quot;,
         MyAppOptimizeView.as_view(),
         name=&quot;optimize.things&quot;,
     ),
-    path(&quot;p/&lt;str:page_key&gt;&quot;, MyAppPageView.as_view(), name=&quot;engage.page&quot;),
+    path(&quot;p/&lt;str:page_slug&gt;&quot;, MyAppPageView.as_view(), name=&quot;engage.page&quot;),
     path(&quot;&quot;, MyAppHomeView.as_view(), name=&quot;home&quot;),
 ]
 if settings.DEBUG:

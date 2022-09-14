@@ -109,7 +109,7 @@
   {% include engaged.template|default:&#39;dna/_thing_engaged.html&#39; %}
   {% endwith %}
   &lt;p&gt;
-    &lt;a href=&quot;{% url &#39;update.thing&#39; page_name engaged.thing_name engaged.engage.pk %}&quot;&gt;
+    &lt;a href=&quot;{% url &#39;update.thing&#39; page_slug &#39;engage&#39; engaged.thing_name engaged.engage.pk %}&quot;&gt;
       &lt;button&gt;Update
         {{ engaged.thing_name }}&lt;/button&gt;
     &lt;/a&gt;
@@ -131,7 +131,7 @@
   {% endwith %}
   {% endwith %}
   &lt;p&gt;
-    &lt;a href=&quot;{% url &#39;create.thing&#39; page_name listed.thing_name %}&quot;&gt;
+    &lt;a href=&quot;{% url &#39;create.thing&#39; &#39;list&#39; page_slug listed.thing_name %}&quot;&gt;
       &lt;button&gt;Add
         {{ listed.thing_name }}&lt;/button&gt;
     &lt;/a&gt;
@@ -150,45 +150,59 @@
 <h4 id="usage-3">Usage</h4>
 <pre><code>{% include &#39;dna/_thing_confirm_delete.html&#39; %}</code></pre><h3 id="_thing_engagedhtml"><code>_thing_engaged.html</code></h3>
 <pre><code>{% load dna_tags %}
-{% for field_name, url, height, width in object.get_images %}
-  {% if url == &quot;None&quot; %}
-    {# nothing to see here #}
-  {% elif url %}
-    &lt;figure&gt;
-      &lt;image src=&quot;{{ url }}&quot; height=&quot;{{ height }}&quot; width=&quot;{{ width }}&quot;/&gt;
-      &lt;figurecaption&gt;{{ object.name }}&lt;/figurecaption&gt;
-    &lt;/figure&gt;
-  {% endif %}
-{% endfor %}
-&lt;h3&gt;{{ object.name }}&lt;/h3&gt;
-&lt;dl&gt;
-  {% for field_name, field_type, field in object.get_fields %}
-    {% if not field|is_none_null_or_zero %}
+&lt;main
+  itemscope=&quot;itemscope&quot;
+  itemtype=&quot;http://schema.org/{{ thing_name }}&quot;&gt;
+  {% for field_name, url, height, width in object.get_images %}
+    {% if url == &quot;None&quot; %}
       {# nothing to see here #}
-    {% elif field_name|is_in:&quot;name,polymorphic_ctype,id,elio_key,elio_page,elio_role&quot; %}
-      {# handled differently #}
-    {% elif field_type == &quot;OneToOneField&quot; %}
-      {# nothing to see here #}
-    {% elif field %}
-      &lt;dt&gt;{{ field_name }}&lt;/dt&gt;
-      &lt;dd&gt;
-        {% if field_type == &quot;URLField&quot; %}
-          &lt;a href=&quot;{{ field }}&quot;&gt;{{ field }}&lt;/a&gt;
-        {% elif field_type == &quot;TextField&quot; %}
-          {{ field|safe }}
-        {% elif field_type == &quot;ForeignKey&quot; %}
-          &lt;a href=&quot;{{ field.get_absolute_url }}&quot;&gt;{{ field }}&lt;/a&gt;
-        {% elif field_name == &quot;telephone&quot; %}
-          &lt;a href=&quot;tel:{{ field }}&quot;&gt;{{ field }}&lt;/a&gt;
-        {% elif field_type == &quot;EmailField&quot; %}
-          &lt;a href=&quot;mailto:{{ field }}&quot;&gt;{{ field }}&lt;/a&gt;
-        {% else %}
-          {{ field }}
-        {% endif %}
-      &lt;/dd&gt;
+    {% elif url %}
+      &lt;figure&gt;
+        &lt;image
+          itemprop=&quot;{{ field_name }}&quot;
+          src=&quot;{{ url }}&quot;
+          height=&quot;{{ height }}&quot;
+          width=&quot;{{ width }}&quot;/&gt;
+        &lt;figurecaption&gt;{{ object.name }}&lt;/figurecaption&gt;
+      &lt;/figure&gt;
     {% endif %}
   {% endfor %}
-&lt;/dl&gt;</code></pre><p>This will render the <code>object</code> variable which is in template context for <code>EveryEngageView</code> (i.e. Django&#39;s <code>DetailView</code>) or from the <code>dna/_page_engaged</code> for a collection of object instances in <code>page_engages</code> of <code>EveryPageView</code> (i.e. Django&#39;s <code>TemplateView</code>). .</p>
+  {% if object.name %}
+    &lt;h1 itemprop=&quot;name&quot;&gt;{{ object.name }}&lt;/h1&gt;
+  {% endif %}
+  {% if object.alternateName %}
+    &lt;h2 itemprop=&quot;name&quot;&gt;{{ object.alternateName }}&lt;/h2&gt;
+  {% endif %}
+  &lt;dl&gt;
+    {% for field_name, field_type, field in object.get_fields %}
+      {% if field|has_no_merit %}
+        {# nothing to see here #}
+      {% elif field_name|is_in:&quot;name,alternateName,polymorphic_ctype,id,elio_key,elio_page,elio_role&quot; %}
+        {# handled differently #}
+      {% elif field_type == &quot;OneToOneField&quot; %}
+        {# nothing to see here #}
+      {% elif field %}
+        &lt;dt&gt;{{ field_name }}&lt;/dt&gt;
+        &lt;dd itemprop=&quot;{{ field_name }}&quot;&gt;
+          {% if field_type == &quot;URLField&quot; %}
+            &lt;a href=&quot;{{ field }}&quot;&gt;{{ field }}&lt;/a&gt;
+          {% elif field_type == &quot;TextField&quot; %}
+            {{ field|safe }}
+          {% elif field_type == &quot;ForeignKey&quot; %}
+            &lt;link itemprop=&quot;availability&quot; href=&quot;http://schema.org/{{ field_type }}&quot;/&gt;
+            &lt;a href=&quot;{{ field.get_absolute_url }}&quot;&gt;{{ field }}&lt;/a&gt;
+          {% elif field_name == &quot;telephone&quot; %}
+            &lt;a href=&quot;tel:{{ field }}&quot;&gt;{{ field }}&lt;/a&gt;
+          {% elif field_type == &quot;EmailField&quot; %}
+            &lt;a href=&quot;mailto:{{ field }}&quot;&gt;{{ field }}&lt;/a&gt;
+          {% else %}
+            {{ field }}
+          {% endif %}
+        &lt;/dd&gt;
+      {% endif %}
+    {% endfor %}
+  &lt;/dl&gt;
+&lt;/main&gt;</code></pre><p>This will render the <code>object</code> variable which is in template context for <code>EveryEngageView</code> (i.e. Django&#39;s <code>DetailView</code>) or from the <code>dna/_page_engaged</code> for a collection of object instances in <code>page_engages</code> of <code>EveryPageView</code> (i.e. Django&#39;s <code>TemplateView</code>). .</p>
 <h4 id="usage-4">Usage</h4>
 <pre><code>{% include &#39;dna/_thing_engaged.html&#39; %}
 &lt;p&gt;
@@ -291,7 +305,7 @@
 <h4 id="usage-7">Usage</h4>
 <pre><code>{% include &#39;dna/_thing_listed.html&#39; %}
 &lt;p&gt;
-  &lt;a href=&quot;{% url &#39;create.thing&#39; page_name thing_name %}&quot;&gt;
+  &lt;a href=&quot;{% url &#39;create.thing&#39; &#39;list&#39; page_slug thing_name %}&quot;&gt;
     &lt;button type=&quot;button&quot;&gt;Add
       {{ page_name }}&lt;/button&gt;
   &lt;/a&gt;
@@ -299,21 +313,21 @@
 <pre><code>{% load dna_tags %}
 {% if is_paginated %}
   {% if page_obj.has_previous %}
-    &lt;a href=&quot;?{% url_replace &#39;page&#39;|add:listed.thing_name page_obj.previous_page_number %}&quot;&gt;
+    &lt;a href=&quot;?{% qrystr_in_concert &#39;page&#39;|add:listed.thing_name page_obj.previous_page_number %}&quot;&gt;
       &lt;button&gt;«&lt;/button&gt;
     &lt;/a&gt;
   {% else %}
     &lt;button disabled=&quot;disabled&quot;&gt;«&lt;/button&gt;
   {% endif %}
   {% for pg in paginator.page_range %}
-    &lt;a href=&quot;?{% url_replace &#39;page&#39;|add:listed.thing_name pg %}&quot;&gt;
+    &lt;a href=&quot;?{% qrystr_in_concert &#39;page&#39;|add:listed.thing_name pg %}&quot;&gt;
       &lt;button {% if page_obj.number == pg %}class=&quot;selected&quot;{% endif %}&gt;
         {{ pg }}
       &lt;/button&gt;
     &lt;/a&gt;
   {% endfor %}
   {% if page_obj.has_next %}
-    &lt;a href=&quot;?{% url_replace &#39;page&#39;|add:listed.thing_name page_obj.next_page_number %}&quot;&gt;
+    &lt;a href=&quot;?{% qrystr_in_concert &#39;page&#39;|add:listed.thing_name page_obj.next_page_number %}&quot;&gt;
       &lt;button&gt;»&lt;/button&gt;
     &lt;/a&gt;
   {% else %}
@@ -357,7 +371,7 @@
 {% block content %}
   &lt;!-- login in here --&gt;
   &lt;p&gt;
-    &lt;a href=&quot;{% url &#39;engage.page&#39; home_page %}&quot;&gt;
+    &lt;a href=&quot;{% url &#39;engage.page&#39; home_page|slugify %}&quot;&gt;
       &lt;button&gt;&lt;big&gt;engage&lt;/big&gt;&lt;/button&gt;
     &lt;/a&gt;
   &lt;/p&gt;
@@ -386,11 +400,11 @@
 {% block content %}
   {% include &#39;dna/_thing_engaged.html&#39; %}
   &lt;p&gt;
-    &lt;a href=&quot;{% url &#39;update.thing&#39; page_name thing_name object.pk %}&quot;&gt;
+    &lt;a href=&quot;{% url &#39;update.thing&#39; page_slug thing_name object.pk %}&quot;&gt;
       &lt;button&gt;Update
         {{ thing_name }}&lt;/button&gt;
     &lt;/a&gt;
-    &lt;a href=&quot;{% url &#39;delete.thing&#39; page_name thing_name object.pk %}&quot;&gt;
+    &lt;a href=&quot;{% url &#39;delete.thing&#39; page_slug thing_name object.pk %}&quot;&gt;
       &lt;button&gt;Delete&lt;/button&gt;
     &lt;/a&gt;
   &lt;/p&gt;
@@ -440,7 +454,7 @@
 {% block content %}
   {% include &#39;dna/_thing_listed.html&#39; %}
   &lt;p&gt;
-    &lt;a href=&quot;{% url &#39;create.thing&#39; page_name thing_name %}&quot;&gt;
+    &lt;a href=&quot;{% url &#39;create.thing&#39; &#39;list&#39; page_slug thing_name %}&quot;&gt;
       &lt;button type=&quot;button&quot;&gt;Add
         {{ thing_name }}&lt;/button&gt;
     &lt;/a&gt;

@@ -343,7 +343,7 @@ pip install -e .
         src=&quot;{% thumbnail thing.image &#39;100x100&#39; %}&quot;
         alt=&quot;{{ thing.name }}&quot; /&gt;
       {% else %}
-        &lt;a href=&quot;{% url &#39;update.thing&#39; page_name thing_name thing.pk %}&quot;&gt;Upload&lt;/a&gt;
+        &lt;a href=&quot;{% url &#39;update.thing&#39; page_name &#39;list&#39; thing_name thing.pk %}&quot;&gt;Upload&lt;/a&gt;
       {% endif %}
     &lt;/a&gt;
   &lt;/figure&gt;
