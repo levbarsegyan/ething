@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145358157-1');
+    </script>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+      dna View Mixins
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/dist/css/sloth.min.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <img src="apple-touch-icon.png"/>
+        <b>dna</b>
+      </a>
+        <a href="#everythingmixin">
+                `EveryThingMixin`</a>
+        <a href="#everyquerysetmixin">
+                `EveryQuerySetMixin`</a>
+        <a href="#everygetobjectmixin">
+                `EveryGetObjectMixin`</a>
+        <a href="#everyeditmixin">
+                `EveryEditMixin`</a>
+        <a href="#everymanyformmixin">
+                `EveryManyFormMixin`</a>
+        <a href="#manymixin">
+                `ManyMixin`</a>
+        <a href="#everyengagemixin">
+                `EveryEngageMixin`</a>
+        <a href="#everydeletemixin">
+                `EveryDeleteMixin`</a>
+        <a href="#everypagemixin">
+                `EveryPageMixin`</a>
+      <hr>
+      <a href="/eliothing">
+        <img src="/eliothing/apple-touch-icon.png"/>
+        <b>eliothing</b>
+      </a>
+      <menu>
+            <label>Python</label>
+            <nav>
+                  <a href="/eliothing/genes">
+                    <img src="/eliothing/genes/apple-touch-icon.png"/>
+                    <b>genes</b>
+                  </a>
+            </nav>
+            <label>Tools</label>
+            <nav>
+                  <a href="/eliothing/generator-thing">
+                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
+                    <b>generator-thing</b>
+                  </a>
+            </nav>
+      </menu>
+    </nav>
+    <h1 id="dna-view-mixins">dna View Mixins</h1>
+<p><strong>dna</strong> views are driven by a handful of crucial Mixins. These are listed here describing what attributes the view provides.</p>
+<p>See: <code>dna.view_mixins</code></p>
+<h2 id="everythingmixin"><code>EveryThingMixin</code></h2>
+<h3 id="site_dna-property"><code>site_dna</code> property</h3>
+<p>This property deepcopies the <code>SITE_DNA</code> setting described in the <a href="quickstart.html">quickstart</a>.</p>
+<h3 id="dna-property"><code>dna</code> property</h3>
+<p>This property returns an instance of the <code>DnaOfDjangoModel</code> class, which the other methods access to build a picture of your website.</p>
+<h3 id="page_name-property"><code>page_name</code> property</h3>
+<p>This convenient property returns the name of the page from the URL args which will correspond to a <code>page</code> key in the <code>SITE_DNA</code>. e.g. <code>FilmReviews</code>, <code>Suppliers</code>, <code>Bookings</code>, <code>AboutSite</code>.</p>
+<h3 id="thing_name-property"><code>thing_name</code> property</h3>
+<p>This convenient property returns the name of the current Schema Type from the URL args. e.g. <code>Thing</code>, <code>Place</code>, <code>WebPage</code>, <code>Hospital</code></p>
+<h3 id="page_link-property"><code>page_link</code> property</h3>
+<p>This convenient property returns a URL to the current page. There are two types of contexts: a URL which is a <code>page</code> in <code>SITE_DNA</code>; and a <code>list</code> page for one of the Schema Types in your site backbone.</p>
+<h3 id="page_menu-property"><code>page_menu</code> property</h3>
+<p>This property builds a menu object we pass to the <code>_menu.html</code> template, which in turn renders an HMTL menu of the site which is responsive to the current page context. For instance it will display sub pages section of the menu when the URL is for the parent page or any of the other subpages. It will also return which menu item is currently active. The <code>page_menu</code> is also used to build the <code>breadcrumbs</code>.</p>
+<h3 id="model-property"><code>Model</code> property.</h3>
+<p>This property returns the Model class of the current context. You can treat this property like any Django model, calling the <code>objects</code> property to query the table in the database. It determines the Model class from the <code>thing_name</code> property.</p>
+<h3 id="get_context_data-method"><code>get_context_data</code> method</h3>
+<p>This sets the universe context for all pages in a <strong>dna</strong> website, sending the following values to any template:</p>
+<ul>
+<li><code>app_name</code> your <strong>dna</strong> app name in <code>title()</code> format.</li>
+<li><code>thing_name</code> property as described above.</li>
+<li><code>page_name</code> property as described above.</li>
+<li><code>home_page</code> conveniently returns the name/key of the sites first <code>page</code> in the <code>SITE_DNA</code>.</li>
+<li><code>page_menu</code> a dict representing the entire menu of the site which changes depending on the current URL.</li>
+</ul>
+<h2 id="everyquerysetmixin"><code>EveryQuerySetMixin</code></h2>
+<h3 id="paginate_by-field"><code>paginate_by</code> field</h3>
+<p>Defaults to 20. You can change the pagination number for every Thing listed in your <code>SITE_DNA</code>.</p>
+<h3 id="get_queryset-method"><code>get_queryset</code> method</h3>
+<p>Returns the Django queryset for the Model of the <code>thing_name</code> in the URL, ordered by the <code>name</code> property.</p>
+<h2 id="everygetobjectmixin"><code>EveryGetObjectMixin</code></h2>
+<h3 id="get_object-method"><code>get_object</code> method</h3>
+<p>Returns the Django instance for the Model of the <code>thing_name</code> and <code>pk</code> in the URL.</p>
+<h2 id="everyeditmixin"><code>EveryEditMixin</code></h2>
+<h3 id="get_form_class-method"><code>get_form_class</code> method</h3>
+<p>Returns the Django standard form prepared for the Model of the <code>thing_name</code> in the URL. This is used in <code>CreateView</code> and <code>UpdateView</code>. The fields rendered by the template are controlled by the <code>SITE_DNA</code> if accessing the Model from a <code>page</code>. Otherwise the form will display all the fields of the Model as specified in the Schema. For more information see the <code>every_form</code> method in the [forms][forms.html] section of the documentation.</p>
+<h2 id="everymanyformmixin"><code>EveryManyFormMixin</code></h2>
+<p>FormView to create a new instance of ModelB which has a Many2Many relationship with an engaged instance of ModelA (artificially &quot;hosting&quot;) related to one of ModelA&#39;s properties. <code>EveryManyFormMixin</code> overides <code>form_valid</code> to build a Many2Many relationship using the special <code>ElioMany</code> model.</p>
+<h3 id="parent-property"><code>parent</code> property</h3>
+<p>Returns the pk of the Parent Model from the URL. This Model will have 1 or more of its fields list with <code>many</code> roles in the <code>SITE_DNA</code>.</p>
+<h3 id="prop_name-property"><code>prop_name</code> property</h3>
+<p>Returns the property name &quot;hosting&quot; the <code>many</code> relation from the URL.</p>
+<h3 id="many_thing-property"><code>many_thing</code> property</h3>
+<p>Returns the Schema Type of <code>prop_name</code>.</p>
+<h3 id="fieldmodel-property"><code>FieldModel</code> property</h3>
+<p>Returns a Model class we will use to create an new instance of the <code>many_thing</code>.</p>
+<h3 id="get_form_class-method-1"><code>get_form_class</code> method</h3>
+<p>Returns a ModelForm class we will use to create an new instance of the <code>many_thing</code>.</p>
+<h3 id="form_valid-method"><code>form_valid</code> method</h3>
+<p>Overloads the <code>form_valid</code> of the <code>CreateView</code> and creates the Many2Many relationship between the <code>parent</code> and <code>many_thing</code>.</p>
+<h3 id="get_context_data-method-1"><code>get_context_data</code> method</h3>
+<p>Puts the name of the many_thing and prop_name into template context.</p>
+<h2 id="manymixin"><code>ManyMixin</code></h2>
+<p>Utility mixin to fetch an <code>ElioMany</code> queryset belonging to an engaged object one of its properties.</p>
+<h3 id="_many-method"><code>_many</code> method</h3>
+<p>Utility method to return a queryset of <code>ElioMany</code> objects filtered by <code>parent</code> and <code>many_thing</code> as well as Url context.</p>
+<h2 id="everyengagemixin"><code>EveryEngageMixin</code></h2>
+<p>For any object instance we engage, <code>EveryEngageMixin</code> puts 1 or more related querysets against any of its field names set up in a <code>many</code> role.</p>
+<h3 id="get_many-method"><code>get_many</code> method</h3>
+<p>Marshalls the retrieval of a querysets of <code>ElioMany</code> objects filtered by <code>parent</code> and <code>many_thing</code>.</p>
+<h3 id="get_context_data-method-2"><code>get_context_data</code> method</h3>
+<p>Puts the <code>many</code> querysets into context. <code>many</code> is a dict of keys which are property names each with a querysets relation the current object with many objects under the property name.</p>
+<h2 id="everydeletemixin"><code>EveryDeleteMixin</code></h2>
+<h3 id="get_success_url-field"><code>get_success_url</code> field</h3>
+<p>Return the <code>.page_link</code> property which will redirect to the <code>page</code> which previously hosted the deleted object.</p>
+<h2 id="everypagemixin"><code>EveryPageMixin</code></h2>
+<h3 id="get_page_content-method"><code>get_page_content</code> method</h3>
+<p>When the URL relates to a <code>page</code> key in the <code>SITE_DNA</code>, this builds the content of the page from the <code>engage</code> and <code>list</code> sections of the dictionary. This is called by the <code>get_context_data</code> method of this class.</p>
+<h3 id="get_context_data-method-3"><code>get_context_data</code> method</h3>
+<p>Adds <code>page_engages</code> and <code>page_lists</code> to the context. These are dictionary objects which are rendered by <strong>dna</strong>&#39;s and contain all the objects and querysets required to build the content for the given page. As well as the object instances and querysets, the two data sets also provide contextual information relevant to the content, like the paginator, the thing name, as well as any custom template which should be used to render the object or queryset (overriding <strong>dna</strong>&#39;s default templates).</p>
+    <footer>
+      <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
+      <a href="https://gitlab.com/eliothing">Contribute</a>
+      <img src="elio-dna-logo.png">
+      <label>&copy; 2019 Made the elioWay</label>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+      crossorigin="anonymous"></script>
+    <script src="/dist/js/adons.js"></script>
+    <script src="/dist/js/main.js"></script>
+  </body>
+</html>

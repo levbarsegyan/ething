@@ -68,7 +68,7 @@ from myapp.views import (
     MyAppDeleteView,
     MyAppEngageView,
     MyAppListView,
-    MyAppIterateView,
+    MyAppManyView,
     MyAppOptimizeView,
     MyAppPageView,
     MyAppHomeView,
@@ -100,9 +100,9 @@ urlpatterns = [
         name=&quot;list.things&quot;,
     ),
     path(
-        &quot;i/&lt;str:page_slug&gt;/&lt;str:thing&gt;/&lt;str:field&gt;&quot;,
-        MyAppIterateView.as_view(),
-        name=&quot;iterate.things&quot;,
+        &quot;m/&lt;str:page_slug&gt;/&lt;str:thing&gt;/&lt;int:pk&gt;/&lt;str:field&gt;&quot;,
+        MyAppManyView.as_view(),
+        name=&quot;many.things&quot;,
     ),
     path(
         &quot;o/&lt;str:page_slug&gt;/&lt;str:thing&gt;&quot;,

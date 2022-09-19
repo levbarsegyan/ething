@@ -40,6 +40,8 @@
                 `has_no_merit`</a>
         <a href="#is_in">
                 `is_in`</a>
+        <a href="#flip_boo">
+                `flip_boo`</a>
         <a href="#dirt">
                 `dirt`</a>
         <a href="#qrystr_in_concert">
@@ -112,11 +114,23 @@ def is_in(value, comma_list):
 {% endif %}</code></pre><ul>
 <li>See <a href="templates.html#%60%60">templates</a></li>
 </ul>
-<h2 id="dirt"><code>dirt</code></h2>
+<h2 id="flip_boo"><code>flip_boo</code></h2>
+<p>Utility template_tag used in flip a Boolean value from True to False and vice versa. We use it to flip the &quot;menu&quot; variable in the <code>_menu.html</code> template which allows us to switch from <code>menu</code> to <code>nav</code> when we build the nested menu. You can&#39;t do this: <code>{% with boolean_val=not boolean_val %}</code>, so instead we do this <code>{% with boolean_val=boolean_val|flip_boo %}</code></p>
+<h3 id="usage-3">Usage</h3>
+<pre><code>{% with boolean_val=boolean_val|flip_boo %}
+&lt;{{ boolean_val|yesno:&quot;menu,nav&quot; }}&gt;
+  &lt;label&gt;Sub Menu&lt;/label&gt;
+  {% with boolean_val=boolean_val|flip_boo %}
+  &lt;{{ boolean_val|yesno:&quot;menu,nav&quot; }}&gt;
+    &lt;a href=&quot;/subitem&quot;&gt;subitem&lt;/a&gt;
+  &lt;/{{ boolean_val|yesno:&quot;menu,nav&quot; }}&gt;
+  {% endwith %}
+&lt;/{{ boolean_val|yesno:&quot;menu,nav&quot; }}&gt;
+{% endwith %}</code></pre><h2 id="dirt"><code>dirt</code></h2>
 <p>Utility template_tag used in development to render to a website the <code>dir</code> of any template variable, i.e. dish the dirt on what kind of object it is.</p>
 <pre><code>@register.filter(&quot;dirt&quot;)
 def dirt(value):
-    return dir(value)</code></pre><h3 id="usage-3">Usage</h3>
+    return dir(value)</code></pre><h3 id="usage-4">Usage</h3>
 <pre><code>{{ value|dirt }}</code></pre><h2 id="qrystr_in_concert"><code>qrystr_in_concert</code></h2>
 <p>Utility to handle multiple querystrings (in concert). We use it so that we can run multiple paginators on a page. The template tag takes a querystring key and value and updates it; then returns the whole queryset back.</p>
 <pre><code># need to add &#39;django.core.context_processors.request&#39; to settings.TEMPLATES
@@ -125,7 +139,7 @@ def qrystr_in_concert(context, name, value):
     request = context[&quot;request&quot;]
     qs = request.GET.copy()
     qs[name] = value
-    return qs.urlencode()</code></pre><h3 id="usage-4">Usage</h3>
+    return qs.urlencode()</code></pre><h3 id="usage-5">Usage</h3>
 <p>In the following example, <code>qrystr_in_concert</code> will maintain all three querystrings for filtering the &quot;currentpage&quot;.</p>
 <pre><code>&lt;b&gt;Filters&lt;/b&gt;
 {% for col in col_list %}

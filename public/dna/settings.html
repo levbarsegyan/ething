@@ -111,9 +111,11 @@ THUMBNAIL_ALIASES = {
   ...
 )</code></pre><p><code>DNA_LONG_TEXT_FIELDS</code> is simply a list of Schema properties which we want to be <code>models.TextField</code> types. IN <strong>dna</strong> these are rendered as HTMLEditors. You can of course override both these settings adding or removing property names. Remember, they must be the names of properties from Schema.org Types.</p>
 <h2 id="schema-version">Schema version</h2>
-<p><strong>dna</strong> comes with a version of <strong>Schema.org</strong> taken from their <a href="https://github.com/schemaorg/schemaorg">repo</a>. You can change the following settings to different versions, or even from other Schema&#39;s which support <code>jsonld</code> format. To use a different version, clone their repo into your project and change the <code>SCHEMA_VERSION</code> setting.</p>
+<p><strong>dna</strong> comes with a version of <strong>Schema.org</strong> taken from their <a href="https://github.com/schemaorg/schemaorg">repo</a>. You can change the following settings to different versions, or even from other Schema&#39;s which support <code>jsonld</code> format. To use a different version, clone their repo into your project and change the <code>SCHEMA_VERSION</code>, <code>SCHEMA_PATH</code> <code>DNA_BASE_MODEL_NAME</code> and <code>DNA_ENUMERATION_MODEL_NAME</code> settings.</p>
 <pre><code>SCHEMA_VERSION = &quot;3.9&quot;
-SCHEMA_PATH = f&quot;schemaorg/data/releases/{SCHEMA_VERSION}/all-layers.jsonld&quot;</code></pre><h2 id="dna-app"><code>dna</code> app</h2>
+SCHEMA_PATH = f&quot;schemaorg/data/releases/{SCHEMA_VERSION}/all-layers.jsonld&quot;
+DNA_BASE_MODEL_NAME = &quot;Thing&quot;
+DNA_ENUMERATION_MODEL_NAME = &quot;Enumeration&quot;</code></pre><h2 id="dna-app"><code>dna</code> app</h2>
 <p>Add <code>dna</code> to your <code>INSTALLED_APPS</code> list. I&#39;ve also added <code>easy_thumbnails</code> to mine. Don&#39;t forget to add your own app!</p>
 <pre><code>INSTALLED_APPS = [
     &quot;django.contrib.admin&quot;,

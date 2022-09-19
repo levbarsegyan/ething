@@ -81,7 +81,7 @@
         &#39;SchemaType3&#39;: { ... }
       },
       &#39;page&#39;: {
-        .. repeat pattern for sub pages ...
+        .. repeat this pattern for sub pages ...
       }
     },
     &#39;Page2&#39;:  { ... etc ... },
@@ -96,7 +96,7 @@
 <h2 id="page-specification">Page Specification</h2>
 <p>Pages are defined as dictionaries and can have the following keys:</p>
 <h3 id="url"><code>url</code></h3>
-<p>If you need custom links in the menu, add a <code>url</code> property. In the following <code>SITE_DNA</code>, <strong>dna</strong> will create a link for &quot;Page1&quot;, but &quot;More Nuts&quot; and &quot;Logout&quot;</p>
+<p>If you need custom links in the menu, add a <code>url</code> property. In the following <code>SITE_DNA</code>, while <strong>dna</strong> will create the link for &quot;Page1&quot; and build Schema content, it will render &quot;More Nuts&quot; and &quot;Logout&quot; as given.</p>
 <pre><code>&#39;page&#39;: {
   &#39;Page1&#39;: {
     &#39;engage&#39;: {
@@ -113,7 +113,7 @@
   &#39;Logout&#39;: { &#39;url&#39;: &#39;/&#39; },
 }</code></pre><h3 id="template"><code>template</code></h3>
 <p>By default <strong>dna</strong> will use the template created by <strong>generator-thing</strong> and described in the <a href="templates.html">templates specification</a> of this documentation. Optionally you can create a special template for each page.</p>
-<p>In the following example we are defining a website which uses no Schema Type. Effectively this would work perfectly well to create a static site.</p>
+<p>In the following example we are defining a website which uses no Schema Types. Effectively this would work perfectly well to create a static site.</p>
 <pre><code>&#39;page&#39;: {
   &#39;Intro&#39;: { &#39;template&#39;: &#39;frankenstein/intro_page.html&#39; },
   &#39;Hobbies&#39;: { &#39;template&#39;: &#39;frankenstein/hobbies_page.html&#39; },
@@ -132,25 +132,53 @@
 <h3 id="engage"><code>engage</code></h3>
 <p><code>engage</code> renders (to the page template) <strong>1 instance</strong> each of the Schema Types defined in the given order.</p>
 <ul>
-<li><code>field</code> is optional but recommended. Limits the fields rendered in the edit form for this SchemaType on this Page in this Role. All the fields for the Type are in the database, but limiting the fields on the form helps focus the User on the important ones.</li>
 <li><code>template</code> is optional but recommended. Default is <code>dna/_thing_engaged.html</code></li>
+<li><code>field</code> is optional but recommended. Limits the fields rendered in the edit form for this SchemaType on this Page in this Role. All the fields for the Type are in the database, but limiting the fields on the form helps focus the User on the important ones.</li>
 </ul>
 <pre><code>&#39;engage&#39;: {
   &#39;Thing&#39;: {
     &#39;template&#39;: &#39;frankenstein/_page_intro.html&#39;,
-    &#39;field&#39;: [&#39;name&#39;, &#39;description&#39;]
+    &#39;field&#39;: [&#39;name&#39;, &#39;description&#39;],
   },
   &#39;GeoCoordinates&#39;: {
     &#39;template&#39;: &#39;frankenstein/_google_map.html&#39;,
     &#39;field&#39;: [&#39;address&#39;, &#39;longitude&#39;, &#39;longitude&#39;]
   }
-},</code></pre><h3 id="list"><code>list</code></h3>
+},</code></pre><ul>
+<li><code>many</code> is optional. It also takes a list of fields from this Schema Types, but rather than handling them as single fields, <strong>dna</strong> uses these to provide a Many2Many relationship between the &quot;engaged&quot; Thing and Things relating to the SchemaType of the field (if available - defaults to Thing). <code>many</code> offers the facility to do something fundamental in microdata. For instance a &quot;TrainingCourse&quot; Schema might have <code>many</code> &quot;events&quot;.</li>
+</ul>
+<pre><code>&#39;engage&#39;: {
+  &#39;TrainingCourse&#39;: {
+    &#39;template&#39;: &#39;frankenstein/_page_intro.html&#39;,
+    &#39;field&#39;: [&#39;name&#39;, &#39;description&#39;],
+    &#39;many&#39;: [&#39;event&#39;]
+  },
+},</code></pre><p>In the HTML you might see this as:</p>
+<pre><code>&lt;div itemtype=&quot;http://schema.org/TrainingCourse&quot; itemscope=&quot;itemscope&quot;&gt;
+  &lt;p itemprom=&quot;name&quot;&gt;Learning elio-dna the elioWay&lt;/p&gt;
+  &lt;p itemprom=&quot;description&quot;&gt;Learn how to build websites the elioWay!&lt;/p&gt;
+  &lt;ul itemprom=&quot;event&quot;&gt;
+    &lt;li itemscope=&quot;itemscope&quot; itemtype=&quot;http://schema.org/TrainingEvent&quot;&gt;
+      &lt;span itemprom=&quot;location&quot;&gt;London&lt;/span&gt;
+      &lt;span itemprom=&quot;startDate&quot;&gt;4 Sep 2020&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li itemscope=&quot;itemscope&quot; itemtype=&quot;http://schema.org/TrainingEvent&quot;&gt;
+      &lt;span itemprom=&quot;location&quot;&gt;New York&lt;/span&gt;
+      &lt;span itemprom=&quot;startDate&quot;&gt;11 Oct 2020&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li itemscope=&quot;itemscope&quot; itemtype=&quot;http://schema.org/TrainingEvent&quot;&gt;
+      &lt;span itemprom=&quot;location&quot;&gt;Mumbai&lt;/span&gt;
+      &lt;span itemprom=&quot;startDate&quot;&gt;24 Nov 2020&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre><h3 id="list"><code>list</code></h3>
 <p><code>list</code> renders (to the page template) <strong>1 queryset</strong> each of the Schema Types defined in the given order.</p>
 <p>Listed SchemaTypes have the following optional properties</p>
 <ul>
-<li><code>field</code> The same rules apply as with <code>engage</code></li>
-<li><code>template</code> Default is <code>dna/_thing_listed.html</code></li>
-<li><code>paginate</code> will place a paginator for that Schema under the list. Multiple paginators will work in concert.</li>
+<li><code>field</code> The same rules apply as with <code>engage</code>.</li>
+<li><code>many</code> The same rules apply as with <code>engage</code>.</li>
+<li><code>template</code> Default is <code>dna/_thing_listed.html</code>.</li>
+<li><code>paginate</code> will place a paginator for each Schema under the list. Multiple paginators will work in concert.</li>
 </ul>
 <pre><code>&#39;list&#39;: {
   &#39;TouristDestination&#39;: {
@@ -162,6 +190,7 @@
     &#39;template&#39;: &#39;frankenstein/_restaurents.html&#39;,
     &#39;paginate&#39;: 6,
     &#39;field&#39;: [&#39;name&#39;, &#39;description&#39;, &#39;menu&#39;, &#39;address&#39;, &#39;longitude&#39;, &#39;longitude&#39;]
+    &#39;many&#39;: [&#39;reviews&#39;]
   }
 }</code></pre>
     <footer>
