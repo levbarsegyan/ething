@@ -104,18 +104,15 @@
 &lt;/{{menutag}}&gt;
 {% endwith %}</code></pre><p>You&#39;ll notice that <code>_menu.html</code> calls itself recursively and so is able to render a nested array of sub menus. In this vein we follow the pattern in <strong>elioSin</strong>&#39;s <a href="https://elioway.gitlab.io/eliosin/innocent">innocent</a> stylesheet of nesting menu/nav alternatively to build deep menus. <em>elioSin doesn&#39;t like lots of nested div or ul tags with class names</em></p>
 <h4 id="usage">Usage</h4>
-<pre><code>{% with menu=True %}
-&lt;{{menu|yesno:&quot;menu,nav&quot;}}&gt;
-  {% if page_name %}
-    {% include &#39;dna/_menu.html&#39; with menu_level=page_menu %}
-    &lt;a href=&quot;/&quot;&gt;[Logout]&lt;/a&gt;
-  {% endif %}
-&lt;/{{menu|yesno:&quot;menu,nav&quot;}}&gt;
+<pre><code>{% with menu_level=page_menu %}
+{% with menu=False %}
+{% include &#39;dna/_menu.html&#39; %}
+{% endwith %}
 {% endwith %}</code></pre><ul>
 <li><p><code>menu</code> is a tag name.</p>
 <ul>
-<li>If <code>True</code>, <code>_menu.html</code> writes a <code>menu</code> tag as the parent, then nests a <code>nav</code> tag for sub menus.</li>
-<li>If <code>False</code>, <code>_menu.html</code> writes a <code>nav</code> tag as the parent, then nests a <code>menu</code> tag for sub menus.</li>
+<li>If <code>True</code>, <code>_menu.html</code> writes a <code>menu</code> tag as the parent, then nests <code>nav</code> tags for sub menus.</li>
+<li>If <code>False</code>, <code>_menu.html</code> writes a <code>nav</code> tag as the parent, then nests <code>menu</code> tags for sub menus.</li>
 </ul>
 </li>
 <li><p><code>page_menu</code> comes out of the template context for <code>EveryView</code>, and is the top level of the menu.</p>
