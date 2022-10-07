@@ -13,6 +13,3 @@
 [submodule "genes"]
 	path = genes
 	url = git@gitlab.com-elio:eliothing/genes.git
-[submodule "icarus"]
-	path = icarus
-	url = git@gitlab.com-elio:eliothing/icarus.git
