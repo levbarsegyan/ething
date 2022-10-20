@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"
+    ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-145358157-1');
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'UA-145358157-1')
     </script>
     <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>
       dna Quickstart
     </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="shortcut icon" href="favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
       rel="stylesheet"
@@ -26,87 +31,115 @@
       integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/dist/css/sloth.min.css">
+    <link rel="stylesheet" href="/dist/css/sloth.min.css" />
   </head>
   <body>
     <nav>
       <a href="index.html">
-        <img src="apple-touch-icon.png"/>
+        <img src="apple-touch-icon.png" />
         <b>dna</b>
       </a>
-        <a href="#prerequisites">
-                Prerequisites</a>
-        <a href="#nutshell">
-                Nutshell</a>
-        <a href="#glossary">
-                Glossary</a>
-        <a href="#exercise-1-calling-yo-thing">
-                Exercise 1: Calling `yo thing`</a>
-        <a href="#exercise-2-site_dna">
-                Exercise 2 `SITE_DNA`</a>
-        <a href="#exercise-3-custom-templates">
-                Exercise 3 Custom Templates</a>
-        <a href="#next-steps">
-                Next Steps</a>
-      <hr>
+      <a href="#prerequisites"> Prerequisites</a>
+      <a href="#nutshell"> Nutshell</a>
+      <a href="#glossary"> Glossary</a>
+      <a href="#exercise-1-calling-yo-thing"> Exercise 1: Calling `yo thing`</a>
+      <a href="#exercise-2-site_dna"> Exercise 2 `SITE_DNA`</a>
+      <a href="#exercise-3-custom-templates"> Exercise 3 Custom Templates</a>
+      <a href="#next-steps"> Next Steps</a>
+      <hr />
       <a href="/eliothing">
-        <img src="/eliothing/apple-touch-icon.png"/>
+        <img src="/eliothing/apple-touch-icon.png" />
         <b>eliothing</b>
       </a>
       <menu>
-            <label>Python</label>
-            <nav>
-                  <a href="/eliothing/genes">
-                    <img src="/eliothing/genes/apple-touch-icon.png"/>
-                    <b>genes</b>
-                  </a>
-            </nav>
-            <label>Tools</label>
-            <nav>
-                  <a href="/eliothing/generator-thing">
-                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
-                    <b>generator-thing</b>
-                  </a>
-            </nav>
+        <label>Python</label>
+        <nav>
+          <a href="/eliothing/genes">
+            <img src="/eliothing/genes/apple-touch-icon.png" />
+            <b>genes</b>
+          </a>
+        </nav>
+        <label>Tools</label>
+        <nav>
+          <a href="/eliothing/generator-thing">
+            <img src="/eliothing/generator-thing/apple-touch-icon.png" />
+            <b>generator-thing</b>
+          </a>
+        </nav>
       </menu>
     </nav>
     <h1 id="dna-quickstart">dna Quickstart</h1>
-<h2 id="prerequisites">Prerequisites</h2>
-<ul>
-<li><strong>dna</strong> understood <a href="https://elioway.gitlab.io/eliothing/dna">No!</a></li>
-<li>Installed <strong>generator-thing</strong> <a href="https://elioway.gitlab.io/eliothing/generator-thing/installing.html">No!</a></li>
-</ul>
-<h2 id="nutshell">Nutshell</h2>
-<ul>
-<li>Call <code>yo thing</code>.</li>
-<li>Define your <code>SITE_DNA</code>.</li>
-<li>Edit your templates.</li>
-</ul>
-<p>With this library you can prototype a new website quickly, as long as you do things the <strong>elioWay</strong>.</p>
-<h2 id="glossary">Glossary</h2>
-<ul>
-<li><p><em>models</em> and <em>Types</em> and <em>things</em> and <em>classes</em> are the same thing. On schema.org they are called &quot;classes&quot; or &quot;Types&quot; (and properties can also be data types). All <em>Types</em> on <strong>schema_org</strong> are ancestors of the highest class called &quot;Thing&quot;. In Django all these are represented as Models.</p>
-</li>
-<li><p><em>fields</em> and <em>properties</em> are the same thing. On <strong>schema_org</strong> they are called &quot;properties&quot;; and these are mapped to Django &quot;fields&quot; of the same name.</p>
-</li>
-</ul>
-<h2 id="exercise-1-calling-yo-thing">Exercise 1: Calling <code>yo thing</code></h2>
-<p>Start by creating a folder for your app, and typing <code>yo thing</code>. We will use &quot;Frankenstein&quot; for this Quick Start.</p>
-<pre><code class="language-shell">mkdir frankenstein
+    <h2 id="prerequisites">Prerequisites</h2>
+    <ul>
+      <li>
+        <strong>dna</strong> understood
+        <a href="https://elioway.gitlab.io/eliothing/dna">No!</a>
+      </li>
+      <li>
+        Installed <strong>generator-thing</strong>
+        <a
+          href="https://elioway.gitlab.io/eliothing/generator-thing/installing.html"
+          >No!</a
+        >
+      </li>
+    </ul>
+    <h2 id="nutshell">Nutshell</h2>
+    <ul>
+      <li>Call <code>yo thing</code>.</li>
+      <li>Define your <code>SITE_DNA</code>.</li>
+      <li>Edit your templates.</li>
+    </ul>
+    <p>
+      With this library you can prototype a new website quickly, as long as you
+      do things the <strong>elioWay</strong>.
+    </p>
+    <h2 id="glossary">Glossary</h2>
+    <ul>
+      <li>
+        <p>
+          <em>models</em> and <em>Types</em> and <em>things</em> and
+          <em>classes</em> are the same thing. On schema.org they are called
+          &quot;classes&quot; or &quot;Types&quot; (and properties can also be
+          data types). All <em>Types</em> on <strong>schema_org</strong> are
+          ancestors of the highest class called &quot;Thing&quot;. In Django all
+          these are represented as Models.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>fields</em> and <em>properties</em> are the same thing. On
+          <strong>schema_org</strong> they are called &quot;properties&quot;;
+          and these are mapped to Django &quot;fields&quot; of the same name.
+        </p>
+      </li>
+    </ul>
+    <h2 id="exercise-1-calling-yo-thing">
+      Exercise 1: Calling <code>yo thing</code>
+    </h2>
+    <p>
+      Start by creating a folder for your app, and typing <code>yo thing</code>.
+      We will use &quot;Frankenstein&quot; for this Quick Start.
+    </p>
+    <pre><code class="language-shell">mkdir frankenstein
 cd frankenstein
 yo thing</code></pre>
-<p>You will only be asked to provide a name of your website. It should be short but expressive: e.g. &quot;The Kitchen&quot;, &quot;Brazil Travels&quot;. Use &quot;Frankenstein&quot; to follow this Quick Start exactly, but it&#39;s not compulsory.</p>
-<ul>
-<li><p>Now wait...</p>
-</li>
-<li><p>Files are created.</p>
-</li>
-<li><p>The finished message appears.</p>
-</li>
-</ul>
-<h3 id="what-yo-thing-makes">What <code>yo thing</code> makes</h3>
-<p>Assuming you ran <strong>generator-thing</strong> in a folder call <code>app_name</code>:</p>
-<pre><code class="language-asciiart">|- .gitignore
+    <p>
+      You will only be asked to provide a name of your website. It should be
+      short but expressive: e.g. &quot;The Kitchen&quot;, &quot;Brazil
+      Travels&quot;. Use &quot;Frankenstein&quot; to follow this Quick Start
+      exactly, but it&#39;s not compulsory.
+    </p>
+    <ul>
+      <li><p>Now wait...</p></li>
+      <li><p>Files are created.</p></li>
+      <li><p>The finished message appears.</p></li>
+    </ul>
+    <h3 id="what-yo-thing-makes">What <code>yo thing</code> makes</h3>
+    <p>
+      Assuming you ran <strong>generator-thing</strong> in a folder call
+      <code>app_name</code>:
+    </p>
+    <pre><code class="language-asciiart">|- .gitignore
 |- init_app_name.sh
 |- LICENSE.sh
 |- manage.py
@@ -140,22 +173,43 @@ yo thing</code></pre>
         |- releases
             |- 3.9
                 |- all-layers.jsonld</code></pre>
-<h3 id="seeing-is-believing">Seeing is believing</h3>
-<p>Now you can follow the onscreen instructions to setup a <code>virtualenv</code>; install <strong>dna</strong>; and run the website. Assuming you followed the Quick Start exactly (which will assume for the rest of this guide), you&#39;ll type the following.</p>
-<pre><code>source venv-frankenstein/bin/activate[.fish]
+    <h3 id="seeing-is-believing">Seeing is believing</h3>
+    <p>
+      Now you can follow the onscreen instructions to setup a
+      <code>virtualenv</code>; install <strong>dna</strong>; and run the
+      website. Assuming you followed the Quick Start exactly (which will assume
+      for the rest of this guide), you&#39;ll type the following.
+    </p>
+    <pre><code>source venv-frankenstein/bin/activate[.fish]
 pip install -e .
-./init_frankenstein.sh</code></pre><p>Navigate to <a href="http://localhost:8000">http://localhost:8000</a></p>
-<p>You will now see a working app!</p>
-<h3 id="what-we-learnt">What we learnt</h3>
-<ul>
-<li>How to use <code>yo thing</code> to install a <strong>dna</strong> app.</li>
-</ul>
-<h2 id="exercise-2-site_dna">Exercise 2 <code>SITE_DNA</code></h2>
-<p>There are a handful of settings in <strong>dna</strong>, which are described in the <a href="settings.html">settings</a> documentation. For now you can use the defaults for all but <code>SITE_DNA</code>.</p>
-<p>Your entire website is define by the <code>SITE_DNA</code> setting and it&#39;s the first thing you&#39;ll need to check. For a very basic application it could also be the last!</p>
-<p>The <code>SITE_DNA</code> setting describes the pages you want, which Schema models and fields you intend to use on each page. If you open your settings file you will find <code>yo thing</code> has already added the following simple example to get you started.</p>
-<p><strong>example 1</strong></p>
-<pre><code>SITE_DNA = {
+./init_frankenstein.sh</code></pre>
+    <p>Navigate to <a href="http://localhost:8000">http://localhost:8000</a></p>
+    <p>You will now see a working app!</p>
+    <h3 id="what-we-learnt">What we learnt</h3>
+    <ul>
+      <li>
+        How to use <code>yo thing</code> to install a <strong>dna</strong> app.
+      </li>
+    </ul>
+    <h2 id="exercise-2-site_dna">Exercise 2 <code>SITE_DNA</code></h2>
+    <p>
+      There are a handful of settings in <strong>dna</strong>, which are
+      described in the <a href="settings.html">settings</a> documentation. For
+      now you can use the defaults for all but <code>SITE_DNA</code>.
+    </p>
+    <p>
+      Your entire website is define by the <code>SITE_DNA</code> setting and
+      it&#39;s the first thing you&#39;ll need to check. For a very basic
+      application it could also be the last!
+    </p>
+    <p>
+      The <code>SITE_DNA</code> setting describes the pages you want, which
+      Schema models and fields you intend to use on each page. If you open your
+      settings file you will find <code>yo thing</code> has already added the
+      following simple example to get you started.
+    </p>
+    <p><strong>example 1</strong></p>
+    <pre><code>SITE_DNA = {
   &quot;page&quot;: {
     &quot;Home&quot;: {
       &quot;engage&quot;: {&quot;WebPage&quot;: {&quot;field&quot;: [&quot;name&quot;, &quot;description&quot;]}},
@@ -168,21 +222,63 @@ pip install -e .
       }
     }
   }
-}</code></pre><p>Here is a quick breakdown of the core sections. The keywords should be read as verbs.</p>
-<h3 id="page"><code>page</code></h3>
-<p>All the dictionary keys inside a <code>page</code> section will become Pages on the website. In this example there are two pages, &quot;Home&quot; and &quot;About&quot;. <strong>dna</strong> automatically builds a menu and adds it to the context of any page.</p>
-<h3 id="engage"><code>engage</code></h3>
-<p>There are two &quot;roles&quot; for Schema Types for every Page. The <code>engage</code> Role is like a singleton: 1 record of each specified model in this section will be rendered, in order, at the top of the page. For instance, in <strong>example 1</strong>, on the &quot;Home&quot; page, there will be a &quot;WebPage&quot; model whose fields you edit, and are rendered to a template. By default in <strong>dna</strong> templates, only fields with data are rendered.</p>
-<h3 id="list"><code>list</code></h3>
-<p>The second kind of Role is for querysets of the Schema Types listed. These are rendered on the page below the <code>engage</code> section. You can have 1 or more Types and they will be listed in the order mention in <code>SITE_DNA</code>.</p>
-<p>By combining the <code>engage</code> and <code>list</code> sections, you can easily create diverse pages of content.</p>
-<h3 id="field"><code>field</code></h3>
-<p>Represents the names of Schema properties the Page should field. If this is not provided <strong>dna</strong> will display all the fields in the editing form. By default though <strong>dna</strong> displays any field which has data, regardless of what is being fielded.</p>
-<p>For <strong>example 1</strong>, we can expect to see the properties for the &quot;name&quot; and &quot;description&quot; fields at the top of the webpage, and a list of &quot;images&quot; below. On the &quot;About&quot; page we will see a &quot;name&quot; and &quot;description&quot;; plus the &quot;name&quot;, &quot;telephone&quot; and &quot;email&quot; of the site&#39;s LocalBusiness below that.</p>
-<p>Schema.org Types have lots of properties, so it&#39;s a good idea to list the specific fields you want to edit on forms. All fields are available though - and you can use the Browse section of the website to see Forms which show all of them.</p>
-<p>Let&#39;s look at another more complex example:</p>
-<p><strong>example 2</strong></p>
-<pre><code>SITE_DNA = {
+}</code></pre>
+    <p>
+      Here is a quick breakdown of the core sections. The keywords should be
+      read as verbs.
+    </p>
+    <h3 id="page"><code>page</code></h3>
+    <p>
+      All the dictionary keys inside a <code>page</code> section will become
+      Pages on the website. In this example there are two pages,
+      &quot;Home&quot; and &quot;About&quot;. <strong>dna</strong> automatically
+      builds a menu and adds it to the context of any page.
+    </p>
+    <h3 id="engage"><code>engage</code></h3>
+    <p>
+      There are two &quot;roles&quot; for Schema Types for every Page. The
+      <code>engage</code> Role is like a singleton: 1 record of each specified
+      model in this section will be rendered, in order, at the top of the page.
+      For instance, in <strong>example 1</strong>, on the &quot;Home&quot; page,
+      there will be a &quot;WebPage&quot; model whose fields you edit, and are
+      rendered to a template. By default in <strong>dna</strong> templates, only
+      fields with data are rendered.
+    </p>
+    <h3 id="list"><code>list</code></h3>
+    <p>
+      The second kind of Role is for querysets of the Schema Types listed. These
+      are rendered on the page below the <code>engage</code> section. You can
+      have 1 or more Types and they will be listed in the order mention in
+      <code>SITE_DNA</code>.
+    </p>
+    <p>
+      By combining the <code>engage</code> and <code>list</code> sections, you
+      can easily create diverse pages of content.
+    </p>
+    <h3 id="field"><code>field</code></h3>
+    <p>
+      Represents the names of Schema properties the Page should field. If this
+      is not provided <strong>dna</strong> will display all the fields in the
+      editing form. By default though <strong>dna</strong> displays any field
+      which has data, regardless of what is being fielded.
+    </p>
+    <p>
+      For <strong>example 1</strong>, we can expect to see the properties for
+      the &quot;name&quot; and &quot;description&quot; fields at the top of the
+      webpage, and a list of &quot;images&quot; below. On the &quot;About&quot;
+      page we will see a &quot;name&quot; and &quot;description&quot;; plus the
+      &quot;name&quot;, &quot;telephone&quot; and &quot;email&quot; of the
+      site&#39;s LocalBusiness below that.
+    </p>
+    <p>
+      Schema.org Types have lots of properties, so it&#39;s a good idea to list
+      the specific fields you want to edit on forms. All fields are available
+      though - and you can use the Browse section of the website to see Forms
+      which show all of them.
+    </p>
+    <p>Let&#39;s look at another more complex example:</p>
+    <p><strong>example 2</strong></p>
+    <pre><code>SITE_DNA = {
   &quot;page&quot;: {
     &quot;Home&quot;: {
       &quot;engage&quot;: {&quot;WebPage&quot;: {&quot;field&quot;: [&quot;name&quot;, &quot;description&quot;]}},
@@ -218,13 +314,24 @@ pip install -e .
       }
     }
   }
-}</code></pre><p>In this example, we&#39;ve introduced some sub Pages - breaking the &quot;Movies&quot; section of the website into two Pages.</p>
-<p>We&#39;re specified a &quot;template&quot; for the &quot;Review&quot; and &quot;Photograph&quot; type. We&#39;ve also indicated that we want to paginate the &quot;Review&quot; and &quot;News&quot; lists.</p>
-<p>For now though, let&#39;s change the <code>SITE_DNA</code> generator-thing created for you.</p>
-<ul>
-<li>Change your <code>SITE_DNA</code> to the following:</li>
-</ul>
-<pre><code>SITE_DNA = {
+}</code></pre>
+    <p>
+      In this example, we&#39;ve introduced some sub Pages - breaking the
+      &quot;Movies&quot; section of the website into two Pages.
+    </p>
+    <p>
+      We&#39;re specified a &quot;template&quot; for the &quot;Review&quot; and
+      &quot;Photograph&quot; type. We&#39;ve also indicated that we want to
+      paginate the &quot;Review&quot; and &quot;News&quot; lists.
+    </p>
+    <p>
+      For now though, let&#39;s change the <code>SITE_DNA</code> generator-thing
+      created for you.
+    </p>
+    <ul>
+      <li>Change your <code>SITE_DNA</code> to the following:</li>
+    </ul>
+    <pre><code>SITE_DNA = {
   &quot;page&quot;: {
     &quot;Home&quot;: {
       &quot;engage&quot;: {&quot;WebPage&quot;: {&quot;field&quot;: [&quot;name&quot;, &quot;description&quot;]}},
@@ -244,51 +351,117 @@ pip install -e .
       }
     }
   }
-}</code></pre><header><strong>NB</strong>: There are two templates defined now which we will create in the next Exercise. Until you do, the page will respond with a Django error message.</header>
-<h3 id="what-we-learnt-1">What we learnt</h3>
-<p>The <code>SITE_DNA</code> setting is ... everything. The entire website hangs off it. The site&#39;s menu is automatically generated against it. The Django models are dynamically migrated and built from it. If you use all the default <strong>dna</strong> templates, you don&#39;t need to do much more than edit <code>SITE_DNA</code>. New pages and features can easily be added to the site by simply adding a new section to this dictionary.</p>
-<p>In this section we learnt how <code>SITE_DNA</code> works to:</p>
-<ul>
-<li>Create pages.</li>
-<li>Select different Schema.org Types to drive the data for your website.</li>
-<li>Add separator in site menus.</li>
-</ul>
-<p>We also looked at:</p>
-<ul>
-<li>Some of <code>SITE_DNA</code>&#39;s settings.</li>
-<li>Adjusting the properties of a Schema Type in the <code>SITE_DNA</code></li>
-</ul>
-<p>Hopefully you&#39;ve got a sense of how and why the <code>SITE_DNA</code> is so important. There is more information in the specification page in this documentation. See <a href="site_dna.html">SITE_DNA</a></p>
-<h2 id="exercise-3-custom-templates">Exercise 3 Custom Templates</h2>
-<h3 id="page-templates">Page Templates</h3>
-<p>In the previous Exercise we specified a custom template for the &quot;About&quot; page called <code>frankenstein/about_page.html</code>.</p>
-<ul>
-<li>Create a new template called <code>frankenstein/templates/frankenstein/about_page.html</code>:</li>
-</ul>
-<pre><code>{% extends &#39;frankenstein/thing_page.html&#39; %}
+}</code></pre>
+    <header>
+      <strong>NB</strong>: There are two templates defined now which we will
+      create in the next Exercise. Until you do, the page will respond with a
+      Django error message.
+    </header>
+    <h3 id="what-we-learnt-1">What we learnt</h3>
+    <p>
+      The <code>SITE_DNA</code> setting is ... everything. The entire website
+      hangs off it. The site&#39;s menu is automatically generated against it.
+      The Django models are dynamically migrated and built from it. If you use
+      all the default <strong>dna</strong> templates, you don&#39;t need to do
+      much more than edit <code>SITE_DNA</code>. New pages and features can
+      easily be added to the site by simply adding a new section to this
+      dictionary.
+    </p>
+    <p>In this section we learnt how <code>SITE_DNA</code> works to:</p>
+    <ul>
+      <li>Create pages.</li>
+      <li>
+        Select different Schema.org Types to drive the data for your website.
+      </li>
+      <li>Add separator in site menus.</li>
+    </ul>
+    <p>We also looked at:</p>
+    <ul>
+      <li>Some of <code>SITE_DNA</code>&#39;s settings.</li>
+      <li>
+        Adjusting the properties of a Schema Type in the <code>SITE_DNA</code>
+      </li>
+    </ul>
+    <p>
+      Hopefully you&#39;ve got a sense of how and why the
+      <code>SITE_DNA</code> is so important. There is more information in the
+      specification page in this documentation. See
+      <a href="site_dna.html">SITE_DNA</a>
+    </p>
+    <h2 id="exercise-3-custom-templates">Exercise 3 Custom Templates</h2>
+    <h3 id="page-templates">Page Templates</h3>
+    <p>
+      In the previous Exercise we specified a custom template for the
+      &quot;About&quot; page called <code>frankenstein/about_page.html</code>.
+    </p>
+    <ul>
+      <li>
+        Create a new template called
+        <code>frankenstein/templates/frankenstein/about_page.html</code>:
+      </li>
+    </ul>
+    <pre><code>{% extends &#39;frankenstein/thing_page.html&#39; %}
 {% block precontent %}
   &lt;p&gt;Thank you for your interest in Frankenstein. You can also find us on Social Media at the following links.&lt;/p&gt;
   &lt;ul&gt;
     &lt;li&gt;&lt;a href=&quot;twitter.com/frankenstein&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;facebook.com/frankenstein&quot;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-{% endblock precontent %}</code></pre><p>This extends the default template for all pages (which <strong>generator-thing</strong> created for you).</p>
-<p>We&#39;ve added a new <code>block</code> tag called &quot;precontent&quot;. This will need to be defined on the <code>base.html</code> file.</p>
-<ul>
-<li>Open <code>frankenstein/templates/frankenstein/base.html</code> and add this <code>block</code> tag above the <code>block content</code></li>
-</ul>
-<pre><code>{% block precontent %}{% endblock precontent %}  &lt;! -- add this --&gt;
-{% block content %}{% endblock content %}</code></pre><p>This is all standard Django stuff - the only difference is that <strong>dna</strong> knows to collect the <code>frankenstein/about_page.html</code> defined in the <code>SITE_DNA</code> rather than the one defined in your <code>FrankensteinPageView</code> in <code>frankenstein/views.py</code>.</p>
-<ul>
-<li>Refresh the &quot;About&quot; page to see your custom content.</li>
-</ul>
-<h3 id="detail-template">Detail Template</h3>
-<p>In <strong>Exercise 2</strong> you also defined a different template for the &quot;Photograph&quot; Schema Type in its <code>list</code> Role. It&#39;s time to create that file. This is not a Page template, but will be used to render the PhotoGraph queryset on the &quot;Home&quot; page.</p>
-<p>The default template for rendering an instance of a Schema Type in a list is <code>dna/_thing_listed.html</code>, which is described on the <a href="templates.html">templates</a> specification in this documentation. We will use it as a starting point for our new <code>frankenstein/_thumbs.html</code> template. I like to use an underscore to indicate it is not a page level template. This is not compulsory.</p>
-<ul>
-<li>Create the file in your app, saving the file (in the normal Django way) to the folder <code>frankenstein/templates/frankenstein/_thumbs.html</code>. Add the following content, which is this is default template for a Page with a <code>list</code> role. I copied it from <a href="templates.html">templates</a>.</li>
-</ul>
-<pre><code>&lt;ul&gt;
+{% endblock precontent %}</code></pre>
+    <p>
+      This extends the default template for all pages (which
+      <strong>generator-thing</strong> created for you).
+    </p>
+    <p>
+      We&#39;ve added a new <code>block</code> tag called
+      &quot;precontent&quot;. This will need to be defined on the
+      <code>base.html</code> file.
+    </p>
+    <ul>
+      <li>
+        Open <code>frankenstein/templates/frankenstein/base.html</code> and add
+        this <code>block</code> tag above the <code>block content</code>
+      </li>
+    </ul>
+    <pre><code>{% block precontent %}{% endblock precontent %}  &lt;! -- add this --&gt;
+{% block content %}{% endblock content %}</code></pre>
+    <p>
+      This is all standard Django stuff - the only difference is that
+      <strong>dna</strong> knows to collect the
+      <code>frankenstein/about_page.html</code> defined in the
+      <code>SITE_DNA</code> rather than the one defined in your
+      <code>FrankensteinPageView</code> in <code>frankenstein/views.py</code>.
+    </p>
+    <ul>
+      <li>Refresh the &quot;About&quot; page to see your custom content.</li>
+    </ul>
+    <h3 id="detail-template">Detail Template</h3>
+    <p>
+      In <strong>Exercise 2</strong> you also defined a different template for
+      the &quot;Photograph&quot; Schema Type in its <code>list</code> Role.
+      It&#39;s time to create that file. This is not a Page template, but will
+      be used to render the PhotoGraph queryset on the &quot;Home&quot; page.
+    </p>
+    <p>
+      The default template for rendering an instance of a Schema Type in a list
+      is <code>dna/_thing_listed.html</code>, which is described on the
+      <a href="templates.html">templates</a> specification in this
+      documentation. We will use it as a starting point for our new
+      <code>frankenstein/_thumbs.html</code> template. I like to use an
+      underscore to indicate it is not a page level template. This is not
+      compulsory.
+    </p>
+    <ul>
+      <li>
+        Create the file in your app, saving the file (in the normal Django way)
+        to the folder
+        <code>frankenstein/templates/frankenstein/_thumbs.html</code>. Add the
+        following content, which is this is default template for a Page with a
+        <code>list</code> role. I copied it from
+        <a href="templates.html">templates</a>.
+      </li>
+    </ul>
+    <pre><code>&lt;ul&gt;
   {% for thing in object_list %}
     &lt;li&gt;
       &lt;a href=&quot;{% url &#39;engage.thing&#39; page_name thing_name thing.pk %}&quot;&gt;{{ thing.name }} »&lt;/a&gt;
@@ -308,13 +481,21 @@ pip install -e .
     {% endwith %}
     {% endwith %}
   &lt;/p&gt;
-{% endif %}</code></pre><p>Let&#39;s change this now so that it can display thumbnails instead.</p>
-<header><strong>NB</strong>: For now, we'll use inline styles for this... but you'll probably want to marry this process with your CSS throughput. I recommend looking at the <a href="https://elioway.gitlab.io/eliothing/genes">genes</a> app and using <a href="https://elioway.gitlab.io/eliosin">elioSin</a> for <em>patterns</em> that will help you do this expediency.</header>
-<p>For now, we&#39;ll use inline styles for this...</p>
-<ul>
-<li>Change the template to this:</li>
-</ul>
-<pre><code>{% load dna_tags %}
+{% endif %}</code></pre>
+    <p>Let&#39;s change this now so that it can display thumbnails instead.</p>
+    <header>
+      <strong>NB</strong>: For now, we'll use inline styles for this... but
+      you'll probably want to marry this process with your CSS throughput. I
+      recommend looking at the
+      <a href="https://elioway.gitlab.io/eliothing/genes">genes</a> app and
+      using <a href="https://elioway.gitlab.io/eliosin">elioSin</a> for
+      <em>patterns</em> that will help you do this expediency.
+    </header>
+    <p>For now, we&#39;ll use inline styles for this...</p>
+    <ul>
+      <li>Change the template to this:</li>
+    </ul>
+    <pre><code>{% load dna_tags %}
 &lt;style&gt;
   body&gt;section:after {
     clear: both;
@@ -359,43 +540,74 @@ pip install -e .
     {% endwith %}
     {% endwith %}
   &lt;/p&gt;
-{% endif %}</code></pre><p>There is just a little bit to unpack here.</p>
-<p>We&#39;ve created a very simple style for floating thumbnails in a <code>section</code> tag.</p>
-<p>We&#39;re using <strong>easy_thumbnails</strong> to generate a thumbnail, which has been installed for you by <strong>dna</strong>. <strong>dna</strong> also comes with prepared settings for <strong>easy_thumbnails</strong>, plus a template_tag called <code>thumbnail</code> which we loaded from <code>dna_tags</code>. One of the settings allows for a &quot;100x100&quot; sized thumbnail, but there are others you can use as detailed in the settings documentation.</p>
-<ul>
-<li><a href="settings.html">Settings</a></li>
-<li><a href="template_tags.html">Template Tags</a></li>
-</ul>
-<p>If there is no image uploaded, we provide a link direct to the edit form for the Photograph.</p>
-<p>Otherwise, the template is similar to the default. We have the same &quot;for loop&quot; iterating the <code>object_list</code> - which will be a queryset of the Photograph model. We maintain the same URL which the user can use to engage with the photo on its own page and see the image in full (also edit or delete it there). We left the paginator as it was.</p>
-<h3 id="what-we-learnt-2">What we learnt</h3>
-<ul>
-<li>How to create a special template for a specific Schema Type in a specific Role on a specific Page.</li>
-<li>That DNA comes with <strong>easy_thumbnails</strong> and some ready made template_tags.</li>
-</ul>
-<h2 id="next-steps">Next Steps</h2>
-<p>That completes this quick start. Now all that is left is to start building your website from <strong>dna</strong>.</p>
-<ul>
-<li><p>Customise the main templates.</p>
-</li>
-<li><p>Create special templates for the layout</p>
-<ul>
-<li>Templates for engage roles with different Schema Types.</li>
-<li>Templates for list roles with different Schema Types.</li>
-<li>Templates for forms.</li>
-</ul>
-</li>
-</ul>
+{% endif %}</code></pre>
+    <p>There is just a little bit to unpack here.</p>
+    <p>
+      We&#39;ve created a very simple style for floating thumbnails in a
+      <code>section</code> tag.
+    </p>
+    <p>
+      We&#39;re using <strong>easy_thumbnails</strong> to generate a thumbnail,
+      which has been installed for you by <strong>dna</strong>.
+      <strong>dna</strong> also comes with prepared settings for
+      <strong>easy_thumbnails</strong>, plus a template_tag called
+      <code>thumbnail</code> which we loaded from <code>dna_tags</code>. One of
+      the settings allows for a &quot;100x100&quot; sized thumbnail, but there
+      are others you can use as detailed in the settings documentation.
+    </p>
+    <ul>
+      <li><a href="settings.html">Settings</a></li>
+      <li><a href="template_tags.html">Template Tags</a></li>
+    </ul>
+    <p>
+      If there is no image uploaded, we provide a link direct to the edit form
+      for the Photograph.
+    </p>
+    <p>
+      Otherwise, the template is similar to the default. We have the same
+      &quot;for loop&quot; iterating the <code>object_list</code> - which will
+      be a queryset of the Photograph model. We maintain the same URL which the
+      user can use to engage with the photo on its own page and see the image in
+      full (also edit or delete it there). We left the paginator as it was.
+    </p>
+    <h3 id="what-we-learnt-2">What we learnt</h3>
+    <ul>
+      <li>
+        How to create a special template for a specific Schema Type in a
+        specific Role on a specific Page.
+      </li>
+      <li>
+        That DNA comes with <strong>easy_thumbnails</strong> and some ready made
+        template_tags.
+      </li>
+    </ul>
+    <h2 id="next-steps">Next Steps</h2>
+    <p>
+      That completes this quick start. Now all that is left is to start building
+      your website from <strong>dna</strong>.
+    </p>
+    <ul>
+      <li><p>Customise the main templates.</p></li>
+      <li>
+        <p>Create special templates for the layout</p>
+        <ul>
+          <li>Templates for engage roles with different Schema Types.</li>
+          <li>Templates for list roles with different Schema Types.</li>
+          <li>Templates for forms.</li>
+        </ul>
+      </li>
+    </ul>
     <footer>
       <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>
-      <img src="elio-dna-logo.png">
+      <img src="elio-dna-logo.png" />
       <label>&copy; 2019 Made the elioWay</label>
     </footer>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+    ></script>
     <script src="/dist/js/adons.js"></script>
     <script src="/dist/js/main.js"></script>
   </body>

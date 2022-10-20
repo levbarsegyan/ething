@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"
+    ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-145358157-1');
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'UA-145358157-1')
     </script>
     <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>
       Installing dna
     </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="shortcut icon" href="favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
       rel="stylesheet"
@@ -26,63 +31,92 @@
       integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/dist/css/sloth.min.css">
+    <link rel="stylesheet" href="/dist/css/sloth.min.css" />
   </head>
   <body>
     <nav>
       <a href="index.html">
-        <img src="apple-touch-icon.png"/>
+        <img src="apple-touch-icon.png" />
         <b>dna</b>
       </a>
-        <a href="#installing-with-generator-thing">
-                Installing with generator-thing</a>
-        <a href="#installing-with-pip">
-                Installing with pip</a>
-        <a href="#development">
-                Development</a>
-      <hr>
+      <a href="#installing-with-generator-thing">
+        Installing with generator-thing</a
+      >
+      <a href="#installing-with-pip"> Installing with pip</a>
+      <a href="#development"> Development</a>
+      <hr />
       <a href="/eliothing">
-        <img src="/eliothing/apple-touch-icon.png"/>
+        <img src="/eliothing/apple-touch-icon.png" />
         <b>eliothing</b>
       </a>
       <menu>
-            <label>Python</label>
-            <nav>
-                  <a href="/eliothing/genes">
-                    <img src="/eliothing/genes/apple-touch-icon.png"/>
-                    <b>genes</b>
-                  </a>
-            </nav>
-            <label>Tools</label>
-            <nav>
-                  <a href="/eliothing/generator-thing">
-                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
-                    <b>generator-thing</b>
-                  </a>
-            </nav>
+        <label>Python</label>
+        <nav>
+          <a href="/eliothing/genes">
+            <img src="/eliothing/genes/apple-touch-icon.png" />
+            <b>genes</b>
+          </a>
+        </nav>
+        <label>Tools</label>
+        <nav>
+          <a href="/eliothing/generator-thing">
+            <img src="/eliothing/generator-thing/apple-touch-icon.png" />
+            <b>generator-thing</b>
+          </a>
+        </nav>
       </menu>
     </nav>
     <h1 id="installing-dna">Installing dna</h1>
-<h2 id="installing-with-generator-thing">Installing with generator-thing</h2>
-<p>We provide a Yeoman generator to get you started. <strong>generator-thing</strong> scaffolds a new <strong>Django</strong> app with <strong>dna</strong> installed - all the required settings sketched out - and all the basic views, urls, and templates you need to get started are also generated.</p>
-<ul>
-<li><a href="https://elioway.gitlab.io/eliothing/generator-thing">generator-thing Documentation</a></li>
-<li><a href="https://elioway.gitlab.io/eliothing/generator-thing/installing.html">Installing generator-thing</a></li>
-</ul>
-<h2 id="installing-with-pip">Installing with pip</h2>
-<p>Alongside an existing <strong>Django</strong> project you can also use <strong>generator-thing</strong> - but if you prefer to manage things manually, you can pip install <strong>dna</strong>.</p>
-<pre><code>pip install elio-dna</code></pre><p>Now you need to add a <strong>Django</strong> app with all the files described in the documentation.</p>
-<ul>
-<li><a href="settings.html">Settings</a></li>
-<li><a href="models.html">Models</a></li>
-<li><a href="views.html">Views</a></li>
-<li><a href="urls.html">Urls</a></li>
-<li><a href="templates.html">Templates</a></li>
-</ul>
-<p>Are you sure you wouldn&#39;t prefer to just type <code>yo thing</code>?</p>
-<h2 id="development">Development</h2>
-<p>.. is also a fine way to install <strong>dna</strong>, using GIT as a starting project.</p>
-<pre><code class="language-bash">cd elioway
+    <h2 id="installing-with-generator-thing">
+      Installing with generator-thing
+    </h2>
+    <p>
+      We provide a Yeoman generator to get you started.
+      <strong>generator-thing</strong> scaffolds a new
+      <strong>Django</strong> app with <strong>dna</strong> installed - all the
+      required settings sketched out - and all the basic views, urls, and
+      templates you need to get started are also generated.
+    </p>
+    <ul>
+      <li>
+        <a href="https://elioway.gitlab.io/eliothing/generator-thing"
+          >generator-thing Documentation</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://elioway.gitlab.io/eliothing/generator-thing/installing.html"
+          >Installing generator-thing</a
+        >
+      </li>
+    </ul>
+    <h2 id="installing-with-pip">Installing with pip</h2>
+    <p>
+      Alongside an existing <strong>Django</strong> project you can also use
+      <strong>generator-thing</strong> - but if you prefer to manage things
+      manually, you can pip install <strong>dna</strong>.
+    </p>
+    <pre><code>pip install elio-dna</code></pre>
+    <p>
+      Now you need to add a <strong>Django</strong> app with all the files
+      described in the documentation.
+    </p>
+    <ul>
+      <li><a href="settings.html">Settings</a></li>
+      <li><a href="models.html">Models</a></li>
+      <li><a href="views.html">Views</a></li>
+      <li><a href="urls.html">Urls</a></li>
+      <li><a href="templates.html">Templates</a></li>
+    </ul>
+    <p>
+      Are you sure you wouldn&#39;t prefer to just type <code>yo thing</code>?
+    </p>
+    <h2 id="development">Development</h2>
+    <p>
+      .. is also a fine way to install <strong>dna</strong>, using GIT as a
+      starting project.
+    </p>
+    <pre><code class="language-bash">cd elioway
 git clone https://gitlab.com/elioway/elioangels.git
 cd elioangels
 git clone https://gitlab.com/elioangels/dna.git
@@ -90,17 +124,19 @@ cd dna
 virtualenv --python=python3 venv-dna
 source venv-dna/bin/activate
 pip install -r requirements/local.txt</code></pre>
-<p><strong>Run the tests:</strong></p>
-<pre><code class="language-bash">find . -name &#39;*.pyc&#39; -delete
+    <p><strong>Run the tests:</strong></p>
+    <pre><code class="language-bash">find . -name &#39;*.pyc&#39; -delete
 find . -name &#39;__pycache__&#39; -delete
 py.test -x</code></pre>
-<h3 id="publish">Publish</h3>
-<p>Activate the virtualenv.</p>
-<pre><code>python3 setup.py sdist bdist_wheel
+    <h3 id="publish">Publish</h3>
+    <p>Activate the virtualenv.</p>
+    <pre><code>python3 setup.py sdist bdist_wheel
 twine upload dist/*
-# Enter YOUR-USERNAME and YOUR-PASSWORD</code></pre><p>Testing it:</p>
-<pre><code>pip install elio-dna</code></pre><p><strong>Test Publish</strong></p>
-<pre><code>python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+# Enter YOUR-USERNAME and YOUR-PASSWORD</code></pre>
+    <p>Testing it:</p>
+    <pre><code>pip install elio-dna</code></pre>
+    <p><strong>Test Publish</strong></p>
+    <pre><code>python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 # Enter YOUR-USERNAME and YOUR-PASSWORD
 cd some/test/folder
 virtualenv --python=python3 venv-dna
@@ -111,13 +147,14 @@ python3 -m pip install --index-url https://test.pypi.org/simple/ dna</code></pre
     <footer>
       <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>
-      <img src="elio-dna-logo.png">
+      <img src="elio-dna-logo.png" />
       <label>&copy; 2019 Made the elioWay</label>
     </footer>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+    ></script>
     <script src="/dist/js/adons.js"></script>
     <script src="/dist/js/main.js"></script>
   </body>

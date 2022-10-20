@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"
+    ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-145358157-1');
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'UA-145358157-1')
     </script>
     <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>
       elioThing
     </title>
-    <meta name="description" content="Notes and resources for the elioThing project.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="shortcut icon" href="favicon.ico"/>
+    <meta
+      name="description"
+      content="Notes and resources for the elioThing project."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
       rel="stylesheet"
@@ -27,109 +35,160 @@
       integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/dist/css/rei.min.css">
+    <link rel="stylesheet" href="/dist/css/rei.min.css" />
   </head>
   <body>
     <menu>
       <a href="index.html">
-        <img src="apple-touch-icon.png"/>
+        <img src="apple-touch-icon.png" />
         <b>elioThing</b>
       </a>
       <a href="installing.html">Installing</a>
       <a href="quickstart.html">Quickstart</a>
       <a href="credits.html">Credits</a>
-          <menu>
-            <label>Python</label>
-            <nav>
-                  <a href="/eliothing/dna">
-                    <img src="/eliothing/dna/apple-touch-icon.png"/>
-                    <b>dna</b>
-                  </a>
-                  <a href="/eliothing/genes">
-                    <img src="/eliothing/genes/apple-touch-icon.png"/>
-                    <b>genes</b>
-                  </a>
-            </nav>
-          </menu>
-          <menu>
-            <label>Tools</label>
-            <nav>
-                  <a href="/eliothing/generator-thing">
-                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
-                    <b>generator-thing</b>
-                  </a>
-            </nav>
-          </menu>
+      <menu>
+        <label>Python</label>
+        <nav>
+          <a href="/eliothing/dna">
+            <img src="/eliothing/dna/apple-touch-icon.png" />
+            <b>dna</b>
+          </a>
+          <a href="/eliothing/genes">
+            <img src="/eliothing/genes/apple-touch-icon.png" />
+            <b>genes</b>
+          </a>
+        </nav>
+      </menu>
+      <menu>
+        <label>Tools</label>
+        <nav>
+          <a href="/eliothing/generator-thing">
+            <img src="/eliothing/generator-thing/apple-touch-icon.png" />
+            <b>generator-thing</b>
+          </a>
+        </nav>
+      </menu>
       <menu>
         <label>Ways</label>
         <nav>
           <a href="/ ">
-            <img src="/apple-touch-icon.png"/>
+            <img src="/apple-touch-icon.png" />
             <b>elioWay</b>
           </a>
-              <a href="/elioangels">
-                <img src="/elioangels/apple-touch-icon.png"/>
-                <b>elioAngels</b>
-              </a>
-              <a href="/eliosin">
-                <img src="/eliosin/apple-touch-icon.png"/>
-                <b>elioSin</b>
-              </a>
-              <a href="/eliofaithful">
-                <img src="/eliofaithful/apple-touch-icon.png"/>
-                <b>elioFaithful</b>
-              </a>
+          <a href="/elioangels">
+            <img src="/elioangels/apple-touch-icon.png" />
+            <b>elioAngels</b>
+          </a>
+          <a href="/eliosin">
+            <img src="/eliosin/apple-touch-icon.png" />
+            <b>elioSin</b>
+          </a>
+          <a href="/eliofaithful">
+            <img src="/eliofaithful/apple-touch-icon.png" />
+            <b>elioFaithful</b>
+          </a>
         </nav>
       </menu>
     </menu>
     <h1 id="eliothing">elioThing</h1>
-<figure>
-  <img src="tile.png" alt="">
-</figure>
-<blockquote>
-<p>Are you ready for any thing? <strong>the elioWay</strong></p>
-</blockquote>
-<p><img src="https://elioway.gitlab.io/static/experimental.png" alt="experimental" title="experimental"></p>
-<p>As with <a href="https://elioway.gitlab.io/eliosin">elioSin</a>, <strong>elioThing</strong> is designed to meet two objectives:</p>
-<ol>
-<li><p><strong>Goal focused</strong> Provide a suite of applications driven by Schema.org data models. These will be focused on easy data capture; functional information dissemination; and both compliant with Schema.org&#39;s microdata specifications of structured, semantic markup.</p>
-</li>
-<li><p><strong>Learning focused</strong> We intentionally break the technologies into easily consumed, bitsized modules that can be understood by new developers and maintained by the inexperienced.</p>
-</li>
-</ol>
-<p>Contributors welcome.</p>
-<h2 id="dna">dna</h2>
-<p><strong>Django</strong> is the perfect tool for experimenting the goal of <strong>elioThing</strong> - and in <strong>dna</strong> we prototype the idea of building an &quot;app of apps&quot;. As with much done the elioWay, <strong>dna</strong> comes with a trilogy of apps:</p>
-<section>
-  <figure>
-  <img src="static/dna.png">
-  <h3>Classify</h3>
-  <p><strong>Django</strong> models, views, forms, and templates, built out of <strong>Schema.org</strong> Things, the <strong>elioWay</strong>.</p>
-  <p><a href="dna"><button><img src="dna/apple-touch-icon.png">dna</button></a></p>
-</figure>
-  <figure>
-  <img src="static/generator-thing.png">
-  <h3>Generate</h3>
-  <p>yeoman generator for apps built with dna and <strong>Django</strong> models based on <strong>Schema.org</strong>, the <strong>elioWay</strong>.</p>
-  <p><a href="generator-thing"><button><img src="generator-thing/apple-touch-icon.png">generator-thing</button></a></p>
-</figure>
-  <figure>
-  <img src="static/genes.png">
-  <h3>Scheme</h3>
-  <p><strong>Django</strong> templates, custom made for <strong>Schema.org</strong> Things, the <strong>elioWay</strong>.</p>
-  <p><a href="genes"><button><img src="genes/apple-touch-icon.png">genes</button></a></p>
-</figure>
-</section>
+    <figure>
+      <img src="tile.png" alt="" />
+    </figure>
+    <blockquote>
+      <p>Are you ready for any thing? <strong>the elioWay</strong></p>
+    </blockquote>
+    <p>
+      <img
+        src="https://elioway.gitlab.io/static/experimental.png"
+        alt="experimental"
+        title="experimental"
+      />
+    </p>
+    <p>
+      As with <a href="https://elioway.gitlab.io/eliosin">elioSin</a>,
+      <strong>elioThing</strong> is designed to meet two objectives:
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>Goal focused</strong> Provide a suite of applications driven
+          by Schema.org data models. These will be focused on easy data capture;
+          functional information dissemination; and both compliant with
+          Schema.org&#39;s microdata specifications of structured, semantic
+          markup.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Learning focused</strong> We intentionally break the
+          technologies into easily consumed, bitsized modules that can be
+          understood by new developers and maintained by the inexperienced.
+        </p>
+      </li>
+    </ol>
+    <p>Contributors welcome.</p>
+    <h2 id="dna">dna</h2>
+    <p>
+      <strong>Django</strong> is the perfect tool for experimenting the goal of
+      <strong>elioThing</strong> - and in <strong>dna</strong> we prototype the
+      idea of building an &quot;app of apps&quot;. As with much done the
+      elioWay, <strong>dna</strong> comes with a trilogy of apps:
+    </p>
+    <section>
+      <figure>
+        <img src="static/dna.png" />
+        <h3>Classify</h3>
+        <p>
+          <strong>Django</strong> models, views, forms, and templates, built out
+          of <strong>Schema.org</strong> Things, the <strong>elioWay</strong>.
+        </p>
+        <p>
+          <a href="dna"
+            ><button><img src="dna/apple-touch-icon.png" />dna</button></a
+          >
+        </p>
+      </figure>
+      <figure>
+        <img src="static/generator-thing.png" />
+        <h3>Generate</h3>
+        <p>
+          yeoman generator for apps built with dna and
+          <strong>Django</strong> models based on <strong>Schema.org</strong>,
+          the <strong>elioWay</strong>.
+        </p>
+        <p>
+          <a href="generator-thing"
+            ><button>
+              <img src="generator-thing/apple-touch-icon.png" />generator-thing
+            </button></a
+          >
+        </p>
+      </figure>
+      <figure>
+        <img src="static/genes.png" />
+        <h3>Scheme</h3>
+        <p>
+          <strong>Django</strong> templates, custom made for
+          <strong>Schema.org</strong> Things, the <strong>elioWay</strong>.
+        </p>
+        <p>
+          <a href="genes"
+            ><button><img src="genes/apple-touch-icon.png" />genes</button></a
+          >
+        </p>
+      </figure>
+    </section>
     <footer>
       <a href="https://gitlab.com/eliothing">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>
-      <img src="elio-elioThing-logo.png">
+      <img src="elio-elioThing-logo.png" />
       <label>&copy; 2019 Made the elioWay</label>
     </footer>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+    ></script>
     <script src="/dist/js/adons.js"></script>
     <script src="/dist/js/main.js"></script>
   </body>

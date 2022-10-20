@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"
+    ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-145358157-1');
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'UA-145358157-1')
     </script>
     <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>
       genes Quickstart
     </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="shortcut icon" href="favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
       rel="stylesheet"
@@ -26,68 +31,115 @@
       integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/dist/css/sloth.min.css">
+    <link rel="stylesheet" href="/dist/css/sloth.min.css" />
   </head>
   <body>
     <nav>
       <a href="index.html">
-        <img src="apple-touch-icon.png"/>
+        <img src="apple-touch-icon.png" />
         <b>genes</b>
       </a>
-      <hr>
+      <hr />
       <a href="/eliothing">
-        <img src="/eliothing/apple-touch-icon.png"/>
+        <img src="/eliothing/apple-touch-icon.png" />
         <b>eliothing</b>
       </a>
       <menu>
-            <label>Python</label>
-            <nav>
-                  <a href="/eliothing/dna">
-                    <img src="/eliothing/dna/apple-touch-icon.png"/>
-                    <b>dna</b>
-                  </a>
-            </nav>
-            <label>Tools</label>
-            <nav>
-                  <a href="/eliothing/generator-thing">
-                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
-                    <b>generator-thing</b>
-                  </a>
-            </nav>
+        <label>Python</label>
+        <nav>
+          <a href="/eliothing/dna">
+            <img src="/eliothing/dna/apple-touch-icon.png" />
+            <b>dna</b>
+          </a>
+        </nav>
+        <label>Tools</label>
+        <nav>
+          <a href="/eliothing/generator-thing">
+            <img src="/eliothing/generator-thing/apple-touch-icon.png" />
+            <b>generator-thing</b>
+          </a>
+        </nav>
       </menu>
     </nav>
     <h1 id="genes-quickstart">genes Quickstart</h1>
-<ul>
-<li><strong>elioSin</strong> prerequisites met? <a href="https://elioway.gitlab.io/eliosin/installing.html">No!</a></li>
-</ul>
-<h1 id="exercise-1-using-eliosin-in-your-django-build">Exercise 1: Using elioSin in your Django build</h1>
-<p>We&#39;re using <a href="https://github.com/tjwalch/django-livereload-server">django-livereload-server</a> to make working with an <strong>elioSin</strong> theme and Django project as easy as possible.</p>
-<p>You should already understand the <strong>elioSin</strong> work-and-build process as described:</p>
-<ul>
-<li><strong>elioSin</strong> prerequisites met? <a href="https://elioway.gitlab.io/eliosin/installing.html">No!</a></li>
-<li><strong>god</strong> quickstart understood? <a href="https://elioway.gitlab.io/eliosin/god/quickstart.html">No!</a></li>
-</ul>
-<p>To run a <strong>elioSin</strong> theme inside a Django app, follow these steps.</p>
-<ul>
-<li><p>Create a folder inside your Django app called <code>theme</code> <em>(name is optional)</em>. Put it alongside your templates folder, directly inside the app folder whose Django templates you are theming. <code>theme</code> is good because it sits alphabetically below to <code>template</code>.</p>
-</li>
-<li><p>Use the <strong>elioSin</strong> yeoman generator <strong>generator-sin</strong> to create the boilerplate of a sinful theme in this folder:</p>
-</li>
-</ul>
-<pre><code>mkdir &lt;theme_name&gt;
+    <ul>
+      <li>
+        <strong>elioSin</strong> prerequisites met?
+        <a href="https://elioway.gitlab.io/eliosin/installing.html">No!</a>
+      </li>
+    </ul>
+    <h1 id="exercise-1-using-eliosin-in-your-django-build">
+      Exercise 1: Using elioSin in your Django build
+    </h1>
+    <p>
+      We&#39;re using
+      <a href="https://github.com/tjwalch/django-livereload-server"
+        >django-livereload-server</a
+      >
+      to make working with an <strong>elioSin</strong> theme and Django project
+      as easy as possible.
+    </p>
+    <p>
+      You should already understand the <strong>elioSin</strong> work-and-build
+      process as described:
+    </p>
+    <ul>
+      <li>
+        <strong>elioSin</strong> prerequisites met?
+        <a href="https://elioway.gitlab.io/eliosin/installing.html">No!</a>
+      </li>
+      <li>
+        <strong>god</strong> quickstart understood?
+        <a href="https://elioway.gitlab.io/eliosin/god/quickstart.html">No!</a>
+      </li>
+    </ul>
+    <p>
+      To run a <strong>elioSin</strong> theme inside a Django app, follow these
+      steps.
+    </p>
+    <ul>
+      <li>
+        <p>
+          Create a folder inside your Django app called <code>theme</code>
+          <em>(name is optional)</em>. Put it alongside your templates folder,
+          directly inside the app folder whose Django templates you are theming.
+          <code>theme</code> is good because it sits alphabetically below to
+          <code>template</code>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Use the <strong>elioSin</strong> yeoman generator
+          <strong>generator-sin</strong> to create the boilerplate of a sinful
+          theme in this folder:
+        </p>
+      </li>
+    </ul>
+    <pre><code>mkdir &lt;theme_name&gt;
 cd &lt;theme_name&gt;
-yo sin</code></pre><ul>
-<li>In your django settings file add the following:</li>
-</ul>
-<pre><code class="language-python">STATICFILES_DIRS = [os.path.join(&quot;&lt;app_name&gt;&quot;, &quot;&lt;theme_name&gt;/dist&quot;)]
+yo sin</code></pre>
+    <ul>
+      <li>In your django settings file add the following:</li>
+    </ul>
+    <pre><code class="language-python">STATICFILES_DIRS = [os.path.join(&quot;&lt;app_name&gt;&quot;, &quot;&lt;theme_name&gt;/dist&quot;)]
 STATIC_ROOT = &quot;&lt;app_name&gt;_static&quot;
 STATIC_URL = &quot;/static/&quot;</code></pre>
-<p><strong>elioSin</strong> gulp files build resources into the <code>dist</code> folder of the theme, including any image resources like <code>favicon.ico</code> and <code>apple-touch-icon.png</code>.</p>
-<ul>
-<li>We&#39;re using <strong>django-livereload-server</strong> to watch+reload the Django Development server - including auto-collecting-static files - when you change any of your <strong>elioSin</strong> theme files. You should follow the livereload setup described in the link above, but in the spirit of a Quickstart:</li>
-</ul>
-<p>Add these settings to your settings file:</p>
-<pre><code class="language-python">INSTALLED_APPS = [
+    <p>
+      <strong>elioSin</strong> gulp files build resources into the
+      <code>dist</code> folder of the theme, including any image resources like
+      <code>favicon.ico</code> and <code>apple-touch-icon.png</code>.
+    </p>
+    <ul>
+      <li>
+        We&#39;re using <strong>django-livereload-server</strong> to
+        watch+reload the Django Development server - including
+        auto-collecting-static files - when you change any of your
+        <strong>elioSin</strong> theme files. You should follow the livereload
+        setup described in the link above, but in the spirit of a Quickstart:
+      </li>
+    </ul>
+    <p>Add these settings to your settings file:</p>
+    <pre><code class="language-python">INSTALLED_APPS = [
   &quot;livereload&quot;,
   ...
   &quot;django.contrib.staticfiles&quot;,
@@ -98,25 +150,48 @@ MIDDLEWARE = [
   ...
   &quot;livereload.middleware.LiveReloadScript&quot;,
 ]</code></pre>
-<ul>
-<li><p><code>cd</code> into your theme folder and type <code>gulp</code> (which is the standard way you work on an <strong>elioSin</strong> theme). Now gulp will watch for any changes to your theme&#39;s SCSS files and rebuild the CSS files to the dist folder.</p>
-</li>
-<li><p>In another terminal, <code>cd</code> into your Django project (containing your app) and run: <code>django-admin livereload</code>. This will &quot;watch&quot; for any changes in the STATICFILES_DIRS and collectstatic + reload the Django Development server.</p>
-</li>
-<li><p>Finally, in yet another terminal, <code>cd</code> into your Django project (containing your app) and run: <code>django-admin runserver</code> (or whatever it is you usually do to start the Django Development server).</p>
-</li>
-</ul>
-<p>NB: You can obviously use this process alongside any CSS framework you are using... but the above steps are 100% the <strong>elioWay</strong>.</p>
+    <ul>
+      <li>
+        <p>
+          <code>cd</code> into your theme folder and type
+          <code>gulp</code> (which is the standard way you work on an
+          <strong>elioSin</strong> theme). Now gulp will watch for any changes
+          to your theme&#39;s SCSS files and rebuild the CSS files to the dist
+          folder.
+        </p>
+      </li>
+      <li>
+        <p>
+          In another terminal, <code>cd</code> into your Django project
+          (containing your app) and run: <code>django-admin livereload</code>.
+          This will &quot;watch&quot; for any changes in the STATICFILES_DIRS
+          and collectstatic + reload the Django Development server.
+        </p>
+      </li>
+      <li>
+        <p>
+          Finally, in yet another terminal, <code>cd</code> into your Django
+          project (containing your app) and run:
+          <code>django-admin runserver</code> (or whatever it is you usually do
+          to start the Django Development server).
+        </p>
+      </li>
+    </ul>
+    <p>
+      NB: You can obviously use this process alongside any CSS framework you are
+      using... but the above steps are 100% the <strong>elioWay</strong>.
+    </p>
     <footer>
       <a href="https://gitlab.com/elioway/eliothing/genes">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>
-      <img src="elio-genes-logo.png">
+      <img src="elio-genes-logo.png" />
       <label>&copy; 2019 Made the elioWay</label>
     </footer>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+    ></script>
     <script src="/dist/js/adons.js"></script>
     <script src="/dist/js/main.js"></script>
   </body>

@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"
+    ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-145358157-1');
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'UA-145358157-1')
     </script>
     <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>
       dna
     </title>
-    <meta name="description" content="Django models, views, forms, and templates, built out of schema.org Things, the elioWay.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="shortcut icon" href="favicon.ico"/>
+    <meta
+      name="description"
+      content="Django models, views, forms, and templates, built out of schema.org Things, the elioWay."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
       rel="stylesheet"
@@ -27,123 +35,175 @@
       integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/dist/css/rei.min.css">
+    <link rel="stylesheet" href="/dist/css/rei.min.css" />
   </head>
   <body>
     <menu>
       <a href="index.html">
-        <img src="apple-touch-icon.png"/>
+        <img src="apple-touch-icon.png" />
         <b>dna</b>
       </a>
       <a href="installing.html">Installing</a>
       <a href="quickstart.html">Quickstart</a>
       <a href="credits.html">Credits</a>
-            <a href="/eliothing">
-              <img src="/eliothing/apple-touch-icon.png"/>
-              <b>eliothing</b>
-            </a>
-          <menu>
-            <label>Python</label>
-            <nav>
-                  <a href="/eliothing/genes">
-                    <img src="/eliothing/genes/apple-touch-icon.png"/>
-                    <b>genes</b>
-                  </a>
-            </nav>
-          </menu>
-          <menu>
-            <label>Tools</label>
-            <nav>
-                  <a href="/eliothing/generator-thing">
-                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
-                    <b>generator-thing</b>
-                  </a>
-            </nav>
-          </menu>
+      <a href="/eliothing">
+        <img src="/eliothing/apple-touch-icon.png" />
+        <b>eliothing</b>
+      </a>
+      <menu>
+        <label>Python</label>
+        <nav>
+          <a href="/eliothing/genes">
+            <img src="/eliothing/genes/apple-touch-icon.png" />
+            <b>genes</b>
+          </a>
+        </nav>
+      </menu>
+      <menu>
+        <label>Tools</label>
+        <nav>
+          <a href="/eliothing/generator-thing">
+            <img src="/eliothing/generator-thing/apple-touch-icon.png" />
+            <b>generator-thing</b>
+          </a>
+        </nav>
+      </menu>
       <menu>
         <label>Ways</label>
         <nav>
           <a href="/ ">
-            <img src="/apple-touch-icon.png"/>
+            <img src="/apple-touch-icon.png" />
             <b>elioWay</b>
           </a>
-              <a href="/elioangels">
-                <img src="/elioangels/apple-touch-icon.png"/>
-                <b>elioAngels</b>
-              </a>
-              <a href="/eliosin">
-                <img src="/eliosin/apple-touch-icon.png"/>
-                <b>elioSin</b>
-              </a>
-              <a href="/eliofaithful">
-                <img src="/eliofaithful/apple-touch-icon.png"/>
-                <b>elioFaithful</b>
-              </a>
+          <a href="/elioangels">
+            <img src="/elioangels/apple-touch-icon.png" />
+            <b>elioAngels</b>
+          </a>
+          <a href="/eliosin">
+            <img src="/eliosin/apple-touch-icon.png" />
+            <b>elioSin</b>
+          </a>
+          <a href="/eliofaithful">
+            <img src="/eliofaithful/apple-touch-icon.png" />
+            <b>elioFaithful</b>
+          </a>
         </nav>
       </menu>
     </menu>
     <h1 id="dna">dna</h1>
-<figure>
-  <img src="tile.png" alt="">
-</figure>
-<blockquote>
-<p>Dropping the pretense one thing is so different from another <strong>the elioWay</strong></p>
-</blockquote>
-<p><img src="https://elioway.gitlab.io/static/experimental.png" alt="experimental" title="experimental"></p>
-<p><strong>dna</strong> is an experiment in expediancy. With this library you can rapidly build Django web apps which are especially suitable for collecting data, but will also make perfect blogs, travel guides, journals, and even galleries.</p>
-<p><strong>dna</strong> drops the pretense that one thing is so different from another. Instead of inventing new Models, <strong>dna</strong> expects you to use any of the hundreds of available Schema Types in microdata sites like Schema.org. Because the application knows what to expect, this enables web developers to almost entirely skip the CRUD stage of work. In almost all cases there is already a Model with all the fields you need in Schema.</p>
-<p>The obvious advantage of using Schema to model your databases is being able to automatically render your content with prefect microdata.</p>
-<p>To create a website with <strong>dna</strong> you don&#39;t need to create any models or forms. Simply define the shape of your website as a simple JSON dictionary and let <strong>dna</strong> do the rest. All the models, views, forms and templates will work out of the box. You really can launch a basic website or application in less than 10 minutes.</p>
-<div><a href="installing.html">
-  <button>Installing</button>
-</a>
-  <a href="quickstart.html">
-  <button>Quickstart</button>
-</a></div>
-<h2 id="full-documentation">Full Documentation</h2>
-<ul>
-<li><a href="installing.html">Installing</a></li>
-<li><a href="quickstart.html">Quickstart</a></li>
-<li><a href="site_dna.html">SITE_DNA</a></li>
-<li><a href="settings.html">Settings</a></li>
-<li><a href="models.html">Models</a></li>
-<li><a href="view_mixins.html">View Mixins</a></li>
-<li><a href="views.html">Views</a></li>
-<li><a href="urls.html">Urls</a></li>
-<li><a href="forms.html">Forms</a></li>
-<li><a href="templates.html">Templates</a></li>
-<li><a href="browse.html">Browse Things</a></li>
-<li><a href="genome.html">genome</a></li>
-</ul>
-<h2 id="the-elioway">The elioWay</h2>
-<p><strong>dna</strong> encourages you to work the <strong>elioWay</strong>.</p>
-<p><strong>elio</strong> is an acronym for:</p>
-<ul>
-<li>engage</li>
-<li>list</li>
-<li>iterate</li>
-<li>optimize</li>
-</ul>
-<p>There&#39;s nothing unique about this pattern... developers write apps like this all the time. Out of the box, <strong>dna</strong> is geared toward this approach and the app leads the user to <em>engage</em> with a &quot;Thing&quot;, <em>list</em> &quot;Things&quot; related to it, then <em>iterate</em> the process of <em>engaging</em> with &quot;Things&quot; in the <em>list</em>.</p>
-<p>In this way a rich, semantically connected array of &quot;Things&quot; are built <em>iteratively</em>.</p>
-<p>The <em>optimize</em> stage is where you - as a developer - will be more likely to add custom features. like reporting on, merging, or cleaning records. I will write more about <em>optimize</em> later.</p>
-<h2 id="related">Related</h2>
-<dl>
-  <dt>
-  <a href="https://elioway.gitlab.io/eliofaithful/frankenstein">frankenstein</a>
-</dt>
-  <dd>A new creature built the <strong>elioWay</strong>.</dd>
-</dl>
+    <figure>
+      <img src="tile.png" alt="" />
+    </figure>
+    <blockquote>
+      <p>
+        Dropping the pretense one thing is so different from another
+        <strong>the elioWay</strong>
+      </p>
+    </blockquote>
+    <p>
+      <img
+        src="https://elioway.gitlab.io/static/experimental.png"
+        alt="experimental"
+        title="experimental"
+      />
+    </p>
+    <p>
+      <strong>dna</strong> is an experiment in expediancy. With this library you
+      can rapidly build Django web apps which are especially suitable for
+      collecting data, but will also make perfect blogs, travel guides,
+      journals, and even galleries.
+    </p>
+    <p>
+      <strong>dna</strong> drops the pretense that one thing is so different
+      from another. Instead of inventing new Models,
+      <strong>dna</strong> expects you to use any of the hundreds of available
+      Schema Types in microdata sites like Schema.org. Because the application
+      knows what to expect, this enables web developers to almost entirely skip
+      the CRUD stage of work. In almost all cases there is already a Model with
+      all the fields you need in Schema.
+    </p>
+    <p>
+      The obvious advantage of using Schema to model your databases is being
+      able to automatically render your content with prefect microdata.
+    </p>
+    <p>
+      To create a website with <strong>dna</strong> you don&#39;t need to create
+      any models or forms. Simply define the shape of your website as a simple
+      JSON dictionary and let <strong>dna</strong> do the rest. All the models,
+      views, forms and templates will work out of the box. You really can launch
+      a basic website or application in less than 10 minutes.
+    </p>
+    <div>
+      <a href="installing.html">
+        <button>Installing</button>
+      </a>
+      <a href="quickstart.html">
+        <button>Quickstart</button>
+      </a>
+    </div>
+    <h2 id="full-documentation">Full Documentation</h2>
+    <ul>
+      <li><a href="installing.html">Installing</a></li>
+      <li><a href="quickstart.html">Quickstart</a></li>
+      <li><a href="site_dna.html">SITE_DNA</a></li>
+      <li><a href="settings.html">Settings</a></li>
+      <li><a href="models.html">Models</a></li>
+      <li><a href="view_mixins.html">View Mixins</a></li>
+      <li><a href="views.html">Views</a></li>
+      <li><a href="urls.html">Urls</a></li>
+      <li><a href="forms.html">Forms</a></li>
+      <li><a href="templates.html">Templates</a></li>
+      <li><a href="browse.html">Browse Things</a></li>
+      <li><a href="genome.html">genome</a></li>
+    </ul>
+    <h2 id="the-elioway">The elioWay</h2>
+    <p>
+      <strong>dna</strong> encourages you to work the <strong>elioWay</strong>.
+    </p>
+    <p><strong>elio</strong> is an acronym for:</p>
+    <ul>
+      <li>engage</li>
+      <li>list</li>
+      <li>iterate</li>
+      <li>optimize</li>
+    </ul>
+    <p>
+      There&#39;s nothing unique about this pattern... developers write apps
+      like this all the time. Out of the box, <strong>dna</strong> is geared
+      toward this approach and the app leads the user to <em>engage</em> with a
+      &quot;Thing&quot;, <em>list</em> &quot;Things&quot; related to it, then
+      <em>iterate</em> the process of <em>engaging</em> with &quot;Things&quot;
+      in the <em>list</em>.
+    </p>
+    <p>
+      In this way a rich, semantically connected array of &quot;Things&quot; are
+      built <em>iteratively</em>.
+    </p>
+    <p>
+      The <em>optimize</em> stage is where you - as a developer - will be more
+      likely to add custom features. like reporting on, merging, or cleaning
+      records. I will write more about <em>optimize</em> later.
+    </p>
+    <h2 id="related">Related</h2>
+    <dl>
+      <dt>
+        <a href="https://elioway.gitlab.io/eliofaithful/frankenstein"
+          >frankenstein</a
+        >
+      </dt>
+      <dd>A new creature built the <strong>elioWay</strong>.</dd>
+    </dl>
     <footer>
       <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>
-      <img src="elio-dna-logo.png">
+      <img src="elio-dna-logo.png" />
       <label>&copy; 2019 Made the elioWay</label>
     </footer>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+    ></script>
     <script src="/dist/js/adons.js"></script>
     <script src="/dist/js/main.js"></script>
   </body>

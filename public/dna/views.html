@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"
+    ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-145358157-1');
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'UA-145358157-1')
     </script>
     <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>
       dna Views
     </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="shortcut icon" href="favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
       rel="stylesheet"
@@ -26,66 +31,65 @@
       integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/dist/css/sloth.min.css">
+    <link rel="stylesheet" href="/dist/css/sloth.min.css" />
   </head>
   <body>
     <nav>
       <a href="index.html">
-        <img src="apple-touch-icon.png"/>
+        <img src="apple-touch-icon.png" />
         <b>dna</b>
       </a>
-        <a href="#everycreateviewmixin">
-                `EveryCreateViewMixin`</a>
-        <a href="#everyupdateviewmixin">
-                `EveryUpdateViewMixin`</a>
-        <a href="#everydeleteviewmixin">
-                `EveryDeleteViewMixin`</a>
-        <a href="#everyengageviewmixin">
-                `EveryEngageViewMixin`</a>
-        <a href="#everymanyviewmixin">
-                `EveryManyViewMixin`</a>
-        <a href="#everyoptimizeviewmixin">
-                `EveryOptimizeViewMixin`</a>
-        <a href="#everylistviewmixin">
-                `EveryListViewMixin`</a>
-        <a href="#everypageviewmixin">
-                `EveryPageViewMixin`</a>
-        <a href="#everyhomeviewmixin">
-                `EveryHomeViewMixin`</a>
-        <a href="#your-views-file">
-                Your views file</a>
-      <hr>
+      <a href="#everycreateviewmixin"> `EveryCreateViewMixin`</a>
+      <a href="#everyupdateviewmixin"> `EveryUpdateViewMixin`</a>
+      <a href="#everydeleteviewmixin"> `EveryDeleteViewMixin`</a>
+      <a href="#everyengageviewmixin"> `EveryEngageViewMixin`</a>
+      <a href="#everymanyviewmixin"> `EveryManyViewMixin`</a>
+      <a href="#everyoptimizeviewmixin"> `EveryOptimizeViewMixin`</a>
+      <a href="#everylistviewmixin"> `EveryListViewMixin`</a>
+      <a href="#everypageviewmixin"> `EveryPageViewMixin`</a>
+      <a href="#everyhomeviewmixin"> `EveryHomeViewMixin`</a>
+      <a href="#your-views-file"> Your views file</a>
+      <hr />
       <a href="/eliothing">
-        <img src="/eliothing/apple-touch-icon.png"/>
+        <img src="/eliothing/apple-touch-icon.png" />
         <b>eliothing</b>
       </a>
       <menu>
-            <label>Python</label>
-            <nav>
-                  <a href="/eliothing/genes">
-                    <img src="/eliothing/genes/apple-touch-icon.png"/>
-                    <b>genes</b>
-                  </a>
-            </nav>
-            <label>Tools</label>
-            <nav>
-                  <a href="/eliothing/generator-thing">
-                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
-                    <b>generator-thing</b>
-                  </a>
-            </nav>
+        <label>Python</label>
+        <nav>
+          <a href="/eliothing/genes">
+            <img src="/eliothing/genes/apple-touch-icon.png" />
+            <b>genes</b>
+          </a>
+        </nav>
+        <label>Tools</label>
+        <nav>
+          <a href="/eliothing/generator-thing">
+            <img src="/eliothing/generator-thing/apple-touch-icon.png" />
+            <b>generator-thing</b>
+          </a>
+        </nav>
       </menu>
     </nav>
     <h1 id="dna-views">dna Views</h1>
-<p>All the Mixins described in <a href="view_mixins.html">View Mixins</a> are combined with standard Django class based views on the <code>dna.views</code> file, which you can import into your own views file.</p>
-<h2 id="everycreateviewmixin"><code>EveryCreateViewMixin</code></h2>
-<p>Create any Schema Type mentioned in your <code>SITE_DNA</code>.</p>
-<ul>
-<li><strong>Mixins</strong>: <code>EveryThingMixin</code>, <code>EveryGetObjectMixin</code>, <code>EveryEditMixin</code>, <code>CreateView</code></li>
-<li><strong>URL</strong>: <code>/cr/page_name/thing_name</code></li>
-</ul>
-<p><strong>Template Context</strong></p>
-<pre><code>{
+    <p>
+      All the Mixins described in <a href="view_mixins.html">View Mixins</a> are
+      combined with standard Django class based views on the
+      <code>dna.views</code> file, which you can import into your own views
+      file.
+    </p>
+    <h2 id="everycreateviewmixin"><code>EveryCreateViewMixin</code></h2>
+    <p>Create any Schema Type mentioned in your <code>SITE_DNA</code>.</p>
+    <ul>
+      <li>
+        <strong>Mixins</strong>: <code>EveryThingMixin</code>,
+        <code>EveryGetObjectMixin</code>, <code>EveryEditMixin</code>,
+        <code>CreateView</code>
+      </li>
+      <li><strong>URL</strong>: <code>/cr/page_name/thing_name</code></li>
+    </ul>
+    <p><strong>Template Context</strong></p>
+    <pre><code>{
   &#39;app_name&#39;: &quot;&lt;app_name&gt;&quot;,
   &#39;home_page&#39;: &quot;&lt;home_page&gt;&quot;,
   &#39;page_name&#39;: &quot;&lt;page_name&gt;&quot;,
@@ -96,14 +100,19 @@
       &quot;&lt;menu2&gt;&quot;: { &quot;url&quot;: &quot;/url2&quot;, status: &quot;&quot;, &quot;page&quot;: { ...rpt... } },
   },
   &#39;form&#39;: &lt;standard django modelform&gt;,
-}</code></pre><h2 id="everyupdateviewmixin"><code>EveryUpdateViewMixin</code></h2>
-<p>Update any Schema Type mentioned in your <code>SITE_DNA</code>.</p>
-<ul>
-<li><strong>Mixins</strong>: <code>EveryThingMixin</code>, <code>EveryGetObjectMixin</code>, <code>EveryEditMixin</code>, <code>UpdateView</code></li>
-<li><strong>URL</strong>: <code>/u/page_name/thing_name/pk</code></li>
-</ul>
-<p><strong>Template Context</strong></p>
-<pre><code>{
+}</code></pre>
+    <h2 id="everyupdateviewmixin"><code>EveryUpdateViewMixin</code></h2>
+    <p>Update any Schema Type mentioned in your <code>SITE_DNA</code>.</p>
+    <ul>
+      <li>
+        <strong>Mixins</strong>: <code>EveryThingMixin</code>,
+        <code>EveryGetObjectMixin</code>, <code>EveryEditMixin</code>,
+        <code>UpdateView</code>
+      </li>
+      <li><strong>URL</strong>: <code>/u/page_name/thing_name/pk</code></li>
+    </ul>
+    <p><strong>Template Context</strong></p>
+    <pre><code>{
   &#39;app_name&#39;: &quot;&lt;app_name&gt;&quot;,
   &#39;home_page&#39;: &quot;&lt;home_page&gt;&quot;,
   &#39;page_name&#39;: &quot;&lt;page_name&gt;&quot;,
@@ -115,14 +124,19 @@
   },
   &#39;object&#39;: &lt;standard django model object&gt;,
   &#39;form&#39;: &lt;standard django modelform&gt;,
-}</code></pre><h2 id="everydeleteviewmixin"><code>EveryDeleteViewMixin</code></h2>
-<p>Delete any Schema Type mentioned in your <code>SITE_DNA</code>.</p>
-<ul>
-<li><strong>Mixins</strong>: <code>EveryThingMixin</code>, <code>EveryGetObjectMixin</code>, <code>EveryQuerySetMixin</code>, <code>EveryDeleteMixin</code>, <code>DeleteView</code></li>
-<li><strong>URL</strong>: <code>/d/page_name/thing_name/pk</code></li>
-</ul>
-<p><strong>Template Context</strong></p>
-<pre><code>{
+}</code></pre>
+    <h2 id="everydeleteviewmixin"><code>EveryDeleteViewMixin</code></h2>
+    <p>Delete any Schema Type mentioned in your <code>SITE_DNA</code>.</p>
+    <ul>
+      <li>
+        <strong>Mixins</strong>: <code>EveryThingMixin</code>,
+        <code>EveryGetObjectMixin</code>, <code>EveryQuerySetMixin</code>,
+        <code>EveryDeleteMixin</code>, <code>DeleteView</code>
+      </li>
+      <li><strong>URL</strong>: <code>/d/page_name/thing_name/pk</code></li>
+    </ul>
+    <p><strong>Template Context</strong></p>
+    <pre><code>{
   &#39;app_name&#39;: &quot;&lt;app_name&gt;&quot;,
   &#39;home_page&#39;: &quot;&lt;home_page&gt;&quot;,
   &#39;page_name&#39;: &quot;&lt;page_name&gt;&quot;,
@@ -133,14 +147,22 @@
       &quot;&lt;menu2&gt;&quot;: { &quot;url&quot;: &quot;/url2&quot;, status: &quot;&quot;, &quot;page&quot;: { ...rpt... } },
   },
   &#39;object&#39;: &lt;standard django model object&gt;,
-}</code></pre><h2 id="everyengageviewmixin"><code>EveryEngageViewMixin</code></h2>
-<p>View on a single page any Schema Type mentioned in your <code>SITE_DNA</code>.</p>
-<ul>
-<li><strong>Mixins</strong>: <code>EveryThingMixin</code>, <code>EveryQuerySetMixin</code>, <code>EveryGetObjectMixin</code>, <code>DetailView</code></li>
-<li><strong>URL</strong>: <code>/e/page_name/thing_name/pk</code></li>
-</ul>
-<p><strong>Template Context</strong></p>
-<pre><code>{
+}</code></pre>
+    <h2 id="everyengageviewmixin"><code>EveryEngageViewMixin</code></h2>
+    <p>
+      View on a single page any Schema Type mentioned in your
+      <code>SITE_DNA</code>.
+    </p>
+    <ul>
+      <li>
+        <strong>Mixins</strong>: <code>EveryThingMixin</code>,
+        <code>EveryQuerySetMixin</code>, <code>EveryGetObjectMixin</code>,
+        <code>DetailView</code>
+      </li>
+      <li><strong>URL</strong>: <code>/e/page_name/thing_name/pk</code></li>
+    </ul>
+    <p><strong>Template Context</strong></p>
+    <pre><code>{
   &#39;app_name&#39;: &quot;&lt;app_name&gt;&quot;,
   &#39;home_page&#39;: &quot;&lt;home_page&gt;&quot;,
   &#39;page_name&#39;: &quot;&lt;page_name&gt;&quot;,
@@ -154,14 +176,24 @@
   },
   &#39;object&#39;: &lt;standard django model object&gt;,
   &#39;many&#39;: { &quot;&lt;field1&gt;&quot;: &lt;queryset&gt;, &quot;&lt;field2&gt;&quot;: &lt;queryset&gt;, ... },
-}</code></pre><h2 id="everymanyviewmixin"><code>EveryManyViewMixin</code></h2>
-<p>Handles properties of any Schema Type which have been given an <code>iterable</code> role <code>SITE_DNA</code>. <em>NB: Feature in development</em></p>
-<ul>
-<li><strong>Mixins</strong>: <code>EveryThingMixin</code>, <code>TemplateView</code></li>
-<li><strong>URL</strong>: <code>/i/page_name/thing_name/pk/field_name</code></li>
-</ul>
-<p><strong>Template Context</strong></p>
-<pre><code>{
+}</code></pre>
+    <h2 id="everymanyviewmixin"><code>EveryManyViewMixin</code></h2>
+    <p>
+      Handles properties of any Schema Type which have been given an
+      <code>iterable</code> role <code>SITE_DNA</code>.
+      <em>NB: Feature in development</em>
+    </p>
+    <ul>
+      <li>
+        <strong>Mixins</strong>: <code>EveryThingMixin</code>,
+        <code>TemplateView</code>
+      </li>
+      <li>
+        <strong>URL</strong>: <code>/i/page_name/thing_name/pk/field_name</code>
+      </li>
+    </ul>
+    <p><strong>Template Context</strong></p>
+    <pre><code>{
   &#39;app_name&#39;: &quot;&lt;app_name&gt;&quot;,
   &#39;home_page&#39;: &quot;&lt;home_page&gt;&quot;,
   &#39;page_name&#39;: &quot;&lt;page_name&gt;&quot;,
@@ -173,21 +205,35 @@
   },
   &#39;object&#39;: &lt;standard django model object&gt;,
   &#39;form&#39;: &lt;standard django modelform&gt;,
-}</code></pre><h2 id="everyoptimizeviewmixin"><code>EveryOptimizeViewMixin</code></h2>
-<p>A special kind of view from which you can create reports, graphs, or provide settings and features to administrate any Schema Type. <em>NB: Feature in development</em></p>
-<ul>
-<li><strong>Mixins</strong>: <code>EveryThingMixin</code>, <code>TemplateView</code></li>
-<li><strong>URL</strong>: <code>/o/page_name/thing_name</code></li>
-</ul>
-<p>Work in progress.</p>
-<h2 id="everylistviewmixin"><code>EveryListViewMixin</code></h2>
-<p>View on a single page a queryset matching a Schema Type mentioned in your <code>SITE_DNA</code>.</p>
-<ul>
-<li><strong>Mixins</strong>: <code>EveryThingMixin</code>, <code>EveryQuerySetMixin</code>, <code>ListView</code></li>
-<li><strong>URL</strong>: <code>/l/page_name/thing_name</code></li>
-</ul>
-<p><strong>Template Context</strong></p>
-<pre><code>{
+}</code></pre>
+    <h2 id="everyoptimizeviewmixin"><code>EveryOptimizeViewMixin</code></h2>
+    <p>
+      A special kind of view from which you can create reports, graphs, or
+      provide settings and features to administrate any Schema Type.
+      <em>NB: Feature in development</em>
+    </p>
+    <ul>
+      <li>
+        <strong>Mixins</strong>: <code>EveryThingMixin</code>,
+        <code>TemplateView</code>
+      </li>
+      <li><strong>URL</strong>: <code>/o/page_name/thing_name</code></li>
+    </ul>
+    <p>Work in progress.</p>
+    <h2 id="everylistviewmixin"><code>EveryListViewMixin</code></h2>
+    <p>
+      View on a single page a queryset matching a Schema Type mentioned in your
+      <code>SITE_DNA</code>.
+    </p>
+    <ul>
+      <li>
+        <strong>Mixins</strong>: <code>EveryThingMixin</code>,
+        <code>EveryQuerySetMixin</code>, <code>ListView</code>
+      </li>
+      <li><strong>URL</strong>: <code>/l/page_name/thing_name</code></li>
+    </ul>
+    <p><strong>Template Context</strong></p>
+    <pre><code>{
   &#39;app_name&#39;: &quot;&lt;app_name&gt;&quot;,
   &#39;home_page&#39;: &quot;&lt;home_page&gt;&quot;,
   &#39;page_name&#39;: &quot;&lt;page_name&gt;&quot;,
@@ -201,14 +247,21 @@
   &#39;object_list&#39;: &lt;standard django queryset&gt;,
   &#39;paginator&#39;: &lt;standard django paginator&gt;,
   &#39;page_obj&#39;: &lt;standard django paginator page_obj&gt;,
-}</code></pre><h2 id="everypageviewmixin"><code>EveryPageViewMixin</code></h2>
-<p>View all the content of Schema Types mentioned in a <code>page</code> in your <code>SITE_DNA</code>.</p>
-<ul>
-<li><strong>Mixins</strong>: <code>EveryThingMixin</code>, <code>EveryPageMixin</code>, <code>TemplateView</code></li>
-<li><strong>URL</strong>: <code>/p/page_name</code></li>
-</ul>
-<p><strong>Template Context</strong></p>
-<pre><code>{
+}</code></pre>
+    <h2 id="everypageviewmixin"><code>EveryPageViewMixin</code></h2>
+    <p>
+      View all the content of Schema Types mentioned in a <code>page</code> in
+      your <code>SITE_DNA</code>.
+    </p>
+    <ul>
+      <li>
+        <strong>Mixins</strong>: <code>EveryThingMixin</code>,
+        <code>EveryPageMixin</code>, <code>TemplateView</code>
+      </li>
+      <li><strong>URL</strong>: <code>/p/page_name</code></li>
+    </ul>
+    <p><strong>Template Context</strong></p>
+    <pre><code>{
   &#39;app_name&#39;: &quot;&lt;app_name&gt;&quot;,
   &#39;home_page&#39;: &quot;&lt;home_page&gt;&quot;,
   &#39;page_name&#39;: &quot;&lt;page_name&gt;&quot;,
@@ -237,14 +290,20 @@
       &quot;paginate_type&quot;: &quot;&lt;paginator_querystring_key&gt;&quot;,
     }, ...
   }
-}</code></pre><h2 id="everyhomeviewmixin"><code>EveryHomeViewMixin</code></h2>
-<p>The entry point of the site which you can use as Splash Screen, a Login Page or other static content for your webapp.</p>
-<ul>
-<li><strong>Mixins</strong>: <code>EveryThingMixin, TemplateView</code></li>
-<li><strong>URL</strong>: <code>/</code></li>
-</ul>
-<p><strong>Template Context</strong></p>
-<pre><code>{
+}</code></pre>
+    <h2 id="everyhomeviewmixin"><code>EveryHomeViewMixin</code></h2>
+    <p>
+      The entry point of the site which you can use as Splash Screen, a Login
+      Page or other static content for your webapp.
+    </p>
+    <ul>
+      <li>
+        <strong>Mixins</strong>: <code>EveryThingMixin, TemplateView</code>
+      </li>
+      <li><strong>URL</strong>: <code>/</code></li>
+    </ul>
+    <p><strong>Template Context</strong></p>
+    <pre><code>{
   &#39;app_name&#39;: &quot;&lt;app_name&gt;&quot;,
   &#39;home_page&#39;: &quot;&lt;home_page&gt;&quot;,
   &#39;page_name&#39;: &quot;&lt;page_name&gt;&quot;,
@@ -255,10 +314,20 @@
       &quot;&lt;menu1&gt;&quot;: { status: &quot;label&quot; },
       &quot;&lt;menu2&gt;&quot;: { &quot;url&quot;: &quot;/url2&quot;, status: &quot;&quot;, &quot;page&quot;: { ...rpt... } },
   }
-}</code></pre><h2 id="your-views-file">Your views file</h2>
-<p>Your <code>app_name.views.py</code> file should look something like this, using <strong>dna</strong> Views above. You can then build on the available context variables and view properties described above.</p>
-<p>Out of the box, the only thing which needs setting is a template file and <code>template_name</code> for each <strong>dna</strong> view type. These are described in the <a href="templates.html">templates</a> section of this documentation.</p>
-<pre><code># -*- encoding: utf-8 -*-
+}</code></pre>
+    <h2 id="your-views-file">Your views file</h2>
+    <p>
+      Your <code>app_name.views.py</code> file should look something like this,
+      using <strong>dna</strong> Views above. You can then build on the
+      available context variables and view properties described above.
+    </p>
+    <p>
+      Out of the box, the only thing which needs setting is a template file and
+      <code>template_name</code> for each <strong>dna</strong> view type. These
+      are described in the <a href="templates.html">templates</a> section of
+      this documentation.
+    </p>
+    <pre><code># -*- encoding: utf-8 -*-
 from dna.views import (
     EveryCreateViewMixin,
     EveryUpdateViewMixin,
@@ -289,13 +358,14 @@ class MyAppHomeView(EveryHomeViewMixin):
     <footer>
       <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>
-      <img src="elio-dna-logo.png">
+      <img src="elio-dna-logo.png" />
       <label>&copy; 2019 Made the elioWay</label>
     </footer>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+    ></script>
     <script src="/dist/js/adons.js"></script>
     <script src="/dist/js/main.js"></script>
   </body>

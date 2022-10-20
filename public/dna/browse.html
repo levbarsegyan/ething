@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-145358157-1"
+    ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-145358157-1');
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'UA-145358157-1')
     </script>
     <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>
       dna Browse
     </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="shortcut icon" href="favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
       rel="stylesheet"
@@ -26,69 +31,123 @@
       integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/dist/css/sloth.min.css">
+    <link rel="stylesheet" href="/dist/css/sloth.min.css" />
   </head>
   <body>
     <nav>
       <a href="index.html">
-        <img src="apple-touch-icon.png"/>
+        <img src="apple-touch-icon.png" />
         <b>dna</b>
       </a>
-        <a href="#what-is-browse-things">
-                What is &#34;Browse Things&#34;?</a>
-        <a href="#editing-in-browse-things">
-                Editing in &#34;Browse Things&#34;</a>
-        <a href="#access">
-                Access</a>
-      <hr>
+      <a href="#what-is-browse-things"> What is &#34;Browse Things&#34;?</a>
+      <a href="#editing-in-browse-things">
+        Editing in &#34;Browse Things&#34;</a
+      >
+      <a href="#access"> Access</a>
+      <hr />
       <a href="/eliothing">
-        <img src="/eliothing/apple-touch-icon.png"/>
+        <img src="/eliothing/apple-touch-icon.png" />
         <b>eliothing</b>
       </a>
       <menu>
-            <label>Python</label>
-            <nav>
-                  <a href="/eliothing/genes">
-                    <img src="/eliothing/genes/apple-touch-icon.png"/>
-                    <b>genes</b>
-                  </a>
-            </nav>
-            <label>Tools</label>
-            <nav>
-                  <a href="/eliothing/generator-thing">
-                    <img src="/eliothing/generator-thing/apple-touch-icon.png"/>
-                    <b>generator-thing</b>
-                  </a>
-            </nav>
+        <label>Python</label>
+        <nav>
+          <a href="/eliothing/genes">
+            <img src="/eliothing/genes/apple-touch-icon.png" />
+            <b>genes</b>
+          </a>
+        </nav>
+        <label>Tools</label>
+        <nav>
+          <a href="/eliothing/generator-thing">
+            <img src="/eliothing/generator-thing/apple-touch-icon.png" />
+            <b>generator-thing</b>
+          </a>
+        </nav>
       </menu>
     </nav>
     <h1 id="dna-browse">dna Browse</h1>
-<p>Included by default in all <strong>dna</strong> menus is a &quot;Browse Things&quot; section. This lists all the Schema Types which form a backbone of your website. Some of those Types will be included in your <code>SITE_DNA</code>, but some will be there as dependencies.</p>
-<h2 id="what-is-browse-things">What is &quot;Browse Things&quot;?</h2>
-<p>The &quot;Browse Things&quot; section can be used to see a queryset of all the data in your site, regardless of its Role. You can use this area for the following purposes:</p>
-<h3 id="content-overview">Content overview</h3>
-<p>&quot;Browse Things&quot; gives you an overview of all your data, regardless of which page it is on.</p>
-<h3 id="edit-all-the-fields">Edit all the fields</h3>
-<p>When you edit content from one of the site&#39;s Pages, the form is limited to the fields listed in the <code>field</code> section of the <code>SITE_DNA</code>. However when <strong>dna</strong> dynamically builds <strong>Django</strong> Models, it add all the properties of every Type.</p>
-<p>By selecting an instance to edit in the &quot;Browse Things&quot; section the form will render with all the properties. This can be useful for adding data to a record outside the scope in <code>SITE_DNA</code>. By default <strong>dna</strong> returns all the fields in View context, but will only render to the template fields which are not null or empty.</p>
-<h3 id="addedit-related-data">Add/edit related data</h3>
-<p>Some of the properties of your Schema Types in <code>SITE_DNA</code> will be ForeignKeys, related to other Schema Types. Those Types may not be listed in your Pages, so &quot;Browse Things&quot; gives you a chance to add related records for Types outside of the <code>SITE_DNA</code>. Those things will then show up in the drop down of any Form with a ForeignKey type.</p>
-<h2 id="editing-in-browse-things">Editing in &quot;Browse Things&quot;</h2>
-<p>It should be noted that any records you <strong>create</strong> from &quot;Browse Things&quot; will never appear in either the <code>engage</code> or <code>list</code> area of a Page. If you want a record to appear on a Page, create it from that Page.</p>
-<p>However, records <strong>edited</strong> in &quot;Browse Things&quot; will stick to their Page.</p>
-<p><em>TODO: Maybe change this so that records edited from Browse show the elio_key and elio_page fields for manually moving them to a different page?</em></p>
-<h2 id="access">Access</h2>
-<p>By default <strong>dna</strong> comes with no authenticated access. Obviously one of the first things you&#39;ll want to do is create a superuser and hide all the editing features. We suggest you don&#39;t show the &quot;Browse Things&quot; section to web visitors because otherwise search engines will spider those pages and it will dilute the SEO of the site if the information is foind in more than one place. One of the reasons for using <strong>dna</strong> is that we can publish data with Microdata already in place.</p>
+    <p>
+      Included by default in all <strong>dna</strong> menus is a &quot;Browse
+      Things&quot; section. This lists all the Schema Types which form a
+      backbone of your website. Some of those Types will be included in your
+      <code>SITE_DNA</code>, but some will be there as dependencies.
+    </p>
+    <h2 id="what-is-browse-things">What is &quot;Browse Things&quot;?</h2>
+    <p>
+      The &quot;Browse Things&quot; section can be used to see a queryset of all
+      the data in your site, regardless of its Role. You can use this area for
+      the following purposes:
+    </p>
+    <h3 id="content-overview">Content overview</h3>
+    <p>
+      &quot;Browse Things&quot; gives you an overview of all your data,
+      regardless of which page it is on.
+    </p>
+    <h3 id="edit-all-the-fields">Edit all the fields</h3>
+    <p>
+      When you edit content from one of the site&#39;s Pages, the form is
+      limited to the fields listed in the <code>field</code> section of the
+      <code>SITE_DNA</code>. However when <strong>dna</strong> dynamically
+      builds <strong>Django</strong> Models, it add all the properties of every
+      Type.
+    </p>
+    <p>
+      By selecting an instance to edit in the &quot;Browse Things&quot; section
+      the form will render with all the properties. This can be useful for
+      adding data to a record outside the scope in <code>SITE_DNA</code>. By
+      default <strong>dna</strong> returns all the fields in View context, but
+      will only render to the template fields which are not null or empty.
+    </p>
+    <h3 id="addedit-related-data">Add/edit related data</h3>
+    <p>
+      Some of the properties of your Schema Types in <code>SITE_DNA</code> will
+      be ForeignKeys, related to other Schema Types. Those Types may not be
+      listed in your Pages, so &quot;Browse Things&quot; gives you a chance to
+      add related records for Types outside of the <code>SITE_DNA</code>. Those
+      things will then show up in the drop down of any Form with a ForeignKey
+      type.
+    </p>
+    <h2 id="editing-in-browse-things">Editing in &quot;Browse Things&quot;</h2>
+    <p>
+      It should be noted that any records you <strong>create</strong> from
+      &quot;Browse Things&quot; will never appear in either the
+      <code>engage</code> or <code>list</code> area of a Page. If you want a
+      record to appear on a Page, create it from that Page.
+    </p>
+    <p>
+      However, records <strong>edited</strong> in &quot;Browse Things&quot; will
+      stick to their Page.
+    </p>
+    <p>
+      <em
+        >TODO: Maybe change this so that records edited from Browse show the
+        elio_key and elio_page fields for manually moving them to a different
+        page?</em
+      >
+    </p>
+    <h2 id="access">Access</h2>
+    <p>
+      By default <strong>dna</strong> comes with no authenticated access.
+      Obviously one of the first things you&#39;ll want to do is create a
+      superuser and hide all the editing features. We suggest you don&#39;t show
+      the &quot;Browse Things&quot; section to web visitors because otherwise
+      search engines will spider those pages and it will dilute the SEO of the
+      site if the information is foind in more than one place. One of the
+      reasons for using <strong>dna</strong> is that we can publish data with
+      Microdata already in place.
+    </p>
     <footer>
       <a href="https://gitlab.com/elioway/eliothing/dna">GitLab</a> |
       <a href="https://gitlab.com/eliothing">Contribute</a>
-      <img src="elio-dna-logo.png">
+      <img src="elio-dna-logo.png" />
       <label>&copy; 2019 Made the elioWay</label>
     </footer>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"
+    ></script>
     <script src="/dist/js/adons.js"></script>
     <script src="/dist/js/main.js"></script>
   </body>
