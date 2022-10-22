@@ -13,3 +13,6 @@
 [submodule "genes"]
 	path = genes
 	url = git@gitlab.com-elio:eliothing/genes.git
+[submodule "bones-feathers"]
+	path = bones-feathers
+	url = git@gitlab.com-elio:eliothing/bones-feathers.git

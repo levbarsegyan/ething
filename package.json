@@ -29,7 +29,5 @@
     "chisel": "chisel",
     "prettier": "prettier --write \"**/*.{js,json,scss,md,html}\" \"!package.json\""
   },
-  "dependencies": {
-    "generator-thing": "^1.2.3"
-  }
+  "dependencies": {}
 }
